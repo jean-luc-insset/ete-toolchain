@@ -13,9 +13,7 @@ import java.util.Collection;
  */
 public interface NamedElement extends MofElement {
     
-    public  Collection<String>      getName();
-    public  void                    addName(String inName);
-    public  void                    removeName(String inName);
-
+    public  String      getName();
+    public  void        setName(String inName);
 
 }

@@ -7,6 +7,7 @@ package fr.insset.jeanluc.ete.meta.model.datatype.impl;
 
 import fr.insset.jeanluc.ete.meta.model.datatype.Enumeration;
 import fr.insset.jeanluc.ete.meta.model.instance.EnumerationLiteral;
+import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,6 +16,10 @@ import java.util.List;
  * @author jldeleage
  */
 public class EnumerationImpl extends DataTypeImpl implements Enumeration {
+
+    public EnumerationImpl() throws InstantiationException {
+        this.ownedLiteral = FactoryMethods.newList(EnumerationLiteral.class);
+    }
 
     @Override
     public List<EnumerationLiteral> getOwnedLiteral() {
@@ -32,7 +37,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
     }
 
 
-    List<EnumerationLiteral>    ownedLiteral = new LinkedList<>();
+    List<EnumerationLiteral>    ownedLiteral;
 
 
 }

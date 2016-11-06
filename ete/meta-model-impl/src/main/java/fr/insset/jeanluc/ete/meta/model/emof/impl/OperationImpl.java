@@ -10,6 +10,7 @@ import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,11 @@ import java.util.List;
  * @author jldeleage
  */
 public class OperationImpl implements Operation {
+
+    public OperationImpl() throws InstantiationException {
+        this.ownedParameter = FactoryMethods.newList(Parameter.class);
+        this.raisedException = FactoryMethods.newSet(MofType.class);
+    }
 
 
     @Override
@@ -104,8 +110,8 @@ public class OperationImpl implements Operation {
 
 
     private     MofClass            mofClass;
-    private     List<Parameter>     ownedParameter  = new LinkedList<>();
-    private     Collection<MofType> raisedException = new LinkedList<>();
+    private     List<Parameter>     ownedParameter;
+    private     Collection<MofType> raisedException;
     private     boolean             ordered;
     private     boolean             unique;
     private     int                 lower;

@@ -7,6 +7,7 @@ package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
+import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -16,6 +17,11 @@ import java.util.LinkedList;
  */
 public class AssociationImpl implements Association {
 
+    public AssociationImpl() throws InstantiationException {
+        this.ownedEnd = FactoryMethods.newList(Property.class);
+        this.memberEnd = FactoryMethods.newList(Property.class);
+    }
+
 
     @Override
     public Collection<Property> getMemberEnd() {
@@ -24,12 +30,18 @@ public class AssociationImpl implements Association {
 
     @Override
     public void addMemberEnd(Property inProperty) {
+        Collection<Property>    localMemberEnd = getMemberEnd();
+        if (localMemberEnd.contains(inProperty)) {
+            return;
+        }
         memberEnd.add(inProperty);
+        inProperty.setAssociation(this);
     }
 
     @Override
     public void removeMemberEnd(Property inProperty) {
         memberEnd.remove(inProperty);
+        inProperty.setAssociation(null);
     }
 
 
@@ -40,6 +52,10 @@ public class AssociationImpl implements Association {
 
     @Override
     public void addOwnedEnd(Property inProperty) {
+        Collection<Property>    localOwnedEnd = getOwnedEnd();
+        if (localOwnedEnd.contains(this)) {
+            return;
+        }
         ownedEnd.add(inProperty);
     }
 
@@ -49,8 +65,8 @@ public class AssociationImpl implements Association {
     }
 
 
-    private     Collection<Property>    memberEnd   = new LinkedList<>();
-    private     Collection<Property>    ownedEnd    = new LinkedList<>();
+    private     Collection<Property>    memberEnd;
+    private     Collection<Property>    ownedEnd;
 
 
 }

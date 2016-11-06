@@ -10,6 +10,7 @@ import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import fr.insset.jeanluc.ete.meta.model.types.impl.MofTypeImpl;
+import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,12 @@ import java.util.List;
  * @author jldeleage
  */
 public class MofClassImpl extends MofTypeImpl implements MofClass {
+
+    public MofClassImpl() throws InstantiationException {
+        this.superClass = FactoryMethods.newList(MofClass.class);
+        this.ownedOperation = FactoryMethods.newList(Operation.class);
+        this.ownedAttribute = FactoryMethods.newList(Property.class);
+    }
 
     @Override
     public List<Property> getOwnedAttribute() {
@@ -87,8 +94,8 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 
 
     
-    List<Property>          ownedAttribute  = new LinkedList<>();
-    List<Operation>         ownedOperation  = new LinkedList<>();
-    Collection<MofClass>    superClass      = new LinkedList<>();
+    List<Property>          ownedAttribute;
+    List<Operation>         ownedOperation;
+    Collection<MofClass>    superClass;
 
 }
