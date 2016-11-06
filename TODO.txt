@@ -1,0 +1,4 @@
+x Create the ete-api subproject
+  Create the Model interface in the meta-model project
+  Create the ModelImpl class in the meta-model-impl project
+  Create the Action interface and the EteException class
