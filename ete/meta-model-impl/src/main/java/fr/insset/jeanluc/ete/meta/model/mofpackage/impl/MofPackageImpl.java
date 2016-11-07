@@ -6,11 +6,13 @@
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
 import fr.insset.jeanluc.ete.meta.model.core.impl.NamedElementImpl;
+import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.stream.Stream;
 
 /**
  *
@@ -38,6 +40,17 @@ public class MofPackageImpl extends NamedElementImpl implements MofPackage {
     @Override
     public void removePackagedElement(PackageableElement inPackageableElement) {
         packagedElement.remove(inPackageableElement);
+    }
+
+
+    @Override
+    public Stream<PackageableElement> getPackagesAsStream() {
+        return packagedElement.stream().filter(t -> t instanceof MofPackage);
+    }
+
+    @Override
+    public Stream<PackageableElement> getClassesAsStream() {
+        return packagedElement.stream().filter(t -> t instanceof MofClass);
     }
 
 
