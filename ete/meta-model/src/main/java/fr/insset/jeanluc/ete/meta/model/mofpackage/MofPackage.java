@@ -27,7 +27,12 @@ public interface MofPackage extends NamedElement {
         return getClassesAsStream().collect(Collectors.toList());
     }
 
-    public  Stream<PackageableElement>              getPackagesAsStream();
-    public  Stream<PackageableElement>              getClassesAsStream();
+    public  Stream<PackageableElement>              getPackagedElementAsStream();
+    public  default Stream<PackageableElement>      getPackagesAsStream() {
+        return getPackagedElementAsStream().filter(p -> p instanceof MofPackage);
+    }
+    public  default Stream<PackageableElement>      getClassesAsStream() {
+        return getPackagedElementAsStream().filter(c -> c instanceof MofClass);
+    }
 
 }

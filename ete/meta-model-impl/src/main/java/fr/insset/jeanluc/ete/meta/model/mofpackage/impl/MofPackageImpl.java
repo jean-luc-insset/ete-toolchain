@@ -20,9 +20,14 @@ import java.util.stream.Stream;
  */
 public class MofPackageImpl extends NamedElementImpl implements MofPackage {
 
+
+
     public MofPackageImpl() throws InstantiationException {
         this.packagedElement = FactoryMethods.newList(PackageableElement.class);
     }
+
+
+    //========================================================================//
 
 
     @Override
@@ -43,15 +48,16 @@ public class MofPackageImpl extends NamedElementImpl implements MofPackage {
     }
 
 
-    @Override
-    public Stream<PackageableElement> getPackagesAsStream() {
-        return packagedElement.stream().filter(t -> t instanceof MofPackage);
-    }
+    //========================================================================//
+
 
     @Override
-    public Stream<PackageableElement> getClassesAsStream() {
-        return packagedElement.stream().filter(t -> t instanceof MofClass);
+    public Stream<PackageableElement> getPackagedElementAsStream() {
+        return packagedElement.stream();
     }
+
+
+    //========================================================================//
 
 
     private Collection<PackageableElement>     packagedElement;

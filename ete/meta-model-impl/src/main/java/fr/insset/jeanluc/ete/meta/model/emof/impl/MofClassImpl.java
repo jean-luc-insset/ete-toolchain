@@ -14,6 +14,7 @@ import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  *
@@ -42,6 +43,14 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         ownedAttribute.remove(inProperty);
     }
 
+
+    @Override
+    public Stream<Property> getOwnedAttributeAsStream() {
+        return ownedAttribute.stream();
+    }
+
+
+
     @Override
     public List<Operation> getOwnedOperation() {
         return ownedOperation;
@@ -58,6 +67,13 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
     }
 
     @Override
+    public Stream<Operation> getOwnedOperationAsStream() {
+        return ownedOperation.stream();
+    }
+
+
+
+    @Override
     public Collection<MofClass> getSuperClass() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -71,6 +87,15 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
     public void removeSuperClass(MofClass inMofClass) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+    @Override
+    public Stream<MofClass> getSuperClassAsStream() {
+        return superClass.stream();
+    }
+
+
+
 
     @Override
     public boolean isAbstract() {
