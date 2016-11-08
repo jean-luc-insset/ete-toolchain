@@ -3,22 +3,12 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.collections.ExtendedProperties;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.exception.MethodInvocationException;
-import org.apache.velocity.exception.ParseErrorException;
+
+
 
 /**
  * A velocity template is applied to a single item or to each item in a
