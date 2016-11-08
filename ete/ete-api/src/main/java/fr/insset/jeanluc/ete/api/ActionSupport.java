@@ -25,6 +25,10 @@ import static javax.swing.text.html.parser.DTDConstants.MODEL;
 public class ActionSupport implements Action {
 
 
+    public final static String      ACTION_READER = "action-reader";
+    public final static String      MODEL         = "model";
+
+
     public  ActionSupport() {
         // Get the parent's registry
         FactoryRegistry factoryRegistry = FactoryRegistry.getRegistry();
@@ -55,12 +59,22 @@ public class ActionSupport implements Action {
     //                                M O D E L                               //
     //========================================================================//
 
+
     public EteModel    getModel() {
         return (EteModel)getParameter(MODEL);
     }
 
     public void        setModel(EteModel inEteModel) {
         addParameter(MODEL, inEteModel);
+    }
+
+
+    //========================================================================//
+    //========================================================================//
+
+
+    public EteModel preProcess(EteModel inModel) {
+        return inModel;
     }
 
 
@@ -112,6 +126,44 @@ public class ActionSupport implements Action {
     }
 
 
+    //========================================================================//
+    //                           D E F I N I T I O N                          //
+    //========================================================================//
+    // An Action is defined in a configuration document                       //
+    // That document may be in any format, as long as a corresponding reader  //
+    // is available.                                                          //
+    //========================================================================//
+
+
+    public ActionReader getReader() {
+        return (ActionReader)getParameter(ACTION_READER);
+    }
+
+    public void setReader(ActionReader reader) {
+        addParameter(ACTION_READER, reader);
+    }
+
+
+
+    public Object getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(Object definition) {
+        this.definition = definition;
+    }
+
+
+
+    @Override
+    public void readAttributes() {
+        ActionReader reader = getReader();
+        if (reader != null) {
+            reader.readAttributes(this, definition);
+        }
+    }
+
+
 
     //========================================================================//
     //                     A C T I O N   H I E R A R C H Y                    //
@@ -140,6 +192,7 @@ public class ActionSupport implements Action {
     @Override
     public Iterable<Action> getChildren() {
         if (children == null) {
+            ActionReader reader = getReader();
             if (reader != null) {
                 reader.readChildren(this, parameters);
                 return children;
@@ -150,42 +203,6 @@ public class ActionSupport implements Action {
         }
         return Collections.EMPTY_LIST;
     }
-
-
-    @Override
-    public void readAttributes() {
-        if (reader != null) {
-            reader.readAttributes(this, definition);
-        }
-    }
-
-
-
-    //========================================================================//
-    //                           D E F I N I T I O N                          //
-    //========================================================================//
-
-
-    public ActionReader getReader() {
-        return reader;
-    }
-
-    public void setReader(ActionReader reader) {
-        this.reader = reader;
-    }
-
-
-
-    public Object getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(Object definition) {
-        this.definition = definition;
-    }
-
-
-    //========================================================================//
 
 
     @Override
@@ -220,7 +237,7 @@ public class ActionSupport implements Action {
     private Map<String, Object>     parameters;
 
     // The object is based on a definition
-    private ActionReader            reader;
+    // The definition must be read by an ActionReader
     private Object                  definition;
 
 

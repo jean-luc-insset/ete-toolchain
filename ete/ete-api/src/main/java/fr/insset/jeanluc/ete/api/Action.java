@@ -33,11 +33,49 @@ public interface Action {
      */
     public final static String  OUTPUT_BASE      = "output-base";
     /**
-     * Name of factory. This value must be used as a key with the
-     * {@link fr.insset.jeanluc.util.factory.FactoryRegistry#getParameter(String)
-     * getFactory(String inFactoryName) method}
+     * Name of parameter. This value must be used as a key with the
+     * {@link getParameter(String) getParameter(String inParameterName)
+     * method}
      */
-    public final static String  MODEL            = "model";
+    public final static String  BASE_URL         = "base-url";
+
+
+
+    //========================================================================//
+    //                           P R O C E S S I N G                          //
+    //========================================================================//
+
+
+    public default EteModel process(EteModel inModel) throws EteException {
+        Action parent = getParent();
+        FactoryRegistry currentRegistry = null;
+        FactoryRegistry previousRegistry;
+        if (parent != null) {
+            previousRegistry = parent.getFactoryRegistry();
+            currentRegistry = previousRegistry.createChild();
+            addParameter(FACTORY_REGISTRY, currentRegistry);
+        }
+        readAttributes();
+        inModel = preProcess(inModel);
+        inModel = doProcess(inModel);
+        inModel = postProcess(inModel);
+        return inModel;
+    }
+
+
+    public default EteModel preProcess(EteModel inModel) throws EteException {
+        return inModel;
+    }
+
+
+    public default EteModel doProcess(EteModel inModel) throws EteException {
+        return inModel;
+    }
+
+
+    public default EteModel postProcess(EteModel inModel) throws EteException {
+        return inModel;
+    }
 
 
     //========================================================================//
@@ -90,12 +128,9 @@ public interface Action {
     public Object           getLocalParameter(String inName);
 
 
-
-    public Action           getParent();
-    public void             setParent(Action inParent);
-    public Iterable<Action> getChildren();
-    public void             addChild(Action inAction);
-
+    //========================================================================//
+    //           U SU A L    P A R A M E T E R S   S H O R T C U T S          //
+    //========================================================================//
 
 
     public  default String  getBaseUrl() {
@@ -107,46 +142,20 @@ public interface Action {
     }
 
 
-
     public default FactoryRegistry getFactoryRegistry() {
         return (FactoryRegistry) getParameter(FACTORY_REGISTRY);
     }
 
 
     //========================================================================//
-    //                           P R O C E S S I N G                          //
+    //                            H I E R A R C H Y                           //
     //========================================================================//
 
 
-    public default EteModel process(EteModel inModel) throws EteException {
-        Action parent = getParent();
-        FactoryRegistry currentRegistry = null;
-        FactoryRegistry previousRegistry;
-        if (parent != null) {
-            previousRegistry = parent.getFactoryRegistry();
-            currentRegistry = previousRegistry.createChild();
-            addParameter(FACTORY_REGISTRY, currentRegistry);
-        }
-        inModel = preProcess(inModel);
-        inModel = doProcess(inModel);
-        inModel = postProcess(inModel);
-        return inModel;
-    }
-
-
-    public default EteModel preProcess(EteModel inModel) throws EteException {
-        return inModel;
-    }
-
-
-    public default EteModel doProcess(EteModel inModel) throws EteException {
-        return inModel;
-    }
-
-
-    public default EteModel postProcess(EteModel inModel) throws EteException {
-        return inModel;
-    }
+    public Action           getParent();
+    public void             setParent(Action inParent);
+    public Iterable<Action> getChildren();
+    public void             addChild(Action inAction);
 
 
 }

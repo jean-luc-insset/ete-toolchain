@@ -16,6 +16,7 @@
         <module>meta-model</module>
         <module>meta-model-impl</module>
         <module>ete-api</module>
+        <module>ete-api-impl</module>
     </modules>
 
     <properties>
