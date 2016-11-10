@@ -6,10 +6,6 @@
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
-import fr.insset.jeanluc.util.factory.AbstractFactory;
-import fr.insset.jeanluc.util.factory.FactoryRegistry;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

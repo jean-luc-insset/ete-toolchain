@@ -9,6 +9,7 @@ import fr.insset.jeanluc.ete.meta.model.core.impl.NamedElementImpl;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
+import fr.insset.jeanluc.ete.meta.model.types.impl.TypedElementImpl;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -18,7 +19,7 @@ import java.util.stream.Stream;
  *
  * @author jldeleage
  */
-public class MofPackageImpl extends NamedElementImpl implements MofPackage {
+public class MofPackageImpl extends PackageableElementImpl implements MofPackage {
 
 
 

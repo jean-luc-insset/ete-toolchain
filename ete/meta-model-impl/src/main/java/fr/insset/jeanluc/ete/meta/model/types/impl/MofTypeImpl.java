@@ -5,13 +5,13 @@
  */
 package fr.insset.jeanluc.ete.meta.model.types.impl;
 
+import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.PackageableElementImpl;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
-import fr.insset.jeanluc.ete.meta.model.types.TypedElement;
 
 /**
  *
  * @author jldeleage
  */
-public class MofTypeImpl extends TypedElementImpl implements MofType {
+public class MofTypeImpl extends PackageableElementImpl implements MofType {
     
 }
