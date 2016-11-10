@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.insset.jeanluc.ete.api.impl;
+package fr.insset.jeanluc.ete.api.impl.io;
 
 import fr.insset.jeanluc.ete.api.Action;
 import fr.insset.jeanluc.ete.api.ActionReader;
@@ -47,7 +47,7 @@ public class XmlActionReader implements ActionReader {
             Element childElement = (Element) node;
             String  elementName = childElement.getNodeName();
             global.log(Level.INFO, "Lecture d''une action de type {0}", elementName);
-            AbstractFactory factory = registry.getFactory(elementName);
+            AbstractFactory factory = registry.getFactory(elementName + "-action");
             try {
                 Action childAction = (Action)factory.newInstance();
                 global.log(Level.FINE, "Instanciation de l'action OK");

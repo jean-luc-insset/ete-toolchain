@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.api.impl;
 
+import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
 import fr.insset.jeanluc.ete.api.ActionReader;
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
