@@ -46,7 +46,7 @@ public class XmlActionReader implements ActionReader {
             if (!(node instanceof Element)) continue;
             Element childElement = (Element) node;
             String  elementName = childElement.getNodeName();
-            global.log(Level.INFO, "Lecture d''une action de type {0}", elementName);
+            global.log(Level.INFO, "Reading an action of type {0}", elementName);
             AbstractFactory factory = registry.getFactory(elementName + "-action");
             try {
                 Action childAction = (Action)factory.newInstance();
@@ -59,7 +59,7 @@ public class XmlActionReader implements ActionReader {
                 }
             } catch (InstantiationException ex) {
                 Logger.getLogger(XmlActionReader.class.getName()).log(
-                            Level.SEVERE, "Impossible d'instancier l'action " + elementName, ex);
+                            Level.SEVERE, "Unable to instantiate the action  " + elementName, ex);
             }       // child action creation       // child action creation
         }       // loop on child elements
     }       // readChildren
