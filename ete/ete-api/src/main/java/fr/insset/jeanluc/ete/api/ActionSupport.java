@@ -3,6 +3,7 @@ package fr.insset.jeanluc.ete.api;
 
 
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import static fr.insset.jeanluc.util.factory.FactoryRegistry.FACTORY_REGISTRY;
 import java.util.Collection;
@@ -60,9 +61,10 @@ public class ActionSupport implements Action {
     //========================================================================//
 
 
-    public EteModel    getModel() {
-        return (EteModel)getParameter(MODEL);
+    public MofPackage    getModel() {
+        return (MofPackage)getParameter(MODEL);
     }
+
 
     public void        setModel(EteModel inEteModel) {
         addParameter(MODEL, inEteModel);

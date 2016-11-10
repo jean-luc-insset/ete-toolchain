@@ -7,6 +7,7 @@ package fr.insset.jeanluc.ete.api.impl;
 
 import fr.insset.jeanluc.ete.api.ActionSupport;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
 public class Register extends ActionSupport {
 
     @Override
-    public EteModel doProcess(EteModel inModel) {
+    public MofPackage doProcess(MofPackage inModel) {
         String actionName = (String) getParameter("name");
         String className = (String) getParameter("action");
         try {

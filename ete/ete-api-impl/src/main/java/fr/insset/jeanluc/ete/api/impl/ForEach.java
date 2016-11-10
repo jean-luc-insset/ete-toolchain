@@ -3,6 +3,7 @@ package fr.insset.jeanluc.ete.api.impl;
 
 import fr.insset.jeanluc.ete.api.ActionSupport;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import java.util.Collection;
 
 
@@ -15,10 +16,10 @@ public class ForEach extends ActionSupport {
 
 
     @Override
-    public EteModel doProcess(EteModel inModel) {
+    public MofPackage doProcess(MofPackage inModel) {
         String itemsExpression = (String)getParameter("items");
         String varName = (String)getParameter("var");
-        EteModel aux = inModel;
+        MofPackage aux = inModel;
 //        ELEvaluator elEvaluator = new ELEvaluator();
 //        Collection evaluate = elEvaluator.evaluate(itemsExpression, Collection.class);
 //        for (Object obj : evaluate) {

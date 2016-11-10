@@ -8,6 +8,7 @@ package fr.insset.jeanluc.ete.api.impl;
 import fr.insset.jeanluc.ete.api.ActionReader;
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import static fr.insset.jeanluc.util.factory.FactoryRegistry.FACTORY_REGISTRY;
@@ -62,7 +63,8 @@ public class Processor extends ModuleCallAction implements Runnable {
         // Initialize the registry chain to allow local contexts
         addParameter(FACTORY_REGISTRY, registry);
         AbstractFactory     modelFactory = registry.getFactory(EteModel.MODEL);
-        model = (EteModel) modelFactory.newInstance();
+        MofPackage model = (MofPackage) modelFactory.newInstance();
+        addParameter(EteModel.MODEL, model);
 
         // TODO : register other services than XML for configuration files
         ServiceRegistry services = ServiceRegistryImpl.getRegistry();
@@ -78,7 +80,7 @@ public class Processor extends ModuleCallAction implements Runnable {
 
     public void run() {
         try {
-            model = process(model);
+            process(getModel());
         } catch (EteException ex) {
             Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -108,12 +110,5 @@ public class Processor extends ModuleCallAction implements Runnable {
 //    }
 
 
-    public EteModel getModel() {
-        return model;
-    }
-
-
-
-    private EteModel                model;
 
 }       // Processor

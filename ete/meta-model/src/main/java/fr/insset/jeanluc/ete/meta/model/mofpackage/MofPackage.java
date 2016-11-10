@@ -18,31 +18,30 @@ import java.util.stream.Stream;
 public interface MofPackage extends PackageableElement {
     
 
-    public  Collection<PackageableElement>          getPackagedElement();
+    public  Collection<PackageableElement>          getPackagedElementAsCollection();
     public  void                                    addPackagedElement(PackageableElement inPackageableElement);
     public  void                                    removePackagedElement(PackageableElement inPackageableElement);
 
-    public  default Collection<PackageableElement>  getPackages() {
-        return getPackagesAsStream().collect(Collectors.toList());
+    public  default Collection<PackageableElement>  getPackagesAsCollection() {
+        return getPackages().collect(Collectors.toList());
     }
-    public  default Collection<PackageableElement>  getClasses() {
-        return getClassesAsStream().collect(Collectors.toList());
+    public  default Collection<PackageableElement>  getClassesAsCollection() {
+        return getClasses().collect(Collectors.toList());
     }
 
-    public  Stream<PackageableElement>              getPackagedElementAsStream();
-    public  default Stream<PackageableElement>      getPackagesAsStream() {
-        return getPackagedElementAsStream().filter(p -> p instanceof MofPackage);
+    public  Stream<PackageableElement>              getPackagedElement();
+    public  default Stream<PackageableElement>      getPackages() {
+        return getPackagedElement().filter(p -> p instanceof MofPackage);
     }
-    public  default Stream<PackageableElement>      getClassesAsStream() {
-        return getPackagedElementAsStream().filter(c -> c instanceof MofClass);
+    public  default Stream<PackageableElement>      getClasses() {
+        return getPackagedElement().filter(c -> c instanceof MofClass);
     }
 
     public  default Stream<PackageableElement>      getAllClasses() {
-        return Stream.concat(
-                // local classes
-                getClassesAsStream(),
+        return Stream.concat(// local classes
+getClasses(),
                 // plus descendant classes
-                getPackagesAsStream().flatMap(f -> ((MofPackage)f).getAllClasses()));
+getPackages().flatMap(f -> ((MofPackage)f).getAllClasses()));
     }
 
 }

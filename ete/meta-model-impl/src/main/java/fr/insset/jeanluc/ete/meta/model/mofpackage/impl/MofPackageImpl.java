@@ -32,7 +32,7 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
 
 
     @Override
-    public Collection<PackageableElement> getPackagedElement() {
+    public Collection<PackageableElement> getPackagedElementAsCollection() {
         return packagedElement;
     }
 
@@ -53,7 +53,7 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
 
 
     @Override
-    public Stream<PackageableElement> getPackagedElementAsStream() {
+    public Stream<PackageableElement> getPackagedElement() {
         return packagedElement.stream();
     }
 

@@ -90,9 +90,10 @@ public class MofPackageImplTest {
     @Test
     public void testGetPackagedElementAsStream() throws InstantiationException {
         System.out.println("getPackagedElementAsStream");
-        Stream<PackageableElement> result = instance.getPackagedElementAsStream();
+        Stream<PackageableElement> result = instance.getPackagedElement();
         assertEquals(2, result.count());
     }
+
 
     /**
      * Test of getPackagedElementAsStream method, of class MofPackageImpl.
@@ -100,7 +101,7 @@ public class MofPackageImplTest {
     @Test
     public void testGetPackagesAsStream() throws InstantiationException {
         System.out.println("getPackagedElementAsStream");
-        Stream<PackageableElement> result = instance.getPackagesAsStream();
+        Stream<PackageableElement> result = instance.getPackages();
         assertEquals(1, result.count());
     }
 
@@ -111,9 +112,10 @@ public class MofPackageImplTest {
     @Test
     public void testGetClassesAsStream() throws InstantiationException {
         System.out.println("getPackagedElementAsStream");
-        Stream<PackageableElement> result = instance.getClassesAsStream();
+        Stream<PackageableElement> result = instance.getClasses();
         assertEquals(1, result.count());
     }
+
 
     /**
      * Test of getPackagedElementAsStream method, of class MofPackageImpl.

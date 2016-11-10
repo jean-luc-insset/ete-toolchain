@@ -2,6 +2,7 @@ package fr.insset.jeanluc.ete.api;
 
 
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import static fr.insset.jeanluc.util.factory.FactoryRegistry.FACTORY_REGISTRY;
 import fr.insset.jeanluc.util.hierarchy.Hierarchy;
@@ -9,7 +10,8 @@ import java.util.Map;
 
 
 /**
- * An action transforms a model into another model.<br>
+ * An action transforms a model into another model or a package into another
+ * package.<br>
  * The process uses an action tree : each node in the tree is an action. The
  * process runs through the tree (depth-first) and executes each action
  * in turn.<br>
@@ -46,7 +48,7 @@ public interface Action {
     //========================================================================//
 
 
-    public default EteModel process(EteModel inModel) throws EteException {
+    public  default MofPackage  process(MofPackage inPackage) throws EteException {
         Action parent = getParent();
         FactoryRegistry currentRegistry = null;
         FactoryRegistry previousRegistry;
@@ -56,25 +58,22 @@ public interface Action {
             addParameter(FACTORY_REGISTRY, currentRegistry);
         }
         readAttributes();
-        inModel = preProcess(inModel);
-        inModel = doProcess(inModel);
-        inModel = postProcess(inModel);
-        return inModel;
+        inPackage = preProcess(inPackage);
+        inPackage = doProcess(inPackage);
+        inPackage = postProcess(inPackage);
+        return inPackage;
     }
 
-
-    public default EteModel preProcess(EteModel inModel) throws EteException {
-        return inModel;
+    public default MofPackage preProcess(MofPackage inPackage) throws EteException {
+        return inPackage;
     }
 
-
-    public default EteModel doProcess(EteModel inModel) throws EteException {
-        return inModel;
+    public default MofPackage doProcess(MofPackage inPackage) throws EteException {
+        return inPackage;
     }
 
-
-    public default EteModel postProcess(EteModel inModel) throws EteException {
-        return inModel;
+    public default MofPackage postProcess(MofPackage inPackage) throws EteException {
+        return inPackage;
     }
 
 
