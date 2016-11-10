@@ -17,6 +17,7 @@
         <module>meta-model-impl</module>
         <module>ete-api</module>
         <module>ete-api-impl</module>
+        <module>el-evaluator</module>
     </modules>
 
     <properties>
