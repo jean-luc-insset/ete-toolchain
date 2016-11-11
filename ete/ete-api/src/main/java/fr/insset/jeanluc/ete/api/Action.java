@@ -49,26 +49,49 @@ public interface Action {
 
 
     public  default MofPackage  process(MofPackage inPackage) throws EteException {
+        init(inPackage);
+        if (shouldIProcess(inPackage)) {
+            return doProcess(inPackage);
+        }
+        else {
+            return inPackage;
+        }
+    }
+
+
+    public  default MofPackage doProcess(MofPackage inPackage) throws EteException {
+        inPackage = preProcess(inPackage);
+        inPackage = processChildren(inPackage);
+        inPackage = postProcess(inPackage);
+        return inPackage;
+    }
+
+
+    public default void init(MofPackage inPackage) throws EteException {
         Action parent = getParent();
-        FactoryRegistry currentRegistry = null;
-        FactoryRegistry previousRegistry;
         if (parent != null) {
-            previousRegistry = parent.getFactoryRegistry();
+            FactoryRegistry currentRegistry = null;
+            FactoryRegistry previousRegistry = parent.getFactoryRegistry();
             currentRegistry = previousRegistry.createChild();
             addParameter(FACTORY_REGISTRY, currentRegistry);
         }
         readAttributes();
-        inPackage = preProcess(inPackage);
-        inPackage = doProcess(inPackage);
-        inPackage = postProcess(inPackage);
-        return inPackage;
+    }
+
+
+    public default boolean shouldIProcess(MofPackage inPackage) throws EteException {
+        return true;
     }
 
     public default MofPackage preProcess(MofPackage inPackage) throws EteException {
         return inPackage;
     }
 
-    public default MofPackage doProcess(MofPackage inPackage) throws EteException {
+
+    public default MofPackage processChildren(MofPackage inPackage) throws EteException {
+        for (Action action : getChildren()) {
+            inPackage = action.process(inPackage);
+        }
         return inPackage;
     }
 
@@ -142,7 +165,12 @@ public interface Action {
 
 
     public default FactoryRegistry getFactoryRegistry() {
-        return (FactoryRegistry) getParameter(FACTORY_REGISTRY);
+        FactoryRegistry result = (FactoryRegistry) getParameter(FACTORY_REGISTRY);
+        if (result == null) {
+            result = FactoryRegistry.getRegistry();
+            addParameter(FACTORY_REGISTRY, result);
+        }
+        return result;
     }
 
 

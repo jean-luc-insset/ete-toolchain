@@ -1,7 +1,10 @@
 package fr.insset.jeanluc.ete.api.impl;
 
 
+import fr.insset.jeanluc.el.evaluator.ELEvaluator;
 import fr.insset.jeanluc.ete.api.ActionSupport;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 
 
 /**
@@ -11,21 +14,12 @@ import fr.insset.jeanluc.ete.api.ActionSupport;
 public class If extends ActionSupport {
 
 
-//    @Override
-//    public EteModel process(EteModel inModel) {
-//        return inModel;
-////        readAttributes();
-////        ELEvaluator evaluateur = new ELEvaluator(getParameters());
-////        String test = (String) getParameter("test");
-////        if (evaluateur.evaluateBoolean(test)) {
-////            EteModel aux = preProcess(inModel);
-////            aux = processChildren(aux);
-////            return postProcess(aux);
-////        }
-////        else {
-////            return inModel;
-////        }
-//    }       // process
+    @Override
+    public boolean shouldIProcess(MofPackage inModel) {
+        ELEvaluator evaluateur = new ELEvaluator(inModel, getParameters());
+        String test = (String) getParameter("test");
+        return evaluateur.evaluateBoolean(test);
+    }       // process
 
 }       // If
 
