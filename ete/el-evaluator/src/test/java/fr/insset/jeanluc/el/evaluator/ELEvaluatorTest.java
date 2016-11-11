@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.el.evaluator;
 
+import fr.insset.jeanluc.ete.meta.model.core.impl.FactoriesInitializer;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
@@ -42,8 +43,10 @@ public class ELEvaluatorTest {
     @Before
     public void setUp() throws InstantiationException {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
+        FactoriesInitializer.registerFactories();
         AbstractFactory factory = registry.getFactory(MODEL);
         model = (MofPackage) factory.newInstance();
+        
     }
     
     @After

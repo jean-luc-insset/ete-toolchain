@@ -5,9 +5,18 @@
  */
 package fr.insset.jeanluc.ete.meta.model.core.impl;
 
+import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
+import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
+import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
+import        fr.insset.jeanluc.ete.meta.model.emof.impl.MofClassImpl;
+import        fr.insset.jeanluc.ete.meta.model.emof.impl.OperationImpl;
+import        fr.insset.jeanluc.ete.meta.model.emof.impl.PropertyImpl;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.MofPackageImpl;
-import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
+import        fr.insset.jeanluc.ete.meta.model.mofpackage.impl.MofPackageImpl;
+import        fr.insset.jeanluc.ete.meta.model.types.Generalization;
+import static fr.insset.jeanluc.ete.meta.model.types.Generalization.GENERALIZATION;
+import        fr.insset.jeanluc.util.factory.FactoryRegistry;
 
 /**
  *
@@ -19,6 +28,10 @@ public abstract class FactoriesInitializer {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
         registry.registerFactory(MODEL, MofPackageImpl.class);
         registry.registerFactory(PACKAGE, MofPackageImpl.class);
+        registry.registerFactory(MOF_CLASS, MofClassImpl.class);
+        registry.registerFactory(OPERATION, OperationImpl.class);
+        registry.registerFactory(PROPERTY, PropertyImpl.class);
+        registry.registerFactory(GENERALIZATION, Generalization.class);
     }
 
 }

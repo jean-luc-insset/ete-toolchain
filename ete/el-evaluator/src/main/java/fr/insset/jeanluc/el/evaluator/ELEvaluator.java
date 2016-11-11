@@ -40,8 +40,6 @@ public class ELEvaluator {
 
 
     public ELEvaluator(MofPackage inModel, Map<String, Object> inParameters) {
-        context = new EteELContext();
-
         model = inModel;
         parameters = inParameters;
 
@@ -55,6 +53,9 @@ public class ELEvaluator {
         compositeELResolver.add(new ListELResolver());
         compositeELResolver.add(new BeanELResolver());
         compositeELResolver.add(new MapELResolver());
+
+        context = new EteELContext();
+
     }
 
 

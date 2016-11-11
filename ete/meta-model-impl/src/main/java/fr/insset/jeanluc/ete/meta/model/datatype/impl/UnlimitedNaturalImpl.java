@@ -11,6 +11,6 @@ import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
  *
  * @author jldeleage
  */
-public class UnlimitedNaturalImpl implements UnlimitedNatural {
+public class UnlimitedNaturalImpl extends DataTypeImpl implements UnlimitedNatural {
     
 }
