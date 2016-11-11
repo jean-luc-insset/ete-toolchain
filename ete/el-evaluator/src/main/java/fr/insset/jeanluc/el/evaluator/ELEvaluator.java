@@ -33,7 +33,8 @@ import javax.el.VariableMapper;
  * @author jldeleage
  */
 public class ELEvaluator {
-    
+
+
     public ELEvaluator(MofPackage inModel) {
         this(inModel, new HashMap<>());
     }
@@ -47,12 +48,12 @@ public class ELEvaluator {
         variableMapper = new EteVariableMapper();
 
         compositeELResolver = new CompositeELResolver();
-        resolver = new EteELResolver();
-        compositeELResolver.add(resolver);
         compositeELResolver.add(new ArrayELResolver());
         compositeELResolver.add(new ListELResolver());
         compositeELResolver.add(new BeanELResolver());
         compositeELResolver.add(new MapELResolver());
+        resolver = new EteELResolver();
+        compositeELResolver.add(resolver);
 
         context = new EteELContext();
 
@@ -137,8 +138,26 @@ public class ELEvaluator {
                 return parameters.get(variableName);
             }
             else {
+                String  propertyName = o1.toString();
+                String  methodName = "get" + propertyName.substring(0, 1).toUpperCase()
+                                    + propertyName.substring(1);
+                try {
+                    Method method = o.getClass().getMethod(methodName, new Class[0]);
+                    Object invoke = method.invoke(o, new Object[0]);
+                    elc.setPropertyResolved(true);
+                    return invoke;
+                } catch (NoSuchMethodException | SecurityException
+                        | IllegalAccessException | IllegalArgumentException
+                        | InvocationTargetException ex) {
+                    Logger.getLogger(ELEvaluator.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (o instanceof Map) {
+                    Object get = ((Map)o).get(o1);
+                    return get;
+                }
                 return null;
-            }        }
+            }
+        }
 
         @Override
         public Class<?> getType(ELContext elc, Object o, Object o1) {

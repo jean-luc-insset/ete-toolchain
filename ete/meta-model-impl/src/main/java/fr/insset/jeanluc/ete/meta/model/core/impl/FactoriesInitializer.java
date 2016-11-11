@@ -24,6 +24,7 @@ import        fr.insset.jeanluc.util.factory.FactoryRegistry;
  */
 public abstract class FactoriesInitializer {
     
+
     public  static void registerFactories() {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
         registry.registerFactory(MODEL, MofPackageImpl.class);
@@ -33,5 +34,6 @@ public abstract class FactoriesInitializer {
         registry.registerFactory(PROPERTY, PropertyImpl.class);
         registry.registerFactory(GENERALIZATION, Generalization.class);
     }
+
 
 }

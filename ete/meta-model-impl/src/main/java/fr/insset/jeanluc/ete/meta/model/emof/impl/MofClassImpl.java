@@ -22,21 +22,26 @@ import java.util.stream.Stream;
  */
 public class MofClassImpl extends MofTypeImpl implements MofClass {
 
+
+
     public MofClassImpl() throws InstantiationException {
         this.superClass = FactoryMethods.newList(MofClass.class);
         this.ownedOperation = FactoryMethods.newList(Operation.class);
         this.ownedAttribute = FactoryMethods.newList(Property.class);
     }
 
+
     @Override
     public List<Property> getOwnedAttribute() {
         return ownedAttribute;
     }
 
+
     @Override
     public void addOwnedAttribute(Property inProperty) {
         ownedAttribute.add(inProperty);
     }
+
 
     @Override
     public void removeOwnedAttribute(Property inProperty) {
@@ -107,15 +112,7 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public MofType getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void setType(MofType inType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
     
