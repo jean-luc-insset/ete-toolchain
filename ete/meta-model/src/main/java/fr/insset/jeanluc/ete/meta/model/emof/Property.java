@@ -13,6 +13,10 @@ import java.util.Collection;
  */
 public interface Property extends StructuralFeature {
 
+
+    public final static String      PROPERTY = "property";
+
+
     public  AggregationKind         getAggregationKind();
     public  void                    setAggregationKind(AggregationKind inAggregationKind);
 

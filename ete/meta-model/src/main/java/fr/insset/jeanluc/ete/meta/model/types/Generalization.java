@@ -12,6 +12,9 @@ package fr.insset.jeanluc.ete.meta.model.types;
 public interface Generalization {
 
 
+    public final static String      GENERALIZATION  = "generalization";
+
+
     public  Classifier  getGeneral();
     public  void        setGeneral(Classifier inGeneral);
 

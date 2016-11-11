@@ -15,6 +15,10 @@ import java.util.Collection;
  */
 public interface Parameter extends MultiplicityElement, TypedElement {
 
+
+    public final static String  PARAMETER = "parameter";
+
+
     public  ParameterDirectionKind  getDirection();
     public  void                    setDirection(ParameterDirectionKind inDirection);
 

@@ -17,6 +17,10 @@ import java.util.stream.Stream;
  */
 public interface MofClass extends Classifier {
     
+
+    public final static String      MOF_CLASS = "mof-class";
+
+
     public  default List<Property>  getOwnedAttribute() {
         return getOwnedAttributeAsStream().collect(Collectors.toList());
     }

@@ -13,7 +13,11 @@ import java.util.Collection;
  * @author jldeleage
  */
 public interface Operation extends MultiplicityElement {
-    
+
+
+    public final static String      OPERATION = "operation";
+
+
     public  MofClass                getMofClass();
     public  void                    setMofClass(MofClass inMofClass);
 

@@ -16,6 +16,7 @@ import java.util.stream.Stream;
  */
 public interface EteModel extends MofPackage {
 
+
     public  final static String     MODEL = "model";
 
 

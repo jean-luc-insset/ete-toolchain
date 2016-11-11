@@ -16,7 +16,10 @@ import java.util.stream.Stream;
  * @author jldeleage
  */
 public interface MofPackage extends PackageableElement {
-    
+
+
+    public final static String      PACKAGE     = "mof-package";
+
 
     public  Collection<PackageableElement>          getPackagedElementAsCollection();
     public  void                                    addPackagedElement(PackageableElement inPackageableElement);
