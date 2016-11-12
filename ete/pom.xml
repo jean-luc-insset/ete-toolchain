@@ -18,6 +18,7 @@
         <module>ete-api</module>
         <module>ete-api-impl</module>
         <module>el-evaluator</module>
+        <module>xmi-io</module>
     </modules>
 
     <properties>
