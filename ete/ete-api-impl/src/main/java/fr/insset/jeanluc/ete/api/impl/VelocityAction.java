@@ -66,8 +66,8 @@ public class VelocityAction extends GenericTemplate {
      * @param inElement 
      */
     @Override
-    protected void initGeneration(NamedElement inElement) {
-        super.initGeneration(inElement);
+    protected void initIteration(NamedElement inElement) {
+        super.initIteration(inElement);
         Logger.getGlobal().log(Level.INFO, "    velocity : initGeneration");
     }
 
@@ -133,8 +133,8 @@ public class VelocityAction extends GenericTemplate {
 
 
     @Override
-    protected void closeEngine() {
-        super.closeEngine();
+    protected void endLoop() {
+        super.endLoop();
     }
 
 

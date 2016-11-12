@@ -36,7 +36,7 @@ import java.util.logging.Logger;
  *
  * @author jldeleage
  */
-public abstract class GenericTemplate extends ActionSupport {
+public abstract class GenericTemplate extends ForEach {
 
 //    @Override
 //    public EteModel preProcess(EteModel inModel) {
@@ -57,22 +57,6 @@ public abstract class GenericTemplate extends ActionSupport {
 //    }
 
 
-    protected   void    initEngine() {
-        
-    }
-
-
-    protected   void    closeEngine() {
-        
-    }
-
-
-    /**
-     * This method is called for every item
-     */
-    protected   void    initGeneration(NamedElement inElement) {
-        
-    }
 
 
     protected   String  getTemplate() {
@@ -165,7 +149,7 @@ public abstract class GenericTemplate extends ActionSupport {
 
     /**
      * Copy the parameters of the action to the engine.<br>
-     * Should be overridden by subclasses.<br>
+     * Could be overridden by subclasses.<br>
      * This is an optional method.
      */
     protected void    copyParameters() {

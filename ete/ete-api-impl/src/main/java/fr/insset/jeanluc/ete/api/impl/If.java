@@ -14,6 +14,9 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 public class If extends ActionSupport {
 
 
+    public final static String  IF = "if";
+
+
     @Override
     public boolean shouldIProcess(MofPackage inModel) {
         ELEvaluator evaluateur = new ELEvaluator(inModel, getParameters());
