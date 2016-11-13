@@ -22,10 +22,13 @@ import java.util.logging.Logger;
 import org.w3c.dom.Document;
 
 /**
+ * This is an XML reader : it uses XPath to select definitions of
+ * objects and then uses an element reader to read the actual content of the
+ * item.
  *
  * @author jldeleage
  */
-public class XmiModelReader implements ModelReader {
+public class XmlModelReader implements ModelReader {
 
 
     public final String     PACKAGE_PATH     = "";
@@ -75,7 +78,7 @@ public class XmiModelReader implements ModelReader {
         try {
             result = FactoryMethods.newList(NamedElement.class);
         } catch (InstantiationException ex) {
-            Logger.getLogger(XmiModelReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
         }
         return result;

@@ -51,7 +51,6 @@ public class ELEvaluatorTest {
 
     @BeforeClass
     public static void setUpClass() {
-        FactoryRegistry registry = FactoryRegistry.getRegistry();
         FactoriesInitializer.registerFactories();
     }
 
@@ -63,10 +62,8 @@ public class ELEvaluatorTest {
 
     @Before
     public void setUp() throws EteException {
-        FactoryRegistry registry = FactoryRegistry.getRegistry();
-        AbstractFactory factory = registry.getFactory(MODEL);
         try {
-            model = (MofPackage) factory.newInstance();
+            model = (MofPackage) FactoryRegistry.newInstance(MODEL);
         } catch (InstantiationException ex) {
             Logger.getLogger(ELEvaluatorTest.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);

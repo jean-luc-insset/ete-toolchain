@@ -49,13 +49,16 @@ public interface Action {
 
 
     public  default MofPackage  process(MofPackage inPackage) throws EteException {
+        MofPackage  result;
         init(inPackage);
         if (shouldIProcess(inPackage)) {
-            return doProcess(inPackage);
+            result = doProcess(inPackage);
         }
         else {
-            return inPackage;
+            result = inPackage;
         }
+        close();
+        return result;
     }
 
 
@@ -74,6 +77,7 @@ public interface Action {
             FactoryRegistry previousRegistry = parent.getFactoryRegistry();
             currentRegistry = previousRegistry.createChild();
             addParameter(FACTORY_REGISTRY, currentRegistry);
+            FactoryRegistry.setRegistry(currentRegistry);
         }
         readAttributes();
     }
@@ -99,6 +103,14 @@ public interface Action {
         return inPackage;
     }
 
+
+    public default void close() {
+        FactoryRegistry factoryRegistry = getFactoryRegistry();
+        FactoryRegistry parent = factoryRegistry.getParent();
+        if (parent != null) {
+            FactoryRegistry.setRegistry(parent);
+        }
+    }
 
     //========================================================================//
     //                           P A R A M E T E R S                          //
