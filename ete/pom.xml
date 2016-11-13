@@ -19,6 +19,7 @@
         <module>ete-api-impl</module>
         <module>el-evaluator</module>
         <module>xmi-io</module>
+        <module>meta-model-io</module>
     </modules>
 
     <properties>
