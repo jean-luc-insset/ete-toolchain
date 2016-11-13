@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.impl.NamedElementImpl;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
@@ -13,6 +14,8 @@ import fr.insset.jeanluc.ete.meta.model.types.impl.TypedElementImpl;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /**
@@ -23,8 +26,13 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
 
 
 
-    public MofPackageImpl() throws InstantiationException {
-        this.packagedElement = FactoryMethods.newList(PackageableElement.class);
+    public MofPackageImpl() throws EteException {
+        try {
+            this.packagedElement = FactoryMethods.newList(PackageableElement.class);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MofPackageImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
     }
 
 

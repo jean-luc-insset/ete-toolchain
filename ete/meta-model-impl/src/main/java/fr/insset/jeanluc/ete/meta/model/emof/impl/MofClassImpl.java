@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
@@ -14,6 +15,8 @@ import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /**
@@ -24,10 +27,15 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 
 
 
-    public MofClassImpl() throws InstantiationException {
-        this.superClass = FactoryMethods.newList(MofClass.class);
-        this.ownedOperation = FactoryMethods.newList(Operation.class);
-        this.ownedAttribute = FactoryMethods.newList(Property.class);
+    public MofClassImpl() throws EteException {
+        try {
+            this.superClass = FactoryMethods.newList(MofClass.class);
+            this.ownedOperation = FactoryMethods.newList(Operation.class);
+            this.ownedAttribute = FactoryMethods.newList(Property.class);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MofClassImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
     }
 
 

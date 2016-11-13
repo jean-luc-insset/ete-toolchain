@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.MofClassImpl;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
@@ -48,7 +49,7 @@ public class MofPackageImplTest {
     }
     
     @Before
-    public void setUp() throws InstantiationException {
+    public void setUp() throws EteException {
         instance = new MofPackageImpl();
         sub1     = addPackage("sub1", instance);
         sub2     = addPackage("sub2", sub1);
@@ -61,7 +62,7 @@ public class MofPackageImplTest {
     }
     
 
-    protected MofClass addClass(String inName, MofPackage inoutPackage) throws InstantiationException {
+    protected MofClass addClass(String inName, MofPackage inoutPackage) throws EteException {
         MofClass    aClass = new MofClassImpl();
         aClass.setName(inName);
         inoutPackage.addPackagedElement(aClass);
@@ -69,7 +70,7 @@ public class MofPackageImplTest {
     }
 
 
-    protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws InstantiationException {
+    protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws EteException {
         MofPackage    subPackage = new MofPackageImpl();
         subPackage.setName(inName);
         inoutPackage.addPackagedElement(subPackage);

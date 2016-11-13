@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.el.evaluator;
 
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.impl.FactoriesInitializer;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.MofClassImpl;
@@ -16,6 +17,8 @@ import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,10 +62,15 @@ public class ELEvaluatorTest {
 
 
     @Before
-    public void setUp() throws InstantiationException {
+    public void setUp() throws EteException {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
         AbstractFactory factory = registry.getFactory(MODEL);
-        model = (MofPackage) factory.newInstance();
+        try {
+            model = (MofPackage) factory.newInstance();
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ELEvaluatorTest.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
 
         sub1     = addPackage("sub1", model);
         sub2     = addPackage("sub2", sub1);
@@ -80,7 +88,7 @@ public class ELEvaluatorTest {
     }
     
 
-    protected MofClass addClass(String inName, MofPackage inoutPackage) throws InstantiationException {
+    protected MofClass addClass(String inName, MofPackage inoutPackage) throws EteException {
         MofClass    aClass = new MofClassImpl();
         aClass.setName(inName);
         inoutPackage.addPackagedElement(aClass);
@@ -88,7 +96,7 @@ public class ELEvaluatorTest {
     }
 
 
-    protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws InstantiationException {
+    protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws EteException {
         MofPackage    subPackage = new MofPackageImpl();
         subPackage.setName(inName);
         inoutPackage.addPackagedElement(subPackage);

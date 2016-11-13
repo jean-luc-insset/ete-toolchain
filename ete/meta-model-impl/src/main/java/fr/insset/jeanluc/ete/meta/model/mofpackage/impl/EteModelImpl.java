@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 
 /**
@@ -13,8 +14,21 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
  */
 public class EteModelImpl extends MofPackageImpl implements EteModel {
 
-    public EteModelImpl() throws InstantiationException {
+    public EteModelImpl() throws EteException {
     }
 
+
+    @Override
+    public EteModel getParent() {
+        return parent;
+    }
+
+
+    @Override
+    public void setParent(EteModel inParent) {
+        parent = inParent;
+    }
+
+    private     EteModel        parent;
 
 }
