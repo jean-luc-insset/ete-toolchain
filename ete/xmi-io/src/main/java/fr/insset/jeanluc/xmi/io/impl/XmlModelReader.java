@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.insset.jeanluc.xmi.io.impl;
+
+
 
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
@@ -19,6 +16,7 @@ import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import org.w3c.dom.Document;
 
 /**
@@ -39,32 +37,36 @@ public class XmlModelReader implements ModelReader {
 
 
     @Override
-    public Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH);
+    public Stream<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
+        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH);
         return result;
     }
 
+
     @Override
-    public Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, CLASS_PATH);
+    public Stream<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
+        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, CLASS_PATH);
         return result;
     }
 
+
     @Override
-    public Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, ASSOCIATION_PATH);
+    public Stream<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
+        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, ASSOCIATION_PATH);
         return result;
     }
 
+
     @Override
-    public Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PROPERTY_PATH);
+    public Stream<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException {
+        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, PROPERTY_PATH);
         return result;
     }
 
+
     @Override
-    public Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, OPERATION_PATH);
+    public Stream<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException {
+        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, OPERATION_PATH);
         return result;
     }
 
@@ -73,7 +75,8 @@ public class XmlModelReader implements ModelReader {
 
     //========================================================================//
 
-    public Collection<NamedElement>     readElements(Document inDocument, EteModel inoutModel, String inPath) throws EteException {
+
+    public Stream<NamedElement>     readElements(Document inDocument, EteModel inoutModel, String inPath) throws EteException {
         Collection<NamedElement> result;
         try {
             result = FactoryMethods.newList(NamedElement.class);
@@ -81,7 +84,7 @@ public class XmlModelReader implements ModelReader {
             Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
         }
-        return result;
+        return result.stream();
     }
 
 }

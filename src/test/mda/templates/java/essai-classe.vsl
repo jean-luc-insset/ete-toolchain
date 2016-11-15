@@ -1,0 +1,80 @@
+
+## Velocity Template.
+#*
+
+    Pour que ce template puisse fonctionner, il faut renseigner la variable
+    "classe".
+    Utilisation typique à partir de "ete" :
+    <velocity items="classes" var="classe"
+                template="templates/classe2classejava.vm"
+                target="generated-sources/mda/${classe.owningPackage.filePath}.classe.name}"/>
+
+*#package ${classe.owningPackage.name};
+
+
+/**
+ * ${classe.name}
+ */
+public class ${classe.name} {
+
+    #*
+     *#
+
+#foreach($op in $classe.ownedOperation)
+    #if(${op.type.name})
+    public ${op.type.name} ${op.name}() {
+        #if (${op.type.name.equals('void')})
+            return;
+        #else
+            return null;
+        #end
+    }
+    #end
+#end
+
+
+    //========================================================================//
+
+
+#foreach($prop in $classe.ownedAttribute)
+    #if($prop.upper.equals("*"))
+    public Iterable<${prop.type.name}> get${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}() {
+        return ${prop.name};
+    }
+
+    public void set${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}(Iterable<${prop.type.name}> in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}) {
+        ${prop.name} = in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)};
+    }
+
+    public void add${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}(${prop.type.name} in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}) {
+        ${prop.name}.add(in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)});
+    }
+
+    public void remove${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}(${prop.type.name} in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}) {
+        ${prop.name}.remove(in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)});
+    }
+    #else
+    public ${prop.type.name} get${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}() {
+        return ${prop.name};
+    }
+
+    public void set${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}(${prop.type.name} in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)}) {
+        ${prop.name} = in${prop.name.substring(0,1).toUpperCase()}${prop.name.substring(1)};
+    }
+    #end
+#end
+
+
+    //========================================================================//
+
+
+#foreach($prop in $classe.ownedAttribute)
+    #if($prop.upper.equals("*"))
+    private Collection<${prop.type.name}>  ${prop.name};
+    #else
+    private ${prop.type.name}  ${prop.name};
+    #end
+#end
+
+}       // ${classe.name}
+

@@ -31,15 +31,15 @@ import java.util.logging.Logger;
  *
  * @author jldeleage
  */
-public class Processor extends ModuleCallAction implements Runnable {
+public class ProcessorAction extends ModuleCallAction implements Runnable {
 
 
-    public Processor() throws InstantiationException {
+    public ProcessorAction() throws InstantiationException {
         this("src/main/mda/ete-config.xml");
     }
 
 
-    public Processor(String pathToConfigFile) throws InstantiationException {
+    public ProcessorAction(String pathToConfigFile) throws InstantiationException {
         addParameter("url", pathToConfigFile);
         int     index = pathToConfigFile.lastIndexOf('/');
 //        addParameter("base-url", index==-1?"":pathToConfigFile.substring(0, index+1));
@@ -57,14 +57,7 @@ public class Processor extends ModuleCallAction implements Runnable {
         // Register standard actions and readers
         InitStandardActions.init();
 
-        // Start with an empty model.
-        // It will be populated by later <model> instructions.
-        // The model factory must have been registered
-        FactoryRegistry     registry = FactoryRegistry.getRegistry();
-        // Initialize the registry chain to allow local contexts
-        addParameter(FACTORY_REGISTRY, registry);
-        AbstractFactory     modelFactory = registry.getFactory(EteModel.MODEL);
-        MofPackage model = (MofPackage) modelFactory.newInstance();
+        EteModel     model = (EteModel) FactoryRegistry.newInstance(EteModel.MODEL);
         addParameter(EteModel.MODEL, model);
 
         // TODO : register other services than XML for configuration files
@@ -83,32 +76,10 @@ public class Processor extends ModuleCallAction implements Runnable {
         try {
             process(getModel());
         } catch (EteException ex) {
-            Logger.getLogger(Processor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcessorAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }       // run
 
-
-
-//    @Override
-//    public Iterable<Action> getChildren() {
-//        return null;
-//    }
-
-
-//    public void addParameter(String inName, Object inValue) {
-//        if (parameters == null) {
-//            parameters = new HashMap<>();
-//        }
-//        parameters.put(inName, inValue);
-//    }
-//
-//
-//    public void addParameters(Map<String, Object> inParameters) {
-//        if (parameters == null) {
-//            parameters = new HashMap<>();
-//        }
-//        parameters.putAll(inParameters);
-//    }
 
 
 

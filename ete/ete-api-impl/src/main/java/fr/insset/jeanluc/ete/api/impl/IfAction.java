@@ -11,10 +11,10 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
  *
  * @author jldeleage
  */
-public class If extends ActionSupport {
+public class IfAction extends ActionSupport {
 
 
-    public final static String  IF = "if";
+    public final static String  IF_ACTION = "if-action";
 
 
     @Override

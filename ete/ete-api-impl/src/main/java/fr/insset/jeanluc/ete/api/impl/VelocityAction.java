@@ -25,6 +25,9 @@ import org.apache.velocity.app.VelocityEngine;
  */
 public class VelocityAction extends GenericTemplate {
 
+    public final static String      VELOCITY_ACTION     = "velocity-action";
+
+
 
 //    @Override
 //    protected void initEngine() {

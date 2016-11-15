@@ -54,6 +54,14 @@ public class InitStandardActionsTest {
         assertNotNull(factory);
         factory = registry.getFactory("if-action");
         assertNotNull(factory);
+        factory = registry.getFactory("model-action");
+        assertNotNull(factory);
+        factory = registry.getFactory("module-action");
+        assertNotNull(factory);
+        factory = registry.getFactory("register-action");
+        assertNotNull(factory);
+        factory = registry.getFactory("velocity-action");
+        assertNotNull(factory);
     }
     
 }

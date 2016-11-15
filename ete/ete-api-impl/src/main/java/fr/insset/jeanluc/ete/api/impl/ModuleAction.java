@@ -12,7 +12,8 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 public class ModuleAction extends ActionSupport {
 
 
-    public  final static String     MODULE_DEFINITION_ACTION = "module-definition-action";
+    public  final static String     MODULE_DEFINITION_ACTION  = "module-definition-action";
+    public  final static String     TRANSFORMATION_SET_ACTION = "transformation-set-action";
 
 
 }

@@ -8,20 +8,40 @@ package fr.insset.jeanluc.ete.api.impl.io;
 import fr.insset.jeanluc.ete.api.Action;
 import fr.insset.jeanluc.ete.api.ActionReader;
 import fr.insset.jeanluc.ete.api.ActionSupport;
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
  * @author jldeleage
  */
 public class XmlActionReader implements ActionReader {
+
+
+    @Override
+    public Object readConfiguration(InputStream inInputStream) throws EteException {
+        try {
+            DocumentBuilderFactory  factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            return builder.parse(inInputStream).getDocumentElement();
+        } catch (ParserConfigurationException | SAXException | IOException ex) {
+            Logger.getLogger(XmlActionReader.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
+    }       // readConfiguration
 
 
     @Override

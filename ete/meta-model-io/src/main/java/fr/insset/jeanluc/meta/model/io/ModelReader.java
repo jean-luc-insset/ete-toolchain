@@ -8,6 +8,7 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -15,6 +16,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,6 +36,9 @@ public interface ModelReader {
 
     public default EteModel readModel(String inUrl, EteModel inParent) throws EteException {
         try {
+            if (! inUrl.contains(":/")) {
+                inUrl = "file://" + new File(inUrl).getAbsolutePath();
+            }
             URL url = new URL(inUrl);
             InputStream openStream = url.openStream();
             return readModel(openStream, inParent);
@@ -96,11 +101,11 @@ public interface ModelReader {
     }
 
 
-    public  Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Stream<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Stream<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Stream<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Stream<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Stream<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
 
 
     public default void afterReading(Object inDocument, EteModel inoutModel) throws EteException {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mda>
+
+    <!--
+        A project is a set pipelines, each pipeline is made of "steps".
+        Each step receives a model and returns a model.
+        The processor creates an empty model.
+        Some steps create a new model. For example "model" steps clone the
+        model they receive and add the content of an XMI document technically,
+        the cloning is from an abstract point of view, the actual returned
+        model can be linked to the original model).
+        No step is allowed to modify the model it receives (no board effect on
+        the model itself).
+        Some steps return the model they receive but produce some new files as
+        board effects, for example "dump", "velocity" steps, or modify the
+        runtime environment, for example "register" step.
+        Models are "local" to the step they are created in.
+        Models can be hierarchical : a model may have a parent which in turn
+        may have a parent and so on. When we scan the content of the model we
+        may traverse the whole hierarchy. In the future this architecture will
+        enable a layered approach : we define first a meta-meta-model, then a
+        meta-model, finally a DSL. A velocity script or a Mof2Text is defined
+        on the DSL only and produce text files. A Mof-QVT script will be
+        defined on two meta-models and produce DSL. Currently we can handle
+        only one meta-model at a time.
+      -->
+
+    <transformation-set>
+        <velocity template="essai-modele.vm"
+                  target="hello.txt"/>
+        <velocity template="essai-classes.vm"
+                  target="${class.name}"
+                  var="class"
+                  items="${classes}"/>
+    </transformation-set>
+
+</mda>
+

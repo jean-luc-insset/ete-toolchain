@@ -8,6 +8,7 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.meta.model.io.ModelReader;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +28,7 @@ public class ModelAction extends ActionSupport {
      * {@link fr.insset.jeanluc.util.factory.FactoryRegistry#getParameter(String)
      * getFactory(String inFactoryName) method}
      */
-    public final static String  MODEL            = "model-action";
+    public final static String  MODEL_ACTION     = "model-action";
     public final static String  MODEL_READER     = "model-reader";
 
     /**
@@ -40,22 +41,23 @@ public class ModelAction extends ActionSupport {
     @Override
     public MofPackage preProcess(MofPackage inModel) throws EteException {
         MofPackage    result = inModel;
-        Object parameter = getParameter("model");
-        Logger.getGlobal().log(Level.INFO, "Lecture du mod\u00e8le... {0}", parameter);
-        if (parameter instanceof String) {
-            String  baseUrl = getBaseUrl();
-            try {
-                // TODO : obtenir le "reader" par une fabrique abstraite
-                ModelReader   reader = (ModelReader) FactoryRegistry.newInstance(MODEL_READER);
-                result = reader.readModel(baseUrl, (EteModel) inModel);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(ModelAction.class.getName()).log(Level.SEVERE, null, ex);
-                throw new EteException(ex);
-            }
-            Logger.getGlobal().log(Level.INFO, "Lecture -> {0}", inModel);
+        String parameter = (String) getParameter("url");
+        Logger.getGlobal().log(Level.INFO, "Reading model... {0}", parameter);
+        InputStream resource = getResource(parameter);
+        try {
+            // obtenir le "reader" par une fabrique abstraite
+            ModelReader   reader = (ModelReader) FactoryRegistry.newInstance(MODEL_READER);
+            result = reader.readModel(resource, (EteModel) inModel);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ModelAction.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
         }
+        Logger.getGlobal().log(Level.INFO, "Lecture -> {0}", inModel);
         return result;
     }
 
+    public String   getUrl() {
+        return (String) getParameter("url");
+    }
 
 }

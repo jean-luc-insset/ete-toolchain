@@ -4,6 +4,7 @@ package fr.insset.jeanluc.ete.api;
 
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
+import fr.insset.jeanluc.util.factory.FactoryMethods;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import static fr.insset.jeanluc.util.factory.FactoryRegistry.FACTORY_REGISTRY;
 import java.util.Collection;
@@ -11,19 +12,21 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javax.swing.text.html.parser.DTDConstants.MODEL;
 
 
 
 /**
  * Default implementation of Action.<br>
- * An action can use factories. In such a case, it should get the factory
- * through its local registry. The registry should be stored in the
- * FACTORY_REGISTRY parameter
+ * An action can use factories. When initialized, the action sets the thread
+ * local factory registry. When closed, the action reset the local factory
+ * registry to its previous value.
  *
  * @author jldeleage
  */
-public class ActionSupport implements Action {
+public abstract class ActionSupport implements Action {
 
 
     public final static String      ACTION_READER = "action-reader";
@@ -43,18 +46,6 @@ public class ActionSupport implements Action {
 
 
 
-    //========================================================================//
-    //                              F A C T O R Y                             //
-    //========================================================================//
-
-
-    /**
-     *  Convenience method to get the local registry
-     */
-    public final FactoryRegistry  getFactoryRegistry() {
-        return (FactoryRegistry) getParameter(FACTORY_REGISTRY);
-    }
-
 
     //========================================================================//
     //                                M O D E L                               //
@@ -66,7 +57,7 @@ public class ActionSupport implements Action {
     }
 
 
-    public void        setModel(EteModel inEteModel) {
+    public void        setModel(MofPackage inEteModel) {
         addParameter(MODEL, inEteModel);
     }
 
@@ -158,7 +149,7 @@ public class ActionSupport implements Action {
 
 
     @Override
-    public void readAttributes() {
+    public void readAttributes() throws EteException {
         ActionReader reader = getReader();
         if (reader != null) {
             reader.readAttributes(this, definition);
@@ -169,6 +160,8 @@ public class ActionSupport implements Action {
 
     //========================================================================//
     //                     A C T I O N   H I E R A R C H Y                    //
+    //========================================================================//
+    // An action may contain other actions                                    //
     //========================================================================//
 
 
@@ -192,18 +185,22 @@ public class ActionSupport implements Action {
      * @return 
      */
     @Override
-    public Iterable<Action> getChildren() {
+    public Iterable<Action> getChildren() throws EteException {
         if (children == null) {
             ActionReader reader = getReader();
             if (reader != null) {
                 reader.readChildren(this, parameters);
-                return children;
             }
         }
-        else {
-            return children;
+        if (children == null) {
+            try {
+                children = FactoryMethods.newList(Action.class);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(ActionSupport.class.getName()).log(Level.SEVERE, null, ex);
+                throw new EteException(ex);
+            }
         }
-        return Collections.EMPTY_LIST;
+        return children;
     }
 
 
@@ -215,17 +212,8 @@ public class ActionSupport implements Action {
     @Override
     public void setParent(Action inAction) {
         parent = (Action) inAction;
-        // Get the parent's registry
-        FactoryRegistry factoryRegistry = parent.getFactoryRegistry();
-        // Create a child registry
-        FactoryRegistry localRegistry = factoryRegistry.createChild();
-        // and add it to the local parameters
-        addParameter(FACTORY_REGISTRY, localRegistry);
-        // This way the action can register local factories by :
-        // getFactoryRegistry().registerFactory(myFactoryName, myFactory);
-        // or
-        // getFactoryRegistry().registerFactory(myFactoryName, MyBean.class);
     }
+
 
 
 

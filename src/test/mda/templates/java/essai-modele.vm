@@ -1,0 +1,13 @@
+#*
+*  "Hello world" codé en dur
+*#
+
+
+Hello World
+
+This should create a non empty file with hard coded content and dynamic
+content :
+- $template
+- $valeur
+
+

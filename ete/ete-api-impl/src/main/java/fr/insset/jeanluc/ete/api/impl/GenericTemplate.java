@@ -3,9 +3,12 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 import fr.insset.jeanluc.ete.api.ActionSupport;
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.coll.DefaultMapWrappedCollection;
+import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,15 +39,21 @@ import java.util.logging.Logger;
  *
  * @author jldeleage
  */
-public abstract class GenericTemplate extends ForEach {
+public abstract class GenericTemplate extends ForEachAction {
 
-//    @Override
-//    public EteModel preProcess(EteModel inModel) {
-//        addParameter("model", inModel);
-//        return inModel;
-//    }
-//
-//
+    @Override
+    public MofPackage doProcess(MofPackage inModel) throws EteException {
+        try {
+            List<NamedElement> items = FactoryMethods.newList(NamedElement.class);
+            addParameter("model", inModel);
+            return super.doProcess(inModel);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(GenericTemplate.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
+    }
+
+
 //
 //    @Override
 //    public EteModel doProcess(EteModel inModel) {

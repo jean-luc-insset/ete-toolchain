@@ -25,26 +25,31 @@ public interface MofPackage extends PackageableElement {
     public  void                                    addPackagedElement(PackageableElement inPackageableElement);
     public  void                                    removePackagedElement(PackageableElement inPackageableElement);
 
-    public  default Collection<PackageableElement>  getPackagesAsCollection() {
-        return getPackages().collect(Collectors.toList());
+    public  default Collection<MofPackage>          getPackages() {
+        return getPackagesAsStream().collect(Collectors.toList());
     }
-    public  default Collection<PackageableElement>  getClassesAsCollection() {
-        return getClasses().collect(Collectors.toList());
+    public  default Collection<MofClass>            getClasses() {
+        return getClassesAsStream().collect(Collectors.toList());
     }
+    public  default Collection<MofClass>            getAllClasses() {
+        return getAllClassesAsStream().collect(Collectors.toList());
+    }
+
 
     public  Stream<PackageableElement>              getPackagedElement();
-    public  default Stream<PackageableElement>      getPackages() {
-        return getPackagedElement().filter(p -> p instanceof MofPackage);
+    public  default Stream<MofPackage>              getPackagesAsStream() {
+        return getPackagedElement()
+                    .filter(p -> p instanceof MofPackage).map(p -> (MofPackage)p);
     }
-    public  default Stream<PackageableElement>      getClasses() {
-        return getPackagedElement().filter(c -> c instanceof MofClass);
+    public  default Stream<MofClass>                getClassesAsStream() {
+        return getPackagedElement()
+                    .filter(c -> c instanceof MofClass).map(p -> (MofClass)p);
     }
 
-    public  default Stream<PackageableElement>      getAllClasses() {
-        return Stream.concat(// local classes
-getClasses(),
-                // plus descendant classes
-getPackages().flatMap(f -> ((MofPackage)f).getAllClasses()));
+    public  default Stream<MofClass>                getAllClassesAsStream() {
+        return Stream.concat(getClassesAsStream(),
+                getPackagesAsStream()
+                    .flatMap(f -> ((MofPackage)f).getAllClassesAsStream()));
     }
 
 }

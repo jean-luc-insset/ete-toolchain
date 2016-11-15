@@ -12,7 +12,8 @@ import fr.insset.jeanluc.ete.api.ActionSupport;
  *
  * @author jldeleage
  */
-public class Dump extends ActionSupport {
+public class DumpAction extends ActionSupport {
 
+    public final static String      DUMP_ACTION = "dump-action";
     
 }

@@ -5,13 +5,49 @@
  */
 package fr.insset.jeanluc.ete.api;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jldeleage
  */
 public interface ActionReader {
 
-    public  void readAttributes(Action inoutAction, Object inParameter);
-    public  void readChildren(Action inoutAction, Object inParameter);
+
+    public  final static String     ACTION_READER = "action-reader";
+
+
+    public  default Object readConfiguration(String inPath) throws EteException {
+        try {
+            if (! inPath.contains(":/")) {
+                if (!inPath.startsWith("/")) {
+                    inPath = new File(inPath).getAbsolutePath();
+                }
+                inPath = "file://" + inPath;
+            }
+            URL url = new URL(inPath);
+            return readConfiguration(url.openStream());
+        } catch (IOException ex) {
+            Logger.getLogger(ActionReader.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
+    }
+
+    /**
+     * The only provided implementation returns a W3C XML Document.
+     * 
+     * @param inInputStream
+     * @return
+     * @throws EteException 
+     */
+    public  Object  readConfiguration(InputStream inInputStream) throws EteException;
+    public  void    readAttributes(Action inoutAction, Object inParameter) throws EteException;
+    public  void    readChildren(Action inoutAction, Object inParameter) throws EteException;
 
 }

@@ -1,0 +1,37 @@
+
+
+public class $current.name {
+
+    public ${current.name}() {
+    }
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.properties)
+    #if($aProperty.name && $aProperty.type.name)
+    public ${aProperty.type.name} get${aProperty.name}() {
+        return ${aProperty.name};
+    }
+
+    public void set${aProperty.name}(${aProperty.type.name} inValue) {
+        ${aProperty.name} = inValue;
+    }
+    #end
+#end
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.properties)
+    #if($aProperty.name && $aProperty.type.name)
+    private ${aProperty.type.name} ${aProperty.name};
+    #end
+#end
+
+
+}
+
+

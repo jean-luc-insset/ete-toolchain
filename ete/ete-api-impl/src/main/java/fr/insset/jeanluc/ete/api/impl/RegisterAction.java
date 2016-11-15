@@ -22,15 +22,18 @@ import java.util.logging.Logger;
  *
  * @author jldeleage
  */
-public class Register extends ActionSupport {
+public class RegisterAction extends ActionSupport {
+
+
+    public final static String      REGISTER_ACTION = "register-action";
 
 
     public static void  register(String inActionName, String inClassName) {
         try {
-            Class<?> actionClass = Class.forName(inClassName);
-            FactoryRegistry.getRegistry().registerFactory(inActionName  + "-action", actionClass);
+            FactoryRegistry.register(inActionName, Class.forName(inClassName));
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterAction.class.getName())
+                    .log(Level.SEVERE, "Impossible de trouver la classe " + inClassName, ex);
         }
     }
 

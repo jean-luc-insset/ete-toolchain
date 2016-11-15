@@ -6,9 +6,12 @@
 package fr.insset.jeanluc.ete.api.impl;
 
 import fr.insset.jeanluc.ete.api.Action;
+import fr.insset.jeanluc.ete.api.ActionReader;
 import fr.insset.jeanluc.ete.api.ActionSupport;
+import fr.insset.jeanluc.ete.api.EteException;
 import static fr.insset.jeanluc.ete.api.impl.ModuleAction.MODULE_DEFINITION_ACTION;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.io.IOException;
@@ -35,8 +38,10 @@ public class ModuleCallAction extends ActionSupport {
     public final static String      URL     = "url";
     public final static String      FILE    = "file";
 
+    public final static String      MODULE_CALL_ACTION = "module-action";
 
-    public EteModel preProcess(EteModel inModel) {
+    @Override
+    public MofPackage preProcess(MofPackage inModel) throws EteException {
         try {
             // 1- attributes have been read. Among them, there must be a url attribute
             // or a file attribute.
@@ -68,24 +73,20 @@ public class ModuleCallAction extends ActionSupport {
             }
 
             // 3- try to read the configuration file
-            Element     rootElement;
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            try {
-                DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-                Logger.getGlobal().log(Level.FINE, "Configuration file read in " + path + "...");
-                Document document = documentBuilder.parse(path);
-                rootElement = document.getDocumentElement();
-            } catch (ParserConfigurationException | SAXException | IOException ex) {
-                Logger.getLogger(ModuleCallAction.class.getName()).log(Level.SEVERE, null, ex);
-                return inModel;
+            ActionReader actionReader = (ActionReader) getParameter(ACTION_READER);
+            if (actionReader == null) {
+                actionReader = (ActionReader) FactoryRegistry.newInstance(ACTION_READER);
             }
-            
-            FactoryRegistry registry = getFactoryRegistry();
+            addParameter(ACTION_READER, actionReader);
+            Object  rootElement = actionReader.readConfiguration(path);
+            System.out.println("Element racine : " + rootElement);
+
+            FactoryRegistry registry = FactoryRegistry.getRegistry();
             AbstractFactory factory = registry.getFactory(MODULE_DEFINITION_ACTION);
             Action action = (Action) factory.newInstance();
             if (action instanceof ActionSupport) {
                 ((ActionSupport) action).setDefinition(rootElement);
-                ((ActionSupport) action).setReader(this.getReader());
+                ((ActionSupport) action).setReader(actionReader);
             }
             // the module will be processed among the children of
             // the call
