@@ -41,31 +41,12 @@ import java.util.logging.Logger;
  */
 public abstract class GenericTemplate extends ForEachAction {
 
+
+
     @Override
-    public MofPackage doProcess(MofPackage inModel) throws EteException {
-        try {
-            List<NamedElement> items = FactoryMethods.newList(NamedElement.class);
-            addParameter("model", inModel);
-            return super.doProcess(inModel);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(GenericTemplate.class.getName()).log(Level.SEVERE, null, ex);
-            throw new EteException(ex);
-        }
+    public MofPackage   performAnIteration(MofPackage inPackage, NamedElement inElement) {
+        return inPackage;
     }
-
-
-//
-//    @Override
-//    public EteModel doProcess(EteModel inModel) {
-//        initEngine();
-//        List<NamedElement> items = getItems();
-//        copyParameters();
-//        applyTemplates(items);
-//        closeEngine();
-//        return inModel;
-//    }
-
-
 
 
     protected   String  getTemplate() {

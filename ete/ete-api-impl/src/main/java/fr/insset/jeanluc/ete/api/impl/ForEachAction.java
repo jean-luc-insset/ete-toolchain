@@ -2,6 +2,7 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 import fr.insset.jeanluc.el.evaluator.ELEvaluator;
+import fr.insset.jeanluc.ete.api.Action;
 import fr.insset.jeanluc.ete.api.ActionSupport;
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
@@ -28,7 +29,6 @@ public class ForEachAction extends ActionSupport {
     @Override
     public MofPackage processChildren(MofPackage inModel) throws EteException {
         Collection<NamedElement> evaluate = getItems(inModel);
-        MofPackage aux = inModel;
         String varName = (String)getParameter("var");
         Object previousValue = getParameter(varName);
         initLoop();
@@ -38,14 +38,14 @@ public class ForEachAction extends ActionSupport {
             // at each iteration
             addParameter(varName, obj);
             initIteration(obj);
-            performAnIteration(obj);
+            inModel = performAnIteration(inModel, obj);
             endIteration(obj);
         }
         endLoop();
         if (previousValue != null) {
             addParameter(varName, previousValue);
         }
-        return aux;
+        return inModel;
     }       // process
 
 
@@ -76,8 +76,11 @@ public class ForEachAction extends ActionSupport {
         
     }
 
-    protected   void performAnIteration(NamedElement inElement) {
-        
+    protected   MofPackage performAnIteration(MofPackage inPackage, NamedElement inElement) throws EteException {
+        for (Action child : getChildren()) {
+            inPackage = child.process(inPackage);
+        }
+        return inPackage;
     }
 
     protected   void endIteration(NamedElement inElement) {

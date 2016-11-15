@@ -20,6 +20,7 @@
         <module>el-evaluator</module>
         <module>xmi-io</module>
         <module>meta-model-io</module>
+        <module>plain-text-io</module>
     </modules>
 
     <properties>
