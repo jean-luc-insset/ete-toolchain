@@ -101,15 +101,14 @@ public interface ModelReader {
     }
 
 
-    public  Stream<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Stream<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Stream<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Stream<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Stream<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
 
 
     public default void afterReading(Object inDocument, EteModel inoutModel) throws EteException {
-        
     }
 
 

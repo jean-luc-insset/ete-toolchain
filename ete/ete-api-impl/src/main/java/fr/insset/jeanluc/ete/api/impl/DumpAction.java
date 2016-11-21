@@ -23,8 +23,8 @@ import java.util.logging.Logger;
  */
 public class DumpAction extends ActionSupport {
 
-    public final static String      DUMP_ACTION = "dump-action";
 
+    public final static String      DUMP_ACTION = "dump-action";
 
 
     @Override
@@ -36,7 +36,7 @@ public class DumpAction extends ActionSupport {
                     : new FileOutputStream(filePath);
             String format = (String) getParameter("format");
             if (format == null) {
-                format = "UML-2-4-XMI-2-1";
+                format = "text";
             }
             ModelWriter newInstance = (ModelWriter) FactoryRegistry.newInstance(format + "-writer");
             newInstance.writeModel(inPackage, output);
@@ -49,8 +49,6 @@ public class DumpAction extends ActionSupport {
             throw new EteException(ex);
         }
     }       // postProcess
-    
-
 
 
 }

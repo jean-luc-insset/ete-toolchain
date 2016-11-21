@@ -19,6 +19,11 @@ import java.util.logging.Logger;
 import java.util.stream.Stream;
 import org.w3c.dom.Document;
 
+
+
+
+
+
 /**
  * This is an XML reader : it uses XPath to select definitions of
  * objects and then uses an element reader to read the actual content of the
@@ -37,36 +42,36 @@ public class XmlModelReader implements ModelReader {
 
 
     @Override
-    public Stream<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
-        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH);
+    public Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH);
         return result;
     }
 
 
     @Override
-    public Stream<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
-        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, CLASS_PATH);
+    public Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, CLASS_PATH);
         return result;
     }
 
 
     @Override
-    public Stream<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
-        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, ASSOCIATION_PATH);
+    public Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, ASSOCIATION_PATH);
         return result;
     }
 
 
     @Override
-    public Stream<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException {
-        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, PROPERTY_PATH);
+    public Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PROPERTY_PATH);
         return result;
     }
 
 
     @Override
-    public Stream<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException {
-        Stream<NamedElement> result = readElements((Document) inDocument, inoutModel, OPERATION_PATH);
+    public Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, OPERATION_PATH);
         return result;
     }
 
@@ -76,7 +81,7 @@ public class XmlModelReader implements ModelReader {
     //========================================================================//
 
 
-    public Stream<NamedElement>     readElements(Document inDocument, EteModel inoutModel, String inPath) throws EteException {
+    public Collection<NamedElement>     readElements(Document inDocument, EteModel inoutModel, String inPath) throws EteException {
         Collection<NamedElement> result;
         try {
             result = FactoryMethods.newList(NamedElement.class);
@@ -84,7 +89,7 @@ public class XmlModelReader implements ModelReader {
             Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
         }
-        return result.stream();
+        return result;
     }
 
 }

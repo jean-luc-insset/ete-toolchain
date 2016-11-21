@@ -40,7 +40,7 @@ public class InitStandardActions {
         register(TRANSFORMATION_SET_ACTION, "fr.insset.jeanluc.ete.api.impl.ModuleAction");
 //        register("mda", "fr.insset.jeanluc.ete.api.impl.ProcessorAction");
         register(VELOCITY_ACTION, "fr.insset.jeanluc.ete.api.impl.VelocityAction");
-
+        register("text-writer", "fr.insset.jeanluc.plain.text.io.TextModelWriter");
     }
 
 

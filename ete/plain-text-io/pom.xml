@@ -8,4 +8,11 @@
     </parent>
     <artifactId>plain-text-io</artifactId>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-model-io</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -73,7 +73,7 @@ public class ForEachAction extends ActionSupport {
 
 
     protected   void initIteration(NamedElement inElement) {
-        
+
     }
 
     protected   MofPackage performAnIteration(MofPackage inPackage, NamedElement inElement) throws EteException {

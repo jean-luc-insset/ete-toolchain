@@ -2,23 +2,9 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 
-import fr.insset.jeanluc.ete.api.ActionSupport;
-import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
-import fr.insset.jeanluc.util.coll.DefaultMapWrappedCollection;
-import fr.insset.jeanluc.util.factory.FactoryMethods;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -65,6 +51,7 @@ public abstract class GenericTemplate extends ForEachAction {
         return baseUrl + result;
     }
 
+
     public String getTemplateEncoding() {
         String encoding = (String) getParameter("templateEncoding");
         return encoding == null ? "UTF-8" : encoding;
@@ -74,6 +61,7 @@ public abstract class GenericTemplate extends ForEachAction {
     protected   String  getTargetBase() {
         return (String)getParameter("output-base");
     }
+
 
     /**
      * TODO : should eventually resolve any variable
@@ -90,6 +78,7 @@ public abstract class GenericTemplate extends ForEachAction {
         }
         return targetBase + getParameter("target");
     }
+
 
     public String getTargetEncoding() {
         String encoding = (String) getParameter("targetEncoding");
