@@ -20,6 +20,7 @@ import fr.insset.jeanluc.meta.model.io.ModelReader;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -126,23 +127,34 @@ public class XmlModelReader implements ModelReader {
                     continue;
                 }
                 newInstance.setName(name);
-                Logger.getGlobal().log(Level.INFO, "Reading " + newInstance.getName());
-                newInstance = enhance(newInstance, inModel, elt);
-                if (newInstance == null) {
-                    continue;
-                }
                 Node parentNode = elt.getParentNode();
                 String parentName = parentNode instanceof Element ? ((Element)parentNode).getAttribute("name"):"";
                 PackageableElement parentElement = inModel.getElementByName(parentName);
-                if (newInstance instanceof PackageableElement) {
-                    PackageableElement packageable = (PackageableElement) newInstance;
-                    if (parentElement instanceof MofPackage) {
-                        MofPackage parentPackage = (MofPackage) parentElement;
-                        parentPackage.addPackagedElement(packageable);
-                        packageable.setOwningPackage(parentPackage);
-                    }
-                    inModel.addPackagedElement(packageable);
+                try {
+                    getVisitor().genericVisit(newInstance, parentElement, inModel);
+                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                    Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                // TODO : use a visitor to add the new instance in the right
+                // container
+//                if (newInstance instanceof PackageableElement) {
+//                    PackageableElement packageable = (PackageableElement) newInstance;
+//                    if (parentElement instanceof MofPackage) {
+//                        MofPackage parentPackage = (MofPackage) parentElement;
+//                        parentPackage.addPackagedElement(packageable);
+//                        packageable.setOwningPackage(parentPackage);
+//                    }
+//                    inModel.addPackagedElement(packageable);
+//                }
+//                else if (parentElement instanceof MofClass) {
+//                    MofClass    parentClass = (MofClass) parentElement;
+//                    if (newInstance instanceof Property) {
+//                        parentClass.addOwnedAttribute((Property) newInstance);
+//                    }
+//                    else if (newInstance instanceof Operation) {
+//                        parentClass.addOwnedOperation((Operation) newInstance);
+//                    }
+//                }
                 result.add(newInstance);
             }
             return result;
@@ -157,13 +169,9 @@ public class XmlModelReader implements ModelReader {
 
 
 
-    /**
-     * 
-     */
-    private NamedElement enhance(NamedElement newInstance, EteModel inModel, Element elt) {
-        return newInstance;
-    }
-
+    //========================================================================//
+    //                            U T I L I T I E S                           //
+    //========================================================================//
 
 
     protected NodeList getElementsByType(String inType, Node inSubTreeRoot) throws XPathExpressionException {
@@ -187,11 +195,35 @@ public class XmlModelReader implements ModelReader {
         return result;
     }
 
+    //========================================================================//
+    //                            A C C E S S O R S                           //
+    //========================================================================//
 
-    private interface NamedElementEnhancer {
-        public void enhanceElement(NamedElement inoutNamedElement,
-                            Element inXmlElement, EteModel inModel);
+
+
+    public XmlModelReaderVisitor getVisitor() {
+        if (visitor == null) {
+            visitor = new XmlModelReaderVisitor();
+        }
+        return visitor;
     }
+
+    public void setVisitor(XmlModelReaderVisitor visitor) {
+        this.visitor = visitor;
+    }
+
+
+
+    //========================================================================//
+    //                   I N S T A N C E   V A R I A B L E S                  //
+    //========================================================================//
+
+
+
+    /**
+     * 
+     */
+    private     XmlModelReaderVisitor       visitor;
 
 
 

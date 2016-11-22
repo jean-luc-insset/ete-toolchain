@@ -28,7 +28,7 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
 
     public MofPackageImpl() throws EteException {
         try {
-            this.packagedElement = FactoryMethods.newList(PackageableElement.class);
+            this.packagedElement = FactoryMethods.newSet(PackageableElement.class);
         } catch (InstantiationException ex) {
             Logger.getLogger(MofPackageImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);

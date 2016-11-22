@@ -52,15 +52,12 @@ public class ProcessorTest {
     @Test
     public void test() throws InstantiationException {
         System.out.println("run");
-        System.out.println("Working dir : " + new File(".").getAbsolutePath());
         FactoryRegistry registry = FactoryRegistry.getRegistry();
         registry.registerFactory(MODEL, EteModelImpl.class);
         registry.registerFactory(ACTION_READER, XmlActionReader.class);
         registry.registerFactory(MODEL_READER, XmlModelReader.class);
 
         // Register meta-model
-        // TODO : should not be the meta-model registered outside of the
-        // processor ?
         MetaModelInit.init();
 
         ProcessorAction instance = new ProcessorAction("../../src/test/mda/ete-config.xml");

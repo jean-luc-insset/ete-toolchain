@@ -20,6 +20,9 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.MofPackageImpl;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 
 /**
+ * Actually, this initializes a meta-meta-model.<br>
+ * Then the application can read a meta-model expressed with the classifiers
+ * defined here.
  *
  * @author jldeleage
  */
