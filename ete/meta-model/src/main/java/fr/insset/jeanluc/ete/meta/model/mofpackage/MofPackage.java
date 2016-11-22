@@ -24,6 +24,14 @@ public interface MofPackage extends PackageableElement {
     public  Collection<PackageableElement>          getPackagedElementAsCollection();
     public  void                                    addPackagedElement(PackageableElement inPackageableElement);
     public  void                                    removePackagedElement(PackageableElement inPackageableElement);
+    public  default PackageableElement              getElementByName(String inName)  {
+        for (PackageableElement element : getPackagedElementAsCollection()) {
+            if (inName.equals(element.getName())) {
+                return element;
+            }
+        }
+        return null;
+    }
 
     public  default Collection<MofPackage>          getPackages() {
         return getPackagesAsStream().collect(Collectors.toList());

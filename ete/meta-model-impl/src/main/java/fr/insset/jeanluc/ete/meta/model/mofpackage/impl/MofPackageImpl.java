@@ -56,6 +56,19 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
         packagedElement.remove(inPackageableElement);
     }
 
+    @Override
+    public PackageableElement getElementByName(String inName) {
+        for (PackageableElement element : getPackagedElementAsCollection()) {
+            if (inName.equals(element.getName())) {
+                return element;
+            }
+        }
+        return null;
+    }
+
+
+
+
 
     //========================================================================//
 

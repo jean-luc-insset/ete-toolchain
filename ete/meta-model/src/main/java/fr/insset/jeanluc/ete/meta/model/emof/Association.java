@@ -5,13 +5,16 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof;
 
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import java.util.Collection;
 
 /**
  *
  * @author jldeleage
  */
-public interface Association {
+public interface Association extends PackageableElement {
+
+    public  final static String         ASSOCIATION  = "association";
 
     public  Collection<Property>        getMemberEnd();
     public  void                        addMemberEnd(Property inProperty);

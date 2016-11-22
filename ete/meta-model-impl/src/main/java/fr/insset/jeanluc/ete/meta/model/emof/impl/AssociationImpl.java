@@ -7,6 +7,7 @@ package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.PackageableElementImpl;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ import java.util.LinkedList;
  *
  * @author jldeleage
  */
-public class AssociationImpl implements Association {
+public class AssociationImpl extends PackageableElementImpl implements Association {
 
     public AssociationImpl() throws InstantiationException {
         this.ownedEnd = FactoryMethods.newList(Property.class);
