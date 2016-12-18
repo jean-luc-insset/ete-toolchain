@@ -1,0 +1,36 @@
+Fri Nov 04 23:09:37 CET 2016  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Fri Nov 04 23:09:37 CET 2016   [info] ************************************************************** 
+Fri Nov 04 23:09:37 CET 2016   [info] Starting Jakarta Velocity v1.4
+Fri Nov 04 23:09:37 CET 2016   [info] RuntimeInstance initializing.
+Fri Nov 04 23:09:37 CET 2016   [info] Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+Fri Nov 04 23:09:37 CET 2016   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Fri Nov 04 23:09:37 CET 2016   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Fri Nov 04 23:09:37 CET 2016   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Fri Nov 04 23:09:37 CET 2016   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Fri Nov 04 23:09:37 CET 2016   [info] FileResourceLoader : initialization starting.
+Fri Nov 04 23:09:37 CET 2016   [info] FileResourceLoader : adding path '.'
+Fri Nov 04 23:09:37 CET 2016   [info] FileResourceLoader : initialization complete.
+Fri Nov 04 23:09:37 CET 2016   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Fri Nov 04 23:09:37 CET 2016   [info] Default ResourceManager initialization complete.
+Fri Nov 04 23:09:37 CET 2016   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Fri Nov 04 23:09:37 CET 2016   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Fri Nov 04 23:09:37 CET 2016   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Fri Nov 04 23:09:37 CET 2016   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Fri Nov 04 23:09:37 CET 2016   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Fri Nov 04 23:09:37 CET 2016   [info] Created: 20 parsers.
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : initialization starting.
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+Fri Nov 04 23:09:37 CET 2016  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro :  VM library template macro registration complete.
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : messages on  : VM system will output logging messages
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Fri Nov 04 23:09:37 CET 2016   [info] Velocimacro : initialization complete.
+Fri Nov 04 23:09:37 CET 2016   [info] Velocity successfully started.
+Fri Nov 04 23:09:37 CET 2016  [error] FileResourceLoader : File resource error : argument null contains .. and may be trying to access content outside of template root.  Rejected.
+Fri Nov 04 23:09:37 CET 2016  [error] ResourceManager : unable to find resource '../../src/test/mda/templates/java/essai-classes.vm' in any resource loader.
+Fri Nov 04 23:09:37 CET 2016  [error] FileResourceLoader : File resource error : argument null contains .. and may be trying to access content outside of template root.  Rejected.
+Fri Nov 04 23:09:37 CET 2016  [error] ResourceManager : unable to find resource '../../src/test/mda/templates/java/essai-classes.vm' in any resource loader.

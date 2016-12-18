@@ -11,3 +11,5 @@
 /ete/meta-model-io/target/
 /ete/xmi-io/target/
 /ete/plain-text-io/target/
+/ete/ete-maven-plugin/nbproject/
+/ete/ete-maven-plugin/target/

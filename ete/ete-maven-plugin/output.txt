@@ -1,0 +1,223 @@
+cd /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin; JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home "/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven/bin/mvn" clean install
+Scanning for projects...
+                                                                        
+------------------------------------------------------------------------
+Building ete-maven-plugin 1.0
+------------------------------------------------------------------------
+
+--- maven-clean-plugin:2.4.1:clean (default-clean) @ ete-maven-plugin ---
+Deleting /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target
+
+--- maven-plugin-plugin:3.5:descriptor (default-descriptor) @ ete-maven-plugin ---
+Using 'UTF-8' encoding to read mojo source files.
+java-javadoc mojo extractor found 0 mojo descriptor.
+java-annotations mojo extractor found 0 mojo descriptor.
+
+--- maven-resources-plugin:2.5:resources (default-resources) @ ete-maven-plugin ---
+[debug] execute contextualize
+Using 'UTF-8' encoding to copy filtered resources.
+skip non existing resourceDirectory /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/src/main/resources
+
+--- maven-compiler-plugin:2.3.2:compile (default-compile) @ ete-maven-plugin ---
+Compiling 1 source file to /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/classes
+
+--- maven-plugin-plugin:3.5:descriptor (mojo-descriptor) @ ete-maven-plugin ---
+Using 'UTF-8' encoding to read mojo source files.
+java-javadoc mojo extractor found 0 mojo descriptor.
+java-annotations mojo extractor found 1 mojo descriptor.
+
+--- maven-resources-plugin:2.5:testResources (default-testResources) @ ete-maven-plugin ---
+[debug] execute contextualize
+Using 'UTF-8' encoding to copy filtered resources.
+skip non existing resourceDirectory /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/src/test/resources
+
+--- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ ete-maven-plugin ---
+Compiling 1 source file to /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/test-classes
+
+--- maven-surefire-plugin:2.10:test (default-test) @ ete-maven-plugin ---
+Surefire report directory: /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running fr.insset.jeanluc.ete.maven.plugin.EteMojoTest
+execute
+Ete plugin running
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.maven.plugin.EteMojo execute
+INFOS: Working directory : /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/.
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.maven.plugin.EteMojo execute
+INFOS: ConfigFilePath : src/test/mda/ete-config.xml
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.Processor <init>
+INFOS: Processor instantiated with src/test/mda/ete-config.xml
+Output-base : null
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.Processor@3d04a311
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.ModuleAction@7a46a697
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.XmlActionReader readChildren
+INFOS: Lecture d'une action de type transformation-set
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.ModuleAction@5f205aa
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.XmlActionReader readChildren
+INFOS: Lecture d'une action de type model
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.XmlActionReader readChildren
+INFOS: Lecture d'une action de type dump
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.XmlActionReader readChildren
+INFOS: Lecture d'une action de type module
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.ModelAction@3abfe836
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.ModelAction preProcess
+INFOS: Lecture du modèle... models/QCM.xml
+    La propriété est un attribut "simple"
+    Type de la propriété : String
+    type non trouvé
+    La propriété est une association ; type = _18_2_1243039e_1472796250736_768322_4259
+    La propriété est un attribut "simple"
+    Type de la propriété : String
+    type non trouvé
+    La propriété est un attribut "simple"
+    Type de la propriété : int
+    type non trouvé
+    La propriété est un attribut "simple"
+    Type de la propriété : boolean
+    type non trouvé
+    La propriété est un attribut "simple"
+    Type de la propriété : int
+    type non trouvé
+    La propriété est une association ; type = _18_2_1243039e_1472796238403_783003_4230
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.ModelAction preProcess
+INFOS: Lecture -> null
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.Dump@25618e91
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.ModuleCallAction@7a92922
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.ModuleAction@71f2a7d5
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.XmlActionReader readChildren
+INFOS: Lecture d'une action de type transformation-set
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.ModuleAction@2cfb4a64
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.XmlActionReader readChildren
+INFOS: Lecture d'une action de type velocity
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.api.Action process
+INFOS: Execution de fr.insset.jeanluc.ete.impl.VelocityAction@34033bd0
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initEngine
+INFOS: initialisation de Velocity
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initEngine
+INFOS:    velocity.output-base : target/generated-sources/ete/
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteVariableMapper resolveVariable
+INFOS: Resolution de la variable classes -> vide
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre template = essai-classes.vm
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre var = class
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre model = null
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre items = ${classes}
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre factory-registry = fr.insset.jeanluc.util.factory.FactoryRegistryImpl@366e2eef
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre output-base = target/generated-sources/ete/
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate copyParameters
+INFOS: *** Copie du paramètre target = ${class.name}.java
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate applyTemplates
+INFOS: Au moins un item à traiter par velocity : true
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initGeneration
+INFOS:     velocity : initGeneration
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate applyTemplates
+INFOS: Appel du template pour target/generated-sources/ete/${class.name}.java QCM
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: passage de current : QCM
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteVariableMapper resolveVariable
+INFOS: Resolution de la variable class -> fr.insset.jeanluc.ete.meta.model.impl.EteClassImpl
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteELResolver getValue
+INFOS: EL : demande de la valeur de name dans QCM
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: Creation de /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/generated-sources/ete
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction applyTemplate
+INFOS: application du template src/test/mda/templates/java/essai-classes.vm avec en item courant QCM dans le fichier target/generated-sources/ete/${class.name}.java
+Template : java.io.OutputStreamWriter@e45f292
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initGeneration
+INFOS:     velocity : initGeneration
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate applyTemplates
+INFOS: Appel du template pour target/generated-sources/ete/${class.name}.java Question
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: passage de current : Question
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteVariableMapper resolveVariable
+INFOS: Resolution de la variable class -> fr.insset.jeanluc.ete.meta.model.impl.EteClassImpl
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteELResolver getValue
+INFOS: EL : demande de la valeur de name dans Question
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: Creation de /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/generated-sources/ete
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction applyTemplate
+INFOS: application du template src/test/mda/templates/java/essai-classes.vm avec en item courant Question dans le fichier target/generated-sources/ete/${class.name}.java
+Template : java.io.OutputStreamWriter@72d818d1
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initGeneration
+INFOS:     velocity : initGeneration
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate applyTemplates
+INFOS: Appel du template pour target/generated-sources/ete/${class.name}.java Package
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: passage de current : Package
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteVariableMapper resolveVariable
+INFOS: Resolution de la variable class -> fr.insset.jeanluc.ete.meta.model.impl.EteClassImpl
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteELResolver getValue
+INFOS: EL : demande de la valeur de name dans Package
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: Creation de /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/generated-sources/ete
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction applyTemplate
+INFOS: application du template src/test/mda/templates/java/essai-classes.vm avec en item courant Package dans le fichier target/generated-sources/ete/${class.name}.java
+Template : java.io.OutputStreamWriter@13805618
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initGeneration
+INFOS:     velocity : initGeneration
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate applyTemplates
+INFOS: Appel du template pour target/generated-sources/ete/${class.name}.java Element
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: passage de current : Element
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteVariableMapper resolveVariable
+INFOS: Resolution de la variable class -> fr.insset.jeanluc.ete.meta.model.impl.EteClassImpl
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteELResolver getValue
+INFOS: EL : demande de la valeur de name dans Element
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: Creation de /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/generated-sources/ete
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction applyTemplate
+INFOS: application du template src/test/mda/templates/java/essai-classes.vm avec en item courant Element dans le fichier target/generated-sources/ete/${class.name}.java
+Template : java.io.OutputStreamWriter@4b952a2d
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction initGeneration
+INFOS:     velocity : initGeneration
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate applyTemplates
+INFOS: Appel du template pour target/generated-sources/ete/${class.name}.java Model
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: passage de current : Model
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteVariableMapper resolveVariable
+INFOS: Resolution de la variable class -> fr.insset.jeanluc.ete.meta.model.impl.EteClassImpl
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.uel.ELEvaluator$EteELResolver getValue
+INFOS: EL : demande de la valeur de name dans Model
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.GenericTemplate openTargetUrl
+INFOS: Creation de /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/generated-sources/ete
+nov. 04, 2016 2:17:40 PM fr.insset.jeanluc.ete.impl.VelocityAction applyTemplate
+INFOS: application du template src/test/mda/templates/java/essai-classes.vm avec en item courant Model dans le fichier target/generated-sources/ete/${class.name}.java
+Template : java.io.OutputStreamWriter@6adede5
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.363 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+
+--- maven-jar-plugin:2.3.1:jar (default-jar) @ ete-maven-plugin ---
+Building jar: /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/ete-maven-plugin-1.0.jar
+
+--- maven-plugin-plugin:3.5:addPluginArtifactMetadata (default-addPluginArtifactMetadata) @ ete-maven-plugin ---
+
+--- maven-install-plugin:2.3.1:install (default-install) @ ete-maven-plugin ---
+Installing /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/target/ete-maven-plugin-1.0.jar to /Users/jldeleage/.m2/repository/fr/insset/jeanluc/ete-maven-plugin/1.0/ete-maven-plugin-1.0.jar
+Installing /Users/jldeleage/developpement/projets/recherche/ete-toolchain/ete/ete-maven-plugin/pom.xml to /Users/jldeleage/.m2/repository/fr/insset/jeanluc/ete-maven-plugin/1.0/ete-maven-plugin-1.0.pom
+------------------------------------------------------------------------
+BUILD SUCCESS
+------------------------------------------------------------------------
+Total time: 3.627s
+Finished at: Fri Nov 04 14:17:40 CET 2016
+Final Memory: 25M/312M
+------------------------------------------------------------------------
+

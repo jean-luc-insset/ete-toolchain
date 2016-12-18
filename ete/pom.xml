@@ -21,6 +21,7 @@
         <module>xmi-io</module>
         <module>meta-model-io</module>
         <module>plain-text-io</module>
+        <module>ete-maven-plugin</module>
     </modules>
 
     <properties>

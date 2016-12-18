@@ -26,8 +26,14 @@ public interface ActionReader {
     public  default Object readConfiguration(String inPath) throws EteException {
         try {
             if (! inPath.contains(":/")) {
+                // It's not a URL so it is a file in the local file system
                 if (!inPath.startsWith("/")) {
-                    inPath = new File(inPath).getAbsolutePath();
+                    File file = new File(inPath);
+                    if (file.isDirectory()) {
+                        file = new File(file, "ete-config.xml");
+                    }
+                    inPath = file.getAbsolutePath();
+                    
                 }
                 inPath = "file://" + inPath;
             }
