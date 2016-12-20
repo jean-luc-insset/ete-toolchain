@@ -12,11 +12,11 @@
     <packaging>maven-plugin</packaging>
 
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>ete-api-impl</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
@@ -34,6 +34,11 @@
             <artifactId>meta-model-impl</artifactId>
             <version>1.0</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.insset.jeanluc</groupId>
+            <artifactId>ete-api-impl</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <dependency>

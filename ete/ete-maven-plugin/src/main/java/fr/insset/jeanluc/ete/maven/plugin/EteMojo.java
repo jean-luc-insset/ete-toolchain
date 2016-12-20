@@ -3,6 +3,7 @@ package fr.insset.jeanluc.ete.maven.plugin;
 import static fr.insset.jeanluc.ete.api.Action.OUTPUT_BASE;
 import fr.insset.jeanluc.ete.api.impl.ProcessorAction;
 import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
+import fr.insset.jeanluc.ete.meta.model.core.impl.FactoriesInitializer;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
@@ -47,8 +48,10 @@ public class EteMojo
         logger.log(Level.INFO, "Working directory : " + new File(".").getAbsolutePath());
         logger.log(Level.INFO, "ConfigFilePath : " + configFilePath);
 
-        FactoryRegistry registry = FactoryRegistry.getRegistry();
-        registry.registerFactory(MODEL, EteModelImpl.class);
+//        FactoryRegistry registry = FactoryRegistry.getRegistry();
+//        registry.registerFactory(MODEL, EteModelImpl.class);
+        // Registers default factories
+        FactoriesInitializer.registerFactories();
         // Registers default actions
         InitStandardActions.init();;
 

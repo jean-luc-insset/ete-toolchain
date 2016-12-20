@@ -48,7 +48,10 @@ public class ModelAction extends ActionSupport {
             // obtenir le "reader" par une fabrique abstraite
             ModelReader   reader = (ModelReader) FactoryRegistry.newInstance(MODEL_READER);
             result = reader.readModel(resource, (EteModel) inModel);
-        } catch (InstantiationException ex) {
+        } catch (EteException e) {
+            throw e;
+
+        } catch (Exception ex) {
             Logger.getLogger(ModelAction.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
         }

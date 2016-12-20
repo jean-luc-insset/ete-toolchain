@@ -6,7 +6,10 @@
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
 import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
+import fr.insset.jeanluc.ete.meta.model.emof.Property;
+import fr.insset.jeanluc.ete.meta.model.emof.impl.AssociationImpl;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.MofClassImpl;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
@@ -60,6 +63,13 @@ public class MofPackageImplTest {
         choix    = addClass("Choix", sub2);
         etudiant = addClass("Etudiant", sub3);
     }
+
+    protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws EteException {
+        MofPackage    subPackage = new MofPackageImpl();
+        subPackage.setName(inName);
+        inoutPackage.addPackagedElement(subPackage);
+        return subPackage;
+    }
     
 
     protected MofClass addClass(String inName, MofPackage inoutPackage) throws EteException {
@@ -70,11 +80,13 @@ public class MofPackageImplTest {
     }
 
 
-    protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws EteException {
-        MofPackage    subPackage = new MofPackageImpl();
-        subPackage.setName(inName);
-        inoutPackage.addPackagedElement(subPackage);
-        return subPackage;
+    protected Association addAssociation(Property inFrom, Property inTo) throws EteException, InstantiationException {
+        Association     result = new AssociationImpl();
+        result.addMemberEnd(inFrom);
+        result.addOwnedEnd(inFrom);
+        result.addMemberEnd(inTo);
+        result.addOwnedEnd(inTo);
+        return result;
     }
 
 
@@ -127,8 +139,6 @@ public class MofPackageImplTest {
         Stream<MofClass> result = instance.getAllClassesAsStream();
         assertEquals(5, result.count());
     }
-
-
 
 
 }

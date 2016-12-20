@@ -75,6 +75,8 @@ public class XmlModelReader implements ModelReader {
     @Override
     public Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
         Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, ASSOCIATION_PATH, ASSOCIATION);
+        // We must connect the member ends to the associations and conversely
+        // connect the associations to their member ends.
         return result;
     }
 
