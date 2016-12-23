@@ -36,8 +36,19 @@ public class PackageableElementImpl extends TypedElementImpl implements Packagea
         return owningPackage;
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String inId) {
+        id = inId;
+    }
+
 
     private     MofPackage      owningPackage;
+    private     String          id;
 
 
 }

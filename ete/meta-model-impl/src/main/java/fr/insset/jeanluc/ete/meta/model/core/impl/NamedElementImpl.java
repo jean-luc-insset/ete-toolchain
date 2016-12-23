@@ -20,8 +20,19 @@ public abstract class NamedElementImpl implements NamedElement {
         name = inName;
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
 
-    private  String      name;
+    @Override
+    public void setId(String inId) {
+        id = inId;
+    }
+
+
+    private String      name;
+    private String      id;
 
 
 }

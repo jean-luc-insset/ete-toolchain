@@ -6,7 +6,11 @@
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
 import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -29,6 +33,18 @@ public class EteModelImpl extends MofPackageImpl implements EteModel {
         parent = inParent;
     }
 
-    private     EteModel        parent;
+    @Override
+    public NamedElement getElementById(String inId) {
+        return elementsById.get(inId);
+    }
+
+    @Override
+    public void addElement(NamedElement newInstance) {
+        elementsById.put(newInstance.getId(), newInstance);
+    }
+
+
+    private EteModel                    parent;
+    private Map<String, NamedElement>   elementsById = new HashMap<>();
 
 }

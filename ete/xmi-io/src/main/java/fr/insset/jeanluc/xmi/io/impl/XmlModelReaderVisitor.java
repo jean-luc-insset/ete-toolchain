@@ -6,6 +6,7 @@
 package fr.insset.jeanluc.xmi.io.impl;
 
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
+import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
@@ -13,6 +14,12 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.util.visit.DynamicVisitorSupport;
+import java.util.Collection;
+import java.util.LinkedList;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 
@@ -42,11 +49,17 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         return inElement;
     }
 
+
     public Object   visitProperty(Property inProperty, Object... inParam) {
         MofClass    parentClass = (MofClass) inParam[0];
-        parentClass.addOwnedAttribute((Property) inProperty);
+        if (parentClass != null) {
+            parentClass.addOwnedAttribute((Property) inProperty);
+        } else {
+            System.out.println("Unable to add " + inProperty + " to " + parentClass);
+        }
         return inProperty;
     }
+
 
     public Object   visitOperation(Operation inOperation, Object... inParam) {
         MofClass    parentClass = (MofClass) inParam[0];
@@ -54,4 +67,46 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         return inOperation;
     }
 
+
+    /**
+     * 
+     * @param inAssociation
+     * @param inParam
+     * @return 
+     */
+    public Object   visitAssociation(Association inAssociation, Object... inParam) {
+        System.out.println("Association parent : " + inParam[0]);
+        System.out.println("Model : " + inParam[1]);
+        System.out.println("Surrounding element : " + inParam[2]);
+        Collection<NamedElement> namedElements = getNamedElements("memberEnd", "xmi:idref", (Element) inParam[2], (EteModel) inParam[1]);
+        for (NamedElement aNamedElement : namedElements) {
+            inAssociation.addMemberEnd((Property)aNamedElement);
+        }
+        namedElements = getNamedElements("ownedEnd", "xmi:id", (Element)inParam[2], (EteModel) inParam[1]);
+        for (NamedElement aNamedElement : namedElements) {
+            inAssociation.addOwnedEnd((Property) aNamedElement);
+        }
+        return inAssociation;
+    }
+
+
+    protected Collection<NamedElement> getNamedElements(String inName, String inAttributeName, Element inElement, EteModel inModel) {
+        Collection<NamedElement> result = new LinkedList<>();
+        NodeList childNodes = inElement.getChildNodes();
+        for (int i=0 ; i<childNodes.getLength() ; i++) {
+            Node n = childNodes.item(i);
+            if (! inName.equals(n.getNodeName())) {
+                continue;
+            }
+            Element elt = (Element) n;
+            String attribute = elt.getAttribute(inAttributeName);
+            System.out.println("IdRef : " + attribute);
+            NamedElement elementById = inModel.getElementById(attribute);
+            result.add(elementById);
+        }
+        return result;
+    }
+
+
 }
+

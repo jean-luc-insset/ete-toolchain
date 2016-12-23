@@ -16,4 +16,7 @@ public interface NamedElement extends MofElement {
     public  String      getName();
     public  void        setName(String inName);
 
+    public String       getId();
+    public void         setId(String inId);
+
 }

@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
-<uml:Package xmlns:uml="http://www.omg.org/spec/UML/20131001" xmi:type="uml:Package" xmi:id="eee_1045467100313_135436_1" name="Data">
-<ownedComment xmi:type="uml:Comment" xmi:id="_18_1beta_8c90288_1415101994820_370998_4336" body="Author:jldeleage.&#10;Created:02/09/16 08:03.&#10;Title:.&#10;Comment:.&#10;">
-<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
-</ownedComment>
-<packagedElement xmi:type="uml:Package" xmi:id="_18_2_1243039e_1472796198853_138150_4194" name="analyse">
-<packagedElement xmi:type="uml:Package" xmi:id="_18_2_1243039e_1472796210720_758420_4195" name="fr.insset.jeanluc.mda.qcm">
-<packagedElement xmi:type="uml:Class" xmi:id="_18_2_1243039e_1472796238403_783003_4230" name="QCM">
-<ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796242994_68279_4256" name="titre">
-<type href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
-</ownedAttribute>
-<ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796312808_937081_4302" aggregation="composite" type="_18_2_1243039e_1472796250736_768322_4259" association="_18_2_1243039e_1472796312808_266831_4301">
-<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_18_2_1243039e_1472796318079_348968_4318"/>
-<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_18_2_1243039e_1472796318080_553596_4319" value="*"/>
-</ownedAttribute>
-</packagedElement>
-<packagedElement xmi:type="uml:Class" xmi:id="_18_2_1243039e_1472796250736_768322_4259" name="Question">
-<ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796256222_748572_4285" name="libelle">
-<type href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
-</ownedAttribute>
-<ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796263464_381089_4287" name="nbPoints">
-<type href="UML_Standard_Profile.emof#eee_1045467100323_917313_65"/>
-</ownedAttribute>
-<ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796270830_975469_4289" name="obligatoire">
-<type href="UML_Standard_Profile.emof#eee_1045467100323_191782_59"/>
-</ownedAttribute>
-<ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796292210_797471_4291" name="numero">
-<type href="UML_Standard_Profile.emof#eee_1045467100323_917313_65"/>
-</ownedAttribute>
-</packagedElement>
-<packagedElement xmi:type="uml:Association" xmi:id="_18_2_1243039e_1472796312808_266831_4301">
-<memberEnd xmi:idref="_18_2_1243039e_1472796312808_937081_4302"/>
-<memberEnd xmi:idref="_18_2_1243039e_1472796312808_656246_4303"/>
-<ownedEnd xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796312808_656246_4303" type="_18_2_1243039e_1472796238403_783003_4230" association="_18_2_1243039e_1472796312808_266831_4301"/>
-</packagedElement>
-</packagedElement>
-</packagedElement>
-</uml:Package>
+    <uml:Package xmlns:uml="http://www.omg.org/spec/UML/20131001" xmi:type="uml:Package" xmi:id="eee_1045467100313_135436_1" name="Data">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_18_1beta_8c90288_1415101994820_370998_4336" body="Author:jldeleage.&#10;Created:02/09/16 08:03.&#10;Title:.&#10;Comment:.&#10;">
+            <annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+        </ownedComment>
+        <packagedElement xmi:type="uml:Package" xmi:id="_18_2_1243039e_1472796198853_138150_4194" name="analyse">
+            <packagedElement xmi:type="uml:Package" xmi:id="_18_2_1243039e_1472796210720_758420_4195" name="fr.insset.jeanluc.mda.qcm">
+                <packagedElement xmi:type="uml:Class" xmi:id="_18_2_1243039e_1472796238403_783003_4230" name="QCM">
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796242994_68279_4256" name="titre">
+                        <type href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+                    </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796312808_937081_4302" aggregation="composite" type="_18_2_1243039e_1472796250736_768322_4259" association="_18_2_1243039e_1472796312808_266831_4301">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_18_2_1243039e_1472796318079_348968_4318"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_18_2_1243039e_1472796318080_553596_4319" value="*"/>
+                    </ownedAttribute>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Class" xmi:id="_18_2_1243039e_1472796250736_768322_4259" name="Question">
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796256222_748572_4285" name="libelle">
+                        <type href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+                    </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796263464_381089_4287" name="nbPoints">
+                        <type href="UML_Standard_Profile.emof#eee_1045467100323_917313_65"/>
+                    </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796270830_975469_4289" name="obligatoire">
+                        <type href="UML_Standard_Profile.emof#eee_1045467100323_191782_59"/>
+                    </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796292210_797471_4291" name="numero">
+                        <type href="UML_Standard_Profile.emof#eee_1045467100323_917313_65"/>
+                    </ownedAttribute>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Association" xmi:id="_18_2_1243039e_1472796312808_266831_4301">
+                    <memberEnd xmi:idref="_18_2_1243039e_1472796312808_937081_4302"/>
+                    <memberEnd xmi:idref="_18_2_1243039e_1472796312808_656246_4303"/>
+                    <ownedEnd xmi:type="uml:Property" xmi:id="_18_2_1243039e_1472796312808_656246_4303" type="_18_2_1243039e_1472796238403_783003_4230" association="_18_2_1243039e_1472796312808_266831_4301"/>
+                </packagedElement>
+            </packagedElement>
+        </packagedElement>
+    </uml:Package>
 </xmi:XMI>

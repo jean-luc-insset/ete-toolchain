@@ -91,8 +91,8 @@ public interface ModelReader {
         beforeReading(inDocument, inoutModel);
         readPackages(inDocument, inoutModel);
         readClasses(inDocument, inoutModel);
-        readAssociations(inDocument, inoutModel);
         readProperties(inDocument, inoutModel);
+        readAssociations(inDocument, inoutModel);
         readOperations(inDocument, inoutModel);
     }
 

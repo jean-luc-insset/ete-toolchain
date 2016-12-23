@@ -75,8 +75,7 @@ public class XmlModelReader implements ModelReader {
     @Override
     public Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
         Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, ASSOCIATION_PATH, ASSOCIATION);
-        // We must connect the member ends to the associations and conversely
-        // connect the associations to their member ends.
+
         return result;
     }
 
@@ -125,38 +124,20 @@ public class XmlModelReader implements ModelReader {
                 String name = elt.getAttribute("name");
                 // TODO : we should read objects with empty name or no name.
                 // Such objects can be associations
-                if (null == name || "".equals(name)) {
-                    continue;
+                if (null != name && !"".equals(name)) {
+                    newInstance.setName(name);
                 }
-                newInstance.setName(name);
+                String id = elt.getAttribute("xmi:id");
+                newInstance.setId(id);
+                inModel.addElement(newInstance);
                 Node parentNode = elt.getParentNode();
                 String parentName = parentNode instanceof Element ? ((Element)parentNode).getAttribute("name"):"";
                 PackageableElement parentElement = inModel.getElementByName(parentName);
                 try {
-                    getVisitor().genericVisit(newInstance, parentElement, inModel);
+                    getVisitor().genericVisit(newInstance, parentElement, inModel, elt);
                 } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                     Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                // TODO : use a visitor to add the new instance in the right
-                // container
-//                if (newInstance instanceof PackageableElement) {
-//                    PackageableElement packageable = (PackageableElement) newInstance;
-//                    if (parentElement instanceof MofPackage) {
-//                        MofPackage parentPackage = (MofPackage) parentElement;
-//                        parentPackage.addPackagedElement(packageable);
-//                        packageable.setOwningPackage(parentPackage);
-//                    }
-//                    inModel.addPackagedElement(packageable);
-//                }
-//                else if (parentElement instanceof MofClass) {
-//                    MofClass    parentClass = (MofClass) parentElement;
-//                    if (newInstance instanceof Property) {
-//                        parentClass.addOwnedAttribute((Property) newInstance);
-//                    }
-//                    else if (newInstance instanceof Operation) {
-//                        parentClass.addOwnedOperation((Operation) newInstance);
-//                    }
-//                }
                 result.add(newInstance);
             }
             return result;

@@ -14,7 +14,8 @@
 
     <transformation-set>
         <!-- reads a model -->
-        <model   url="models/QCM.emof"/>
+<!--        <model   url="models/QCM.emof"/>-->
+        <model   url="models/QCM.xml"/>
         <!--<model model="models/Simple.xml"/>-->
         <!-- outputs the model in a readable form -->
         <dump    file="target/dump.xml"/>

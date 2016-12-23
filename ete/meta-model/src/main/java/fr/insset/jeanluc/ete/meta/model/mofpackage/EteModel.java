@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.mofpackage;
 
+import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
@@ -24,17 +25,20 @@ public interface EteModel extends MofPackage {
 
     public  final static String     MODEL = "model";
 
+    public NamedElement     getElementById(String inId);
+    public void             addElement(NamedElement newInstance);
 
-    public EteModel getParent();
-    public void     setParent(EteModel inParent);
+    public EteModel         getParent();
+    public void             setParent(EteModel inParent);
 
+ 
     public default EteModel createModel() throws InstantiationException {
-        FactoryRegistry     registry = FactoryRegistry.getRegistry();
-        AbstractFactory factory = registry.getFactory(MODEL);
-        EteModel result = (EteModel) factory.newInstance();
+        EteModel result = (EteModel)FactoryRegistry.newInstance(MODEL);;
         result.setParent(this);
         return result;
     }
+
+
 
 }
 
