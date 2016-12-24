@@ -80,7 +80,9 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         System.out.println("Surrounding element : " + inParam[2]);
         Collection<NamedElement> namedElements = getNamedElements("memberEnd", "xmi:idref", (Element) inParam[2], (EteModel) inParam[1]);
         for (NamedElement aNamedElement : namedElements) {
-            inAssociation.addMemberEnd((Property)aNamedElement);
+            Property prop = (Property) aNamedElement;
+            inAssociation.addMemberEnd(prop);
+            prop.setAssociation(inAssociation);
         }
         namedElements = getNamedElements("ownedEnd", "xmi:id", (Element)inParam[2], (EteModel) inParam[1]);
         for (NamedElement aNamedElement : namedElements) {

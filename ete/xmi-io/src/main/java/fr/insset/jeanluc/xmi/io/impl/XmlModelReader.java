@@ -191,6 +191,7 @@ public class XmlModelReader implements ModelReader {
         return visitor;
     }
 
+
     public void setVisitor(XmlModelReaderVisitor visitor) {
         this.visitor = visitor;
     }
