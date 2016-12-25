@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof;
 
+import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import java.util.Collection;
 
@@ -12,7 +13,7 @@ import java.util.Collection;
  *
  * @author jldeleage
  */
-public interface Operation extends MultiplicityElement {
+public interface Operation extends NamedElement, MultiplicityElement {
 
 
     public final static String      OPERATION = "operation";

@@ -50,14 +50,54 @@ public class XmlModelReaderTest {
 
 
     @Test
-    public void testReadModelWithUrl() throws Exception {
-        System.out.println("readModel");
+    public void testReadSimpleModel() throws Exception {
+        System.out.println("readSimpleModel");
         // 1- Initialize framework
         FactoriesInitializer.registerFactories();
 
         // 2- call the operation
         XmlModelReader instance = new XmlModelReader();
         String  url = "../../src/test/mda/models/QCM.xml";
+        EteModel parent = new EteModelImpl();
+        EteModel result = instance.readModel(url, parent);
+
+        // 3- check result
+        Map<String, Integer>    properties = new HashMap<>();
+        properties.put("Question", 4);
+        properties.put("QCM", 2);
+        Collection<MofClass> allClasses = result.getAllClasses();
+        assertEquals(6, allClasses.size());
+        Collection<MofClass> classes = result.getClasses();
+        assertEquals(2, classes.size());
+        Collection<Association> associations = new LinkedList<>();
+        for (MofClass aClass : classes) {
+            List<Property> ownedAttribute = aClass.getOwnedAttribute();
+            assertEquals((long)properties.get(aClass.getName()), (long)ownedAttribute.size());
+            for (Property aProperty : ownedAttribute) {
+                Association association = aProperty.getAssociation();
+                if (null != association) {
+                    associations.add(association);
+                    Collection<Property> memberEnd = association.getMemberEnd();
+                    assertTrue(memberEnd.contains(aProperty));
+                    Collection<Property> ownedEnd = association.getOwnedEnd();
+                    System.out.println("ownedEnd : " + ownedEnd.size());
+                }
+            }       // loop over properties
+        }       // loop over classes
+        assertEquals(1, associations.size());
+    }
+
+
+
+    @Test
+    public void testReadComplexModel() throws Exception {
+        System.out.println("readComplexModel");
+        // 1- Initialize framework
+        FactoriesInitializer.registerFactories();
+
+        // 2- call the operation
+        XmlModelReader instance = new XmlModelReader();
+        String  url = "../../src/test/mda/models/QCM_complet.xml";
         EteModel parent = new EteModelImpl();
         EteModel result = instance.readModel(url, parent);
 

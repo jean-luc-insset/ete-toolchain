@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
+import fr.insset.jeanluc.ete.meta.model.core.impl.NamedElementImpl;
 import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
@@ -19,7 +20,7 @@ import java.util.List;
  *
  * @author jldeleage
  */
-public class OperationImpl implements Operation {
+public class OperationImpl extends NamedElementImpl implements Operation {
 
     public OperationImpl() throws InstantiationException {
         this.ownedParameter = FactoryMethods.newList(Parameter.class);

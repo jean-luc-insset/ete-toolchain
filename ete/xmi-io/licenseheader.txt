@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}xmi-io project
+${licensePrefix}This project is a module of the ete module of the global ete-toolchain project
+<#if licenseLast??>
+${licenseLast}
+</#if>
