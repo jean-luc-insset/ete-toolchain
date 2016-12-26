@@ -20,8 +20,10 @@ import fr.insset.jeanluc.meta.model.io.ModelReader;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import fr.insset.jeanluc.util.visit.DynamicVisitorSupport;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -133,10 +135,12 @@ public class XmlModelReader implements ModelReader {
                 Node parentNode = elt.getParentNode();
                 String parentName = parentNode instanceof Element ? ((Element)parentNode).getAttribute("name"):"";
                 PackageableElement parentElement = inModel.getElementByName(parentName);
-                try {
-                    getVisitor().genericVisit(newInstance, parentElement, inModel, elt);
-                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                    Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+                for (DynamicVisitorSupport visitor : getVisitors()) {
+                    try {
+                        visitor.genericVisit(newInstance, parentElement, inModel, elt);
+                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                        Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 result.add(newInstance);
             }
@@ -183,17 +187,21 @@ public class XmlModelReader implements ModelReader {
     //========================================================================//
 
 
-
-    public XmlModelReaderVisitor getVisitor() {
-        if (visitor == null) {
-            visitor = new XmlModelReaderVisitor();
+    public Collection<DynamicVisitorSupport> getVisitors() {
+        if (visitors.isEmpty()) {
+            visitors.add(new XmlModelReaderVisitor());
         }
-        return visitor;
+        return visitors;
+    }
+
+ 
+    public void addVisitors(DynamicVisitorSupport... inVisitors) {
+        Collections.addAll(visitors, inVisitors);
     }
 
 
-    public void setVisitor(XmlModelReaderVisitor visitor) {
-        this.visitor = visitor;
+    public void setVisitors(Collection<DynamicVisitorSupport> visitors) {
+        this.visitors = visitors;
     }
 
 
@@ -207,7 +215,7 @@ public class XmlModelReader implements ModelReader {
     /**
      * 
      */
-    private     XmlModelReaderVisitor       visitor;
+    private     Collection<DynamicVisitorSupport>       visitors = new LinkedList<>();
 
 
 

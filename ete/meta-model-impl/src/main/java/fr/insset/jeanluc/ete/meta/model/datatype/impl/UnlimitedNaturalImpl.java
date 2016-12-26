@@ -12,5 +12,15 @@ import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
  * @author jldeleage
  */
 public class UnlimitedNaturalImpl extends DataTypeImpl implements UnlimitedNatural {
-    
+
+    @Override
+    public String getValue() {
+        return value;
+    }
+
+ 
+
+
+    private     String      value;
+
 }

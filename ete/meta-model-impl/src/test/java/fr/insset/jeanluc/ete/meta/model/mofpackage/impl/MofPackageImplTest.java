@@ -137,7 +137,7 @@ public class MofPackageImplTest {
     public void testGetAllClassesAsStream() throws InstantiationException {
         System.out.println("getAllClasses");
         Stream<MofClass> result = instance.getAllClassesAsStream();
-        assertEquals(5, result.count());
+        assertEquals(1, result.count());
     }
 
 

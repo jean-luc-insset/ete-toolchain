@@ -20,6 +20,9 @@ public interface MultiplicityElement {
     public  void                setUnique(boolean inUnique);
 
     public  int                 getLower();
+    public  void                setLower(int inLower);
     public  UnlimitedNatural    getUpper();
+    public  void                setUpper(UnlimitedNatural inUpper);
+    public  void                setUpper(int inUpper);
 
 }

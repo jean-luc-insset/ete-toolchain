@@ -53,6 +53,10 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
+    //========================================================================//
+
+
     @Override
     public Association getOwningAssociation() {
         return owningAssociation;
@@ -75,7 +79,6 @@ public class PropertyImpl extends TypedElementImpl implements Property {
     }
 
 
-
     @Override
     public Property getOpposite() {
         return opposite;
@@ -90,6 +93,8 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         inOpposite.setOpposite(this);
     }
 
+
+    //========================================================================//
 
 
     @Override
@@ -126,16 +131,34 @@ public class PropertyImpl extends TypedElementImpl implements Property {
     }
 
 
+    //========================================================================//
+
 
     @Override
     public int getLower() {
         return lower;
     }
 
+    public void setLower(int lower) {
+        this.lower = lower;
+    }
+
     @Override
     public UnlimitedNatural getUpper() {
         return upper;
     }
+
+    public void setUpper(UnlimitedNatural upper) {
+        this.upper = upper;
+    }
+
+    @Override
+    public void setUpper(int inUpper) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    //========================================================================//
 
 
     private Association             association; 

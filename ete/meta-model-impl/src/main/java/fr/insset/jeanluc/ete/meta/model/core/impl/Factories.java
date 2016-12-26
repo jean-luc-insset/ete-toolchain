@@ -15,17 +15,20 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import        fr.insset.jeanluc.ete.meta.model.mofpackage.impl.MofPackageImpl;
 import        fr.insset.jeanluc.ete.meta.model.types.Generalization;
 import static fr.insset.jeanluc.ete.meta.model.types.Generalization.GENERALIZATION;
+import static fr.insset.jeanluc.ete.meta.model.types.MofType.MOF_TYPE;
+import fr.insset.jeanluc.ete.meta.model.types.impl.MofTypeImpl;
 import        fr.insset.jeanluc.util.factory.FactoryRegistry;
 
 /**
  *
  * @author jldeleage
  */
-public abstract class FactoriesInitializer {
+public abstract class Factories {
     
 
-    public  static void registerFactories() {
+    public  static void init() {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
+        registry.registerFactory(MOF_TYPE, MofTypeImpl.class);
         registry.registerFactory(MODEL, EteModelImpl.class);
         registry.registerFactory(PACKAGE, MofPackageImpl.class);
         registry.registerFactory(MOF_CLASS, MofClassImpl.class);

@@ -31,6 +31,18 @@ public interface EteModel extends MofPackage {
     public EteModel         getParent();
     public void             setParent(EteModel inParent);
 
+
+    @Override
+    public default PackageableElement getElementByName(String inName) {
+        for (PackageableElement element : getPackagedElementAsCollection()) {
+            if (inName.equals(element.getName())) {
+                return element;
+            }
+        }
+        EteModel    parent = getParent();
+        return parent != null ? parent.getElementByName(inName) : null;
+    }
+
  
     public default EteModel createModel() throws InstantiationException {
         EteModel result = (EteModel)FactoryRegistry.newInstance(MODEL);;

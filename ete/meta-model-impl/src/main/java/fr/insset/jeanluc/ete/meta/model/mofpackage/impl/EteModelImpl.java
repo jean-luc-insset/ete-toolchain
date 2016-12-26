@@ -44,6 +44,18 @@ public class EteModelImpl extends MofPackageImpl implements EteModel {
     }
 
 
+    @Override
+    public PackageableElement getElementByName(String inName) {
+        for (PackageableElement element : getPackagedElementAsCollection()) {
+            if (inName.equals(element.getName())) {
+                return element;
+            }
+        }
+        EteModel    parent = getParent();
+        return parent != null ? parent.getElementByName(inName) : null;
+    }
+
+
     private EteModel                    parent;
     private Map<String, NamedElement>   elementsById = new HashMap<>();
 

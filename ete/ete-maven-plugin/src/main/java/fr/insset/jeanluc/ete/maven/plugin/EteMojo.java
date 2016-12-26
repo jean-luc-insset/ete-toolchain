@@ -3,7 +3,7 @@ package fr.insset.jeanluc.ete.maven.plugin;
 import static fr.insset.jeanluc.ete.api.Action.OUTPUT_BASE;
 import fr.insset.jeanluc.ete.api.impl.ProcessorAction;
 import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
-import fr.insset.jeanluc.ete.meta.model.core.impl.FactoriesInitializer;
+import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
@@ -51,7 +51,7 @@ public class EteMojo
 //        FactoryRegistry registry = FactoryRegistry.getRegistry();
 //        registry.registerFactory(MODEL, EteModelImpl.class);
         // Registers default factories
-        FactoriesInitializer.registerFactories();
+        Factories.init();
         // Registers default actions
         InitStandardActions.init();;
 

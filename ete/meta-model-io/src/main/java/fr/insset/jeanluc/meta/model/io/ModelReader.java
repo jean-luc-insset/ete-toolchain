@@ -4,6 +4,7 @@ package fr.insset.jeanluc.meta.model.io;
 
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
+import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
@@ -35,6 +36,15 @@ public interface ModelReader {
 
 
     public default EteModel readModel(String inUrl, EteModel inParent) throws EteException {
+        if (inParent == null) {
+            try {
+                inParent  = (EteModel) FactoryRegistry.newInstance(MODEL);
+                PrimitiveDataTypes.init(inParent);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(ModelReader.class.getName()).log(Level.SEVERE, null, ex);
+                throw new EteException(ex);
+            }
+        }
         try {
             if (! inUrl.contains(":/")) {
                 inUrl = "file://" + new File(inUrl).getAbsolutePath();

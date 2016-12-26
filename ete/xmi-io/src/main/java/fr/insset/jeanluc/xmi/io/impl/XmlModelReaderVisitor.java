@@ -5,6 +5,7 @@ package fr.insset.jeanluc.xmi.io.impl;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
+import fr.insset.jeanluc.ete.meta.model.emof.MultiplicityElement;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
@@ -14,6 +15,11 @@ import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import fr.insset.jeanluc.util.visit.DynamicVisitorSupport;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -21,10 +27,30 @@ import org.w3c.dom.NodeList;
 
 
 /**
+ * <div>
+ * The read process reads elements of any kind. But each element must be
+ * handled differently.<br>
+ * Furthermore, the process may be customized.<br>
+ * So we use a visitor to provide that double polymorphism.
+ * </div>
+ * 
+ * <div>
+ * TODO : there are two responsibilities in this class<ul>
+ * <li>to complete to read process</li>
+ * <li>to read XML</li>
+ * </ul>
+ * The first task must be achieved whatever the format is.<br>
+ * The second one is the way to get information.<br>
+ * So this class should be split&nbsp;:<ul>
+ * <li>a generic visitor to complete the process</li>
+ * <li>a helper class to read specific XML</li>
+ * </ul>
+ * </div>
  *
  * @author jldeleage
  */
 public class XmlModelReaderVisitor extends DynamicVisitorSupport {
+
 
     public XmlModelReaderVisitor() {
         this.register("visit",
@@ -47,25 +73,36 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     }
 
 
-    public Object   visitProperty(Property inProperty, Object... inParam) {
-        System.out.println("Property : " + inProperty.getName());
-        if (inParam[0] != null) {
-            System.out.println("  owning class : " + ((NamedElement)inParam[0]).getName() + " (" + inParam[0] + ")");
+    public Object   visitMofClass(MofClass inElement, Object... inParam) {
+        PackageableElement packageable = (PackageableElement) inElement;
+        NamedElement       parentElement = (NamedElement) inParam[0];
+        if (parentElement instanceof MofPackage) {
+            MofPackage parentPackage = (MofPackage) parentElement;
+            parentPackage.addPackagedElement(packageable);
+            packageable.setOwningPackage(parentPackage);
         }
-        else {
-            System.out.println("  no owning class");
-        }
-        System.out.println("  model : " + inParam[1]);
-        System.out.println("  xml element : " + inParam[2] + " (" + inParam[2].getClass() + ")");
+        EteModel    inoutModel = (EteModel) inParam[1];
+        inoutModel.addPackagedElement(packageable);
+        return inElement;
+    }
+
+
+    /**
+     * 
+     * @param inProperty
+     * @param inParam
+     * @return
+     * @throws XPathExpressionException 
+     */
+    public Object   visitProperty(Property inProperty, Object... inParam) throws XPathExpressionException {
         MofClass    parentClass = (MofClass) inParam[0];
         if (parentClass != null) {
             parentClass.addOwnedAttribute((Property) inProperty);
-        } else {
-            System.out.println("Unable to add " + inProperty + " to " + parentClass);
         }
         if (inProperty.getType() == null) {
-            readType((Element)inParam[2], (EteModel)inParam[1]);
+            inProperty.setType(readType((Element)inParam[2], (EteModel)inParam[1]));
         }
+        readMultiplicity(inProperty, (Element)inParam[2], (EteModel)inParam[1]);
         return inProperty;
     }
 
@@ -84,9 +121,6 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
      * @return 
      */
     public Object   visitAssociation(Association inAssociation, Object... inParam) {
-        System.out.println("Association parent : " + inParam[0]);
-        System.out.println("Model : " + inParam[1]);
-        System.out.println("Surrounding element : " + inParam[2]);
         Collection<NamedElement> namedElements = getNamedElements("memberEnd", "xmi:idref", (Element) inParam[2], (EteModel) inParam[1]);
         for (NamedElement aNamedElement : namedElements) {
             Property prop = (Property) aNamedElement;
@@ -114,7 +148,6 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             }
             Element elt = (Element) n;
             String attribute = elt.getAttribute(inAttributeName);
-            System.out.println("IdRef : " + attribute);
             NamedElement elementById = inModel.getElementById(attribute);
             result.add(elementById);
         }
@@ -124,10 +157,54 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     //+=======================================================================//
 
 
-    public MofType  readType(Element inElement, EteModel inModel) {
-        System.out.println("Lecture du type de " + inElement);
+    protected MofType  readType(Element inElement, EteModel inModel) {
+        String attribute = inElement.getAttribute("type");
+        if (attribute != null && ! "".equals(attribute)) {
+            return (MofType)inModel.getElementById(attribute);
+        }
+        try {
+            String typeAsString = xPath.evaluate(typePath, inElement);
+            int index = typeAsString.lastIndexOf("::");
+            typeAsString = typeAsString.substring(index+2);
+            MofType type = (MofType)inModel.getElementByName(typeAsString);
+        } catch (XPathExpressionException ex) {
+            Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
+
+
+
+    protected void   readMultiplicity(MultiplicityElement inoutElement, Element inXmlElement, EteModel inModel) throws XPathExpressionException {
+        String lowerAsString = xPath.evaluate(lowerPath, inXmlElement);
+        try {
+            inoutElement.setLower(Integer.parseInt(lowerAsString));        
+        }
+        catch (Exception e) {
+            // There is no lowed value for multiplicity. Let's take 1 instead
+            inoutElement.setLower(1);
+        }
+        String upperAsString = xPath.evaluate(upperPath, inXmlElement);
+        if ("*".equals(upperAsString)) {
+            // TODO 
+        }
+        else {
+            try {
+                inoutElement.setUpper(Integer.parseInt(upperAsString));
+            }
+            catch (Exception e) {
+                // our friend tried to give us a fake
+            }
+        }       // upper != *
+    }   // readMultiplicity
+
+
+    private XPathFactory    factory     = XPathFactory.newInstance();
+    private XPath           xPath       = factory.newXPath();
+    private String          typePath    = "type/*/*/@referentPath";
+    private String          lowerPath   = ".//lowerValue/@value";
+    private String          upperPath   = ".//upperValue/@value";
+
 
 }
 

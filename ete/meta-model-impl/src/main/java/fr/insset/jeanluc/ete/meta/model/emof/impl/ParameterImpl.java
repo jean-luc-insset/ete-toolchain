@@ -54,6 +54,21 @@ public class ParameterImpl extends TypedElementImpl implements Parameter {
     }
 
     @Override
+    public void setLower(int inLower) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUpper(UnlimitedNatural inUpper) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUpper(int inUpper) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public UnlimitedNatural getUpper() {
         return upper;
     }

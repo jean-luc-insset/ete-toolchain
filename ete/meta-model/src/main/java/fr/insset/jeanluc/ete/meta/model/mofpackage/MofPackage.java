@@ -4,6 +4,7 @@ package fr.insset.jeanluc.ete.meta.model.mofpackage;
 
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
+import fr.insset.jeanluc.util.coll.CompositeCollection;
 import java.util.Collection;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -40,7 +41,9 @@ public interface MofPackage extends PackageableElement {
         return getClassesAsStream().collect(Collectors.toList());
     }
     public  default Collection<MofClass>            getAllClasses() {
-        return getAllClassesAsStream().collect(Collectors.toList());
+        Collection<MofClass>    result = new CompositeCollection<>(getClasses());
+        
+        return result;
     }
 
 
@@ -55,9 +58,8 @@ public interface MofPackage extends PackageableElement {
     }
 
     public  default Stream<MofClass>                getAllClassesAsStream() {
-        return Stream.concat(getClassesAsStream(),
-                getPackagesAsStream()
-                    .flatMap(f -> ((MofPackage)f).getAllClassesAsStream()));
+        return getAllClasses().stream();
     }
+
 
 }
