@@ -6,16 +6,15 @@
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
 import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
+import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNLIMITED_NATURAL;
 import fr.insset.jeanluc.ete.meta.model.emof.AggregationKind;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
-import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
-import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
-import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import fr.insset.jeanluc.ete.meta.model.types.impl.TypedElementImpl;
+import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -154,7 +153,13 @@ public class PropertyImpl extends TypedElementImpl implements Property {
 
     @Override
     public void setUpper(int inUpper) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            UnlimitedNatural upper = (UnlimitedNatural) FactoryRegistry.newInstance(UNLIMITED_NATURAL);
+            upper.setValue("" + inUpper);
+            setUpper(upper);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(PropertyImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 

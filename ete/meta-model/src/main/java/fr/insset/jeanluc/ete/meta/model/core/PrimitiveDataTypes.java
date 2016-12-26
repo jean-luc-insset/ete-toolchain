@@ -5,7 +5,6 @@
  */
 package fr.insset.jeanluc.ete.meta.model.core;
 
-import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import static fr.insset.jeanluc.ete.meta.model.types.MofType.MOF_TYPE;

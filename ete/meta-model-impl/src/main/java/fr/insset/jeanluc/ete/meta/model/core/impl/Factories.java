@@ -1,6 +1,9 @@
 package fr.insset.jeanluc.ete.meta.model.core.impl;
 
 
+import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
+import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNLIMITED_NATURAL;
+import fr.insset.jeanluc.ete.meta.model.datatype.impl.UnlimitedNaturalImpl;
 import static fr.insset.jeanluc.ete.meta.model.emof.Association.ASSOCIATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
 import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
@@ -36,6 +39,7 @@ public abstract class Factories {
         registry.registerFactory(PROPERTY, PropertyImpl.class);
         registry.registerFactory(ASSOCIATION, AssociationImpl.class);
         registry.registerFactory(GENERALIZATION, Generalization.class);
+        registry.registerFactory(UNLIMITED_NATURAL, UnlimitedNaturalImpl.class);
     }
 
 

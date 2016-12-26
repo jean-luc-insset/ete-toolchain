@@ -2,7 +2,11 @@ package fr.insset.jeanluc.xmi.io.impl;
 
 
 
+import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
+import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
+import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNBOUND;
+import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNLIMITED_NATURAL;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.MultiplicityElement;
@@ -12,6 +16,7 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import fr.insset.jeanluc.util.visit.DynamicVisitorSupport;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -94,7 +99,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
      * @return
      * @throws XPathExpressionException 
      */
-    public Object   visitProperty(Property inProperty, Object... inParam) throws XPathExpressionException {
+    public Object   visitProperty(Property inProperty, Object... inParam) throws EteException, XPathExpressionException {
         MofClass    parentClass = (MofClass) inParam[0];
         if (parentClass != null) {
             parentClass.addOwnedAttribute((Property) inProperty);
@@ -175,18 +180,17 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
 
 
-    protected void   readMultiplicity(MultiplicityElement inoutElement, Element inXmlElement, EteModel inModel) throws XPathExpressionException {
-        String lowerAsString = xPath.evaluate(lowerPath, inXmlElement);
-        try {
-            inoutElement.setLower(Integer.parseInt(lowerAsString));        
-        }
-        catch (Exception e) {
-            // There is no lowed value for multiplicity. Let's take 1 instead
-            inoutElement.setLower(1);
-        }
+    protected void   readMultiplicity(MultiplicityElement inoutElement, Element inXmlElement, EteModel inModel) throws EteException, XPathExpressionException {
         String upperAsString = xPath.evaluate(upperPath, inXmlElement);
-        if ("*".equals(upperAsString)) {
-            // TODO 
+        if (UNBOUND.equals(upperAsString)) {
+            try {
+                // TODO
+                UnlimitedNatural unbound = (UnlimitedNatural) FactoryRegistry.newInstance(UNLIMITED_NATURAL);
+                unbound.setValue(UNBOUND);
+                inoutElement.setUpper(unbound);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else {
             try {
@@ -194,8 +198,19 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             }
             catch (Exception e) {
                 // our friend tried to give us a fake
+                inoutElement.setUpper(1);
             }
         }       // upper != *
+        String lowerAsString = xPath.evaluate(lowerPath, inXmlElement);
+        try {
+            inoutElement.setLower(Integer.parseInt(lowerAsString));
+        }
+        catch (Exception e) {
+            // There is no lower value for multiplicity. Let's take 1 instead
+            inoutElement.setLower(
+                UNBOUND.equals(inoutElement.getUpper()) ?0:1
+            );
+        }
     }   // readMultiplicity
 
 
