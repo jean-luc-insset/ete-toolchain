@@ -11,6 +11,8 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.ete.meta.model.types.collections.MofCollection;
+import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -22,6 +24,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
 
 
 
@@ -121,9 +124,11 @@ public class XmlModelReaderTest {
 
         MofClass passageClass = (MofClass) result.getElementByName("Passage");
         MofClass questionPoseeClass = (MofClass) result.getElementByName("QuestionPosee");
+        MofCollection  sequenceQuestionsPoseesClass = (MofCollection) FactoryRegistry.newInstance(MOF_SEQUENCE);
+        sequenceQuestionsPoseesClass.setBaseType(questionPoseeClass);
         Property questionsPosees = passageClass.getOwnedAttribute("questionsPosees");
         MofType typeQuestionsPosees = questionsPosees.getType();
-        assertEquals(questionPoseeClass, typeQuestionsPosees);
+        assertEquals(sequenceQuestionsPoseesClass, typeQuestionsPosees);
         System.out.println("");
         for (MofClass aClass : classes) {
             System.out.println("Propriétés de la classe " + aClass.getName());

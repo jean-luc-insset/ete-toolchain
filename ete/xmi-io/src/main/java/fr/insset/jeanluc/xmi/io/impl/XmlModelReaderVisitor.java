@@ -16,6 +16,7 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.ete.meta.model.types.collections.MofCollection;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import fr.insset.jeanluc.util.visit.DynamicVisitorSupport;
 import java.util.Collection;
@@ -28,6 +29,7 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
 
 
 
@@ -179,20 +181,39 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     //+=======================================================================//
 
 
-    protected MofType  readType(Element inElement, EteModel inModel) {
+    protected MofType  readType(Element inElement, EteModel inModel) throws EteException {
+        MofType     result;
         String attribute = inElement.getAttribute("type");
         if (attribute != null && ! "".equals(attribute)) {
-            return (MofType)inModel.getElementById(attribute);
+            result = (MofType)inModel.getElementById(attribute);
         }
-        try {
-            String typeAsString = xPath.evaluate(typePath, inElement);
-            int index = typeAsString.lastIndexOf("::");
-            typeAsString = typeAsString.substring(index+2);
-            return (MofType)inModel.getElementByName(typeAsString);
-        } catch (XPathExpressionException ex) {
-            Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
+        else {
+            try {
+                String typeAsString = xPath.evaluate(typePath, inElement);
+                int index = typeAsString.lastIndexOf("::");
+                typeAsString = typeAsString.substring(index+2);
+                result = (MofType)inModel.getElementByName(typeAsString);
+            } catch (XPathExpressionException ex) {
+                Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
+                throw new EteException(ex);
+            }
         }
-        return null;
+        NodeList upperValues = inElement.getElementsByTagName("upperValue");
+        if (upperValues.getLength() > 0) {
+            String upperValue = ((Element)upperValues.item(0)).getAttribute("value");
+            if (! "1".equals(upperValue)) {
+                try {
+                    // TODO : check properties of the association to derive the
+                    // true nature of the collection
+                    MofCollection sequence = (MofCollection) FactoryRegistry.newInstance(MOF_SEQUENCE);
+                    sequence.setBaseType(result);
+                    result = sequence;
+                } catch (InstantiationException ex) {
+                    throw new EteException(ex);
+                }
+            }
+        }
+        return result;
     }
 
 
