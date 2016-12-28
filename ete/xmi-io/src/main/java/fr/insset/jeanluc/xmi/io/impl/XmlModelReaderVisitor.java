@@ -40,9 +40,19 @@ import org.w3c.dom.NodeList;
  * </div>
  * 
  * <div>
+ * In order to achieve its goal, the visitor requires for some of its methods
+ * <ul>
+ * <li>of course, obj, the object it is visiting</li>
+ * <li>the object that should contain obj</li>
+ * <li>the model which should own obj</li>
+ * <li>and the XML element defining obj</li>
+ * </ul>
+ * </div>
+ * 
+ * <div>
  * TODO : there are two responsibilities in this class<ul>
- * <li>to complete to read process</li>
- * <li>to read XML</li>
+ * <li>to complete the read process</li>
+ * <li>to deal with XML specifics</li>
  * </ul>
  * The first task must be achieved whatever the format is.<br>
  * The second one is the way to get information.<br>
@@ -126,14 +136,21 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
      * @return 
      */
     public Object   visitAssociation(Association inAssociation, Object... inParam) {
-        Collection<NamedElement> namedElements = getNamedElements("memberEnd", "xmi:idref", (Element) inParam[2], (EteModel) inParam[1]);
-        for (NamedElement aNamedElement : namedElements) {
+        Collection<NamedElement> memberEnds = getNamedElements("memberEnd", "xmi:idref", (Element) inParam[2], (EteModel) inParam[1]);
+
+        Property[]  properties  = new Property[2];
+        int         index       = 0;
+        for (NamedElement aNamedElement : memberEnds) {
             Property prop = (Property) aNamedElement;
+            properties[index++] = prop;
             inAssociation.addMemberEnd(prop);
             prop.setAssociation(inAssociation);
         }
-        namedElements = getNamedElements("ownedEnd", "xmi:id", (Element)inParam[2], (EteModel) inParam[1]);
-        for (NamedElement aNamedElement : namedElements) {
+        properties[0].setOpposite(properties[1]);
+        properties[1].setOpposite(properties[0]);
+
+        memberEnds = getNamedElements("ownedEnd", "xmi:id", (Element)inParam[2], (EteModel) inParam[1]);
+        for (NamedElement aNamedElement : memberEnds) {
             inAssociation.addOwnedEnd((Property) aNamedElement);
         }
         return inAssociation;
@@ -171,7 +188,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             String typeAsString = xPath.evaluate(typePath, inElement);
             int index = typeAsString.lastIndexOf("::");
             typeAsString = typeAsString.substring(index+2);
-            MofType type = (MofType)inModel.getElementByName(typeAsString);
+            return (MofType)inModel.getElementByName(typeAsString);
         } catch (XPathExpressionException ex) {
             Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
         }

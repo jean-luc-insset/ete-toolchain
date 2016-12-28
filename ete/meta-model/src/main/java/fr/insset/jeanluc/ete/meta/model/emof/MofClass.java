@@ -26,6 +26,7 @@ public interface MofClass extends Classifier {
     }
     public  void                    addOwnedAttribute(Property inProperty);
     public  void                    removeOwnedAttribute(Property inProperty);
+    public  Property                getOwnedAttribute(String inName);
     public  Stream<Property>        getOwnedAttributeAsStream();
 
     public  default List<Operation> getOwnedOperation() {
@@ -33,6 +34,7 @@ public interface MofClass extends Classifier {
     }
     public  void                    addOwnedOperation(Operation inOperation);
     public  void                    removeOwnedOperation(Operation inOperation);
+    public  Operation               getOwnedOperation(String inName);
     public  Stream<Operation>       getOwnedOperationAsStream();
 
     public  default Collection<MofClass>    getSuperClass() {

@@ -8,7 +8,9 @@ import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
+import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -117,6 +119,24 @@ public class XmlModelReaderTest {
         Collection<MofClass> classes = result.getClasses();
         assertEquals(8, classes.size());
 
+        MofClass passageClass = (MofClass) result.getElementByName("Passage");
+        MofClass questionPoseeClass = (MofClass) result.getElementByName("QuestionPosee");
+        Property questionsPosees = passageClass.getOwnedAttribute("questionsPosees");
+        MofType typeQuestionsPosees = questionsPosees.getType();
+        assertEquals(questionPoseeClass, typeQuestionsPosees);
+        System.out.println("");
+        for (MofClass aClass : classes) {
+            System.out.println("Propriétés de la classe " + aClass.getName());
+            for (Property p : aClass.getOwnedAttribute()) {
+                System.out.print("  "  + p.getName());
+                if (p.getUpper().compareTo(1)>0) {
+                    System.out.print("[");
+                    p.getUpper().getValue();
+                    System.out.print("]");
+                }
+                System.out.println(" : " + p.getType().getName());
+            }
+        }
     }
 
 

@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /**
+ * TODO : replace the lists of attributes and operations by maps
+ * (name -&gt; item)
  *
  * @author jldeleage
  */
@@ -44,18 +46,25 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         return ownedAttribute;
     }
 
-
     @Override
     public void addOwnedAttribute(Property inProperty) {
         ownedAttribute.add(inProperty);
     }
-
 
     @Override
     public void removeOwnedAttribute(Property inProperty) {
         ownedAttribute.remove(inProperty);
     }
 
+    @Override
+    public Property getOwnedAttribute(String inName) {
+        for (Property property : getOwnedAttribute()) {
+            if (inName.equals(property.getName())) {
+                return property;
+            }
+        }
+        return null;
+    }
 
     @Override
     public Stream<Property> getOwnedAttributeAsStream() {
@@ -77,6 +86,16 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
     @Override
     public void removeOwnedOperation(Operation inOperation) {
         ownedOperation.remove(inOperation);
+    }
+
+    @Override
+    public Operation getOwnedOperation(String inName) {
+        for (Operation operation : getOwnedOperation()) {
+            if (inName.equals(operation.getName())) {
+                return operation;
+            }
+        }
+        return null;
     }
 
     @Override
