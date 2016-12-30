@@ -11,6 +11,8 @@ import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.MultiplicityElement;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
+import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
+import static fr.insset.jeanluc.ete.meta.model.emof.Parameter.PARAMETER;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
@@ -30,6 +32,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
+import java.lang.reflect.InvocationTargetException;
 
 
 
@@ -76,6 +79,9 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     }
 
 
+    //========================================================================//
+
+
     public Object   visitPackageableElement(PackageableElement inElement, Object... inParam) {
         PackageableElement packageable = (PackageableElement) inElement;
         NamedElement       parentElement = (NamedElement) inParam[0];
@@ -90,6 +96,9 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     }
 
 
+    //------------------------------------------------------------------------//
+
+
     public Object   visitMofClass(MofClass inElement, Object... inParam) {
         PackageableElement packageable = (PackageableElement) inElement;
         NamedElement       parentElement = (NamedElement) inParam[0];
@@ -102,6 +111,9 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         inoutModel.addPackagedElement(packageable);
         return inElement;
     }
+
+
+    //------------------------------------------------------------------------//
 
 
     /**
@@ -124,11 +136,39 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     }
 
 
-    public Object   visitOperation(Operation inOperation, Object... inParam) {
-        MofClass    parentClass = (MofClass) inParam[0];
-        parentClass.addOwnedOperation(inOperation);
+    //------------------------------------------------------------------------//
+
+
+    public Object   visitOperation(Operation inOperation, Object... inParam) throws EteException {
+        EteModel    model = (EteModel)inParam[1];
+        Element     element = (Element)inParam[2];
+        NodeList    paramElements = element.getElementsByTagName("ownedParameter");
+        for (int i=0 ; i<paramElements.getLength() ; i++) {
+            Element aParamElement = (Element)paramElements.item(i);
+            String  direction = aParamElement.getAttribute("direction");
+            if ("return".equals(direction)) {
+                MofType type = readType(aParamElement, model);
+                inOperation.setType(type);
+            }
+            else {
+                try {
+                    Parameter   parameter = (Parameter)FactoryRegistry.newInstance(PARAMETER);
+                    String      parameterName = aParamElement.getAttribute("name");
+                    parameter.setName(parameterName);
+                    MofType     type = readType(aParamElement, model);
+                    parameter.setType(type);
+                    inOperation.addOwnedParameter(parameter);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
+                    throw new EteException(ex);
+                }
+            }
+        }
         return inOperation;
     }
+
+
+    //------------------------------------------------------------------------//
 
 
     /**
@@ -177,6 +217,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         }
         return result;
     }
+
 
     //+=======================================================================//
 

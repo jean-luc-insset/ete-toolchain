@@ -7,13 +7,15 @@ package fr.insset.jeanluc.ete.meta.model.emof;
 
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.ete.meta.model.types.TypedElement;
 import java.util.Collection;
 
 /**
+ * WARNING : in Mof, an operation is not a typed element. In Ete, it is.
  *
  * @author jldeleage
  */
-public interface Operation extends NamedElement, MultiplicityElement {
+public interface Operation extends NamedElement, MultiplicityElement, TypedElement {
 
 
     public final static String      OPERATION = "operation";

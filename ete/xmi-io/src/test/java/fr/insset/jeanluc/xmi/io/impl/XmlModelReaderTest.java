@@ -6,6 +6,8 @@ import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
 import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
+import fr.insset.jeanluc.ete.meta.model.emof.Operation;
+import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
@@ -109,19 +111,32 @@ public class XmlModelReaderTest {
         PrimitiveDataTypes.init(parent);
         EteModel result = instance.readModel(url, parent);
 
-        // 3- check result
-        Map<String, Integer>    properties = new HashMap<>();
-        properties.put("Question", 4);
-        properties.put("QCM", 2);
-        Collection<MofClass> allClasses = result.getAllClasses();
-        System.out.println("AllClasses : " + allClasses.size());
-        for (MofClass aClass : allClasses) {
-            System.out.println("  " + aClass.getName());
-        }
-        assertEquals(8, allClasses.size());
-        Collection<MofClass> classes = result.getClasses();
-        assertEquals(8, classes.size());
+        // 3- Check result
 
+        // 3-a check the number of classes
+        Collection<MofClass> classes = result.getClasses();
+        assertEquals(13, classes.size());
+
+        // 3-b check the number of properties of each class
+        Map<String, Integer>    properties = new HashMap<>();
+        properties.put("CreateurQuestion", 0);
+        properties.put("QCM", 2);
+        properties.put("Question", 5);
+        properties.put("Etudiant", 2);
+        properties.put("Epreuve", 3);
+        properties.put("Passage", 5);
+        properties.put("Reponse", 2);
+        properties.put("QuestionPosee", 3);
+        properties.put("ReponseFournie", 1);
+        for (MofClass aClass : classes) {
+            Integer get = properties.get(aClass.getName());
+            if (get != null) {
+                assertEquals((long)get, (long)aClass.getOwnedAttribute().size());
+            }
+        }
+
+        // 3-c check some associations
+        // 3-c-1 check the relation passage -> questionsPosees
         MofClass passageClass = (MofClass) result.getElementByName("Passage");
         MofClass questionPoseeClass = (MofClass) result.getElementByName("QuestionPosee");
         MofCollection  sequenceQuestionsPoseesClass = (MofCollection) FactoryRegistry.newInstance(MOF_SEQUENCE);
@@ -129,20 +144,30 @@ public class XmlModelReaderTest {
         Property questionsPosees = passageClass.getOwnedAttribute("questionsPosees");
         MofType typeQuestionsPosees = questionsPosees.getType();
         assertEquals(sequenceQuestionsPoseesClass, typeQuestionsPosees);
-        System.out.println("");
-        for (MofClass aClass : classes) {
-            System.out.println("Propriétés de la classe " + aClass.getName());
-            for (Property p : aClass.getOwnedAttribute()) {
-                System.out.print("  "  + p.getName());
-                if (p.getUpper().compareTo(1)>0) {
-                    System.out.print("[");
-                    p.getUpper().getValue();
-                    System.out.print("]");
-                }
-                System.out.println(" : " + p.getType().getName());
+        // 3-c-2
+
+        // 3-d check some operations
+        MofClass createurQuestionClass = (MofClass) result.getElementByName("CreateurQuestion");
+        Operation ownedOperation = createurQuestionClass.getOwnedOperation("nouvelleReponse");
+        MofType type = ownedOperation.getType();
+        MofClass reponseClass = (MofClass)result.getElementByName("Reponse");
+        assertEquals(reponseClass, type);
+        Collection<Parameter> ownedParameters = ownedOperation.getOwnedParameter();
+        assertEquals(2, ownedParameters.size());
+        for (Parameter aParameter : ownedParameters) {
+            String      parameterName = aParameter.getName();
+            if ("inQuestion".equals(parameterName)) {
+                MofClass questionClass = (MofClass) result.getElementByName("Question");
+                assertEquals(questionClass, aParameter.getType());
+            } else if ("inLibelle".equals(parameterName)) {
+                MofType  stringType = (MofType) result.getElementByName("String");
+                assertEquals(stringType, aParameter.getType());
+            } else {
+                fail("Unknown parameter : " + parameterName + " in " + ownedOperation.getName());
             }
         }
-    }
+
+    }       // testReadComplexModel
 
 
     //========================================================================//

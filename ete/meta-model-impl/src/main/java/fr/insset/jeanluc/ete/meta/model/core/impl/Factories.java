@@ -6,10 +6,12 @@ import fr.insset.jeanluc.ete.meta.model.datatype.impl.UnlimitedNaturalImpl;
 import static fr.insset.jeanluc.ete.meta.model.emof.Association.ASSOCIATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
 import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
+import static fr.insset.jeanluc.ete.meta.model.emof.Parameter.PARAMETER;
 import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.AssociationImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.MofClassImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.OperationImpl;
+import fr.insset.jeanluc.ete.meta.model.emof.impl.ParameterImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.PropertyImpl;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
@@ -39,19 +41,20 @@ public abstract class Factories {
 
     public  static void init() {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
-        registry.registerFactory(MOF_TYPE, MofTypeImpl.class);
-        registry.registerFactory(MODEL, EteModelImpl.class);
-        registry.registerFactory(PACKAGE, MofPackageImpl.class);
-        registry.registerFactory(MOF_CLASS, MofClassImpl.class);
-        registry.registerFactory(OPERATION, OperationImpl.class);
-        registry.registerFactory(PROPERTY, PropertyImpl.class);
-        registry.registerFactory(ASSOCIATION, AssociationImpl.class);
-        registry.registerFactory(GENERALIZATION, Generalization.class);
-        registry.registerFactory(UNLIMITED_NATURAL, UnlimitedNaturalImpl.class);
-        registry.registerFactory(MOF_SEQUENCE, MofSequenceImpl.class);
-        registry.registerFactory(MOF_BAG, MofBagImpl.class);
-        registry.registerFactory(MOF_SET, MofSetImpl.class);
-        registry.registerFactory(MOF_ORDERED_SET, MofOrderedSetImpl.class);
+        registry.registerDefaultFactory(MOF_TYPE, MofTypeImpl.class);
+        registry.registerDefaultFactory(MODEL, EteModelImpl.class);
+        registry.registerDefaultFactory(PACKAGE, MofPackageImpl.class);
+        registry.registerDefaultFactory(MOF_CLASS, MofClassImpl.class);
+        registry.registerDefaultFactory(OPERATION, OperationImpl.class);
+        registry.registerDefaultFactory(PARAMETER, ParameterImpl.class);
+        registry.registerDefaultFactory(PROPERTY, PropertyImpl.class);
+        registry.registerDefaultFactory(ASSOCIATION, AssociationImpl.class);
+        registry.registerDefaultFactory(GENERALIZATION, Generalization.class);
+        registry.registerDefaultFactory(UNLIMITED_NATURAL, UnlimitedNaturalImpl.class);
+        registry.registerDefaultFactory(MOF_SEQUENCE, MofSequenceImpl.class);
+        registry.registerDefaultFactory(MOF_BAG, MofBagImpl.class);
+        registry.registerDefaultFactory(MOF_SET, MofSetImpl.class);
+        registry.registerDefaultFactory(MOF_ORDERED_SET, MofOrderedSetImpl.class);
     }
 
 

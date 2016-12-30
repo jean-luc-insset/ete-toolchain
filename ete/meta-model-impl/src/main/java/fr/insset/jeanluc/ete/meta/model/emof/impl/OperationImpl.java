@@ -5,22 +5,21 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
-import fr.insset.jeanluc.ete.meta.model.core.impl.NamedElementImpl;
 import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.ete.meta.model.types.impl.TypedElementImpl;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
  * @author jldeleage
  */
-public class OperationImpl extends NamedElementImpl implements Operation {
+public class OperationImpl extends TypedElementImpl implements Operation {
 
     public OperationImpl() throws InstantiationException {
         this.ownedParameter = FactoryMethods.newList(Parameter.class);

@@ -51,6 +51,5 @@ public interface EteModel extends MofPackage {
     }
 
 
-
 }
 
