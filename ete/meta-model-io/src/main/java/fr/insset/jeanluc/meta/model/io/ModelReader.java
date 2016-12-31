@@ -104,6 +104,9 @@ public interface ModelReader {
         readProperties(inDocument, inoutModel);
         readAssociations(inDocument, inoutModel);
         readOperations(inDocument, inoutModel);
+        readInvariants(inDocument, inoutModel);
+        readSpecifications(inDocument, inoutModel);
+        afterReading(inDocument, inoutModel);
     }
 
 
@@ -116,6 +119,8 @@ public interface ModelReader {
     public  Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readSpecifications(Object inDocument, EteModel inoutModel) throws EteException;
 
 
     public default void afterReading(Object inDocument, EteModel inoutModel) throws EteException {

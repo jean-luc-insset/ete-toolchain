@@ -3,17 +3,14 @@ package fr.insset.jeanluc.xmi.io.impl;
 
 
 import fr.insset.jeanluc.ete.api.EteException;
+import static fr.insset.jeanluc.ete.meta.model.constraint.Invariant.INVARIANT;
+import static fr.insset.jeanluc.ete.meta.model.constraint.Postcondition.POSTCONDITION;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
-import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import static fr.insset.jeanluc.ete.meta.model.emof.Association.ASSOCIATION;
-import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
-import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
-import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.meta.model.io.ModelReader;
@@ -28,7 +25,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -53,11 +49,14 @@ import org.w3c.dom.NodeList;
 public class XmlModelReader implements ModelReader {
 
 
-    public final String     PACKAGE_PATH     = "uml:Package";
-    public final String     CLASS_PATH       = "uml:Class";
-    public final String     ASSOCIATION_PATH = "uml:Association";
-    public final String     PROPERTY_PATH    = "uml:Property";
-    public final String     OPERATION_PATH   = "uml:Operation";
+    public final String     PACKAGE_PATH        = "uml:Package";
+    public final String     CLASS_PATH          = "uml:Class";
+    public final String     ASSOCIATION_PATH    = "uml:Association";
+    public final String     PROPERTY_PATH       = "uml:Property";
+    public final String     OPERATION_PATH      = "uml:Operation";
+    public final String     INVARIANT_PATH      = ".//packagedElement/ownedRule";
+    public final String     PRECONDITION_PATH   = ".//ownedOperation/ownedRule[@*=../precondition/@*]";
+    public final String     POSTCONDITION_PATH  = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
 
 
     @Override
@@ -96,6 +95,20 @@ public class XmlModelReader implements ModelReader {
     }
 
 
+    @Override
+    public Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElementsByPath((Document) inDocument, inoutModel, INVARIANT_PATH, INVARIANT);
+        return result;
+    }
+
+
+    @Override
+    public Collection<NamedElement> readSpecifications(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElementsByPath((Document) inDocument, inoutModel, POSTCONDITION_PATH, POSTCONDITION);
+        return result;
+    }
+
+
     
 
     //========================================================================//
@@ -117,11 +130,45 @@ public class XmlModelReader implements ModelReader {
     protected List<NamedElement> readElements(Node inNode, EteModel inModel,
             String inPath, String inType) throws EteException {
         try {
+            NodeList elementsByType = getElementsByType(inPath, inNode);
+            return _doReadElements(elementsByType, inNode, inModel, inPath, inType);
+        } catch (XPathExpressionException ex) {
+            Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
+    }
+
+    /**
+     * Reads all elements matching the path, using inNode as context.<br>
+     * Each DOM element is converted into a NamedElement by the factory
+     * associated to inType.<br>
+     * Every element is added to its own parent in the model.
+     * 
+     * @param inNode
+     * @param inModel
+     * @param inPath
+     * @param inType
+     * @return
+     * @throws EteException 
+     */
+    protected List<NamedElement> readElementsByPath(Node inNode, EteModel inModel,
+            String inPath, String inType) throws EteException {
+        try {
+            NodeList elementsByType = getElements(inPath, inNode);
+            return _doReadElements(elementsByType, inNode, inModel, inPath, inType);
+        } catch (XPathExpressionException ex) {
+            Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
+    }
+    
+    protected List<NamedElement> _doReadElements(NodeList elements, Node inNode, EteModel inModel,
+            String inPath, String inType) throws EteException {
+        try {
             List<NamedElement> result = FactoryMethods.newList(NamedElement.class);
             AbstractFactory factory = FactoryRegistry.getRegistry().getFactory(inType);
-            NodeList elementsByType = getElementsByType(inPath, inNode);
-            for (int i=0 ; i<elementsByType.getLength() ; i++) {
-                Element elt = (Element)elementsByType.item(i);
+            for (int i=0 ; i<elements.getLength() ; i++) {
+                Element elt = (Element)elements.item(i);
                 NamedElement newInstance = (NamedElement)factory.newInstance();
                 String name = elt.getAttribute("name");
                 // TODO : we should read objects with empty name or no name.
@@ -148,9 +195,6 @@ public class XmlModelReader implements ModelReader {
         } catch (InstantiationException ex) {
             Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
-        } catch (XPathExpressionException ex) {
-            Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
-            throw new EteException(ex);
         }
     }
 
@@ -166,6 +210,9 @@ public class XmlModelReader implements ModelReader {
         NodeList result = getElements(path, inSubTreeRoot);
         return result;
     }
+
+
+
 
     protected NodeList getElements(String inPath, Node inSubTreeRoot) throws XPathExpressionException {
         XPathFactory factory = XPathFactory.newInstance();

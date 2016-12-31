@@ -3,6 +3,8 @@ package fr.insset.jeanluc.xmi.io.impl;
 
 
 import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
+import fr.insset.jeanluc.ete.meta.model.constraint.Precondition;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
 import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNBOUND;
@@ -32,7 +34,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
-import java.lang.reflect.InvocationTargetException;
 
 
 
@@ -75,7 +76,8 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     public XmlModelReaderVisitor() {
         this.register("visit",
                     "fr.insset.jeanluc.ete.meta.model.emof",
-                    "fr.insset.jeanluc.ete.meta.model.mofpackage");
+                    "fr.insset.jeanluc.ete.meta.model.mofpackage",
+                    "fr.insset.jeanluc.ete.meta.model.constraint");
     }
 
 
@@ -199,6 +201,30 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     }
 
 
+    //------------------------------------------------------------------------//
+
+
+    public Object visitInvariant(Object inInvariant, Object... inParam) {
+        return inInvariant;
+    }
+
+
+    //------------------------------------------------------------------------//
+
+
+    public Object visitPrecondition(Precondition inPrecondition, Object... inParam) {
+        return inPrecondition;
+    }
+
+
+    //------------------------------------------------------------------------//
+
+
+    public Object visitPostcondition(Postcondition inPostcondition, Object... inParam) {
+        return inPostcondition;
+    }
+
+
     //========================================================================//
 
 
@@ -230,7 +256,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         }
         else {
             try {
-                String typeAsString = xPath.evaluate(typePath, inElement);
+                String typeAsString = xPath.evaluate(TYPE_PATH, inElement);
                 int index = typeAsString.lastIndexOf("::");
                 typeAsString = typeAsString.substring(index+2);
                 result = (MofType)inModel.getElementByName(typeAsString);
@@ -260,7 +286,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
 
     protected void   readMultiplicity(MultiplicityElement inoutElement, Element inXmlElement, EteModel inModel) throws EteException, XPathExpressionException {
-        String upperAsString = xPath.evaluate(upperPath, inXmlElement);
+        String upperAsString = xPath.evaluate(UPPER_PATH, inXmlElement);
         if (UNBOUND.equals(upperAsString)) {
             try {
                 // TODO
@@ -275,16 +301,16 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             try {
                 inoutElement.setUpper(Integer.parseInt(upperAsString));
             }
-            catch (Exception e) {
+            catch (NumberFormatException e) {
                 // our friend tried to give us a fake
                 inoutElement.setUpper(1);
             }
         }       // upper != *
-        String lowerAsString = xPath.evaluate(lowerPath, inXmlElement);
+        String lowerAsString = xPath.evaluate(LOWER_PATH, inXmlElement);
         try {
             inoutElement.setLower(Integer.parseInt(lowerAsString));
         }
-        catch (Exception e) {
+        catch (NumberFormatException e) {
             // There is no lower value for multiplicity. Let's take 1 instead
             inoutElement.setLower(
                 UNBOUND.equals(inoutElement.getUpper()) ?0:1
@@ -293,11 +319,11 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     }   // readMultiplicity
 
 
-    private XPathFactory    factory     = XPathFactory.newInstance();
-    private XPath           xPath       = factory.newXPath();
-    private String          typePath    = "type/*/*/@referentPath";
-    private String          lowerPath   = ".//lowerValue/@value";
-    private String          upperPath   = ".//upperValue/@value";
+    private final        XPathFactory    factory     = XPathFactory.newInstance();
+    private final        XPath           xPath       = factory.newXPath();
+    private final static String          TYPE_PATH   = "type/*/*/@referentPath";
+    private final static String          LOWER_PATH  = ".//lowerValue/@value";
+    private final static String          UPPER_PATH  = ".//upperValue/@value";
 
 
 }

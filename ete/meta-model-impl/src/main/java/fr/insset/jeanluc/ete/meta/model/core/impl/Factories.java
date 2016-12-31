@@ -1,6 +1,12 @@
 package fr.insset.jeanluc.ete.meta.model.core.impl;
 
 
+import static fr.insset.jeanluc.ete.meta.model.constraint.Invariant.INVARIANT;
+import static fr.insset.jeanluc.ete.meta.model.constraint.Postcondition.POSTCONDITION;
+import static fr.insset.jeanluc.ete.meta.model.constraint.Precondition.PRECONDITION;
+import fr.insset.jeanluc.ete.meta.model.constraint.impl.InvariantImpl;
+import fr.insset.jeanluc.ete.meta.model.constraint.impl.PostconditionImpl;
+import fr.insset.jeanluc.ete.meta.model.constraint.impl.PreconditionImpl;
 import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNLIMITED_NATURAL;
 import fr.insset.jeanluc.ete.meta.model.datatype.impl.UnlimitedNaturalImpl;
 import static fr.insset.jeanluc.ete.meta.model.emof.Association.ASSOCIATION;
@@ -25,7 +31,6 @@ import fr.insset.jeanluc.ete.meta.model.types.collections.impl.MofOrderedSetImpl
 import fr.insset.jeanluc.ete.meta.model.types.collections.impl.MofSequenceImpl;
 import fr.insset.jeanluc.ete.meta.model.types.collections.impl.MofSetImpl;
 import fr.insset.jeanluc.ete.meta.model.types.impl.MofTypeImpl;
-import static fr.insset.jeanluc.util.factory.FactoryMethods.SET;
 import        fr.insset.jeanluc.util.factory.FactoryRegistry;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofBag.MOF_BAG;
@@ -55,6 +60,9 @@ public abstract class Factories {
         registry.registerDefaultFactory(MOF_BAG, MofBagImpl.class);
         registry.registerDefaultFactory(MOF_SET, MofSetImpl.class);
         registry.registerDefaultFactory(MOF_ORDERED_SET, MofOrderedSetImpl.class);
+        registry.registerDefaultFactory(INVARIANT, InvariantImpl.class);
+        registry.registerDefaultFactory(PRECONDITION, PreconditionImpl.class);
+        registry.registerDefaultFactory(POSTCONDITION, PostconditionImpl.class);
     }
 
 

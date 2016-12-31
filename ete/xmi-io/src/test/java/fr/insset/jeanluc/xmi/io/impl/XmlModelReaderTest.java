@@ -10,7 +10,6 @@ import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import fr.insset.jeanluc.ete.meta.model.types.collections.MofCollection;
@@ -144,9 +143,9 @@ public class XmlModelReaderTest {
         Property questionsPosees = passageClass.getOwnedAttribute("questionsPosees");
         MofType typeQuestionsPosees = questionsPosees.getType();
         assertEquals(sequenceQuestionsPoseesClass, typeQuestionsPosees);
-        // 3-c-2
 
         // 3-d check some operations
+        // 3-d-1 CreateurQuestion::nouvelleReponse
         MofClass createurQuestionClass = (MofClass) result.getElementByName("CreateurQuestion");
         Operation ownedOperation = createurQuestionClass.getOwnedOperation("nouvelleReponse");
         MofType type = ownedOperation.getType();
@@ -173,4 +172,4 @@ public class XmlModelReaderTest {
     //========================================================================//
 
     
-}
+}       // XmlModelReaderTest

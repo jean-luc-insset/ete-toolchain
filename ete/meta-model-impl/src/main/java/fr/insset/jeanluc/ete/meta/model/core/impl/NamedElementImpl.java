@@ -31,6 +31,12 @@ public abstract class NamedElementImpl implements NamedElement {
     }
 
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
+
     private String      name;
     private String      id;
 
