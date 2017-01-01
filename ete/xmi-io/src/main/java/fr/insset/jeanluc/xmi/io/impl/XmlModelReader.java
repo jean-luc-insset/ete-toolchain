@@ -115,7 +115,7 @@ public class XmlModelReader implements ModelReader {
 
 
     /**
-     * Reads all elements matching the path, using inNode as context.<br>
+     * Reads all elements described by inPath, using inNode as context.<br>
      * Each DOM element is converted into a NamedElement by the factory
      * associated to inType.<br>
      * Every element is added to its own parent in the model.
@@ -161,7 +161,21 @@ public class XmlModelReader implements ModelReader {
             throw new EteException(ex);
         }
     }
-    
+
+    /**
+     * Reads the elements in the node list. For each element, creates an
+     * according named element and sets its name.<br>
+     * The new named element is added to its parent.<br>
+     * Then visitors are invoked for the new named element.
+     * 
+     * @param elements
+     * @param inNode
+     * @param inModel
+     * @param inPath
+     * @param inType
+     * @return
+     * @throws EteException 
+     */
     protected List<NamedElement> _doReadElements(NodeList elements, Node inNode, EteModel inModel,
             String inPath, String inType) throws EteException {
         try {
@@ -181,7 +195,9 @@ public class XmlModelReader implements ModelReader {
                 inModel.addElement(newInstance);
                 Node parentNode = elt.getParentNode();
                 String parentName = parentNode instanceof Element ? ((Element)parentNode).getAttribute("name"):"";
-                PackageableElement parentElement = inModel.getElementByName(parentName);
+                String parentId   = parentNode instanceof Element ? ((Element)parentNode).getAttribute("xmi:id"):"";
+                NamedElement parentElement = inModel.getElementById(parentId);
+//                PackageableElement parentElement = inModel.getElementByName(parentName);
                 for (DynamicVisitorSupport visitor : getVisitors()) {
                     try {
                         visitor.genericVisit(newInstance, parentElement, inModel, elt);

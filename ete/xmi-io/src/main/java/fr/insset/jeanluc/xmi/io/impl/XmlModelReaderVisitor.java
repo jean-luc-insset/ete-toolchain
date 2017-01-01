@@ -3,6 +3,9 @@ package fr.insset.jeanluc.xmi.io.impl;
 
 
 import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.constraint.Condition;
+import fr.insset.jeanluc.ete.meta.model.constraint.Constraint;
+import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
 import fr.insset.jeanluc.ete.meta.model.constraint.Precondition;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
@@ -204,24 +207,30 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     //------------------------------------------------------------------------//
 
 
-    public Object visitInvariant(Object inInvariant, Object... inParam) {
-        return inInvariant;
+    public Object visitInvariant(Invariant inInvariant, Object... inParam) throws XPathExpressionException {
+        return doVisitConstraint(inInvariant, inParam);
     }
 
 
     //------------------------------------------------------------------------//
 
 
-    public Object visitPrecondition(Precondition inPrecondition, Object... inParam) {
-        return inPrecondition;
+    public Object visitPrecondition(Precondition inPrecondition, Object... inParam) throws XPathExpressionException {
+        return doVisitConstraint(inPrecondition, inParam);
     }
 
 
-    //------------------------------------------------------------------------//
+
+    public Object visitPostcondition(Postcondition inPostcondition, Object... inParam) throws XPathExpressionException {
+        return doVisitConstraint(inPostcondition, inParam);
+    }
 
 
-    public Object visitPostcondition(Postcondition inPostcondition, Object... inParam) {
-        return inPostcondition;
+    protected Object doVisitConstraint(Constraint inConstraint, Object... inParam) throws XPathExpressionException {
+        inConstraint.setContext((NamedElement)inParam[0]);
+        String body = xPath.evaluate("specification/body/text()", (Element)inParam[2]);
+        inConstraint.setSpecification(body);
+        return inConstraint;
     }
 
 
