@@ -182,25 +182,25 @@ public class XmlModelReader implements ModelReader {
             List<NamedElement> result = FactoryMethods.newList(NamedElement.class);
             AbstractFactory factory = FactoryRegistry.getRegistry().getFactory(inType);
             for (int i=0 ; i<elements.getLength() ; i++) {
-                Element elt = (Element)elements.item(i);
+                Element domElement = (Element)elements.item(i);
                 NamedElement newInstance = (NamedElement)factory.newInstance();
-                String name = elt.getAttribute("name");
+                String name = domElement.getAttribute("name");
                 // TODO : we should read objects with empty name or no name.
                 // Such objects can be associations
                 if (null != name && !"".equals(name)) {
                     newInstance.setName(name);
                 }
-                String id = elt.getAttribute("xmi:id");
+                String id = domElement.getAttribute("xmi:id");
                 newInstance.setId(id);
                 inModel.addElement(newInstance);
-                Node parentNode = elt.getParentNode();
+                Node parentNode = domElement.getParentNode();
                 String parentName = parentNode instanceof Element ? ((Element)parentNode).getAttribute("name"):"";
                 String parentId   = parentNode instanceof Element ? ((Element)parentNode).getAttribute("xmi:id"):"";
-                NamedElement parentElement = inModel.getElementById(parentId);
+                NamedElement parentNamedElement = inModel.getElementById(parentId);
 //                PackageableElement parentElement = inModel.getElementByName(parentName);
                 for (DynamicVisitorSupport visitor : getVisitors()) {
                     try {
-                        visitor.genericVisit(newInstance, parentElement, inModel, elt);
+                        visitor.genericVisit(newInstance, parentNamedElement, inModel, domElement);
                     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                         Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
                     }

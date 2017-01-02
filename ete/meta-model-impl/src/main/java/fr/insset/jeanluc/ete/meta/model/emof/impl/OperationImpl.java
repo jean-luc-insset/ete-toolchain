@@ -5,6 +5,8 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
+import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
+import fr.insset.jeanluc.ete.meta.model.constraint.Precondition;
 import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
@@ -22,8 +24,10 @@ import java.util.List;
 public class OperationImpl extends TypedElementImpl implements Operation {
 
     public OperationImpl() throws InstantiationException {
-        this.ownedParameter = FactoryMethods.newList(Parameter.class);
+        this.ownedParameter  = FactoryMethods.newList(Parameter.class);
         this.raisedException = FactoryMethods.newSet(MofType.class);
+        this.preconditions   = FactoryMethods.newList(Precondition.class);
+        this.postconditions  = FactoryMethods.newList(Postcondition.class);
     }
 
 
@@ -104,12 +108,12 @@ public class OperationImpl extends TypedElementImpl implements Operation {
 
     @Override
     public void setLower(int inLower) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        lower = inLower;
     }
 
     @Override
     public void setUpper(UnlimitedNatural inUpper) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        upper = inUpper;
     }
 
     @Override
@@ -122,14 +126,46 @@ public class OperationImpl extends TypedElementImpl implements Operation {
         return upper;
     }
 
+    @Override
+    public Collection<Precondition> getPreconditions() {
+        return preconditions;
+    }
+
+    @Override
+    public void setPreconditions(Collection<Precondition> inPreconditions) {
+        preconditions = inPreconditions;
+    }
+
+    @Override
+    public void addPrecondition(Precondition inPrecondition) {
+        preconditions.add(inPrecondition);
+    }
+
+    @Override
+    public Collection<Postcondition> getPostconditions() {
+        return postconditions;
+    }
+
+    @Override
+    public void setPostconditions(Collection<Postcondition> inPostconditions) {
+        postconditions = inPostconditions;
+    }
+
+    @Override
+    public void addPostcondition(Postcondition inPostcondition) {
+        postconditions.add(inPostcondition);
+    }
 
 
-    private     MofClass            mofClass;
-    private     List<Parameter>     ownedParameter;
-    private     Collection<MofType> raisedException;
-    private     boolean             ordered;
-    private     boolean             unique;
-    private     int                 lower;
-    private     UnlimitedNatural    upper;
 
+    private     MofClass                    mofClass;
+    private     List<Parameter>             ownedParameter;
+    private     Collection<MofType>         raisedException;
+    private     boolean                     ordered;
+    private     boolean                     unique;
+    private     int                         lower;
+    private     UnlimitedNatural            upper;
+
+    private     Collection<Precondition>    preconditions;
+    private     Collection<Postcondition>   postconditions;
 }

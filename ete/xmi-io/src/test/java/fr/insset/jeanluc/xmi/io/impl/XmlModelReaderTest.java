@@ -2,6 +2,8 @@ package fr.insset.jeanluc.xmi.io.impl;
 
 
 
+import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
+import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
 import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
 import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
@@ -10,6 +12,7 @@ import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import fr.insset.jeanluc.ete.meta.model.types.collections.MofCollection;
@@ -143,9 +146,21 @@ public class XmlModelReaderTest {
         Property questionsPosees = passageClass.getOwnedAttribute("questionsPosees");
         MofType typeQuestionsPosees = questionsPosees.getType();
         assertEquals(sequenceQuestionsPoseesClass, typeQuestionsPosees);
+        Collection<Invariant> invariants = questionPoseeClass.getInvariants();
+        assertEquals(1, invariants.size());
 
         // 3-d check some operations
-        // 3-d-1 CreateurQuestion::nouvelleReponse
+        // 3-d-1 Passage::calculeNote
+        List<Operation> ownedOperations = passageClass.getOwnedOperation();
+        assertEquals(1, ownedOperations.size());
+        Operation calculeNote = ownedOperations.get(0);
+        MofType calculeNoteType = calculeNote.getType();
+        PackageableElement floatType = result.getElementByName("float");
+        assertNotNull(floatType);
+        assertEquals(floatType, calculeNoteType);
+        Collection<Postcondition> postconditions = calculeNote.getPostconditions();
+        assertEquals(1, postconditions.size());
+        // 3-d-2 CreateurQuestion::nouvelleReponse
         MofClass createurQuestionClass = (MofClass) result.getElementByName("CreateurQuestion");
         Operation ownedOperation = createurQuestionClass.getOwnedOperation("nouvelleReponse");
         MofType type = ownedOperation.getType();
@@ -164,7 +179,7 @@ public class XmlModelReaderTest {
             } else {
                 fail("Unknown parameter : " + parameterName + " in " + ownedOperation.getName());
             }
-        }
+        }        
 
     }       // testReadComplexModel
 

@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof;
 
+import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.types.Classifier;
 import java.util.Collection;
 import java.util.List;
@@ -43,5 +44,9 @@ public interface MofClass extends Classifier {
     public  void                    addSuperClass(MofClass inMofClass);
     public  void                    removeSuperClass(MofClass inMofClass);
     public  Stream<MofClass>        getSuperClassAsStream();
+
+    public  Collection<Invariant>   getInvariants();
+    public  void                    setInvariants(Collection<Invariant> inInvariants);
+    public  void                    addInvariant(Invariant inInvariant);
 
 }

@@ -26,6 +26,18 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
     }
 
 
+    @Override
+    public String getSpecification() {
+        return specification;
+    }
+
+    @Override
+    public void setSpecification(String inSpecification) {
+        specification = inSpecification;
+    }
+
+
     private     NamedElement        context;
+    private     String              specification;
 
 }

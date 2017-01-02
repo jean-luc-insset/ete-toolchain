@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
+
+
 import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
@@ -31,9 +29,10 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 
     public MofClassImpl() throws EteException {
         try {
-            this.superClass = FactoryMethods.newList(MofClass.class);
+            this.superClass     = FactoryMethods.newList(MofClass.class);
             this.ownedOperation = FactoryMethods.newList(Operation.class);
             this.ownedAttribute = FactoryMethods.newList(Property.class);
+            this.invariants     = FactoryMethods.newList(Invariant.class);
         } catch (InstantiationException ex) {
             Logger.getLogger(MofClassImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
@@ -139,12 +138,28 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Collection<Invariant> getInvariants() {
+        return invariants;
+    }
+
+    @Override
+    public void setInvariants(Collection<Invariant> inInvariants) {
+        invariants = inInvariants;
+    }
+
+    @Override
+    public void addInvariant(Invariant inInvariant) {
+        invariants.add(inInvariant);
+    }
+
 
 
 
     
     List<Property>          ownedAttribute;
     List<Operation>         ownedOperation;
-    Collection<MofClass>    superClass;
+    Collection<Invariant>   invariants;
+    List<MofClass>          superClass;
 
 }

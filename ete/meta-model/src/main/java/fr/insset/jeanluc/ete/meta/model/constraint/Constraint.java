@@ -17,4 +17,7 @@ public interface Constraint extends NamedElement {
     public  NamedElement    getContext();
     public  void            setContext(NamedElement inContext);
 
+    public  String          getSpecification();
+    public  void            setSpecification(String inSpecification);
+
 }

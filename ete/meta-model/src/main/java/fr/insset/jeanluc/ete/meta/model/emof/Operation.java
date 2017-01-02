@@ -5,6 +5,8 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof;
 
+import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
+import fr.insset.jeanluc.ete.meta.model.constraint.Precondition;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
 import fr.insset.jeanluc.ete.meta.model.types.MofType;
 import fr.insset.jeanluc.ete.meta.model.types.TypedElement;
@@ -21,15 +23,23 @@ public interface Operation extends NamedElement, MultiplicityElement, TypedEleme
     public final static String      OPERATION = "operation";
 
 
-    public  MofClass                getMofClass();
-    public  void                    setMofClass(MofClass inMofClass);
+    public  MofClass                    getMofClass();
+    public  void                        setMofClass(MofClass inMofClass);
 
-    public  Collection<Parameter>   getOwnedParameter();
-    public  void                    addOwnedParameter(Parameter inParameter);
-    public  void                    removeOwnedParameter(Parameter inParameter);
+    public  Collection<Parameter>       getOwnedParameter();
+    public  void                        addOwnedParameter(Parameter inParameter);
+    public  void                        removeOwnedParameter(Parameter inParameter);
 
-    public  Collection<MofType>     getRaisedException();
-    public  void                    addRaisedException(MofType inMofType);
-    public  void                    removeRaisedException(MofType inMofType);
+    public  Collection<MofType>         getRaisedException();
+    public  void                        addRaisedException(MofType inMofType);
+    public  void                        removeRaisedException(MofType inMofType);
+
+    public  Collection<Precondition>    getPreconditions();
+    public  void                        setPreconditions(Collection<Precondition> inPreconditions);
+    public  void                        addPrecondition(Precondition inPrecondition);
+
+    public  Collection<Postcondition>   getPostconditions();
+    public  void                        setPostconditions(Collection<Postcondition> inPosticonditions);
+    public  void                        addPostcondition(Postcondition inPostcondition);
 
 }

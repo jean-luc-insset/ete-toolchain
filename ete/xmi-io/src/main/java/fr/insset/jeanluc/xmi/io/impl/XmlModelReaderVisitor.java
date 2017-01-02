@@ -3,7 +3,6 @@ package fr.insset.jeanluc.xmi.io.impl;
 
 
 import fr.insset.jeanluc.ete.api.EteException;
-import fr.insset.jeanluc.ete.meta.model.constraint.Condition;
 import fr.insset.jeanluc.ete.meta.model.constraint.Constraint;
 import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
@@ -208,7 +207,9 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
 
     public Object visitInvariant(Invariant inInvariant, Object... inParam) throws XPathExpressionException {
-        return doVisitConstraint(inInvariant, inParam);
+        inInvariant = (Invariant)doVisitConstraint(inInvariant, inParam);
+        ((MofClass)inParam[0]).addInvariant(inInvariant);
+        return inInvariant;
     }
 
 
@@ -216,13 +217,17 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
 
     public Object visitPrecondition(Precondition inPrecondition, Object... inParam) throws XPathExpressionException {
-        return doVisitConstraint(inPrecondition, inParam);
+        inPrecondition = (Precondition) doVisitConstraint(inPrecondition, inParam);
+        ((Operation)inParam[0]).addPrecondition(inPrecondition);
+        return inPrecondition;
     }
 
 
 
     public Object visitPostcondition(Postcondition inPostcondition, Object... inParam) throws XPathExpressionException {
-        return doVisitConstraint(inPostcondition, inParam);
+        inPostcondition = (Postcondition) doVisitConstraint(inPostcondition, inParam);
+        ((Operation)inParam[0]).addPostcondition(inPostcondition);
+        return inPostcondition;
     }
 
 
