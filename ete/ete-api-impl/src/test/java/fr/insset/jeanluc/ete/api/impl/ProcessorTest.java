@@ -35,11 +35,20 @@ public class ProcessorTest {
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
+
     @Before
     public void setUp() {
+        FactoryRegistry registry = FactoryRegistry.getRegistry();
+        registry.registerFactory(MODEL, EteModelImpl.class);
+        registry.registerFactory(ACTION_READER, XmlActionReader.class);
+        registry.registerFactory(MODEL_READER, XmlModelReader.class);
+
+        // Register meta-model
+        Factories.init();
     }
     
+
     @After
     public void tearDown() {
     }
@@ -51,16 +60,11 @@ public class ProcessorTest {
     @Test
     public void test() throws InstantiationException {
         System.out.println("run");
-        FactoryRegistry registry = FactoryRegistry.getRegistry();
-        registry.registerFactory(MODEL, EteModelImpl.class);
-        registry.registerFactory(ACTION_READER, XmlActionReader.class);
-        registry.registerFactory(MODEL_READER, XmlModelReader.class);
-
-        // Register meta-model
-        Factories.init();
 
         ProcessorAction instance = new ProcessorAction("../../src/test/mda/ete-config.xml");
         instance.run();
+
+        // Check the results
     }
 
 

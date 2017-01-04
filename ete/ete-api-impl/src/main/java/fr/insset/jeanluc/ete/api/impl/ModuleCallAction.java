@@ -14,6 +14,7 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,12 +64,25 @@ public class ModuleCallAction extends ActionSupport {
                 path = pathToConfigFile;
             }
             else {
+                // TODO : the pathToConfigFile may be a path to a directory
+                // containing a default ete-config.xml file
+                // In such a case, the base url which is computed is not
+                // correct.
                 String baseUrl = getBaseUrl();
                 path = baseUrl + pathToConfigFile;
-                int index = pathToConfigFile.lastIndexOf('/');
-                if (index >= 0) {
-                    baseUrl += pathToConfigFile.substring(0, index+1);
+                File file = new File(path);
+                if (file.isDirectory()) {
+                    baseUrl += pathToConfigFile;
+                    if (!baseUrl.endsWith("/")) {
+                        baseUrl += "/";
+                    }
                     addParameter("base-url", baseUrl);
+                } else {
+                    int index = pathToConfigFile.lastIndexOf('/');
+                    if (index >= 0) {
+                        baseUrl += pathToConfigFile.substring(0, index+1);
+                        addParameter("base-url", baseUrl);
+                    }
                 }
             }
 

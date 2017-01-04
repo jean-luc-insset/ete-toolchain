@@ -25,8 +25,7 @@ public class ModelAction extends ActionSupport {
 
     /**
      * Name of factory. This value must be used as a key with the
-     * {@link fr.insset.jeanluc.util.factory.FactoryRegistry#getParameter(String)
-     * getFactory(String inFactoryName) method}
+     * getFactory(String inFactoryName) method
      */
     public final static String  MODEL_ACTION     = "model-action";
     public final static String  MODEL_READER     = "model-reader";
@@ -36,7 +35,7 @@ public class ModelAction extends ActionSupport {
      * received model.
      * 
      * @param inModel
-     * @return 
+     * @return the result of the preprocessing (maybe inModel)
      */
     @Override
     public MofPackage preProcess(MofPackage inModel) throws EteException {

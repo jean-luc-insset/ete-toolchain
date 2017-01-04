@@ -28,11 +28,14 @@ public class ForEachAction extends ActionSupport {
 
     @Override
     public MofPackage processChildren(MofPackage inModel) throws EteException {
-        Collection<NamedElement> evaluate = getItems(inModel);
+        Collection<NamedElement> items = getItems(inModel);
         String varName = (String)getParameter("var");
-        Object previousValue = getParameter(varName);
+        if (varName == null) {
+            varName = "current";
+            addParameter("var", varName);
+        }
         initLoop();
-        for (NamedElement obj : evaluate) {
+        for (NamedElement obj : items) {
             // We don't need to read the attributes again
             // the parameter "varName" is local and its value is updated
             // at each iteration
@@ -42,9 +45,6 @@ public class ForEachAction extends ActionSupport {
             endIteration(obj);
         }
         endLoop();
-        if (previousValue != null) {
-            addParameter(varName, previousValue);
-        }
         return inModel;
     }       // process
 
@@ -60,7 +60,7 @@ public class ForEachAction extends ActionSupport {
             }
             ELEvaluator elEvaluator = new ELEvaluator(inModel, getParameters());
             Collection evaluate = elEvaluator.evaluate(itemsExpression, Collection.class);
-                return evaluate;
+            return evaluate;
         } catch (InstantiationException ex) {
             Logger.getLogger(ForEachAction.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
@@ -75,6 +75,7 @@ public class ForEachAction extends ActionSupport {
     protected   void initIteration(NamedElement inElement) {
 
     }
+
 
     protected   MofPackage performAnIteration(MofPackage inPackage, NamedElement inElement) throws EteException {
         for (Action child : getChildren()) {

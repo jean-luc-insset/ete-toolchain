@@ -59,6 +59,12 @@ public class XmlModelReader implements ModelReader {
     public final String     POSTCONDITION_PATH  = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
 
 
+
+
+    public XmlModelReader() {
+    }
+
+
     @Override
     public Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
         Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH, PACKAGE);

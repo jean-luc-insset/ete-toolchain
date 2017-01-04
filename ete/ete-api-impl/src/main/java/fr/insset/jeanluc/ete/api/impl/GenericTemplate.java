@@ -2,71 +2,120 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 
+import fr.insset.jeanluc.el.evaluator.ELEvaluator;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 
 /**
+ * <div>
  * Every template action should perform the same basic actions :
- * <ul>
- * <li>get the template</li>
+ * <ol>
+ * <li>get and resolve the template Url</li>
  * <li>get and resolve the collection of items the template should be applied
  * to</li>
- * <li>for each item in that collection, pass the parameters</li>
- * <li>resolve the path</li>
- * <li>and apply the template</li>
- * <li>close everything</li>
- * </ul>
+ * <li>for each item in that collection :<ol>
+ *   <li>pass the parameters</li>
+ *   <li>resolve the target url</li>
+ *   <li>and apply the template</li>
+ *   <li>close everything</li>
+ * </ol></li>
+* </ol>
  * Eventually, the action should perform additional tasks such as create
- * directories (during the path resolution).
+ * directories (during the target path resolution).
+ * </div>
+ * <div>
+ * 
+ * </div>
  *
  * @author jldeleage
  */
 public abstract class GenericTemplate extends ForEachAction {
 
+    
+    public final static String  TEMPLATE            = "template";
+    public final static String  TEMPLATE_ENCODING   = "template-encoding";
+
+    public final static String  OUTPUT_BASE         = "output-base";
+    public final static String  TARGET              = "target";
+    public final static String  TARGET_ENCODING     = "target-encoding";
+
+
+    @Override
+    public void initIteration(NamedElement inElement) {
+        String varName = (String)getParameter("var");
+        copyAParameter(varName, inElement);
+    }
+
 
 
     @Override
     public MofPackage   performAnIteration(MofPackage inPackage, NamedElement inElement) {
+        String targetUrl = getTargetUrl();
+        try {
+            String templateUrl = getTemplateUrl();
+            Writer output = openTargetUrl(targetUrl, (EteModel) inPackage, inElement, "UTF-8");
+            applyTemplate(templateUrl, getTemplateEncoding(), output);
+            output.flush();
+            output.close();
+        } catch (IOException ex) {
+            Logger.getLogger(GenericTemplate.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return inPackage;
     }
 
 
-    protected   String  getTemplate() {
-        return (String) getParameter("template");
-    }
+    protected abstract void applyTemplate(String inTemplateUrl,
+            String inTemplateEncoding,
+            Writer inoutOutput);
 
 
     /**
-     * TODO : should eventually resolve any variable
+     * Evaluates the "template" parameter which can be an expression. The
+     * evaluation can use any parameter of the aciton.
      * 
-     * @return 
+     * @return the result of the evaluation of the "template" parameter
      */
     protected   String  getTemplateUrl() {
-        String  result = (String) getParameter("template");
+        String  result = (String) getParameter(TEMPLATE);
+        ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
+        String evaluate = elEvaluator.evaluate(result, String.class);
         String  baseUrl = getBaseUrl();
-        return baseUrl + result;
+        return baseUrl + evaluate;
     }
 
 
     public String getTemplateEncoding() {
-        String encoding = (String) getParameter("templateEncoding");
+        String encoding = (String) getParameter(TEMPLATE_ENCODING);
         return encoding == null ? "UTF-8" : encoding;
     }
 
+    //========================================================================//
+    //                               T A R G E T                              //
+    //========================================================================//
+
 
     protected   String  getTargetBase() {
-        return (String)getParameter("output-base");
+        return (String)getParameter(OUTPUT_BASE);
     }
 
 
     /**
      * TODO : should eventually resolve any variable
      * 
-     * @return 
+     * @return the resolver Url (after applying the variables)
      */
     protected   String  getTargetUrl() {
         String targetBase = getTargetBase();
@@ -86,56 +135,52 @@ public abstract class GenericTemplate extends ForEachAction {
     }
 
 
-//    protected   Writer     openTargetUrl(String inTarget, EteModel inModel, NamedElement inContext, String inEncoding) throws IOException {
-//        Map<String, Object> localParameters = new HashMap<>();
-//        localParameters.putAll(getParameters());
-//        Object localVar = getLocalParameter("var");
-//        if (localVar != null) {
-//            localParameters.put((String)localVar, inContext);
-//        }
-//        Logger logger = Logger.getGlobal();
-//        logger.log(Level.INFO, "passage de current : " + inContext.getName());
-//        localParameters.put("current", inContext);
-//        localParameters.put("model", inModel);
-//        ELEvaluator evaluator = new ELEvaluator(inModel, localParameters);
-//        String  evaluateString = evaluator.evaluateString(inTarget);
-//        int     slashIndex = evaluateString.lastIndexOf('/');
-//        if (slashIndex >= 0) {
-//            String  dirPath = evaluateString.substring(0, slashIndex);
-//            File dirs = new File(dirPath);
-//            logger.log(Level.INFO, "Creation de " + dirs.getAbsolutePath());
-//            dirs.mkdirs();
-//        }
-//        else {
-//            logger.log(Level.INFO, "Pas de creation de dossier, generation dans le dossier de travail");
-//        }
-//        return new OutputStreamWriter(new FileOutputStream(evaluateString), inEncoding);
-//    }
-//
-//
-//    // TODO
-//    // This method should resolve an eventual expression
-//    protected   List<NamedElement>    getItems() {
-//        Object parameter = getParameter("items");
-//        if (parameter == null) {
-//            return new LinkedList<NamedElement>();
-//        }
-//        ELEvaluator evaluator = new ELEvaluator(getModel());
-//        return evaluator.evaluateList((String)parameter);
-//    }
+    protected   Writer     openTargetUrl(String inTarget, EteModel inModel, NamedElement inContext, String inEncoding) throws IOException {
+        Map<String, Object> localParameters = new HashMap<>();
+        localParameters.putAll(getParameters());
+        Object localVar = getLocalParameter("var");
+        if (localVar != null) {
+            localParameters.put((String)localVar, inContext);
+        }
+        Logger logger = Logger.getGlobal();
+        logger.log(Level.INFO, "passage de current : " + inContext.getName());
+        localParameters.put("current", inContext);
+        localParameters.put("model", inModel);
+        ELEvaluator evaluator = new ELEvaluator(inModel, localParameters);
+        String  evaluateString = evaluator.evaluateString(inTarget);
+        int     slashIndex = evaluateString.lastIndexOf('/');
+        if (slashIndex >= 0) {
+            String  dirPath = evaluateString.substring(0, slashIndex);
+            File dirs = new File(dirPath);
+            logger.log(Level.INFO, "Creation de " + dirs.getAbsolutePath());
+            dirs.mkdirs();
+        }
+        else {
+            logger.log(Level.INFO, "Pas de creation de dossier, generation dans le dossier de travail");
+        }
+        return new OutputStreamWriter(new FileOutputStream(evaluateString), inEncoding);
+    }
 
+
+    //========================================================================//
+    //                           P A R A M E T E R S                          //
+    //========================================================================//
+    // A template engine may accept parameters in order to customize its      //
+    // output                                                                 //
+    // In such a case, the action should pass all its parameters to the       //
+    // engine
+    //========================================================================//
 
 
     /**
      * Copy the parameters of the action to the engine.<br>
-     * Could be overridden by subclasses.<br>
-     * This is an optional method.
+     * Could be overridden by subclasses.
      */
     protected void    copyParameters() {
         Map<String, Object> parameters = getParameters();
         Logger logger = Logger.getGlobal();
         for (Map.Entry<String, Object> entry : parameters.entrySet()) {
-            logger.info("*** Copie du paramètre " + entry.getKey() + " = " + entry.getValue());
+            logger.info("*** Copy of parameter " + entry.getKey() + " = " + entry.getValue());
             copyAParameter(entry.getKey(), entry.getValue());
         }
     }
@@ -143,8 +188,8 @@ public abstract class GenericTemplate extends ForEachAction {
 
     /**
      * 
-     * @param inKey
-     * @param inValue 
+     * @param inKey   the name of the variable
+     * @param inValue the value of the variable
      */
     protected abstract void  copyAParameter(String inKey, Object inValue);
 

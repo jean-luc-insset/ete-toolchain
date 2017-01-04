@@ -31,9 +31,9 @@
         <velocity template="essai-modele.vm"
                   target="hello.txt"/>
         <velocity template="essai-classes.vm"
-                  target="${class.name}"
-                  var="class"
-                  items="${classes}"/>
+                  items="${classes}"
+                  target="${current.name}.java"
+                  />
     </transformation-set>
 
 </mda>

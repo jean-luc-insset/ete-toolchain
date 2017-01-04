@@ -199,10 +199,7 @@ public interface Action {
      */
     public  default String  getBaseUrl() {
         String  result = (String) getParameter(BASE_URL);
-        if (result != null) {
-            return result;
-        }
-        return "";
+        return result != null? result : "";
     }
 
 
