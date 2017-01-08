@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.insset.jeanluc.el.evaluator;
 
+
+
+import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import java.beans.FeatureDescriptor;
 import java.lang.reflect.InvocationTargetException;
@@ -81,7 +79,8 @@ public class ELEvaluator {
 
 
     public String evaluateString(String inExpression) {
-        return (String)evaluate(inExpression, String.class);
+        String name = (String)evaluate(inExpression, String.class);
+        return name;
     }
 
 
@@ -131,6 +130,15 @@ public class ELEvaluator {
 
     private class EteELResolver extends ELResolver {
 
+        /**
+         * TODO : Should we give precedence to map values rather than
+         * properties&nbsp;?
+         * 
+         * @param elc
+         * @param o
+         * @param o1 : property name or key for the map
+         * @return  the value of o.o1 or o[o1]
+         */
         @Override
         public Object getValue(ELContext elc, Object o, Object o1) {
             if (o == null) {
@@ -138,23 +146,100 @@ public class ELEvaluator {
                 return parameters.get(variableName);
             }
             else {
-                String  propertyName = o1.toString();
-                String  methodName = "get" + propertyName.substring(0, 1).toUpperCase()
-                                    + propertyName.substring(1);
                 try {
-                    Method method = o.getClass().getMethod(methodName, new Class[0]);
-                    Object invoke = method.invoke(o, new Object[0]);
-                    elc.setPropertyResolved(true);
-                    return invoke;
-                } catch (NoSuchMethodException | SecurityException
-                        | IllegalAccessException | IllegalArgumentException
+                    String  propertyName = o1.toString();
+
+                    String  methodName = propertyName.substring(0, 1).toUpperCase()
+                            + propertyName.substring(1);
+                    Method  method = null;
+                    try {
+                        method = o.getClass().getMethod("get" + methodName, new Class[0]);
+                    }
+                    catch (NoSuchMethodException ex) {
+                        try {
+                            method = o.getClass().getMethod("is" + methodName, new Class[0]);
+                        }
+                        catch (NoSuchMethodException ex2) {
+                            // The is no accessor, whether with "get" or
+                            // "is" prefix. Maybe the base object is a
+                            // map...
+                        }
+                    }
+                    if (method != null) {
+                        Object invoke = method.invoke(o, new Object[0]);
+                        elc.setPropertyResolved(true);
+                        return invoke;
+                    }
+                    if (o instanceof Map) {
+                        Object get = ((Map)o).get(o1);
+                        return get;
+                    }
+                }
+                catch (IllegalAccessException | IllegalArgumentException
                         | InvocationTargetException ex) {
                     Logger.getLogger(ELEvaluator.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (o instanceof Map) {
-                    Object get = ((Map)o).get(o1);
-                    return get;
+            }
+            return null;
+        }
+
+
+        /**
+         * Calls a compatible method if any exists.
+         * 
+         * WARNING :
+         * 
+         * @param context : EL context to resolve any variables if needed
+         * @param base : object to use as "this"
+         * @param methodName : name of the method to call
+         * @param paramTypes : types of parameters
+         * @param params
+         * @return 
+         */
+        @Override
+        public Object invoke(ELContext context, Object base, Object methodName, Class<?>[] paramTypes, Object[] params) {
+            try {
+                Class<?> baseClass = base.getClass();
+                paramTypes = new Class[params.length];
+                for (int i=0 ; i<params.length ; i++) {
+                    paramTypes[i] = params[i].getClass();
                 }
+                Method method = null;
+                try {
+                    method = baseClass.getMethod((String)methodName, paramTypes);
+                } catch (NoSuchMethodException ex) {
+                    // this exception is not harmful. The exact method does
+                    // not exist but maybe there is one the actual parameters
+                    // can be promoted for.
+                }
+                if (method == null) {
+                    Method[] methods = baseClass.getMethods();
+                    methodLoop : for (int i=0 ; i<methods.length ; i++) {
+                        if (methodName.equals(methods[i].getName())) {
+                            // Check parameters
+                            method = methods[i];
+                            int parameterCount = method.getParameterCount();
+                            if (parameterCount != params.length) {
+                                method = null;
+                                continue;
+                            }
+                            Class<?>[] parameterTypes = method.getParameterTypes();
+                            for (int j=0 ; j<parameterCount ; j++) {
+                                if (! parameterTypes[j].isAssignableFrom(params[j].getClass())) {
+                                    method = null;
+                                    continue methodLoop;
+                                }
+                            }
+                            break methodLoop;
+                        }       // method name OK
+                    }       // method loop
+                }       // method == null
+                Object result = method.invoke(base, params);
+                return result;
+            } catch (SecurityException
+                    | IllegalAccessException | IllegalArgumentException
+                    | InvocationTargetException ex) {
+                Logger.getLogger(ELEvaluator.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
             }
         }
@@ -233,6 +318,7 @@ public class ELEvaluator {
 
         @Override
         public Method resolveFunction(String string, String string1) {
+            System.out.println("Resolution de la fonction : " + string + " - " + string1);
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
         

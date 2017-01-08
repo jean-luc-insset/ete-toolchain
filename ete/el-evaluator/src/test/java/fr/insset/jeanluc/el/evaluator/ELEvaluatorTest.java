@@ -13,6 +13,8 @@ import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.MofPackageImpl;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -78,6 +80,7 @@ public class ELEvaluatorTest {
 
         parameters = new HashMap<>();
         parameters.put("qcmClass", qcm);
+        parameters.put("questionClass", question);
 
         instance = new ELEvaluator(model, parameters);
     }
@@ -165,6 +168,27 @@ public class ELEvaluatorTest {
         assertEquals("QCM", result);
     }
 
+
+    @Test
+    public void testEvaluationFunction() {
+        System.out.println("evaluationFunction");
+        String inExpression = "${questionClass.name.toUpperCase()}";
+        String result = instance.evaluate(inExpression, String.class);
+        assertEquals("QUESTION", result);
+    }
+
+
+    @Test
+    public void testEvaluationFunction2() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        System.out.println("evaluationFunction2");
+        String replace = "hello world".replace('l', 'm');
+        System.out.println("Replace : " + replace);
+        String inExpression = "${questionClass.name.replace('u', 'w')}";
+        String result = instance.evaluate(inExpression, String.class);
+        assertEquals("Qwestion", result);
+    }
+
+
     /**
      * Test of evaluateInt method, of class ELEvaluator.
      */
@@ -175,5 +199,6 @@ public class ELEvaluatorTest {
         Object result = instance.evaluateInt("12");
         assertEquals(expResult, result);
     }
-    
+
+
 }
