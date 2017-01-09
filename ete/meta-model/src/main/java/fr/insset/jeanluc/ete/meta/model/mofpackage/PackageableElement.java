@@ -9,7 +9,11 @@ import fr.insset.jeanluc.ete.meta.model.types.TypedElement;
  */
 public interface PackageableElement extends TypedElement {
 
-    public void         setOwningPackage(MofPackage inPackage);
-    public MofPackage   getOwningPackage();
+    public void                 setOwningPackage(MofPackage inPackage);
+    public MofPackage           getOwningPackage();
+
+    public default MofPackage   getPackage() {
+        return getOwningPackage();
+    }
 
 }

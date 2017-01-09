@@ -110,6 +110,10 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             MofPackage parentPackage = (MofPackage) parentElement;
             parentPackage.addPackagedElement(packageable);
             packageable.setOwningPackage(parentPackage);
+            System.out.println("INFO : the item " + packageable + " is put in package " + parentPackage);
+        }
+        else {
+            System.out.println("WARNING : the item " + packageable + " is not put in any package");
         }
         EteModel    inoutModel = (EteModel) inParam[1];
         inoutModel.addPackagedElement(packageable);
