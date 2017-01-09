@@ -14,11 +14,13 @@ import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
 import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.Parameter.PARAMETER;
 import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
+import static fr.insset.jeanluc.ete.meta.model.emof.Stereotype.STEREOTYPE;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.AssociationImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.MofClassImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.OperationImpl;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.ParameterImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.PropertyImpl;
+import fr.insset.jeanluc.ete.meta.model.emof.impl.StereotypeImpl;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
@@ -63,6 +65,7 @@ public abstract class Factories {
         registry.registerDefaultFactory(INVARIANT, InvariantImpl.class);
         registry.registerDefaultFactory(PRECONDITION, PreconditionImpl.class);
         registry.registerDefaultFactory(POSTCONDITION, PostconditionImpl.class);
+        registry.registerDefaultFactory(STEREOTYPE, StereotypeImpl.class);
     }
 
 

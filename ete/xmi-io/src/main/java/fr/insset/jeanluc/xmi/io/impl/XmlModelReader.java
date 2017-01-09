@@ -58,7 +58,7 @@ public class XmlModelReader implements ModelReader {
     public final String     INVARIANT_PATH      = ".//packagedElement/ownedRule";
     public final String     PRECONDITION_PATH   = ".//ownedOperation/ownedRule[@*=../precondition/@*]";
     public final String     POSTCONDITION_PATH  = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
-    public final String     STEREOTYPE_PATH     = "";
+    public final String     STEREOTYPE_PATH     = "uml:Stereotype";
 
 
 
@@ -118,7 +118,7 @@ public class XmlModelReader implements ModelReader {
 
     @Override
     public Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElementsByPath((Document) inDocument, inoutModel, STEREOTYPE_PATH, STEREOTYPE);
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, STEREOTYPE_PATH, STEREOTYPE);
         return result;
     }
 

@@ -106,6 +106,7 @@ public interface ModelReader {
         readOperations(inDocument, inoutModel);
         readInvariants(inDocument, inoutModel);
         readSpecifications(inDocument, inoutModel);
+        readStereotypes(inDocument, inoutModel);
         afterReading(inDocument, inoutModel);
     }
 

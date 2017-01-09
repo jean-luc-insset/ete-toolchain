@@ -107,7 +107,7 @@ public class XmlModelReaderTest {
 
         // 2- call the operation
         XmlModelReader instance = new XmlModelReader();
-        instance.addVisitors(new XmlModelReaderLogVisitor(), new XmlModelReaderVisitor());
+        instance.addVisitors(new XmlModelReaderVisitor());
         String  url = "../../src/test/mda/models/QCM_complet.xml";
         EteModel parent = new EteModelImpl();
         PrimitiveDataTypes.init(parent);

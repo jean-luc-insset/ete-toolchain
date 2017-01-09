@@ -16,4 +16,19 @@ public interface PackageableElement extends TypedElement {
         return getOwningPackage();
     }
 
+    public default String getQualifiedName() {
+        StringBuilder builder = new StringBuilder(getName());
+        computeQualifiedName(builder);
+        return builder.toString();
+    }
+
+    public default void computeQualifiedName(StringBuilder inoutBuilder) {
+        MofPackage aPackage = getPackage();
+        if (aPackage != null) {
+            aPackage.computeQualifiedName(inoutBuilder);
+            inoutBuilder.append("::");
+        }
+        inoutBuilder.append(getName());
+    }
+
 }

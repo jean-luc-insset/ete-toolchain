@@ -18,6 +18,7 @@ import fr.insset.jeanluc.ete.meta.model.emof.Operation;
 import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import static fr.insset.jeanluc.ete.meta.model.emof.Parameter.PARAMETER;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
+import fr.insset.jeanluc.ete.meta.model.emof.Stereotype;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
@@ -36,6 +37,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
+import org.w3c.dom.Document;
 
 
 
@@ -106,14 +108,15 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     public Object   visitMofClass(MofClass inElement, Object... inParam) {
         PackageableElement packageable = (PackageableElement) inElement;
         NamedElement       parentElement = (NamedElement) inParam[0];
+        Logger             logger = Logger.getGlobal();
         if (parentElement instanceof MofPackage) {
             MofPackage parentPackage = (MofPackage) parentElement;
             parentPackage.addPackagedElement(packageable);
             packageable.setOwningPackage(parentPackage);
-            System.out.println("INFO : the item " + packageable + " is put in package " + parentPackage);
+            logger.log(Level.FINE, "the item {0} is put in package {1}", new Object[]{packageable, parentPackage});
         }
         else {
-            System.out.println("WARNING : the item " + packageable + " is not put in any package");
+            logger.log(Level.WARNING, "the item " + packageable + " is not put in any package");
         }
         EteModel    inoutModel = (EteModel) inParam[1];
         inoutModel.addPackagedElement(packageable);
@@ -262,6 +265,15 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         return result;
     }
 
+
+    //------------------------------------------------------------------------//
+
+    public Object visitStereotype(Stereotype inStereotype, Object... inParam) throws XPathExpressionException {
+        Document doc = ((Element)inParam[2]).getOwnerDocument();
+        String  referencePath = "meta:" + inStereotype.getName();
+        NodeList elementsByTagNameNS = doc.getElementsByTagNameNS("http://www.magicdraw.com/schemas/meta.xmi", inStereotype.getName());
+        return inStereotype;
+    }
 
     //+=======================================================================//
 
