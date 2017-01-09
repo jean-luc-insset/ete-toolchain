@@ -121,6 +121,7 @@ public interface ModelReader {
     public  Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readSpecifications(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException;
 
 
     public default void afterReading(Object inDocument, EteModel inoutModel) throws EteException {

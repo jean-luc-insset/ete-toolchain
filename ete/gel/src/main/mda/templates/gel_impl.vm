@@ -1,9 +1,11 @@
-package ${current.package.name};
+package ${current.package.name}.impl;
 
 
-public class ${current.name}Impl {
+import ${current.package.name}.api.${current.name};
 
-    public ${current.name}() {
+public class ${current.name}Impl implements ${current.name} {
+
+    public ${current.name}Impl() {
     }
 
 

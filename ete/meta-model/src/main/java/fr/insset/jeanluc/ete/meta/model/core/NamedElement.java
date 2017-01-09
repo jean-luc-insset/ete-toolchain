@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.meta.model.core;
 
+import fr.insset.jeanluc.ete.meta.model.emof.Stereotype;
 import java.util.Collection;
 
 /**
@@ -18,5 +19,11 @@ public interface NamedElement extends MofElement {
 
     public String       getId();
     public void         setId(String inId);
+
+    public Collection<Stereotype>   getStereotypes();
+    public void                     setStereotypes(Collection<Stereotype> inStereotypes);
+    public default void             addStereotype(Stereotype inStereotype) {
+        getStereotypes().add(inStereotype);
+    }
 
 }

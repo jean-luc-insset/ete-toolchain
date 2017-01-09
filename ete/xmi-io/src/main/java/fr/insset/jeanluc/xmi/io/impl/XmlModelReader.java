@@ -10,6 +10,7 @@ import static fr.insset.jeanluc.ete.meta.model.emof.Association.ASSOCIATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
 import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
+import static fr.insset.jeanluc.ete.meta.model.emof.Stereotype.STEREOTYPE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
@@ -50,13 +51,14 @@ public class XmlModelReader implements ModelReader {
 
 
     public final String     PACKAGE_PATH        = "uml:Package";
-    public final String     CLASS_PATH          = "uml:Class";
+    public final String     CLASS_PATH          = "//*[@*='uml:Package']/*[@*='uml:Class']";
     public final String     ASSOCIATION_PATH    = "uml:Association";
     public final String     PROPERTY_PATH       = "uml:Property";
     public final String     OPERATION_PATH      = "uml:Operation";
     public final String     INVARIANT_PATH      = ".//packagedElement/ownedRule";
     public final String     PRECONDITION_PATH   = ".//ownedOperation/ownedRule[@*=../precondition/@*]";
     public final String     POSTCONDITION_PATH  = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
+    public final String     STEREOTYPE_PATH     = "";
 
 
 
@@ -74,7 +76,7 @@ public class XmlModelReader implements ModelReader {
 
     @Override
     public Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, CLASS_PATH, MOF_CLASS);
+        Collection<NamedElement> result = readElementsByPath((Document) inDocument, inoutModel, CLASS_PATH, MOF_CLASS);
         return result;
     }
 
@@ -114,7 +116,13 @@ public class XmlModelReader implements ModelReader {
         return result;
     }
 
+    @Override
+    public Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElementsByPath((Document) inDocument, inoutModel, STEREOTYPE_PATH, STEREOTYPE);
+        return result;
+    }
 
+    
     
 
     //========================================================================//

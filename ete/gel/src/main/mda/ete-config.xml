@@ -22,7 +22,10 @@
         <!-- executes the actions described in the module -->
         <velocity template="templates/gel_intf.vm"
                   items="${classes}"
-                  target="target/generated-sources/ete/${current.package.name.replace('.', '/')}/${current.name}.java"/>
+                  target="target/generated-sources/ete/${current.package.name.replace('.', '/')}/api/${current.name}.java"/>
+        <velocity template="templates/gel_impl.vm"
+                  items="${classes}"
+                  target="target/generated-sources/ete/${current.package.name.replace('.', '/')}/impl/${current.name}Impl.java"/>
     </transformation-set>
 
 </mda>

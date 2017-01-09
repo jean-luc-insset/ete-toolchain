@@ -1,4 +1,4 @@
-package ${current.package.name};
+package ${current.package.name}.api;
 
 
 
