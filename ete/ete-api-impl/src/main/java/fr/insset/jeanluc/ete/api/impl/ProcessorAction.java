@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.insset.jeanluc.ete.api.impl;
 
 import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
@@ -40,20 +35,21 @@ public class ProcessorAction extends ModuleCallAction implements Runnable {
 
 
     public ProcessorAction(String pathToConfigFile) throws InstantiationException {
-        addParameter("url", pathToConfigFile);
         int     index = pathToConfigFile.lastIndexOf('/');
 //        addParameter("base-url", index==-1?"":pathToConfigFile.substring(0, index+1));
         if (index == -1) {
-            addParameter("config-file-name", pathToConfigFile);
-            addParameter("base-url", "");
+            addParameter(SRC, pathToConfigFile);
+            addParameter(BASE_DIR, "./");
         }
         else {
             String      configFileName = pathToConfigFile.substring(index+1);
-            addParameter("config-file-name", configFileName);   
-            addParameter("url", configFileName); 
-            addParameter("base-url", pathToConfigFile.substring(0, index+1));
+            addParameter(SRC, configFileName);
+            String basedir = pathToConfigFile.substring(0, index+1);
+            addParameter(BASE_DIR, basedir);
         }
 
+        Logger.getGlobal().log(Level.FINE, "base-url : " + getParameter(BASE_DIR));
+        Logger.getGlobal().log(Level.FINE, "config file : " + getParameter(SRC));
         // Register standard actions and readers
         InitStandardActions.init();
 

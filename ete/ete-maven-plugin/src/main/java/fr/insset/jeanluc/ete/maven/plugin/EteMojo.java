@@ -1,13 +1,10 @@
 package fr.insset.jeanluc.ete.maven.plugin;
 
+import static fr.insset.jeanluc.ete.api.Action.BASE_DIR;
 import static fr.insset.jeanluc.ete.api.Action.OUTPUT_BASE;
 import fr.insset.jeanluc.ete.api.impl.ProcessorAction;
 import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
 import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
-import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
-import fr.insset.jeanluc.util.factory.FactoryRegistry;
-import fr.insset.jeanluc.util.factory.FactoryRegistryImpl;
 import java.io.File;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -33,41 +30,50 @@ public class EteMojo
     private String configFilePath;
 
  
-    @Parameter(property = "output-base", defaultValue = "")
+    @Parameter(property = "output-base", defaultValue = "target/generated-sources/ete/")
     private String  outputBase;
 
+    @Parameter(property="basedir")
+    private String  basedir;
 
     /**
      * {@inheritDoc}
      */
     public void execute()
             throws MojoExecutionException {
-        System.out.println("Ete plugin running");
+        Logger.getGlobal().log(Level.INFO, "Ete plugin running");
 
         Logger logger = Logger.getGlobal();
         logger.log(Level.INFO, "Working directory : " + new File(".").getAbsolutePath());
+        logger.log(Level.INFO, "BaseDir : " + basedir);
+        // If we run outside of maven, the property may be unset
+        if (basedir == null) {
+            basedir = ".";
+        }
         logger.log(Level.INFO, "ConfigFilePath : " + configFilePath);
 
-//        FactoryRegistry registry = FactoryRegistry.getRegistry();
-//        registry.registerFactory(MODEL, EteModelImpl.class);
         // Registers default factories
         Factories.init();
         // Registers default actions
         InitStandardActions.init();;
 
-//        Map pluginContext = this.getPluginContext();
-//        if (pluginContext != null) {
-//            for (Object obj : pluginContext.entrySet()) {
-//                Map.Entry entry = (Map.Entry) obj;
-//                logger.log(Level.INFO, entry.getKey() + " -> " + entry.getValue());
-//            }
-//        }
-
         ProcessorAction instance;
         try {
-            instance = new ProcessorAction(configFilePath);
+            File    baseDirFile = new File(basedir);
+            basedir = baseDirFile.getAbsolutePath();
+            if (! basedir.endsWith("/")) {
+                basedir += '/';
+            }
+            outputBase = basedir + outputBase;
+            int index = configFilePath.lastIndexOf('/');
+            if (index >= 0) {
+                basedir += configFilePath.substring(0, index+1);
+                configFilePath = configFilePath.substring(index+1);
+            }
+            instance = new ProcessorAction(basedir + configFilePath);
+            instance.addParameter(BASE_DIR, basedir);
+//            instance = new ProcessorAction(configFilePath);
             instance.addParameter(OUTPUT_BASE, outputBase);
-            System.out.println("Output-base : " + outputBase);
         } catch (InstantiationException ex) {
             Logger.getLogger(EteMojo.class.getName()).log(Level.SEVERE, null, ex);
             throw new MojoExecutionException("Unable to run ete plugin", ex);
@@ -85,6 +91,10 @@ public class EteMojo
 
     public void setOutputBase(String outputBase) {
         this.outputBase = outputBase;
+    }
+
+    public void setBasedir(String basedir) {
+        this.basedir = basedir;
     }
 
 }

@@ -151,6 +151,10 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
 
     public Object   visitOperation(Operation inOperation, Object... inParam) throws EteException {
+        MofClass    parentClass = (MofClass) inParam[0];
+        if (parentClass != null) {
+            parentClass.addOwnedOperation(inOperation);
+        }
         EteModel    model = (EteModel)inParam[1];
         Element     element = (Element)inParam[2];
         NodeList    paramElements = element.getElementsByTagName("ownedParameter");

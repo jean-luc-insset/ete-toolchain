@@ -5,6 +5,7 @@
  */
 package fr.insset.jeanluc.ete.maven.plugin;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -36,12 +37,9 @@ public class EteMojoTest extends TestCase {
     public void testExecute() throws Exception {
         System.out.println("execute");
         EteMojo instance = new EteMojo();
-//        Class  classe = instance.getClass();
-//        Field field = classe.getField("configFilePath");
-//        field.setAccessible(true);
-//        field.set(instance, "src/main/mda/ete-config.xml");
         instance.setConfigFilePath("../../src/test/mda/ete-config.xml");
         instance.setOutputBase("../../target");
+        instance.setBasedir(new File(".").getAbsolutePath());
         instance.execute();
     }
     

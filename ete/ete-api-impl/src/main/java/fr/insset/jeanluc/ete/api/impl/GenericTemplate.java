@@ -66,7 +66,7 @@ public abstract class GenericTemplate extends ForEachAction {
         String targetUrl = getTargetUrl();
         try {
             String templateUrl = getTemplateUrl();
-            System.out.println("    - application du template à " + inElement +  " -> " + targetUrl);
+            Logger.getGlobal().log(Level.FINE, "Application du template à " + inElement +  " -> " + targetUrl);
             Writer output = openTargetUrl(targetUrl, (EteModel) inPackage, inElement, "UTF-8");
             applyTemplate(templateUrl, getTemplateEncoding(), output);
             output.flush();
@@ -144,13 +144,12 @@ public abstract class GenericTemplate extends ForEachAction {
             localParameters.put((String)localVar, inContext);
         }
         Logger logger = Logger.getGlobal();
-        logger.log(Level.INFO, "passage de current : " + inContext.getName());
+        logger.log(Level.FINE, "passage de current : " + inContext.getName());
         localParameters.put("current", inContext);
         localParameters.put("model", inModel);
         ELEvaluator evaluator = new ELEvaluator(inModel, localParameters);
         String  evaluateString = evaluator.evaluateString(inTarget);
         int     slashIndex = evaluateString.lastIndexOf('/');
-        System.out.println("    targetUrl : " + evaluateString);
         if (slashIndex >= 0) {
             String  dirPath = evaluateString.substring(0, slashIndex);
             File dirs = new File(dirPath);

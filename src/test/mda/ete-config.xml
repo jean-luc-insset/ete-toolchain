@@ -20,7 +20,7 @@
         <!-- outputs the model in a readable form -->
         <dump    file="target/dump.xml"/>
         <!-- executes the actions described in the module -->
-        <module  url="templates/java"/>
+        <module  src="templates/java/ete-config.xml"/>
     </transformation-set>
 
 </mda>

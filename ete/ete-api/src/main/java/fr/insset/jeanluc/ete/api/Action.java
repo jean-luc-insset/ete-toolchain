@@ -50,7 +50,7 @@ public interface Action {
      * {@link getParameter(String) getParameter(String inParameterName)
      * method}
      */
-    public final static String  BASE_URL         = "base-url";
+    public final static String  BASE_DIR         = "base-dir";
 
 
 
@@ -198,15 +198,24 @@ public interface Action {
      * @return 
      */
     public  default String  getBaseUrl() {
-        String  result = (String) getParameter(BASE_URL);
-        return result != null? result : "";
+        String  result = (String) getParameter(BASE_DIR);
+        return result != null? result : "./";
     }
 
 
-    public default InputStream getResource(String inUrl) throws EteException {
+    /**
+     * 
+     * @param inUrl : may be a "partial" URL
+     * @return
+     * @throws EteException 
+     */
+    public default String getFullUrl(String inUrl) throws EteException {
+        Logger.getGlobal().log(Level.FINE, "Recherche de la ressource " + inUrl);
         if (!inUrl.contains(":/")) {
+            // Actually we must get a file must we not ?
             if (!inUrl.startsWith("/")) {
                 String baseUrl = getBaseUrl();
+                Logger.getGlobal().log(Level.FINE, "baseUrl : " + baseUrl);
                 if (! "".equals(baseUrl)) {
                     if (!baseUrl.endsWith("/")) {
                         baseUrl += "/";
@@ -217,19 +226,23 @@ public interface Action {
             if (!inUrl.startsWith("/")) {
                 String workingDirPath = new File(".").getAbsolutePath();
                 workingDirPath = workingDirPath.substring(0, workingDirPath.length()-1);
-                inUrl = workingDirPath + inUrl;
+                inUrl = workingDirPath + '/' + inUrl;
              }
-            inUrl = "file://" + inUrl;
+            inUrl = "file://" + (inUrl.startsWith("/") ? "" : "/") + inUrl;
         }
-        try {
-            URL url = new URL(inUrl);
-            return url.openStream();
-        } catch (IOException ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-            throw new EteException(ex);
-        }
+        return inUrl;
     }
 
+    public default InputStream getResource(String inUrl) throws EteException {
+        String fullUrl = getFullUrl(inUrl);
+        try {
+            URL url = new URL(fullUrl);
+            return url.openStream();
+        } catch (IOException ex) {
+            throw new EteException(ex);
+        }
+        
+    }
 
 
     //========================================================================//

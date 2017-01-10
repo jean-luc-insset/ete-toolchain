@@ -48,9 +48,7 @@ public class VelocityAction extends GenericTemplate {
         ve = new VelocityEngine();
 //        ve.setProperty("resource.loader", "file");
         ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, getBaseUrl());
-        System.out.println("Velocity template root : " + getBaseUrl());
-//        Object property = ve.getProperty("resource.loader");
-//        System.out.println("Velocity Resource Loader" + property);
+        Logger.getGlobal().log(Level.FINE, "Velocity template root : " + getBaseUrl());
         try {
             ve.init();
         } catch (Exception ex) {
@@ -99,7 +97,6 @@ public class VelocityAction extends GenericTemplate {
 
     @Override
     protected void applyTemplate(String inTemplateUrl, String inTemplateEncoding, Writer inoutOutput) {
-        System.out.println("TODO : applyTemplate. WD : " + new File(".").getAbsolutePath());
         try {
             ve.mergeTemplate(inTemplateUrl, context, inoutOutput);
         } catch (ParseErrorException | MethodInvocationException ex) {

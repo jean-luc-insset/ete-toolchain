@@ -314,6 +314,11 @@ public class ELEvaluator {
 
 
 
+    /**
+     * This class has not been implemented.<br>
+     * TODO : create a dependance injection mechanism to allow new custom
+     * functions
+     */
     private class EteFunctionMapper extends FunctionMapper {
 
         @Override
