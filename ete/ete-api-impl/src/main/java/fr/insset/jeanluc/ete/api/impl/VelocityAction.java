@@ -46,34 +46,22 @@ public class VelocityAction extends GenericTemplate {
         logger.log(Level.INFO, "Initializing Velocity");
         MofPackage    model = getModel();
         ve = new VelocityEngine();
-//        ve.setProperty("resource.loader", "file");
         ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, getBaseUrl());
-        Logger.getGlobal().log(Level.FINE, "Velocity template root : " + getBaseUrl());
+        Logger.getGlobal().log(Level.INFO, "Velocity template root : " + getBaseUrl());
         try {
             ve.init();
         } catch (Exception ex) {
             Logger.getLogger(VelocityAction.class.getName()).log(Level.SEVERE, null, ex);
         }
         context = new VelocityContext();
-//        ExtendedProperties eprops = new ExtendedProperties();
-//        eprops.put("model", model);
         context.put("model", model);
-//        for (Map.Entry<String,Object> entry : getParameters().entrySet()) {
-//            logger.log(Level.FINE, "Passage du parametre " + entry.getKey() + " = " + entry.getValue());
-//            context.put(entry.getKey(), entry.getValue());
-//        }
+        context.put("classes",model.getClasses());
+        context.put("packages", model.getPackages());
+        for (Map.Entry<String,Object> entry : getParameters().entrySet()) {
+            logger.log(Level.FINE, "Passage du parametre " + entry.getKey() + " = " + entry.getValue());
+            context.put(entry.getKey(), entry.getValue());
+        }
 
-//        String  outputBase = (String) getParameter("output-base");
-//        String racine = outputBase == null ? "." : outputBase;
-//        if (racine.length() > 0 && ! racine.endsWith("/")) {
-//            racine += "/";
-//        }
-//        logger.log(Level.INFO, "   velocity.output-base : " + racine);
-//
-//        Map<Object,Object> variables = new HashMap<>();
-//        variables.put("model", model);
-//        variables.put("classes",model.getClasses());
-//        variables.put("packages", model.getPackages());
     }
 
 

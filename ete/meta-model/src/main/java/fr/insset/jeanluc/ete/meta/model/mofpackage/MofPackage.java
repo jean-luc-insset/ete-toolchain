@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 public interface MofPackage extends PackageableElement {
 
 
-    public final static String      PACKAGE     = "mof-package";
+    public final static String      MOF_PACKAGE     = "mof-package";
 
 
     public  Collection<PackageableElement>          getPackagedElementAsCollection();

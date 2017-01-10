@@ -46,10 +46,11 @@ public abstract class GenericTemplate extends ForEachAction {
 
     
     public final static String  TEMPLATE            = "template";
-    public final static String  TEMPLATE_ENCODING   = "template-encoding";
-
-    public final static String  OUTPUT_BASE         = "output-base";
+    public final static String  ITEMS               = "items";
     public final static String  TARGET              = "target";
+
+    public final static String  TEMPLATE_ENCODING   = "template-encoding";
+    public final static String  OUTPUT_BASE         = "output-base";
     public final static String  TARGET_ENCODING     = "target-encoding";
 
 

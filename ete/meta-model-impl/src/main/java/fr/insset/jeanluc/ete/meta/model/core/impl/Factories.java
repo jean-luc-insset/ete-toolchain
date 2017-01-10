@@ -22,7 +22,6 @@ import fr.insset.jeanluc.ete.meta.model.emof.impl.ParameterImpl;
 import        fr.insset.jeanluc.ete.meta.model.emof.impl.PropertyImpl;
 import fr.insset.jeanluc.ete.meta.model.emof.impl.StereotypeImpl;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
-import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
 import        fr.insset.jeanluc.ete.meta.model.mofpackage.impl.MofPackageImpl;
 import        fr.insset.jeanluc.ete.meta.model.types.Generalization;
@@ -38,6 +37,7 @@ import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofBag.MOF_BAG;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofOrderedSet.MOF_ORDERED_SET;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSet.MOF_SET;
+import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.MOF_PACKAGE;
 
 /**
  *
@@ -50,7 +50,7 @@ public abstract class Factories {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
         registry.registerDefaultFactory(MOF_TYPE, MofTypeImpl.class);
         registry.registerDefaultFactory(MODEL, EteModelImpl.class);
-        registry.registerDefaultFactory(PACKAGE, MofPackageImpl.class);
+        registry.registerDefaultFactory(MOF_PACKAGE, MofPackageImpl.class);
         registry.registerDefaultFactory(MOF_CLASS, MofClassImpl.class);
         registry.registerDefaultFactory(OPERATION, OperationImpl.class);
         registry.registerDefaultFactory(PARAMETER, ParameterImpl.class);

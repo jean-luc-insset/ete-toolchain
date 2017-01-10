@@ -12,7 +12,6 @@ import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
 import static fr.insset.jeanluc.ete.meta.model.emof.Stereotype.STEREOTYPE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
-import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.meta.model.io.ModelReader;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
@@ -34,6 +33,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.MOF_PACKAGE;
 
 
 
@@ -69,7 +69,7 @@ public class XmlModelReader implements ModelReader {
 
     @Override
     public Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH, PACKAGE);
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH, MOF_PACKAGE);
         return result;
     }
 

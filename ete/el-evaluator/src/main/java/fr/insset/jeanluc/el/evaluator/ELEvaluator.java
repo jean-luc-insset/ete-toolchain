@@ -187,7 +187,7 @@ public class ELEvaluator {
         /**
          * Calls a compatible method if any exists.
          * 
-         * WARNING :
+         * WARNING : ambiquities are not detected
          * 
          * @param context : EL context to resolve any variables if needed
          * @param base : object to use as "this"

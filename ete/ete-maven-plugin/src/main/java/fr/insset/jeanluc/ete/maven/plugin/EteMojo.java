@@ -55,7 +55,7 @@ public class EteMojo
         // Registers default factories
         Factories.init();
         // Registers default actions
-        InitStandardActions.init();;
+        InitStandardActions.init();
 
         ProcessorAction instance;
         try {

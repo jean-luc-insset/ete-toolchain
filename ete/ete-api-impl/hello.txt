@@ -5,7 +5,7 @@ Hello World
 
 This should create a non empty file with hard coded content and dynamic
 content :
-- $template
+- essai-modele.vm
 - $valeur
 
 
