@@ -92,9 +92,11 @@ public abstract class GenericTemplate extends ForEachAction {
      */
     protected   String  getTemplateUrl() {
         String  result = (String) getParameter(TEMPLATE);
+        System.out.println("Template path : " + TEMPLATE);
         ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
         String evaluate = elEvaluator.evaluate(result, String.class);
         String  baseUrl = getBaseUrl();
+        System.out.println("BASE_URL : " + baseUrl);
         return baseUrl + evaluate;
     }
 
@@ -121,12 +123,15 @@ public abstract class GenericTemplate extends ForEachAction {
      */
     protected   String  getTargetUrl() {
         String targetBase = getTargetBase();
+        System.out.println("TargetBase : " + targetBase);
         if (targetBase == null) {
             targetBase = "./";
         }
         if (! targetBase.endsWith("/")) {
             targetBase += '/';
         }
+        String target = (String) getParameter(TARGET);
+        System.out.println("Target : " + target);
         return targetBase + getParameter(TARGET);
     }
 
@@ -154,7 +159,7 @@ public abstract class GenericTemplate extends ForEachAction {
         if (slashIndex >= 0) {
             String  dirPath = evaluateString.substring(0, slashIndex);
             File dirs = new File(dirPath);
-            logger.log(Level.INFO, "Creation de " + dirs.getAbsolutePath());
+            logger.log(Level.INFO, "Creation of " + dirs.getAbsolutePath());
             dirs.mkdirs();
         }
         else {

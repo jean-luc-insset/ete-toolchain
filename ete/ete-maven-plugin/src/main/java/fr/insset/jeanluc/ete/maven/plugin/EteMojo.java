@@ -30,7 +30,7 @@ public class EteMojo
     private String configFilePath;
 
  
-    @Parameter(property = "output-base", defaultValue = "target/generated-sources/ete/")
+    @Parameter(property = "output-base", defaultValue = "target/")
     private String  outputBase;
 
     @Parameter(property="basedir")
