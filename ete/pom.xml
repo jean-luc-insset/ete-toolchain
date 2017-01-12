@@ -22,6 +22,7 @@
         <module>meta-model-io</module>
         <module>plain-text-io</module>
         <module>ete-maven-plugin</module>
+        <module>ete-spec</module>
     </modules>
 
     <properties>
