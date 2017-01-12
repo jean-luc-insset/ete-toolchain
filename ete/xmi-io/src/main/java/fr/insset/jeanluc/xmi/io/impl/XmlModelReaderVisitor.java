@@ -120,6 +120,13 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         }
         EteModel    inoutModel = (EteModel) inParam[1];
         inoutModel.addPackagedElement(packageable);
+
+        Element elt = (Element) inParam[2];
+        String isAbstract = elt.getAttribute("isAbstract");
+        if ("true".equals(isAbstract)) {
+            inElement.setAbstract(true);
+        }
+
         return inElement;
     }
 
@@ -271,6 +278,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
 
     //------------------------------------------------------------------------//
+
 
     public Object visitStereotype(Stereotype inStereotype, Object... inParam) throws XPathExpressionException {
         Document doc = ((Element)inParam[2]).getOwnerDocument();

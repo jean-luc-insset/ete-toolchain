@@ -38,12 +38,22 @@ public interface MofClass extends Classifier {
     public  default Collection<MofClass>    getSuperClass() {
         return getSuperClassAsStream().collect(Collectors.toList());
     }
-    public  void                    addSuperClass(MofClass inMofClass);
-    public  void                    removeSuperClass(MofClass inMofClass);
-    public  Stream<MofClass>        getSuperClassAsStream();
+    public  default void            addSuperClass(MofClass inMofClass) {
+        addSuperType(inMofClass);
+    }
+//    public  default void            removeSuperClass(MofClass inMofClass) {
+//        removeSuperType(inMofClass);
+//    }
+    public  default Stream<MofClass>  getSuperClassAsStream() {
+        return getSuperTypes().stream().map(t -> (MofClass)t);
+    }
 
     public  Collection<Invariant>   getInvariants();
     public  void                    setInvariants(Collection<Invariant> inInvariants);
     public  void                    addInvariant(Invariant inInvariant);
+
+    public  boolean                 isAbstract();
+    public  void                    setAbstract(boolean inAbstract);
+
 
 }

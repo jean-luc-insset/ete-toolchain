@@ -34,6 +34,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.MOF_PACKAGE;
+import fr.insset.jeanluc.ete.meta.model.types.MofType;
 
 
 
@@ -100,6 +101,29 @@ public class XmlModelReader implements ModelReader {
     public Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException {
         Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, OPERATION_PATH, OPERATION);
         return result;
+    }
+
+    @Override
+    public void readGeneralizations(Object inDocument, EteModel inoutModel) throws EteException {
+        try {
+            NodeList elements = getElements("//generalization", (Document)inDocument);
+            for (int i=0 ; i<elements.getLength() ; i++) {
+                Element next        = (Element) elements.item(i);
+                String idSubClass   = ((Element)next.getParentNode()).getAttribute("name");
+                String idSuperClass = next.getAttribute("general");
+                System.out.println("Ids : [" + idSubClass + "]   [" + idSuperClass + "]");
+                MofType subClass   = (MofType) inoutModel.getElementByName(idSubClass);
+                MofType superClass = (MofType) inoutModel.getElementById(idSuperClass);
+                System.out.println("SubClass : " + subClass + " superClass : " + superClass);
+                if (subClass != null && superClass != null) {
+                    Logger.getGlobal().log(Level.INFO, "Adding inheritance {0} -> {1}", new Object[]{subClass, superClass});
+                    subClass.addSuperType(superClass);
+                }
+            }
+        } catch (XPathExpressionException ex) {
+            Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
     }
 
 
@@ -217,6 +241,7 @@ public class XmlModelReader implements ModelReader {
                         visitor.genericVisit(newInstance, parentNamedElement, inModel, domElement);
                     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                         Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getGlobal().log(Level.SEVERE, "Error when visiting {0}", newInstance.getName());
                     }
                 }
                 result.add(newInstance);

@@ -22,7 +22,7 @@
         <module>meta-model-io</module>
         <module>plain-text-io</module>
         <module>ete-maven-plugin</module>
-        <module>gel</module>
+        <module>gel-spec</module>
     </modules>
 
     <properties>

@@ -20,12 +20,13 @@
         <!-- outputs the model in a readable form -->
         <dump    file="target/dump.xml"/>
         <!-- executes the actions described in the module -->
-        <velocity template="templates/gel_intf.vm"
+        <!-- output-base = target -->
+        <velocity template="templates/gel-api/gel_intf.vm"
                   items="${classes}"
-                  target="generated-sources/ete/${current.package.name.replace('.', '/')}/api/${current.name}.java"/>
-        <velocity template="templates/gel_impl.vm"
+                  target="../../gel-api/target/generated-sources/ete/${current.package.name.replace('.', '/')}/api/java/${current.name}.java"/>
+        <velocity template="templates/gel-impl/gel_impl.vm"
                   items="${classes}"
-                  target="generated-sources/ete/${current.package.name.replace('.', '/')}/impl/${current.name}Impl.java"/>
+                  target="../../gel-impl/target/generated-sources/ete/${current.package.name.replace('.', '/')}/impl/java/${current.name}Impl.java"/>
     </transformation-set>
 
 </mda>
