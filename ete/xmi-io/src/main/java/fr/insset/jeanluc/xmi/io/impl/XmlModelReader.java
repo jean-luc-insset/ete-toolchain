@@ -10,8 +10,8 @@ import static fr.insset.jeanluc.ete.meta.model.emof.Association.ASSOCIATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.MofClass.MOF_CLASS;
 import static fr.insset.jeanluc.ete.meta.model.emof.Operation.OPERATION;
 import static fr.insset.jeanluc.ete.meta.model.emof.Property.PROPERTY;
+import static fr.insset.jeanluc.ete.meta.model.emof.Stereotype.STEREOTYPE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
-import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.PACKAGE;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.meta.model.io.ModelReader;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
@@ -33,6 +33,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.MOF_PACKAGE;
+import fr.insset.jeanluc.ete.meta.model.types.MofType;
 
 
 
@@ -50,13 +52,14 @@ public class XmlModelReader implements ModelReader {
 
 
     public final String     PACKAGE_PATH        = "uml:Package";
-    public final String     CLASS_PATH          = "uml:Class";
+    public final String     CLASS_PATH          = "//*[@*='uml:Package']/*[@*='uml:Class']";
     public final String     ASSOCIATION_PATH    = "uml:Association";
     public final String     PROPERTY_PATH       = "uml:Property";
     public final String     OPERATION_PATH      = "uml:Operation";
     public final String     INVARIANT_PATH      = ".//packagedElement/ownedRule";
     public final String     PRECONDITION_PATH   = ".//ownedOperation/ownedRule[@*=../precondition/@*]";
     public final String     POSTCONDITION_PATH  = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
+    public final String     STEREOTYPE_PATH     = "uml:Stereotype";
 
 
 
@@ -67,14 +70,14 @@ public class XmlModelReader implements ModelReader {
 
     @Override
     public Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH, PACKAGE);
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PACKAGE_PATH, MOF_PACKAGE);
         return result;
     }
 
 
     @Override
     public Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
-        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, CLASS_PATH, MOF_CLASS);
+        Collection<NamedElement> result = readElementsByPath((Document) inDocument, inoutModel, CLASS_PATH, MOF_CLASS);
         return result;
     }
 
@@ -100,6 +103,29 @@ public class XmlModelReader implements ModelReader {
         return result;
     }
 
+    @Override
+    public void readGeneralizations(Object inDocument, EteModel inoutModel) throws EteException {
+        try {
+            NodeList elements = getElements("//generalization", (Document)inDocument);
+            for (int i=0 ; i<elements.getLength() ; i++) {
+                Element next        = (Element) elements.item(i);
+                String idSubClass   = ((Element)next.getParentNode()).getAttribute("name");
+                String idSuperClass = next.getAttribute("general");
+                System.out.println("Ids : [" + idSubClass + "]   [" + idSuperClass + "]");
+                MofType subClass   = (MofType) inoutModel.getElementByName(idSubClass);
+                MofType superClass = (MofType) inoutModel.getElementById(idSuperClass);
+                System.out.println("SubClass : " + subClass + " superClass : " + superClass);
+                if (subClass != null && superClass != null) {
+                    Logger.getGlobal().log(Level.INFO, "Adding inheritance {0} -> {1}", new Object[]{subClass, superClass});
+                    subClass.addSuperType(superClass);
+                }
+            }
+        } catch (XPathExpressionException ex) {
+            Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
+        }
+    }
+
 
     @Override
     public Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException {
@@ -114,7 +140,13 @@ public class XmlModelReader implements ModelReader {
         return result;
     }
 
+    @Override
+    public Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, STEREOTYPE_PATH, STEREOTYPE);
+        return result;
+    }
 
+    
     
 
     //========================================================================//
@@ -209,6 +241,7 @@ public class XmlModelReader implements ModelReader {
                         visitor.genericVisit(newInstance, parentNamedElement, inModel, domElement);
                     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                         Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getGlobal().log(Level.SEVERE, "Error when visiting {0}", newInstance.getName());
                     }
                 }
                 result.add(newInstance);

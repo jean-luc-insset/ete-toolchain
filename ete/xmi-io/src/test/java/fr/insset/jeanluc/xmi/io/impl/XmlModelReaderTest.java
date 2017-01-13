@@ -107,7 +107,7 @@ public class XmlModelReaderTest {
 
         // 2- call the operation
         XmlModelReader instance = new XmlModelReader();
-        instance.addVisitors(new XmlModelReaderLogVisitor(), new XmlModelReaderVisitor());
+        instance.addVisitors(new XmlModelReaderVisitor());
         String  url = "../../src/test/mda/models/QCM_complet.xml";
         EteModel parent = new EteModelImpl();
         PrimitiveDataTypes.init(parent);
@@ -117,7 +117,7 @@ public class XmlModelReaderTest {
 
         // 3-a check the number of classes
         Collection<MofClass> classes = result.getClasses();
-        assertEquals(13, classes.size());
+        assertEquals(9, classes.size());
 
         // 3-b check the number of properties of each class
         Map<String, Integer>    properties = new HashMap<>();

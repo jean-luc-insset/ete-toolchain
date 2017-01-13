@@ -1,0 +1,40 @@
+package ${current.package.name}.impl;
+
+
+import ${current.package.name}.api.${current.name};
+
+public class ${current.name}Impl implements ${current.name} {
+
+    public ${current.name}Impl() {
+    }
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.properties)
+    #if($aProperty.name && $aProperty.type.name)
+    public ${aProperty.type.name} get${aProperty.name}() {
+        return ${aProperty.name};
+    }
+
+    public void set${aProperty.name}(${aProperty.type.name} inValue) {
+        ${aProperty.name} = inValue;
+    }
+    #end
+#end
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.properties)
+    #if($aProperty.name && $aProperty.type.name)
+    private ${aProperty.type.name} ${aProperty.name};
+    #end
+#end
+
+
+}
+
+

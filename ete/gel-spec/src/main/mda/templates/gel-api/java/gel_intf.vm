@@ -1,0 +1,26 @@
+package ${current.package.name}.api;
+
+
+
+public interface $current.name {
+
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.properties)
+    #if($aProperty.name && $aProperty.type.name)
+    public ${aProperty.type.name} get${aProperty.name}();
+    public void set${aProperty.name}(${aProperty.type.name} inValue);
+    #end
+#end
+
+#foreach ($aMethod in $current.operations)
+    public ${aMethod.type} ${aMethod.name}(#foreach($aParam in ${aMethod.parameters})${aParam.type} ${aParam.name} #end);
+#end
+
+
+}
+
+

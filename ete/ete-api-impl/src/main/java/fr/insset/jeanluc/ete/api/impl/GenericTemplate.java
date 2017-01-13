@@ -46,10 +46,11 @@ public abstract class GenericTemplate extends ForEachAction {
 
     
     public final static String  TEMPLATE            = "template";
-    public final static String  TEMPLATE_ENCODING   = "template-encoding";
-
-    public final static String  OUTPUT_BASE         = "output-base";
+    public final static String  ITEMS               = "items";
     public final static String  TARGET              = "target";
+
+    public final static String  TEMPLATE_ENCODING   = "template-encoding";
+    public final static String  OUTPUT_BASE         = "output-base";
     public final static String  TARGET_ENCODING     = "target-encoding";
 
 
@@ -66,6 +67,7 @@ public abstract class GenericTemplate extends ForEachAction {
         String targetUrl = getTargetUrl();
         try {
             String templateUrl = getTemplateUrl();
+            Logger.getGlobal().log(Level.FINE, "Application du template à " + inElement +  " -> " + targetUrl);
             Writer output = openTargetUrl(targetUrl, (EteModel) inPackage, inElement, "UTF-8");
             applyTemplate(templateUrl, getTemplateEncoding(), output);
             output.flush();
@@ -90,9 +92,11 @@ public abstract class GenericTemplate extends ForEachAction {
      */
     protected   String  getTemplateUrl() {
         String  result = (String) getParameter(TEMPLATE);
+        System.out.println("Template path : " + TEMPLATE);
         ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
         String evaluate = elEvaluator.evaluate(result, String.class);
         String  baseUrl = getBaseUrl();
+        System.out.println("BASE_URL : " + baseUrl);
         return baseUrl + evaluate;
     }
 
@@ -119,13 +123,16 @@ public abstract class GenericTemplate extends ForEachAction {
      */
     protected   String  getTargetUrl() {
         String targetBase = getTargetBase();
+        System.out.println("TargetBase : " + targetBase);
         if (targetBase == null) {
             targetBase = "./";
         }
         if (! targetBase.endsWith("/")) {
             targetBase += '/';
         }
-        return targetBase + getParameter("target");
+        String target = (String) getParameter(TARGET);
+        System.out.println("Target : " + target);
+        return targetBase + getParameter(TARGET);
     }
 
 
@@ -143,7 +150,7 @@ public abstract class GenericTemplate extends ForEachAction {
             localParameters.put((String)localVar, inContext);
         }
         Logger logger = Logger.getGlobal();
-        logger.log(Level.INFO, "passage de current : " + inContext.getName());
+        logger.log(Level.FINE, "passage de current : " + inContext.getName());
         localParameters.put("current", inContext);
         localParameters.put("model", inModel);
         ELEvaluator evaluator = new ELEvaluator(inModel, localParameters);
@@ -152,7 +159,7 @@ public abstract class GenericTemplate extends ForEachAction {
         if (slashIndex >= 0) {
             String  dirPath = evaluateString.substring(0, slashIndex);
             File dirs = new File(dirPath);
-            logger.log(Level.INFO, "Creation de " + dirs.getAbsolutePath());
+            logger.log(Level.INFO, "Creation of " + dirs.getAbsolutePath());
             dirs.mkdirs();
         }
         else {

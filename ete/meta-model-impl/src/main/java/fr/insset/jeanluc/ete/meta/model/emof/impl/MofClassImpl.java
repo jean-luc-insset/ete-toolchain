@@ -104,26 +104,26 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 
 
 
-    @Override
-    public Collection<MofClass> getSuperClass() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addSuperClass(MofClass inMofClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void removeSuperClass(MofClass inMofClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    @Override
-    public Stream<MofClass> getSuperClassAsStream() {
-        return superClass.stream();
-    }
+//    @Override
+//    public Collection<MofClass> getSuperClass() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public void addSuperClass(MofClass inMofClass) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public void removeSuperClass(MofClass inMofClass) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//
+//    @Override
+//    public Stream<MofClass> getSuperClassAsStream() {
+//        return superClass.stream();
+//    }
 
 
 

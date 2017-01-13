@@ -41,6 +41,9 @@ public class EteModelImpl extends MofPackageImpl implements EteModel {
     @Override
     public void addElement(NamedElement newInstance) {
         elementsById.put(newInstance.getId(), newInstance);
+        if (newInstance instanceof PackageableElement) {
+            addPackagedElement((PackageableElement) newInstance);
+        }
     }
 
 
