@@ -43,6 +43,7 @@ public class VelocityAction extends GenericTemplate {
         logger.log(Level.INFO, "Initializing Velocity");
         MofPackage    model = getModel();
         ve = new VelocityEngine();
+        ve.setProperty("runtime.log", "target/velocity.log");
         ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, getBaseUrl());
         Logger.getGlobal().log(Level.INFO, "Velocity template root : " + getBaseUrl());
         try {
