@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -168,6 +169,19 @@ public interface Action {
             addParameter(entry.getKey(), entry.getValue());
         }
     };
+
+
+    public default Map<String, Object> getAllParameters() {
+        Map<String, Object> result = new HashMap<>();
+        Action parentAction = getParent();
+        if (parentAction != null) {
+            result = parentAction.getAllParameters();
+        }
+        result.putAll(getParameters());
+        return result;
+    }
+
+    public Map<String, Object>  getParameters();
 
 
     public default Object  getParameter(String inName) {

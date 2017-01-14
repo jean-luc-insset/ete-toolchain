@@ -64,7 +64,8 @@ public class ModuleCallAction extends ActionSupport {
                 // Should we log the missing attribute or provide a default
                 // value ?
                 Logger.getGlobal().log(Level.WARNING, "Pas de fichier de configuration...");
-                src = "ete-config.xml";
+//                src = "ete-config.xml";
+                return inModel;
             }
 
             // 2- Turn the provided url to an actual url, eventually using

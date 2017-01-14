@@ -13,17 +13,12 @@
       -->
 
     <transformation-set>
-        <!-- reads a model -->
-        <model  url="Gel.xml"/>
-        <!--<model model="models/Simple.xml"/>-->
-
-        <!-- outputs the model in a readable form -->
-        <!--<dump    file="target/dump.xml"/>-->
-
-        <!-- executes the actions described in the module -->
-        <!-- output-base = target -->
-        <module src="modules/maven-project/ete-config.xml" projectname="gel-api"/>
-        <module src="modules/maven-project/ete-config.xml" projectname="gel-impl"/>
+        <velocity template="templates/${projectname}/java/${projectname}.vm"
+                items="${classes}"
+                target="../../${projectname}/src/main/java/${current.package.name.replace('.', '/')}/java/${current.name}.java"/>
+        />
+        <velocity template="templates/pomxml.vm"
+                  target="../../${projectname}/pom.xml"/>
     </transformation-set>
 
 </mda>

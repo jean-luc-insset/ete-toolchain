@@ -281,6 +281,7 @@ public class ELEvaluator {
 
         @Override
         public ValueExpression resolveVariable(String inString) {
+            Logger.getGlobal().log(Level.INFO, "Resolve {0}", inString);
             Object parameter = parameters.get(inString);
             if (parameter != null) {
                 ValueExpression valueExpression = factory.createValueExpression(parameter, parameter.getClass());

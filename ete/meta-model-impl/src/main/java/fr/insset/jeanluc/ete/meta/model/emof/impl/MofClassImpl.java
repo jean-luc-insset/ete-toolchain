@@ -130,12 +130,12 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 
     @Override
     public boolean isAbstract() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isAbstract;
     }
 
     @Override
     public void setAbstract(boolean inBoolean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        isAbstract = inBoolean;
     }
 
     @Override
@@ -161,5 +161,6 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
     List<Operation>         ownedOperation;
     Collection<Invariant>   invariants;
     List<MofClass>          superClass;
+    boolean                 isAbstract;
 
 }

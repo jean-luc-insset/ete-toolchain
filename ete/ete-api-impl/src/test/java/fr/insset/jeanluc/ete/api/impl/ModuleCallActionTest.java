@@ -1,10 +1,12 @@
 package fr.insset.jeanluc.ete.api.impl;
 
+
 import static fr.insset.jeanluc.ete.api.Action.BASE_DIR;
-import fr.insset.jeanluc.ete.api.EteException;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.ITEMS;
+import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.OUTPUT_BASE;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.TARGET;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.TEMPLATE;
+import static fr.insset.jeanluc.ete.api.impl.ModuleCallAction.SRC;
 import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
 import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
@@ -15,22 +17,22 @@ import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import static fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage.MOF_PACKAGE;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.io.File;
+import org.apache.velocity.runtime.RuntimeConstants;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-
+import static org.junit.Assert.*;
 
 /**
  *
  * @author jldeleage
  */
-public class VelocityActionTest {
+public class ModuleCallActionTest {
     
-    public VelocityActionTest() {
+    public ModuleCallActionTest() {
     }
     
     @BeforeClass
@@ -50,16 +52,17 @@ public class VelocityActionTest {
     }
 
     /**
-     * Test of initIteration method, of class VelocityAction.
+     * Test of ModuleCallAction.<br>
+     * 
      */
     @Test
-    public void testVelocity() throws InstantiationException, EteException {
-        System.out.println("Velocity");
+    public void testModuleCall() throws Exception {
+        System.out.println("moduleCall");
         // Registers default factories
         Factories.init();
         // Registers default actions
         InitStandardActions.init();
-        VelocityAction instance = new VelocityAction();
+
         EteModel model = (EteModel) FactoryRegistry.newInstance(MODEL);
         MofClass aClass = (MofClass) FactoryRegistry.newInstance(MOF_CLASS);
         MofPackage aPackage = (MofPackage) FactoryRegistry.newInstance(MOF_PACKAGE);
@@ -68,15 +71,23 @@ public class VelocityActionTest {
         aClass.setOwningPackage(aPackage);
         aClass.setName("MyClass");
         model.addElement(aClass);
+
+        ModuleCallAction instance = new ModuleCallAction();
         instance.addParameter(BASE_DIR, "src/test/mda/");
-        instance.addParameter("packagename", "velocity");
         instance.addParameter(MODEL, model);
-        instance.addParameter(ITEMS, "${classes}");
-        instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(TARGET, "target/generated-sources/ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
-        instance.addParameter("project", "Project name");
+        instance.addParameter(OUTPUT_BASE, "target/generated-sources/ete/");
+
+        VelocityAction velocityAction = new VelocityAction();
+        velocityAction.addParameter(ITEMS, "${classes}");
+        velocityAction.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
+        velocityAction.addParameter(TARGET, "${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
+        velocityAction.addParameter("project_name", "[inline TestProject]");
+        velocityAction.addParameter("packagename", "modulecall");
+        
+        instance.addChild(velocityAction);
         instance.process((MofPackage) model);
-        File result = new File("target/generated-sources/ete/mypackage/velocity/MyClass.java");
+
+        File result = new File("target/generated-sources/ete/mypackage/modulecall/MyClass.java");
         Assert.assertTrue(result.exists());
     }
     

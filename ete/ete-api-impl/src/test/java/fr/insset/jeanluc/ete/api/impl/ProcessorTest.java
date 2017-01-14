@@ -3,6 +3,7 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 import static fr.insset.jeanluc.ete.api.ActionReader.ACTION_READER;
+import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.OUTPUT_BASE;
 import static fr.insset.jeanluc.ete.api.impl.ModelAction.MODEL_READER;
 import fr.insset.jeanluc.ete.api.impl.io.XmlActionReader;
 import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
@@ -58,10 +59,11 @@ public class ProcessorTest {
      * Test of run method, of class Processor.
      */
     @Test
-    public void test() throws InstantiationException {
+    public void testRun() throws InstantiationException {
         System.out.println("run");
 
         ProcessorAction instance = new ProcessorAction("../../src/test/mda/ete-config.xml");
+        instance.addParameter(OUTPUT_BASE, "target");
         instance.run();
 
         // Check the results

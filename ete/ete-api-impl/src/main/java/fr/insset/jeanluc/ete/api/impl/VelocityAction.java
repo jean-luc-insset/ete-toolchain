@@ -56,7 +56,7 @@ public class VelocityAction extends GenericTemplate {
         context.put("classes",model.getClasses());
         context.put("packages", model.getPackages());
         for (Map.Entry<String,Object> entry : getParameters().entrySet()) {
-            logger.log(Level.FINE, "Passage du parametre " + entry.getKey() + " = " + entry.getValue());
+            logger.log(Level.FINE, "Passing parameter " + entry.getKey() + " = " + entry.getValue());
             context.put(entry.getKey(), entry.getValue());
         }
 
@@ -75,7 +75,7 @@ public class VelocityAction extends GenericTemplate {
      */
     protected   String  getTemplateUrl() {
         String  result = (String) getParameter(TEMPLATE);
-        ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
+        ELEvaluator elEvaluator = new ELEvaluator(getModel(), getAllParameters());
         String evaluate = elEvaluator.evaluate(result, String.class);
         return evaluate;
     }

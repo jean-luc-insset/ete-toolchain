@@ -50,7 +50,6 @@ public abstract class GenericTemplate extends ForEachAction {
     public final static String  TARGET              = "target";
 
     public final static String  TEMPLATE_ENCODING   = "template-encoding";
-    public final static String  OUTPUT_BASE         = "output-base";
     public final static String  TARGET_ENCODING     = "target-encoding";
 
 
@@ -143,8 +142,11 @@ public abstract class GenericTemplate extends ForEachAction {
 
 
     protected   Writer     openTargetUrl(String inTarget, EteModel inModel, NamedElement inContext, String inEncoding) throws IOException {
-        Map<String, Object> localParameters = new HashMap<>();
-        localParameters.putAll(getParameters());
+        Map<String, Object> localParameters = getAllParameters();
+        System.out.println("Parameters : ");
+        for (String key : localParameters.keySet()) {
+            System.out.println("    " + key + " : " + localParameters.get(key));
+        }
         Object localVar = getLocalParameter("var");
         if (localVar != null) {
             localParameters.put((String)localVar, inContext);
@@ -161,9 +163,6 @@ public abstract class GenericTemplate extends ForEachAction {
             File dirs = new File(dirPath);
             logger.log(Level.INFO, "Creation of " + dirs.getAbsolutePath());
             dirs.mkdirs();
-        }
-        else {
-            logger.log(Level.INFO, "Pas de creation de dossier, generation dans le dossier de travail");
         }
         return new OutputStreamWriter(new FileOutputStream(evaluateString), inEncoding);
     }

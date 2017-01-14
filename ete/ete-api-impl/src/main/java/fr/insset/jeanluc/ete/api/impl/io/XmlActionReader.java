@@ -38,7 +38,7 @@ public class XmlActionReader implements ActionReader {
             DocumentBuilder builder = factory.newDocumentBuilder();
             return builder.parse(inInputStream).getDocumentElement();
         } catch (ParserConfigurationException | SAXException | IOException ex) {
-            Logger.getLogger(XmlActionReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XmlActionReader.class.getName()).log(Level.SEVERE, ex.getMessage());
             throw new EteException(ex);
         }
     }       // readConfiguration

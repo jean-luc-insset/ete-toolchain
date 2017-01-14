@@ -107,6 +107,10 @@ public class ELEvaluatorTest {
     public void tearDown() {
     }
 
+
+    //========================================================================//
+
+
     /**
      * Test of evaluateBoolean method, of class ELEvaluator.
      */
@@ -119,6 +123,17 @@ public class ELEvaluatorTest {
         assertEquals(expResult, result);
     }
 
+
+    /**
+     * Test of evaluateInt method, of class ELEvaluator.
+     */
+    @Test
+    public void testEvaluateInt() {
+        System.out.println("evaluate");
+        Object expResult = 12;
+        Object result = instance.evaluateInt("12");
+        assertEquals(expResult, result);
+    }
 
 
     /**
@@ -144,6 +159,9 @@ public class ELEvaluatorTest {
         String result = instance.evaluateString(inExpression);
         assertEquals(expResult, result);
     }
+
+
+    //------------------------------------------------------------------------//
 
     /**
      * Test of evaluate method, of class ELEvaluator, with a simple variable
@@ -189,16 +207,6 @@ public class ELEvaluatorTest {
     }
 
 
-    /**
-     * Test of evaluateInt method, of class ELEvaluator.
-     */
-    @Test
-    public void testEvaluateInt() {
-        System.out.println("evaluate");
-        Object expResult = 12;
-        Object result = instance.evaluateInt("12");
-        assertEquals(expResult, result);
-    }
 
 
 }

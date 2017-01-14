@@ -1,6 +1,10 @@
-package ${current.package.name}.api;
+package ${current.package.name}.${packagename};
 
 
+
+/**
+ * This interface is generated in the project ${project}
+ */
 
 public interface $current.name {
 
