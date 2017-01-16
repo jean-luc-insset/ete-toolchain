@@ -23,4 +23,36 @@ public interface NamedElement extends MofElement {
         getStereotypes().add(inStereotype);
     }
 
+    /**
+     * WARNING : should be overridden by items able to inherit their
+     * stereotypes.
+     * 
+     * @param inStereotypeName
+     * @return true if this is marked with a stereotype named inStereotypeName.
+     */
+    public default boolean          hasStereotype(String inStereotypeName) {
+        for (Stereotype stereotype : getStereotypes()) {
+            if (inStereotypeName.equals(stereotype.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * WARNING : should be overridden by items able to inherit their
+     * stereotypes.
+     * 
+     * @param inStereotypeName
+     * @return the first stereotype named inStereotypeName and marking this.
+     */
+    public default Stereotype       getStereotype(String inStereotypeName) {
+        for (Stereotype stereotype : getStereotypes()) {
+            if (inStereotypeName.equals(stereotype.getName())) {
+                return stereotype;
+            }
+        }
+        return null;
+    }
+
 }
