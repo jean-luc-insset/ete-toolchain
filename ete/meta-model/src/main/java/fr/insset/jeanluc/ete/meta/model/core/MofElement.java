@@ -10,5 +10,10 @@ package fr.insset.jeanluc.ete.meta.model.core;
  * @author jldeleage
  */
 public interface MofElement {
-    
+
+    public String       getId();
+    public void         setId(String inId);
+
+
+
 }

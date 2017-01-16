@@ -17,9 +17,6 @@ public interface NamedElement extends MofElement {
     public  String      getName();
     public  void        setName(String inName);
 
-    public String       getId();
-    public void         setId(String inId);
-
     public Collection<Stereotype>   getStereotypes();
     public void                     setStereotypes(Collection<Stereotype> inStereotypes);
     public default void             addStereotype(Stereotype inStereotype) {
