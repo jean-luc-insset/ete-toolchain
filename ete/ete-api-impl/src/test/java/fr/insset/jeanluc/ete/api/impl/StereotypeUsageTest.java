@@ -1,7 +1,8 @@
 package fr.insset.jeanluc.ete.api.impl;
 
+
+
 import static fr.insset.jeanluc.ete.api.Action.BASE_DIR;
-import static fr.insset.jeanluc.ete.api.Action.OUTPUT_BASE;
 import fr.insset.jeanluc.ete.api.EteException;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.ITEMS;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.TARGET;
@@ -29,9 +30,9 @@ import org.junit.Test;
  *
  * @author jldeleage
  */
-public class VelocityActionTest {
+public class StereotypeUsageTest {
     
-    public VelocityActionTest() {
+    public StereotypeUsageTest() {
     }
     
     @BeforeClass
@@ -74,8 +75,7 @@ public class VelocityActionTest {
         instance.addParameter(MODEL, model);
         instance.addParameter(ITEMS, "${classes}");
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(OUTPUT_BASE, "target/generated-sources/");
-        instance.addParameter(TARGET, "ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
+        instance.addParameter(TARGET, "target/generated-sources/ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
         instance.addParameter("project", "Project name");
         instance.process((MofPackage) model);
         File result = new File("target/generated-sources/ete/mypackage/velocity/MyClass.java");

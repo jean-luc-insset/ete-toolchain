@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1">
+<emof:Package xmlns:emof="http://schema.omg.org/spec/MOF/2.0/emof.xml" xmi:id="eee_1045467100313_135436_1" name="Data">
+<ownedComment xmi:id="_18_1beta_8c90288_1415101994820_370998_4336" body="Author:jldeleage.&#10;Created:16/01/17 21:07.&#10;Title:.&#10;Comment:.&#10;">
+<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+</ownedComment>
+<nestedPackage xmi:id="_18_2_1243039e_1484597289798_337213_4194" name="analyse">
+<nestedPackage xmi:id="_18_2_1243039e_1484597296442_287407_4195" name="fr.insset.jeanluc">
+<ownedType xmi:type="emof:Class" xmi:id="_18_2_1243039e_1484597416757_718993_4230" name="Client">
+<ownedAttribute xmi:id="_18_2_1243039e_1484597428383_158214_4256" name="name">
+<type href="http://schema.omg.org/spec/MOF/2.0/emof.xml#String" xmi:type="emof:PrimitiveType"/>
+</ownedAttribute>
+<ownedAttribute xmi:id="_18_2_1243039e_1484598272915_572265_4365" type="_18_2_1243039e_1484597486156_304235_4260" lower="0" upper="*"/>
+</ownedType>
+<ownedType xmi:type="emof:Class" xmi:id="_18_2_1243039e_1484597486156_304235_4260" name="Command">
+<ownedAttribute xmi:id="_18_2_1243039e_1484597491520_984287_4286" name="commandDate"/>
+<ownedAttribute xmi:id="_18_2_1243039e_1484598509279_883495_4397" type="_18_2_1243039e_1484598198279_558324_4326" lower="0" upper="*"/>
+</ownedType>
+<ownedType xmi:type="emof:Class" xmi:id="_18_2_1243039e_1484598161036_709340_4297" name="Item">
+<ownedAttribute xmi:id="_18_2_1243039e_1484598172873_913930_4323" name="name">
+<type href="http://schema.omg.org/spec/MOF/2.0/emof.xml#String" xmi:type="emof:PrimitiveType"/>
+</ownedAttribute>
+<ownedAttribute xmi:id="_18_2_1243039e_1484598231224_884806_4356" name="price"/>
+</ownedType>
+<ownedType xmi:type="emof:Class" xmi:id="_18_2_1243039e_1484598198279_558324_4326" name="CommandLine">
+<ownedAttribute xmi:id="_18_2_1243039e_1484598206921_557233_4352" name="price"/>
+<ownedAttribute xmi:id="_18_2_1243039e_1484598214270_681663_4354" name="quantity"/>
+<ownedAttribute xmi:id="_18_2_1243039e_1484598522308_896880_4418" type="_18_2_1243039e_1484598161036_709340_4297"/>
+</ownedType>
+<ownedType xmi:type="emof:Class" xmi:id="_18_2_1243039e_1484598724249_48446_4485" name="NouveauClient">
+<ownedAttribute xmi:id="_18_2_1243039e_1484598744035_719672_4542" name="selected" type="_18_2_1243039e_1484597416757_718993_4230"/>
+</ownedType>
+</nestedPackage>
+</nestedPackage>
+</emof:Package>
+</xmi:XMI>
