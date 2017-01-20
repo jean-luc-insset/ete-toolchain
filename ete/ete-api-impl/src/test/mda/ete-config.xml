@@ -22,7 +22,7 @@
         <!-- executes the actions described in the module -->
         <velocity template="templates/umlclass2interface.vm"
                   items="${classes}"
-                  target="target/generated-sources/ete/${current.package.name.replace('.', '/')}/api/${current.name}.java"/>
+                  target="target/test-generated/ete/${current.package.name.replace('.', '/')}/api/${current.name}.java"/>
     </transformation-set>
 
 </mda>

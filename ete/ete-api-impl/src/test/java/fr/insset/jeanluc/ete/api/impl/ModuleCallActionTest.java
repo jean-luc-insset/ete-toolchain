@@ -75,7 +75,7 @@ public class ModuleCallActionTest {
         ModuleCallAction instance = new ModuleCallAction();
         instance.addParameter(BASE_DIR, "src/test/mda/");
         instance.addParameter(MODEL, model);
-        instance.addParameter(OUTPUT_BASE, "target/generated-sources/ete/");
+        instance.addParameter(OUTPUT_BASE, "target/test-generated/ete/");
 
         VelocityAction velocityAction = new VelocityAction();
         velocityAction.addParameter(ITEMS, "${classes}");
@@ -87,7 +87,7 @@ public class ModuleCallActionTest {
         instance.addChild(velocityAction);
         instance.process((MofPackage) model);
 
-        File result = new File("target/generated-sources/ete/mypackage/modulecall/MyClass.java");
+        File result = new File("target/test-generated/ete/mypackage/modulecall/MyClass.java");
         Assert.assertTrue(result.exists());
     }
     

@@ -75,10 +75,10 @@ public class StereotypeUsageTest {
         instance.addParameter(MODEL, model);
         instance.addParameter(ITEMS, "${classes}");
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(TARGET, "target/generated-sources/ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
+        instance.addParameter(TARGET, "target/test-generated/ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
         instance.addParameter("project", "Project name");
         instance.process((MofPackage) model);
-        File result = new File("target/generated-sources/ete/mypackage/velocity/MyClass.java");
+        File result = new File("target/test-generated/ete/mypackage/velocity/MyClass.java");
         Assert.assertTrue(result.exists());
     }
     

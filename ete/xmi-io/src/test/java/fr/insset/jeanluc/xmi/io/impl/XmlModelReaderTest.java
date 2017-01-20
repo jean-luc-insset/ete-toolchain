@@ -179,12 +179,18 @@ public class XmlModelReaderTest {
             } else {
                 fail("Unknown parameter : " + parameterName + " in " + ownedOperation.getName());
             }
-        }        
+        }
+
+        // 3-e check some stereotypes
+        assertEquals("true", passageClass.hasStereotype("Entity"));
+        
 
     }       // testReadComplexModel
 
 
     //========================================================================//
 
-    
+
+
+
 }       // XmlModelReaderTest

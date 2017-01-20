@@ -74,11 +74,11 @@ public class VelocityActionTest {
         instance.addParameter(MODEL, model);
         instance.addParameter(ITEMS, "${classes}");
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(OUTPUT_BASE, "target/generated-sources/");
+        instance.addParameter(OUTPUT_BASE, "target/test-generated/");
         instance.addParameter(TARGET, "ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
         instance.addParameter("project", "Project name");
         instance.process((MofPackage) model);
-        File result = new File("target/generated-sources/ete/mypackage/velocity/MyClass.java");
+        File result = new File("target/test-generated/ete/mypackage/velocity/MyClass.java");
         Assert.assertTrue(result.exists());
     }
     
