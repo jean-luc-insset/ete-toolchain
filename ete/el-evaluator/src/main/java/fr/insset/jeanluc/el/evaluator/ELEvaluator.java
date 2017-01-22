@@ -325,7 +325,7 @@ public class ELEvaluator {
         @Override
         public Method resolveFunction(String string, String string1) {
             System.out.println("Resolution de la fonction : " + string + " - " + string1);
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return null;
         }
         
     }       // EteFunctionMapper

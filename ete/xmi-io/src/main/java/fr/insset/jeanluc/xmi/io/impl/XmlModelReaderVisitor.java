@@ -37,7 +37,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import static fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence.MOF_SEQUENCE;
+import javax.xml.xpath.XPathConstants;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 
 
 
@@ -280,10 +282,76 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     //------------------------------------------------------------------------//
 
 
+    /**
+     * WARNING : actually, stereotypes are used in a three steps way&nbsp;:<ol>
+     * <li>define the stereotype and the stereotyped item</li>
+     * <li>define a name to stereotype tags</li>
+     * <li>apply a link between stereotypes and items using the previously
+     * defined tag</li>
+     * </ol>
+     * Unfortunately, the links do not refer the stereotype by Id but by name
+     * of the locally defined tag.
+     * 
+     * @param inStereotype
+     * @param inParam
+     * @return the visited object, actually the first parameter
+     * @throws XPathExpressionException 
+     */
     public Object visitStereotype(Stereotype inStereotype, Object... inParam) throws XPathExpressionException {
-        Document doc = ((Element)inParam[2]).getOwnerDocument();
-        String  referencePath = "meta:" + inStereotype.getName();
-        NodeList elementsByTagNameNS = doc.getElementsByTagNameNS("http://www.magicdraw.com/schemas/meta.xmi", inStereotype.getName());
+        Element     element = (Element)inParam[2];
+        if (inParam[0] == null || !(inParam[0] instanceof MofPackage)) {
+            return inStereotype;
+        }
+
+        Logger globalLogger = Logger.getGlobal();
+        globalLogger.log(Level.FINE, "Visiting " + inStereotype.getName());
+        // add the sterotype to the profile
+        MofPackage  profile = (MofPackage)inParam[0];
+        profile.addPackagedElement(inStereotype);
+
+        // 2- Look for usages ?
+        // TODO : maybe this should be done in another method so we could
+        // create the profile in on basic model and then use it in another
+        // model.
+        // 2-a : create the local name of the tag
+        String  parentName = profile.getName();
+        String  stereotypeName = inStereotype.getName();
+        String tagName = parentName + ":" + stereotypeName;
+
+        globalLogger.log(Level.FINER, "Looking for " + tagName);
+        EteModel    model       = (EteModel) inParam[1];
+        Element     domElement  = (Element) inParam[2];
+        String      path        = "//*[name()='" + tagName + "']";
+        NodeList evaluate = (NodeList) xPath.evaluate(path, domElement.getOwnerDocument(), XPathConstants.NODESET);
+        globalLogger.log(Level.INFO, "-> " + evaluate + " " + evaluate.getLength());
+        for (int i=0 ; i<evaluate.getLength() ; i++) {
+            Element next = (Element)evaluate.item(i);
+            NamedNodeMap attributes = next.getAttributes();
+            for (int j=0 ; j<attributes.getLength() ; j++) {
+                Node item = attributes.item(j);
+                if (item.getNodeName().startsWith("base_")) {
+                    String nodeValue = item.getNodeValue();
+                    NamedElement namedElement = model.getElementById(nodeValue);
+                    namedElement.addStereotype(inStereotype);
+                    globalLogger.log(Level.INFO, "Element st\u00e9r\u00e9otyp\u00e9 : {0} -> {1}", new Object[]{inStereotype, namedElement});
+                }
+            }
+        }
+        
+
+//        String      fullStereotypeName = element.getNodeName();
+
+//        int         index = fullStereotypeName.indexOf(':');
+//        String      profileName = index > 0 ? fullStereotypeName.substring(0, index) : "";
+//        String      stereotypeName = fullStereotypeName.substring(index + 1);
+//        Logger globalLogger = Logger.getGlobal();
+//        globalLogger.log(Level.FINE, "Visiting stereotype {0} -> {1} - {2}",
+//                new Object[]{fullStereotypeName, profileName, stereotypeName});
+//        // 
+//
+//        String stereotypedElementId = element.getAttribute("base_Class");
+//        NamedElement stereotypedElement = ((EteModel)inParam[1]).getElementById(stereotypedElementId);
+//        globalLogger.log(Level.INFO, "The element " + stereotypedElement.getName() + " is stereotyped with " + stereotypeName);
         return inStereotype;
     }
 

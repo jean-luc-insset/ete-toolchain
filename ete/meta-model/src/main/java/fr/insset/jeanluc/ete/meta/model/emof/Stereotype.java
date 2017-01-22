@@ -5,14 +5,18 @@
  */
 package fr.insset.jeanluc.ete.meta.model.emof;
 
-import fr.insset.jeanluc.ete.meta.model.types.TypedElement;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 
 /**
  *
  * @author jldeleage
  */
-public interface Stereotype extends TypedElement {
+public interface Stereotype extends PackageableElement {
 
     public final static String      STEREOTYPE = "stereotype";
+
+    public MofPackage   getProfile();
+    public void         setProfile(MofPackage inProfile);
 
 }

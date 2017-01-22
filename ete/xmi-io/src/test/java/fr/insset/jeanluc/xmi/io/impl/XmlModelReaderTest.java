@@ -125,7 +125,7 @@ public class XmlModelReaderTest {
         properties.put("QCM", 2);
         properties.put("Question", 5);
         properties.put("Etudiant", 2);
-        properties.put("Epreuve", 3);
+        properties.put("Epreuve", 4);
         properties.put("Passage", 5);
         properties.put("Reponse", 2);
         properties.put("QuestionPosee", 3);
@@ -133,6 +133,7 @@ public class XmlModelReaderTest {
         for (MofClass aClass : classes) {
             Integer get = properties.get(aClass.getName());
             if (get != null) {
+                System.out.println("   " + aClass.getName());
                 assertEquals((long)get, (long)aClass.getOwnedAttribute().size());
             }
         }
@@ -182,7 +183,7 @@ public class XmlModelReaderTest {
         }
 
         // 3-e check some stereotypes
-        assertEquals("true", passageClass.hasStereotype("Entity"));
+        assertEquals(Boolean.TRUE, passageClass.hasStereotype("Entity"));
         
 
     }       // testReadComplexModel

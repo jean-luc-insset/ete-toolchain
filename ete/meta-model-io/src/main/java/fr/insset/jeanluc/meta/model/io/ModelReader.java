@@ -107,7 +107,9 @@ public interface ModelReader {
         readGeneralizations(inDocument, inoutModel);
         readInvariants(inDocument, inoutModel);
         readSpecifications(inDocument, inoutModel);
+        readProfiles(inDocument, inoutModel);
         readStereotypes(inDocument, inoutModel);
+        applyStereotypes(inDocument, inoutModel);
         afterReading(inDocument, inoutModel);
     }
 
@@ -124,7 +126,9 @@ public interface ModelReader {
     public  void                     readGeneralizations(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readSpecifications(Object inDocument, EteModel inoutModel) throws EteException;
+    public  Collection<NamedElement> readProfiles(Object inDocument, EteModel inoutModel) throws EteException;
     public  Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException;
+    public  void                     applyStereotypes(Object inDocument, EteModel inoutModel) throws EteException;
 
 
     public default void afterReading(Object inDocument, EteModel inoutModel) throws EteException {

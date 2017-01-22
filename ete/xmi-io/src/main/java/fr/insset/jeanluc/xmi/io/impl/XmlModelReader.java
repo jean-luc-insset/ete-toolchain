@@ -51,15 +51,18 @@ import fr.insset.jeanluc.ete.meta.model.types.MofType;
 public class XmlModelReader implements ModelReader {
 
 
-    public final String     PACKAGE_PATH        = "uml:Package";
-    public final String     CLASS_PATH          = "//*[@*='uml:Package']/*[@*='uml:Class']";
-    public final String     ASSOCIATION_PATH    = "uml:Association";
-    public final String     PROPERTY_PATH       = "uml:Property";
-    public final String     OPERATION_PATH      = "uml:Operation";
-    public final String     INVARIANT_PATH      = ".//packagedElement/ownedRule";
-    public final String     PRECONDITION_PATH   = ".//ownedOperation/ownedRule[@*=../precondition/@*]";
-    public final String     POSTCONDITION_PATH  = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
-    public final String     STEREOTYPE_PATH     = "uml:Stereotype";
+    public final String     PACKAGE_PATH            = "uml:Package";
+    public final String     CLASS_PATH              = "//*[@*='uml:Package']/*[@*='uml:Class']";
+    public final String     ASSOCIATION_PATH        = "uml:Association";
+    public final String     PROPERTY_PATH           = "uml:Property";
+    public final String     OPERATION_PATH          = "uml:Operation";
+    public final String     INVARIANT_PATH          = ".//packagedElement/ownedRule";
+    public final String     PRECONDITION_PATH       = ".//ownedOperation/ownedRule[@*=../precondition/@*]";
+    public final String     POSTCONDITION_PATH      = ".//ownedOperation/ownedRule[@*=../postcondition/@*]";
+    public final String     PROFILE_PATH            = "uml:Profile";
+    public final String     PROFILE                 = MOF_PACKAGE;
+    public final String     STEREOTYPE_PATH         = "uml:Stereotype";
+    public final String     APPLIED_STEREOTYPE_PATH = ".//*[@base_Class]";
 
 
 
@@ -141,9 +144,22 @@ public class XmlModelReader implements ModelReader {
     }
 
     @Override
+    public Collection<NamedElement> readProfiles(Object inDocument, EteModel inoutModel) throws EteException {
+        Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, PROFILE_PATH, PROFILE);
+        return result;
+    }
+
+
+
+    @Override
     public Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
         Collection<NamedElement> result = readElements((Document) inDocument, inoutModel, STEREOTYPE_PATH, STEREOTYPE);
         return result;
+    }
+
+
+    @Override
+    public void applyStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
     }
 
     
@@ -219,7 +235,7 @@ public class XmlModelReader implements ModelReader {
         try {
             List<NamedElement> result = FactoryMethods.newList(NamedElement.class);
             AbstractFactory factory = FactoryRegistry.getRegistry().getFactory(inType);
-            for (int i=0 ; i<elements.getLength() ; i++) {
+            elements : for (int i=0 ; i<elements.getLength() ; i++) {
                 Element domElement = (Element)elements.item(i);
                 NamedElement newInstance = (NamedElement)factory.newInstance();
                 String name = domElement.getAttribute("name");
@@ -236,12 +252,13 @@ public class XmlModelReader implements ModelReader {
                 String parentId   = parentNode instanceof Element ? ((Element)parentNode).getAttribute("xmi:id"):"";
                 NamedElement parentNamedElement = inModel.getElementById(parentId);
 //                PackageableElement parentElement = inModel.getElementByName(parentName);
-                for (DynamicVisitorSupport visitor : getVisitors()) {
+                visitors : for (DynamicVisitorSupport visitor : getVisitors()) {
                     try {
                         visitor.genericVisit(newInstance, parentNamedElement, inModel, domElement);
                     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                         Logger.getLogger(XmlModelReader.class.getName()).log(Level.SEVERE, null, ex);
                         Logger.getGlobal().log(Level.SEVERE, "Error when visiting {0}", newInstance.getName());
+                        continue elements;
                     }
                 }
                 result.add(newInstance);
