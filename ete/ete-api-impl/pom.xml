@@ -27,12 +27,19 @@
             <version>1.4</version>
             <type>jar</type>
         </dependency>
+
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        
+<!--        <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>el-evaluator</artifactId>
             <version>1.0</version>
             <type>jar</type>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>meta-model-io</artifactId>

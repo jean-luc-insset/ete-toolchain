@@ -78,7 +78,7 @@ public class StereotypeUsageTest {
         instance.addParameter(BASE_DIR, "src/test/mda/");
         instance.addParameter("packagename", "velocity");
         instance.addParameter(MODEL, model);
-        instance.addParameter(ITEMS, "${classes.suchThat[hasStereotype(\"ihm\")]}");
+//        instance.addParameter(ITEMS, "${classes.where(c -> c.hasStereotype(\"ihm\"))}");
         instance.addParameter(ITEMS, "${classes.stream().filter(c -> c.hasStereotype(\"ihm\"))}");
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
         instance.addParameter(TARGET, "target/test-generated/ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");

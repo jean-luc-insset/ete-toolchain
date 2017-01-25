@@ -26,6 +26,8 @@ import javax.el.MapELResolver;
 import javax.el.ValueExpression;
 import javax.el.VariableMapper;
 
+
+
 /**
  *
  * @author jldeleage
@@ -50,6 +52,7 @@ public class ELEvaluator {
         compositeELResolver.add(new ListELResolver());
         compositeELResolver.add(new BeanELResolver());
         compositeELResolver.add(new MapELResolver());
+//        compositeELResolver.add(new LambdaELResolver());
         resolver = new EteELResolver();
         compositeELResolver.add(resolver);
 
@@ -278,6 +281,10 @@ public class ELEvaluator {
 
 
     private class EteVariableMapper extends VariableMapper {
+
+        public void foo() {
+
+        }
 
         @Override
         public ValueExpression resolveVariable(String inString) {
