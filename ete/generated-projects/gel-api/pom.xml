@@ -3,13 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.insset.jeanluc</groupId>
-        <artifactId>ete</artifactId>
+        <artifactId>generated-projects</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>generated-projects</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>gel-api</module>
-        <module>gel-impl</module>
-    </modules>
+    <artifactId>gel-api</artifactId>
+    <packaging>jar</packaging>
 </project>
