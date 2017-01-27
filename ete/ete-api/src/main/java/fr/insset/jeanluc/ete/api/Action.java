@@ -196,6 +196,16 @@ public interface Action {
         return null;
     }
 
+    public default String getConcatenatedParameter(String inName) {
+        Action  parent = getParent();
+        String result = parent == null ? "" : parent.getConcatenatedParameter(inName);
+        Object localParameter = getLocalParameter(inName);
+        if (localParameter != null) {
+            result += localParameter;
+        }
+        return result;
+    }
+
     public Object           getLocalParameter(String inName);
 
 

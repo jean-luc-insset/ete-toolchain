@@ -12,7 +12,7 @@
         for example "dump" steps, "template" steps or "register" steps.
       -->
 
-    <transformation-set>
+    <transformation-set output_base="../../">
         <!-- reads a model -->
         <model  url="Gel.xml"/>
         <!--<model model="models/Simple.xml"/>-->
@@ -22,8 +22,8 @@
 
         <!-- executes the actions described in the module -->
         <!-- output-base = target -->
-        <module src="modules/maven-project/ete-config.xml" projectname="gel-api"/>
-        <module src="modules/maven-project/ete-config.xml" projectname="gel-impl"/>
+        <module src="modules/maven-project/ete-config.xml" projectname="gel-api" suffix=""/>
+        <module src="modules/maven-project/ete-config.xml" projectname="gel-impl" suffix="Impl"/>
     </transformation-set>
 
 </mda>

@@ -66,7 +66,7 @@ public abstract class GenericTemplate extends ForEachAction {
         String targetUrl = getTargetUrl();
         try {
             String templateUrl = getTemplateUrl();
-            Logger.getGlobal().log(Level.FINE, "Application du template à " + inElement +  " -> " + targetUrl);
+            Logger.getGlobal().log(Level.INFO, "Template used on " + inElement +  " -> " + targetUrl);
             Writer output = openTargetUrl(targetUrl, (EteModel) inPackage, inElement, "UTF-8");
             applyTemplate(templateUrl, getTemplateEncoding(), output);
             output.flush();
@@ -112,6 +112,7 @@ public abstract class GenericTemplate extends ForEachAction {
 
     protected   String  getTargetBase() {
         return (String)getParameter(OUTPUT_BASE);
+//        return getConcatenatedParameter(OUTPUT_BASE);
     }
 
 
@@ -164,6 +165,7 @@ public abstract class GenericTemplate extends ForEachAction {
             logger.log(Level.INFO, "Creation of " + dirs.getAbsolutePath());
             dirs.mkdirs();
         }
+        logger.log(Level.INFO, "Generated file : " + evaluateString);
         return new OutputStreamWriter(new FileOutputStream(evaluateString), inEncoding);
     }
 
