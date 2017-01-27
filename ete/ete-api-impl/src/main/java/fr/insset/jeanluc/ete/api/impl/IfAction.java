@@ -21,7 +21,7 @@ public class IfAction extends ActionSupport {
     public boolean shouldIProcess(MofPackage inModel) {
         ELEvaluator evaluateur = new ELEvaluator(inModel, getParameters());
         String test = (String) getParameter("test");
-        return evaluateur.evaluateBoolean(test);
+        return (Boolean)evaluateur.evaluate(test);
     }       // process
 
 }       // If

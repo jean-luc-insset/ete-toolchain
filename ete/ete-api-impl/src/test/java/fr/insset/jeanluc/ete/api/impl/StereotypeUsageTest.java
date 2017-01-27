@@ -78,10 +78,10 @@ public class StereotypeUsageTest {
         instance.addParameter(BASE_DIR, "src/test/mda/");
         instance.addParameter("packagename", "velocity");
         instance.addParameter(MODEL, model);
-//        instance.addParameter(ITEMS, "${classes.where(c -> c.hasStereotype(\"ihm\"))}");
-        instance.addParameter(ITEMS, "${classes.stream().filter(c -> c.hasStereotype(\"ihm\"))}");
+//        instance.addParameter(ITEMS, "${classes.filter(c -> c.hasStereotype(\"ihm\"))}");
+        instance.addParameter(ITEMS, "${classes.stream().filter(c -> c.hasStereotype(\"ihm\")).toList()}");
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(TARGET, "target/test-generated/ete/${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
+        instance.addParameter(TARGET, "target/test-generated/ete/${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}.java");
         instance.addParameter("project", "Project name");
         instance.process((MofPackage) model);
         File result = new File("target/test-generated/ete/mypackage/velocity/MyClass.java");

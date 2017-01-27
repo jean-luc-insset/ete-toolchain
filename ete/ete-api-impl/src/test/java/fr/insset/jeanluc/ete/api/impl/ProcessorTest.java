@@ -1,8 +1,7 @@
 package fr.insset.jeanluc.ete.api.impl;
 
 
-
-import static fr.insset.jeanluc.ete.api.ActionReader.ACTION_READER;
+import static fr.insset.jeanluc.ete.api.ActionSupport.ACTION_READER;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.OUTPUT_BASE;
 import static fr.insset.jeanluc.ete.api.impl.ModelAction.MODEL_READER;
 import fr.insset.jeanluc.ete.api.impl.io.XmlActionReader;

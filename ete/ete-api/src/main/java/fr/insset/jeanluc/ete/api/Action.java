@@ -45,13 +45,13 @@ public interface Action {
      * {@link getParameter(String) getParameter(String inParameterName)
      * method}
      */
-    public final static String  OUTPUT_BASE      = "output-base";
+    public final static String  OUTPUT_BASE      = "output_base";
     /**
      * Name of parameter. This value must be used as a key with the
      * {@link getParameter(String) getParameter(String inParameterName)
      * method}
      */
-    public final static String  BASE_DIR         = "base-dir";
+    public final static String  BASE_DIR         = "base_dir";
 
 
 

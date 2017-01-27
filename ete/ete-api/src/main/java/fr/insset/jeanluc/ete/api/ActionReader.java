@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public interface ActionReader {
 
 
-    public  final static String     ACTION_READER = "action-reader";
+//    public  final static String     ACTION_READER = "action_reader";
 
 
     public  default Object readConfiguration(String inPath) throws EteException {

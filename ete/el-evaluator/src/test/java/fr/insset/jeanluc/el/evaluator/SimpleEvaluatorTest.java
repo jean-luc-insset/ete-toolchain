@@ -7,17 +7,13 @@ package fr.insset.jeanluc.el.evaluator;
 
 import fr.insset.jeanluc.util.coll.ListDecorator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sun.font.Decoration;
 
 /**
  *
@@ -51,7 +47,7 @@ public class SimpleEvaluatorTest {
     public void testEvaluateSimple() {
         System.out.println("evaluate");
         String inExpression = "#{ 5 + 3 }";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         Object expResult = new Long(8);
         Object result = instance.evaluate(inExpression, new HashMap<String, Object>());
         assertEquals(expResult, result);
@@ -64,7 +60,7 @@ public class SimpleEvaluatorTest {
     public void testEvaluateSimpleWithInitialAndFinalConcat() {
         System.out.println("evaluate");
         String inExpression = "The price is #{ 5 + 3 } €";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         Object expResult = "The price is 8 €";
         Object result = instance.evaluate(inExpression, new HashMap<String, Object>());
         assertEquals(expResult, result);
@@ -74,7 +70,7 @@ public class SimpleEvaluatorTest {
     public void testEvaluateWithInitialConcat() {
         System.out.println("evaluateWithInitialConcat");
         String inExpression = "The price is #{ 5 + 3 }";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         Object expResult = "The price is 8";
         Object result = instance.evaluate(inExpression, new HashMap<String, Object>());
         assertEquals(expResult, result);
@@ -84,7 +80,7 @@ public class SimpleEvaluatorTest {
     public void testEvaluateWithFinalConcat() {
         System.out.println("evaluateWithFinalConcat");
         String inExpression = "#{ 5 + 3 } €";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         Object expResult = "8 €";
         Object result = instance.evaluate(inExpression);
         assertEquals(expResult, result);
@@ -94,7 +90,7 @@ public class SimpleEvaluatorTest {
     public void testEvaluateParameter() {
         System.out.println("evaluateParameter");
         String inExpression = "The price is #{ price } €";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         instance.addParameter("price", new Long(8));
         Object expResult = "The price is 8 €";
         Object result = instance.evaluate(inExpression, new HashMap<String, Object>());
@@ -111,7 +107,7 @@ public class SimpleEvaluatorTest {
         collect.add(20);
         collect.add(40);
         String inExpression = "#{list.stream().filter(n->n>20).toList()}";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         instance.addParameter("list", collect);
         Object result = instance.evaluate(inExpression, new HashMap<String, Object>());
         assertEquals(result, result);
@@ -123,7 +119,7 @@ public class SimpleEvaluatorTest {
     public void testEvaluateLateParameter() {
         System.out.println("evaluateParameter");
         String inExpression = "The price is #{ price } €";
-        SimpleEvaluator instance = new SimpleEvaluator();
+        ELEvaluator instance = new ELEvaluator();
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("price", new Long(8));
         Object expResult = "The price is 8 €";

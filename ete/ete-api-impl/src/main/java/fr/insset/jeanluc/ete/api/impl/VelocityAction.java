@@ -76,7 +76,7 @@ public class VelocityAction extends GenericTemplate {
     protected   String  getTemplateUrl() {
         String  result = (String) getParameter(TEMPLATE);
         ELEvaluator elEvaluator = new ELEvaluator(getModel(), getAllParameters());
-        String evaluate = elEvaluator.evaluate(result, String.class);
+        String evaluate = (String) elEvaluator.evaluate(result);
         return evaluate;
     }
 

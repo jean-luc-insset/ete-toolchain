@@ -29,7 +29,7 @@ import static javax.swing.text.html.parser.DTDConstants.MODEL;
 public abstract class ActionSupport implements Action {
 
 
-    public final static String      ACTION_READER = "action-reader";
+    public final static String      ACTION_READER = "action_reader";
     public final static String      MODEL         = "model";
 
 

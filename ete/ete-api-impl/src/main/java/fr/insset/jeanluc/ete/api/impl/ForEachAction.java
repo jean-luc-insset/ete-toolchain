@@ -7,7 +7,6 @@ import fr.insset.jeanluc.ete.api.Action;
 import fr.insset.jeanluc.ete.api.ActionSupport;
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
-import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.FactoryMethods;
 import java.util.Collection;
@@ -59,8 +58,9 @@ public class ForEachAction extends ActionSupport {
                 items.add(inModel);
                 return items;
             }
-            ELEvaluator elEvaluator = new ELEvaluator(inModel, getParameters());
-            Collection evaluate = elEvaluator.evaluate(itemsExpression, Collection.class);
+//            ELEvaluator elEvaluator = new ELEvaluator(inModel, getParameters());
+            ELEvaluator elEvaluator = new ELEvaluator(inModel);
+            Collection evaluate = (Collection)elEvaluator.evaluate(itemsExpression);
             return evaluate;
         } catch (InstantiationException ex) {
             Logger.getLogger(ForEachAction.class.getName()).log(Level.SEVERE, null, ex);

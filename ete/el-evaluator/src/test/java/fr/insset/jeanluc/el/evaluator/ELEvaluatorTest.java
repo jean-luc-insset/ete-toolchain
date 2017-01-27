@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.insset.jeanluc.el.evaluator;
+
+
 
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
@@ -26,6 +23,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
+
 /**
  *
  * @author jldeleage
@@ -44,6 +43,8 @@ public class ELEvaluatorTest {
     private     MofClass            choix;          // in sub2
     private     MofClass            etudiant;       // in sub3
     private     Map<String, Object> parameters;
+
+
 
     public ELEvaluatorTest() {
     }
@@ -117,9 +118,9 @@ public class ELEvaluatorTest {
     @Test
     public void testEvaluateBoolean() {
         System.out.println("evaluateBoolean");
-        String inExpression = "true";
+        String inExpression = "${ true }";
         Boolean expResult = true;
-        Boolean result = instance.evaluateBoolean(inExpression);
+        Object result = instance.evaluate(inExpression);
         assertEquals(expResult, result);
     }
 
@@ -130,8 +131,8 @@ public class ELEvaluatorTest {
     @Test
     public void testEvaluateInt() {
         System.out.println("evaluate");
-        Object expResult = 12;
-        Object result = instance.evaluateInt("12");
+        Object expResult = 12L;
+        Object result = instance.evaluate("${12}");
         assertEquals(expResult, result);
     }
 
@@ -142,11 +143,12 @@ public class ELEvaluatorTest {
     @Test
     public void testEvaluateDouble() {
         System.out.println("evaluateDouble");
-        String inExpression = "12.3";
+        String inExpression = "${ 12.3 }";
         Double expResult = 12.3;
-        Double result = instance.evaluateDouble(inExpression);
+        Object result = instance.evaluate(inExpression);
         assertEquals(expResult, result);
     }
+
 
     /**
      * Test of evaluateString method, of class ELEvaluator.
@@ -156,7 +158,7 @@ public class ELEvaluatorTest {
         System.out.println("evaluateString");
         String inExpression = "Hello world";
         String expResult = "Hello world";
-        String result = instance.evaluateString(inExpression);
+        Object result = instance.evaluate(inExpression);
         assertEquals(expResult, result);
     }
 
@@ -171,9 +173,18 @@ public class ELEvaluatorTest {
     public void testEvaluateVariable() {
         System.out.println("evaluateVariable");
         String inExpression = "${qcmClass}";
-        MofClass result = instance.evaluate(inExpression, MofClass.class);
+        Object result = instance.evaluate(inExpression);
         assertEquals(qcm, result);
     }
+
+    @Test
+    public void testEvaluateContext() {
+        System.out.println("evaluateContext");
+        String inExpression = "${classes}";
+        Object result = instance.evaluate(inExpression);
+        
+    }
+
 
     /**
      * Test of evaluate method, of class ELEvaluator, with a simple navigation
@@ -182,7 +193,7 @@ public class ELEvaluatorTest {
     public void testEvaluateNavigation() {
         System.out.println("evaluateNavigation");
         String inExpression = "${qcmClass.name}";
-        String result = instance.evaluate(inExpression, String.class);
+        Object result = instance.evaluate(inExpression);
         assertEquals("QCM", result);
     }
 
@@ -191,7 +202,7 @@ public class ELEvaluatorTest {
     public void testEvaluationFunction() {
         System.out.println("evaluationFunction");
         String inExpression = "${questionClass.name.toUpperCase()}";
-        String result = instance.evaluate(inExpression, String.class);
+        Object result = instance.evaluate(inExpression);
         assertEquals("QUESTION", result);
     }
 
@@ -202,11 +213,9 @@ public class ELEvaluatorTest {
         String replace = "hello world".replace('l', 'm');
         System.out.println("Replace : " + replace);
         String inExpression = "${questionClass.name.replace('u', 'w')}";
-        String result = instance.evaluate(inExpression, String.class);
+        Object result = instance.evaluate(inExpression);
         assertEquals("Qwestion", result);
     }
-
-
 
 
 }

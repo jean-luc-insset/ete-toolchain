@@ -93,7 +93,7 @@ public abstract class GenericTemplate extends ForEachAction {
         String  result = (String) getParameter(TEMPLATE);
         System.out.println("Template path : " + TEMPLATE);
         ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
-        String evaluate = elEvaluator.evaluate(result, String.class);
+        String evaluate = (String)elEvaluator.evaluate(result);
         String  baseUrl = getBaseUrl();
         System.out.println("BASE_URL : " + baseUrl);
         return baseUrl + evaluate;
@@ -156,7 +156,7 @@ public abstract class GenericTemplate extends ForEachAction {
         localParameters.put("current", inContext);
         localParameters.put("model", inModel);
         ELEvaluator evaluator = new ELEvaluator(inModel, localParameters);
-        String  evaluateString = evaluator.evaluateString(inTarget);
+        String  evaluateString = (String) evaluator.evaluate(inTarget);
         int     slashIndex = evaluateString.lastIndexOf('/');
         if (slashIndex >= 0) {
             String  dirPath = evaluateString.substring(0, slashIndex);

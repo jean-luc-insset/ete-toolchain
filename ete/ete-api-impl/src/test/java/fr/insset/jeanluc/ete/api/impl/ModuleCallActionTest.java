@@ -80,7 +80,7 @@ public class ModuleCallActionTest {
         VelocityAction velocityAction = new VelocityAction();
         velocityAction.addParameter(ITEMS, "${classes}");
         velocityAction.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        velocityAction.addParameter(TARGET, "${current.package.name.replace('.', '/')}/${packagename}/${current.name}.java");
+        velocityAction.addParameter(TARGET, "${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}.java");
         velocityAction.addParameter("project_name", "[inline TestProject]");
         velocityAction.addParameter("packagename", "modulecall");
         
