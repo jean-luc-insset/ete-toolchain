@@ -12,7 +12,7 @@
         for example "dump" steps, "template" steps or "register" steps.
       -->
 
-    <transformation-set output_base="../../">
+    <transformation-set output_base="../../generated-projects/">
         <!-- reads a model -->
         <model  url="Gel.xml"/>
         <!--<model model="models/Simple.xml"/>-->

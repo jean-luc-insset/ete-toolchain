@@ -18,3 +18,5 @@
 /ete/gel/target/
 /ete/gel-impl/target/
 /ete/gel-api/target/
+/ete/generated-projects/gel-api/target/
+/ete/generated-projects/gel-impl/target/

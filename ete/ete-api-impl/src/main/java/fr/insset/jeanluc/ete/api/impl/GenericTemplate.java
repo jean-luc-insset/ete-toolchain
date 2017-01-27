@@ -111,8 +111,10 @@ public abstract class GenericTemplate extends ForEachAction {
 
 
     protected   String  getTargetBase() {
-        return (String)getParameter(OUTPUT_BASE);
-//        return getConcatenatedParameter(OUTPUT_BASE);
+//        String result = (String)getParameter(OUTPUT_BASE);
+        String result =  getConcatenatedParameter(OUTPUT_BASE);
+        Logger.getGlobal().log(Level.INFO, "TargetBase : {0}", result);
+        return result;
     }
 
 

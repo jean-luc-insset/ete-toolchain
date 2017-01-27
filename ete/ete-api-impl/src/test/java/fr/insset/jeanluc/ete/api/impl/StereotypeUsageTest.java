@@ -3,6 +3,7 @@ package fr.insset.jeanluc.ete.api.impl;
 
 
 import static fr.insset.jeanluc.ete.api.Action.BASE_DIR;
+import static fr.insset.jeanluc.ete.api.Action.OUTPUT_BASE;
 import fr.insset.jeanluc.ete.api.EteException;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.ITEMS;
 import static fr.insset.jeanluc.ete.api.impl.GenericTemplate.TARGET;
@@ -75,13 +76,14 @@ public class StereotypeUsageTest {
         stereotype.setName("ihm");
         aClass.addStereotype(stereotype);
         model.addElement(aClass);
+        instance.addParameter(OUTPUT_BASE, "target/");
         instance.addParameter(BASE_DIR, "src/test/mda/");
         instance.addParameter("packagename", "velocity");
         instance.addParameter(MODEL, model);
 //        instance.addParameter(ITEMS, "${classes.filter(c -> c.hasStereotype(\"ihm\"))}");
         instance.addParameter(ITEMS, "${classes.stream().filter(c -> c.hasStereotype(\"ihm\")).toList()}");
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(TARGET, "target/test-generated/ete/${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}.java");
+        instance.addParameter(TARGET, "test-generated/ete/${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}.java");
         instance.addParameter("project", "Project name");
         instance.process((MofPackage) model);
         File result = new File("target/test-generated/ete/mypackage/velocity/MyClass.java");
