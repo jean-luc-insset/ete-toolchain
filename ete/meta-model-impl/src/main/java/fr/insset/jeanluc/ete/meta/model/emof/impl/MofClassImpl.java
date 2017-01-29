@@ -1,7 +1,5 @@
 package fr.insset.jeanluc.ete.meta.model.emof.impl;
 
-
-
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
@@ -18,27 +16,24 @@ import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /**
- * TODO : replace the lists of attributes and operations by maps
- * (name -&gt; item)
+ * TODO : replace the lists of attributes and operations by maps (name -&gt;
+ * item)
  *
  * @author jldeleage
  */
 public class MofClassImpl extends MofTypeImpl implements MofClass {
 
-
-
     public MofClassImpl() throws EteException {
         try {
-            this.superClass     = FactoryMethods.newList(MofClass.class);
+            this.superClass = FactoryMethods.newList(MofClass.class);
             this.ownedOperation = FactoryMethods.newList(Operation.class);
             this.ownedAttribute = FactoryMethods.newList(Property.class);
-            this.invariants     = FactoryMethods.newList(Invariant.class);
+            this.invariants = FactoryMethods.newList(Invariant.class);
         } catch (InstantiationException ex) {
             Logger.getLogger(MofClassImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw new EteException(ex);
         }
     }
-
 
     @Override
     public List<Property> getOwnedAttribute() {
@@ -70,8 +65,6 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         return ownedAttribute.stream();
     }
 
-
-
     @Override
     public List<Operation> getOwnedOperation() {
         return ownedOperation;
@@ -102,8 +95,6 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         return ownedOperation.stream();
     }
 
-
-
 //    @Override
 //    public Collection<MofClass> getSuperClass() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -124,10 +115,6 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 //    public Stream<MofClass> getSuperClassAsStream() {
 //        return superClass.stream();
 //    }
-
-
-
-
     @Override
     public boolean isAbstract() {
         return isAbstract;
@@ -153,14 +140,10 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
         invariants.add(inInvariant);
     }
 
-
-
-
-    
-    List<Property>          ownedAttribute;
-    List<Operation>         ownedOperation;
-    Collection<Invariant>   invariants;
-    List<MofClass>          superClass;
-    boolean                 isAbstract;
+    List<Property> ownedAttribute;
+    List<Operation> ownedOperation;
+    Collection<Invariant> invariants;
+    List<MofClass> superClass;
+    boolean isAbstract;
 
 }

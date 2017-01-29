@@ -25,7 +25,6 @@ public class TypedElementImpl extends NamedElementImpl implements TypedElement {
         mofType = inType;
     }
 
-
-    private     MofType     mofType;
+    private MofType mofType;
 
 }

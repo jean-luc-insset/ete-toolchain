@@ -23,7 +23,7 @@ public class DataTypeImpl extends MofTypeImpl implements DataType {
     public void setAbstract(boolean inAbstract) {
         isAbstract = inAbstract;
     }
-    
-    private     boolean     isAbstract;
+
+    private boolean isAbstract;
 
 }

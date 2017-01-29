@@ -13,11 +13,10 @@ import fr.insset.jeanluc.ete.meta.model.emof.Operation;
  * @author jldeleage
  */
 public abstract class ConditionImpl extends ConstraintImpl implements Condition {
-    
+
     @Override
     public Operation getContext() {
-        return (Operation)super.getContext();
+        return (Operation) super.getContext();
     }
-
 
 }

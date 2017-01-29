@@ -13,7 +13,6 @@ import fr.insset.jeanluc.ete.meta.model.types.collections.MofSet;
  * @author jldeleage
  */
 public class MofSetImpl extends MofCollectionImpl implements MofSet {
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -23,7 +22,7 @@ public class MofSetImpl extends MofCollectionImpl implements MofSet {
         if (obj == null) {
             return false;
         }
-        if (! (obj instanceof MofSet)) {
+        if (!(obj instanceof MofSet)) {
             return false;
         }
         final MofSet other = (MofSet) obj;
@@ -32,7 +31,5 @@ public class MofSetImpl extends MofCollectionImpl implements MofSet {
         }
         return true;
     }
-
-
 
 }

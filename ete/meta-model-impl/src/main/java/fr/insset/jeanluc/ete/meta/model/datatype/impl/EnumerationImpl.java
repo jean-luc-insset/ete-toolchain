@@ -36,8 +36,6 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
         ownedLiteral.remove(inEnumerationLiteral);
     }
 
-
-    List<EnumerationLiteral>    ownedLiteral;
-
+    List<EnumerationLiteral> ownedLiteral;
 
 }

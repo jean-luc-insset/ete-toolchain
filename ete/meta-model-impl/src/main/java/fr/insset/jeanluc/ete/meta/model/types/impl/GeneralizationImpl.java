@@ -33,8 +33,8 @@ public class GeneralizationImpl implements Generalization {
     public void setSpecific(Classifier inSpecific) {
         specific = inSpecific;
     }
-    
-    private     Classifier      general;
-    private     Classifier      specific;
+
+    private Classifier general;
+    private Classifier specific;
 
 }

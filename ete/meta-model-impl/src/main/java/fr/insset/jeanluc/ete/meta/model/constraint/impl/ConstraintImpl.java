@@ -25,7 +25,6 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
         context = inContext;
     }
 
-
     @Override
     public String getSpecification() {
         return specification;
@@ -36,8 +35,7 @@ public class ConstraintImpl extends NamedElementImpl implements Constraint {
         specification = inSpecification;
     }
 
-
-    private     NamedElement        context;
-    private     String              specification;
+    private NamedElement context;
+    private String specification;
 
 }

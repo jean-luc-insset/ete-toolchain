@@ -52,20 +52,16 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
     //========================================================================//
-
-
     @Override
     public Association getOwningAssociation() {
         return owningAssociation;
     }
 
     @Override
-    public  void        setOwningAssociation(Association inAssociation) {
+    public void setOwningAssociation(Association inAssociation) {
         owningAssociation = inAssociation;
     }
-
 
     @Override
     public Association getAssociation() {
@@ -76,7 +72,6 @@ public class PropertyImpl extends TypedElementImpl implements Property {
     public void setAssociation(Association inAssociation) {
         association = inAssociation;
     }
-
 
     @Override
     public Property getOpposite() {
@@ -92,10 +87,7 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         inOpposite.setOpposite(this);
     }
 
-
     //========================================================================//
-
-
     @Override
     public boolean isReadOnly() {
         return readOnly;
@@ -105,7 +97,6 @@ public class PropertyImpl extends TypedElementImpl implements Property {
     public void setReadOnly(boolean inReadOnly) {
         readOnly = inReadOnly;
     }
-
 
     @Override
     public boolean isOrdered() {
@@ -117,8 +108,6 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         ordered = inOrdered;
     }
 
-
-
     @Override
     public boolean isUnique() {
         return unique;
@@ -129,10 +118,7 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         unique = inUnique;
     }
 
-
     //========================================================================//
-
-
     @Override
     public int getLower() {
         return lower;
@@ -162,16 +148,13 @@ public class PropertyImpl extends TypedElementImpl implements Property {
         }
     }
 
-
     //========================================================================//
-
-
-    private Association             association; 
-    private Association             owningAssociation;
-    private Property                opposite;
-    private boolean                 readOnly;
-    private boolean                 ordered;
-    private boolean                 unique;
-    private int                     lower;
-    private UnlimitedNatural        upper;
+    private Association association;
+    private Association owningAssociation;
+    private Property opposite;
+    private boolean readOnly;
+    private boolean ordered;
+    private boolean unique;
+    private int lower;
+    private UnlimitedNatural upper;
 }

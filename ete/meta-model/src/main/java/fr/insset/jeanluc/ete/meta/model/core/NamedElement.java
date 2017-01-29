@@ -5,8 +5,10 @@
  */
 package fr.insset.jeanluc.ete.meta.model.core;
 
+import fr.insset.jeanluc.ete.meta.model.emof.TagValueDeclaration;
 import fr.insset.jeanluc.ete.meta.model.emof.Stereotype;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  *
@@ -17,11 +19,16 @@ public interface NamedElement extends MofElement {
     public  String      getName();
     public  void        setName(String inName);
 
-    public Collection<Stereotype>   getStereotypes();
-    public void                     setStereotypes(Collection<Stereotype> inStereotypes);
-    public default void             addStereotype(Stereotype inStereotype) {
+    public Collection<Stereotype>           getStereotypes();
+    public void                             setStereotypes(Collection<Stereotype> inStereotypes);
+    public default void                     addStereotype(Stereotype inStereotype) {
         getStereotypes().add(inStereotype);
     }
+
+    public Map<TagValueDeclaration, Object> getTagValues();
+    public void                             setTagValues(Map<TagValueDeclaration, Object> inTagValues);
+    public void                             addTagValue(TagValueDeclaration inDeclaration, Object inValue);
+
 
     /**
      * WARNING : should be overridden by items able to inherit their

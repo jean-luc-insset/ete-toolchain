@@ -73,12 +73,10 @@ public class ParameterImpl extends TypedElementImpl implements Parameter {
         return upper;
     }
 
-
-    private     ParameterDirectionKind      direction;
-    private     boolean                     ordered;
-    private     boolean                     unique;
-    private     int                         lower;
-    private     UnlimitedNatural            upper;
-
+    private ParameterDirectionKind direction;
+    private boolean ordered;
+    private boolean unique;
+    private int lower;
+    private UnlimitedNatural upper;
 
 }

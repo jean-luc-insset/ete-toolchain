@@ -26,8 +26,7 @@ public abstract class MofCollectionImpl extends MofTypeImpl implements MofCollec
         baseType = inType;
     }
 
- 
-   @Override
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.getBaseType());
@@ -52,6 +51,6 @@ public abstract class MofCollectionImpl extends MofTypeImpl implements MofCollec
         return true;
     }
 
-    private     MofType     baseType;
-    
+    private MofType baseType;
+
 }

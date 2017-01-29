@@ -19,6 +19,8 @@ import fr.insset.jeanluc.ete.meta.model.emof.Parameter;
 import static fr.insset.jeanluc.ete.meta.model.emof.Parameter.PARAMETER;
 import fr.insset.jeanluc.ete.meta.model.emof.Property;
 import fr.insset.jeanluc.ete.meta.model.emof.Stereotype;
+import fr.insset.jeanluc.ete.meta.model.emof.TagValueDeclaration;
+import static fr.insset.jeanluc.ete.meta.model.emof.TagValueDeclaration.TAG_VALUE_DECLARATION;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
@@ -297,62 +299,99 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
      * @return the visited object, actually the first parameter
      * @throws XPathExpressionException 
      */
-    public Object visitStereotype(Stereotype inStereotype, Object... inParam) throws XPathExpressionException {
-        Element     element = (Element)inParam[2];
-        if (inParam[0] == null || !(inParam[0] instanceof MofPackage)) {
-            return inStereotype;
-        }
-
-        Logger globalLogger = Logger.getGlobal();
-        globalLogger.log(Level.FINE, "Visiting " + inStereotype.getName());
-        // add the sterotype to the profile
-        MofPackage  profile = (MofPackage)inParam[0];
-        profile.addPackagedElement(inStereotype);
-
-        // 2- Look for usages ?
-        // TODO : maybe this should be done in another method so we could
-        // create the profile in on basic model and then use it in another
-        // model.
-        // 2-a : create the local name of the tag
-        String  parentName = profile.getName();
-        String  stereotypeName = inStereotype.getName();
-        String tagName = parentName + ":" + stereotypeName;
-
-        globalLogger.log(Level.FINER, "Looking for " + tagName);
-        EteModel    model       = (EteModel) inParam[1];
-        Element     domElement  = (Element) inParam[2];
-        String      path        = "//*[name()='" + tagName + "']";
-        NodeList evaluate = (NodeList) xPath.evaluate(path, domElement.getOwnerDocument(), XPathConstants.NODESET);
-        globalLogger.log(Level.INFO, "-> " + evaluate + " " + evaluate.getLength());
-        for (int i=0 ; i<evaluate.getLength() ; i++) {
-            Element next = (Element)evaluate.item(i);
-            NamedNodeMap attributes = next.getAttributes();
-            for (int j=0 ; j<attributes.getLength() ; j++) {
-                Node item = attributes.item(j);
-                if (item.getNodeName().startsWith("base_")) {
-                    String nodeValue = item.getNodeValue();
-                    NamedElement namedElement = model.getElementById(nodeValue);
-                    namedElement.addStereotype(inStereotype);
-                    globalLogger.log(Level.INFO, "Element st\u00e9r\u00e9otyp\u00e9 : {0} -> {1}", new Object[]{inStereotype, namedElement});
+    public Object visitStereotype(Stereotype inStereotype, Object... inParam) throws EteException {
+        try {
+            Element     element = (Element)inParam[2];
+            if (inParam[0] == null || !(inParam[0] instanceof MofPackage)) {
+                return inStereotype;
+            }
+            
+            Logger globalLogger = Logger.getGlobal();
+            globalLogger.log(Level.FINE, "Visiting " + inStereotype.getName());
+            // add the sterotype to the profile
+            MofPackage  profile = (MofPackage)inParam[0];
+            profile.addPackagedElement(inStereotype);
+            
+            // 2- Read the TagValue declarations
+            String      path = "ownedAttribute";
+            NodeList    evaluate = (NodeList) xPath.evaluate(path, element, XPathConstants.NODESET);
+            for (int i=0 ; i<evaluate.getLength() ; i++) {
+                Element tagValueDomElement = (Element) evaluate.item(i);
+                TagValueDeclaration declaration = (TagValueDeclaration) FactoryRegistry.newInstance(TAG_VALUE_DECLARATION);
+                String tagValueName = tagValueDomElement.getAttribute("name");
+                declaration.setName(tagValueName);
+                try {
+                    MofType readType = readType(tagValueDomElement, (EteModel) inParam[1]);
+                    declaration.setValueType(readType);
+                    inStereotype.addTagValueDeclaration(declaration);
+                }
+                catch (Exception ex) {
+                    // The exception is not harmful : the property is not
+                    // a tag value description
+                    Logger.getGlobal().log(Level.INFO, "Unable to read " + tagValueName);
                 }
             }
+            
+            // 3- Look for usages ?
+            // TODO : maybe this should be done in another method so we could
+            // create the profile in on basic model and then use it in another
+            // model.
+            
+            // 3-a : create the local name of the tag
+            String  parentName = profile.getName();
+            String  stereotypeName = inStereotype.getName();
+            String tagName = parentName + ":" + stereotypeName;
+            
+            // 3-b : get all the tags with that name
+            globalLogger.log(Level.FINER, "Looking for " + tagName);
+            EteModel    model       = (EteModel) inParam[1];
+            Element     domElement  = (Element) inParam[2];
+            path        = "//*[name()='" + tagName + "']";
+            evaluate = (NodeList) xPath.evaluate(path, domElement.getOwnerDocument(), XPathConstants.NODESET);
+            globalLogger.log(Level.FINE, tagName  + " -> " + evaluate + " " + evaluate.getLength() + " elements");
+            
+            // 3-c : link the stereotype and the element
+            for (int i=0 ; i<evaluate.getLength() ; i++) {
+                // 3-c-1 : find the setereotyped element
+                NamedElement stereotypedElement = null;
+                Element next = (Element)evaluate.item(i);
+                NamedNodeMap attributes = next.getAttributes();
+                for (int j=0 ; j<attributes.getLength() ; j++) {
+                    Node item = attributes.item(j);
+                    String  attributeName = item.getNodeName();
+                    String nodeValue = item.getNodeValue();
+                    if (attributeName.startsWith("base_")) {
+                        stereotypedElement = model.getElementById(nodeValue);
+                        stereotypedElement.addStereotype(inStereotype);
+                        globalLogger.log(Level.INFO,
+                                "Element st\u00e9r\u00e9otyp\u00e9 : {0} -> {1}", new Object[]{inStereotype, stereotypedElement});
+                        break;
+                    }
+                }
+                // 3-c-2 : apply tag values
+                for (int j=0 ; j<attributes.getLength() ; j++) {
+                    Node attributeNode = attributes.item(j);
+                    String  attributeName = attributeNode.getNodeName();
+                    if (attributeName.startsWith("base_")) {
+                        continue;
+                    }
+                    else if (! attributeName.equals("xmi:id")) {
+                        // read the "tag value" (actually, they are provided as
+                        // attributes of the tag)
+                        String attributeValue = attributeNode.getNodeValue();
+                        TagValueDeclaration tagValueDeclaration = inStereotype.getTagValueDeclaration(attributeName);
+                        // TODO : manage type conversion
+                        stereotypedElement.addTagValue(tagValueDeclaration, attributeValue);
+                        globalLogger.log(Level.FINER, "Tag value on " + stereotypedElement + " : " + tagValueDeclaration + "=" + attributeValue);
+                    }
+                }       //
+            }       // loop on the XMI tags of sterotypes
+            
+            return inStereotype;
+        } catch (XPathExpressionException | InstantiationException ex) {
+            Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
+            throw new EteException(ex);
         }
-        
-
-//        String      fullStereotypeName = element.getNodeName();
-
-//        int         index = fullStereotypeName.indexOf(':');
-//        String      profileName = index > 0 ? fullStereotypeName.substring(0, index) : "";
-//        String      stereotypeName = fullStereotypeName.substring(index + 1);
-//        Logger globalLogger = Logger.getGlobal();
-//        globalLogger.log(Level.FINE, "Visiting stereotype {0} -> {1} - {2}",
-//                new Object[]{fullStereotypeName, profileName, stereotypeName});
-//        // 
-//
-//        String stereotypedElementId = element.getAttribute("base_Class");
-//        NamedElement stereotypedElement = ((EteModel)inParam[1]).getElementById(stereotypedElementId);
-//        globalLogger.log(Level.INFO, "The element " + stereotypedElement.getName() + " is stereotyped with " + stereotypeName);
-        return inStereotype;
     }
 
     //+=======================================================================//

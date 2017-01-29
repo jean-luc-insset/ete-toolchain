@@ -1,19 +1,14 @@
 package fr.insset.jeanluc.ete.meta.model.mofpackage.impl;
 
-
-
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.ete.meta.model.types.impl.TypedElementImpl;
-
-
 
 /**
  *
  * @author jldeleage
  */
 public class PackageableElementImpl extends TypedElementImpl implements PackageableElement {
-
 
     @Override
     public void setOwningPackage(MofPackage inPackage) {
@@ -30,7 +25,6 @@ public class PackageableElementImpl extends TypedElementImpl implements Packagea
         }
     }
 
-
     @Override
     public MofPackage getOwningPackage() {
         return owningPackage;
@@ -46,9 +40,7 @@ public class PackageableElementImpl extends TypedElementImpl implements Packagea
         id = inId;
     }
 
-
-    private     MofPackage      owningPackage;
-    private     String          id;
-
+    private MofPackage owningPackage;
+    private String id;
 
 }

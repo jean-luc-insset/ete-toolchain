@@ -16,7 +16,7 @@ public class InvariantImpl extends ConstraintImpl implements Invariant {
 
     @Override
     public MofClass getContext() {
-        return (MofClass)super.getContext();
+        return (MofClass) super.getContext();
     }
-    
+
 }

@@ -13,7 +13,6 @@ import fr.insset.jeanluc.ete.meta.model.types.collections.MofSequence;
  * @author jldeleage
  */
 public class MofSequenceImpl extends MofCollectionImpl implements MofSequence {
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -23,7 +22,7 @@ public class MofSequenceImpl extends MofCollectionImpl implements MofSequence {
         if (obj == null) {
             return false;
         }
-        if (! (obj instanceof MofSequence)) {
+        if (!(obj instanceof MofSequence)) {
             return false;
         }
         final MofSequence other = (MofSequence) obj;

@@ -23,7 +23,6 @@ public class AssociationImpl extends PackageableElementImpl implements Associati
         this.memberEnd = FactoryMethods.newList(Property.class);
     }
 
-
     @Override
     public Collection<Property> getMemberEnd() {
         return memberEnd;
@@ -31,7 +30,7 @@ public class AssociationImpl extends PackageableElementImpl implements Associati
 
     @Override
     public void addMemberEnd(Property inProperty) {
-        Collection<Property>    localMemberEnd = getMemberEnd();
+        Collection<Property> localMemberEnd = getMemberEnd();
         if (localMemberEnd.contains(inProperty)) {
             return;
         }
@@ -45,7 +44,6 @@ public class AssociationImpl extends PackageableElementImpl implements Associati
         inProperty.setAssociation(null);
     }
 
-
     @Override
     public Collection<Property> getOwnedEnd() {
         return ownedEnd;
@@ -53,7 +51,7 @@ public class AssociationImpl extends PackageableElementImpl implements Associati
 
     @Override
     public void addOwnedEnd(Property inProperty) {
-        Collection<Property>    localOwnedEnd = getOwnedEnd();
+        Collection<Property> localOwnedEnd = getOwnedEnd();
         if (localOwnedEnd.contains(this)) {
             return;
         }
@@ -65,9 +63,7 @@ public class AssociationImpl extends PackageableElementImpl implements Associati
         ownedEnd.remove(inProperty);
     }
 
-
-    private     Collection<Property>    memberEnd;
-    private     Collection<Property>    ownedEnd;
-
+    private Collection<Property> memberEnd;
+    private Collection<Property> ownedEnd;
 
 }

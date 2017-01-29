@@ -24,12 +24,11 @@ import java.util.List;
 public class OperationImpl extends TypedElementImpl implements Operation {
 
     public OperationImpl() throws InstantiationException {
-        this.ownedParameter  = FactoryMethods.newList(Parameter.class);
+        this.ownedParameter = FactoryMethods.newList(Parameter.class);
         this.raisedException = FactoryMethods.newSet(MofType.class);
-        this.preconditions   = FactoryMethods.newList(Precondition.class);
-        this.postconditions  = FactoryMethods.newList(Postcondition.class);
+        this.preconditions = FactoryMethods.newList(Precondition.class);
+        this.postconditions = FactoryMethods.newList(Postcondition.class);
     }
-
 
     @Override
     public MofClass getMofClass() {
@@ -40,8 +39,6 @@ public class OperationImpl extends TypedElementImpl implements Operation {
     public void setMofClass(MofClass inMofClass) {
         mofClass = inMofClass;
     }
-
-
 
     @Override
     public Collection<Parameter> getOwnedParameter() {
@@ -58,8 +55,6 @@ public class OperationImpl extends TypedElementImpl implements Operation {
         ownedParameter.remove(inParameter);
     }
 
-
-
     @Override
     public Collection<MofType> getRaisedException() {
         return raisedException;
@@ -75,8 +70,6 @@ public class OperationImpl extends TypedElementImpl implements Operation {
         raisedException.remove(inMofType);
     }
 
-
-
     @Override
     public boolean isOrdered() {
         return ordered;
@@ -87,8 +80,6 @@ public class OperationImpl extends TypedElementImpl implements Operation {
         ordered = inOrdered;
     }
 
-
-
     @Override
     public boolean isUnique() {
         return unique;
@@ -98,8 +89,6 @@ public class OperationImpl extends TypedElementImpl implements Operation {
     public void setUnique(boolean inUnique) {
         unique = inUnique;
     }
-
-
 
     @Override
     public int getLower() {
@@ -156,16 +145,14 @@ public class OperationImpl extends TypedElementImpl implements Operation {
         postconditions.add(inPostcondition);
     }
 
+    private MofClass mofClass;
+    private List<Parameter> ownedParameter;
+    private Collection<MofType> raisedException;
+    private boolean ordered;
+    private boolean unique;
+    private int lower;
+    private UnlimitedNatural upper;
 
-
-    private     MofClass                    mofClass;
-    private     List<Parameter>             ownedParameter;
-    private     Collection<MofType>         raisedException;
-    private     boolean                     ordered;
-    private     boolean                     unique;
-    private     int                         lower;
-    private     UnlimitedNatural            upper;
-
-    private     Collection<Precondition>    preconditions;
-    private     Collection<Postcondition>   postconditions;
+    private Collection<Precondition> preconditions;
+    private Collection<Postcondition> postconditions;
 }

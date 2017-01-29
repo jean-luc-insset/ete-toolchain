@@ -13,8 +13,6 @@ import fr.insset.jeanluc.ete.meta.model.types.collections.MofOrderedSet;
  * @author jldeleage
  */
 public class MofOrderedSetImpl extends MofCollectionImpl implements MofOrderedSet {
-    
-
 
     @Override
     public boolean equals(Object obj) {
@@ -24,7 +22,7 @@ public class MofOrderedSetImpl extends MofCollectionImpl implements MofOrderedSe
         if (obj == null) {
             return false;
         }
-        if (! (obj instanceof MofOrderedSet)) {
+        if (!(obj instanceof MofOrderedSet)) {
             return false;
         }
         final MofOrderedSet other = (MofOrderedSet) obj;
@@ -33,7 +31,5 @@ public class MofOrderedSetImpl extends MofCollectionImpl implements MofOrderedSe
         }
         return true;
     }
-
-
 
 }

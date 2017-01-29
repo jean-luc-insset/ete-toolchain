@@ -26,62 +26,57 @@ import static org.junit.Assert.*;
  * @author jldeleage
  */
 public class MofPackageImplTest {
-    
 
-    private     MofPackage      instance;
-    private     MofPackage      sub1;           // in instance
-    private     MofPackage      sub2;           // in sub1
-    private     MofPackage      sub3;           // in sub1
-    private     MofClass        qcm;            // in instance
-    private     MofClass        question;       // in sub1
-    private     MofClass        reponse;        // in sub1
-    private     MofClass        choix;          // in sub2
-    private     MofClass        etudiant;       // in sub3
-
+    private MofPackage instance;
+    private MofPackage sub1;           // in instance
+    private MofPackage sub2;           // in sub1
+    private MofPackage sub3;           // in sub1
+    private MofClass qcm;            // in instance
+    private MofClass question;       // in sub1
+    private MofClass reponse;        // in sub1
+    private MofClass choix;          // in sub2
+    private MofClass etudiant;       // in sub3
 
     public MofPackageImplTest() {
     }
-    
 
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() throws EteException {
         instance = new MofPackageImpl();
-        sub1     = addPackage("sub1", instance);
-        sub2     = addPackage("sub2", sub1);
-        sub3     = addPackage("sub3", sub1);
-        qcm      = addClass("QCM", instance);
+        sub1 = addPackage("sub1", instance);
+        sub2 = addPackage("sub2", sub1);
+        sub3 = addPackage("sub3", sub1);
+        qcm = addClass("QCM", instance);
         question = addClass("Question", sub1);
-        reponse  = addClass("Reponse", sub1);
-        choix    = addClass("Choix", sub2);
+        reponse = addClass("Reponse", sub1);
+        choix = addClass("Choix", sub2);
         etudiant = addClass("Etudiant", sub3);
     }
 
     protected MofPackage addPackage(String inName, MofPackage inoutPackage) throws EteException {
-        MofPackage    subPackage = new MofPackageImpl();
+        MofPackage subPackage = new MofPackageImpl();
         subPackage.setName(inName);
         inoutPackage.addPackagedElement(subPackage);
         return subPackage;
     }
-    
 
     protected MofClass addClass(String inName, MofPackage inoutPackage) throws EteException {
-        MofClass    aClass = new MofClassImpl();
+        MofClass aClass = new MofClassImpl();
         aClass.setName(inName);
         inoutPackage.addPackagedElement(aClass);
         return aClass;
     }
 
-
     protected Association addAssociation(Property inFrom, Property inTo) throws EteException, InstantiationException {
-        Association     result = new AssociationImpl();
+        Association result = new AssociationImpl();
         result.addMemberEnd(inFrom);
         result.addOwnedEnd(inFrom);
         result.addMemberEnd(inTo);
@@ -89,13 +84,9 @@ public class MofPackageImplTest {
         return result;
     }
 
-
     @After
     public void tearDown() {
     }
-
-
-
 
     /**
      * Test of getPackagedElementAsStream method, of class MofPackageImpl.
@@ -107,7 +98,6 @@ public class MofPackageImplTest {
         assertEquals(2, result.count());
     }
 
-
     /**
      * Test of getPackagedElementAsStream method, of class MofPackageImpl.
      */
@@ -117,7 +107,6 @@ public class MofPackageImplTest {
         Stream<MofPackage> result = instance.getPackagesAsStream();
         assertEquals(1, result.count());
     }
-
 
     /**
      * Test of getPackagedElementAsStream method, of class MofPackageImpl.
@@ -129,7 +118,6 @@ public class MofPackageImplTest {
         assertEquals(1, result.count());
     }
 
-
     /**
      * Test of getPackagedElementAsStream method, of class MofPackageImpl.
      */
@@ -139,6 +127,5 @@ public class MofPackageImplTest {
         Stream<MofClass> result = instance.getAllClassesAsStream();
         assertEquals(1, result.count());
     }
-
 
 }

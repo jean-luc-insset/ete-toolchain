@@ -47,6 +47,6 @@ public class MofTypeImpl extends PackageableElementImpl implements MofType {
         superTypes.add(inSuperType);
     }
 
-    private     Collection<MofType>     superTypes;
+    private Collection<MofType> superTypes;
 
 }

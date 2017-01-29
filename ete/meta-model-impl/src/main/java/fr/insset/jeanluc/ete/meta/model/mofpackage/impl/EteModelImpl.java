@@ -21,12 +21,10 @@ public class EteModelImpl extends MofPackageImpl implements EteModel {
     public EteModelImpl() throws EteException {
     }
 
-
     @Override
     public EteModel getParent() {
         return parent;
     }
-
 
     @Override
     public void setParent(EteModel inParent) {
@@ -46,7 +44,6 @@ public class EteModelImpl extends MofPackageImpl implements EteModel {
         }
     }
 
-
     @Override
     public PackageableElement getElementByName(String inName) {
         for (PackageableElement element : getPackagedElementAsCollection()) {
@@ -54,12 +51,11 @@ public class EteModelImpl extends MofPackageImpl implements EteModel {
                 return element;
             }
         }
-        EteModel    parent = getParent();
+        EteModel parent = getParent();
         return parent != null ? parent.getElementByName(inName) : null;
     }
 
-
-    private EteModel                    parent;
-    private Map<String, NamedElement>   elementsById = new HashMap<>();
+    private EteModel parent;
+    private Map<String, NamedElement> elementsById = new HashMap<>();
 
 }

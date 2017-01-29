@@ -24,8 +24,6 @@ import java.util.stream.Stream;
  */
 public class MofPackageImpl extends PackageableElementImpl implements MofPackage {
 
-
-
     public MofPackageImpl() throws EteException {
         try {
             this.packagedElement = FactoryMethods.newSet(PackageableElement.class);
@@ -35,21 +33,16 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
         }
     }
 
-
     //========================================================================//
-
-
     @Override
     public Collection<PackageableElement> getPackagedElementAsCollection() {
         return packagedElement;
     }
 
-
     @Override
     public void addPackagedElement(PackageableElement inPackageableElement) {
         packagedElement.add(inPackageableElement);
     }
-
 
     @Override
     public void removePackagedElement(PackageableElement inPackageableElement) {
@@ -66,22 +59,13 @@ public class MofPackageImpl extends PackageableElementImpl implements MofPackage
         return null;
     }
 
-
-
-
-
     //========================================================================//
-
-
     @Override
     public Stream<PackageableElement> getPackagedElement() {
         return packagedElement.stream();
     }
 
-
     //========================================================================//
-
-
-    private Collection<PackageableElement>     packagedElement;
+    private Collection<PackageableElement> packagedElement;
 
 }
