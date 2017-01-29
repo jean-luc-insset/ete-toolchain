@@ -28,6 +28,24 @@ public interface NamedElement extends MofElement {
     public Map<TagValueDeclaration, Object> getTagValues();
     public void                             setTagValues(Map<TagValueDeclaration, Object> inTagValues);
     public void                             addTagValue(TagValueDeclaration inDeclaration, Object inValue);
+    public default Object                   getValueOf(TagValueDeclaration inDeclaration) {
+        Map<TagValueDeclaration, Object> tagValues = getTagValues();
+        if (tagValues != null) {
+            return tagValues.get(inDeclaration);
+        }
+        return null;
+    }
+    public default Object                    getValueOf(String inTagValueName) {
+        Map<TagValueDeclaration, Object> tagValues = getTagValues();
+        if (tagValues != null) {
+            for (Map.Entry<TagValueDeclaration, Object> entry : tagValues.entrySet()) {
+                if (entry.getKey().getName().equals(inTagValueName)) {
+                    return entry.getValue();
+                }
+            }
+        }
+        return null;
+    }
 
 
     /**

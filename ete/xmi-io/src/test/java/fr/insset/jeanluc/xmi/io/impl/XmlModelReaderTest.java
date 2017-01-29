@@ -184,6 +184,11 @@ public class XmlModelReaderTest {
 
         // 3-e check some stereotypes
         assertEquals(Boolean.TRUE, passageClass.hasStereotype("Entity"));
+
+        // 3-f check some tag values
+        Object valueOf = reponseClass.getValueOf("dataSource");
+        System.out.println("ValueOf datasource = " + valueOf);
+        assertEquals("jdbc:sample", valueOf);
         
 
     }       // testReadComplexModel
