@@ -1,4 +1,4 @@
-package ${current.package.name}.impl;
+package ${current.package.name}.java;
 
 
 import ${current.package.name}.api.${current.name};

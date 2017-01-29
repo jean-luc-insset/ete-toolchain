@@ -1,4 +1,4 @@
-package fr.insset.jeanluc.gel.impl;
+package fr.insset.jeanluc.gel.java;
 
 
 import fr.insset.jeanluc.gel.api.Different;
