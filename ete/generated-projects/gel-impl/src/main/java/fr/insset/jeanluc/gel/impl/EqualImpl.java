@@ -1,11 +1,18 @@
-package fr.insset.jeanluc.gel.java;
+package fr.insset.jeanluc.gel.impl;
 
 
 import fr.insset.jeanluc.gel.api.Equal;
 
-public class EqualImpl implements Equal {
+public class EqualImpl  extends BooleanOperationImpl  implements Equal {
 
     public EqualImpl() {
+    }
+
+    //========================================================================//
+
+
+    public String getSymbol() {
+        return "=";
     }
 
 

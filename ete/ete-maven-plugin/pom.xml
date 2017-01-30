@@ -5,7 +5,7 @@
     <parent>
         <groupId>fr.insset.jeanluc</groupId>
         <artifactId>ete</artifactId>
-        <version>1.0</version>
+        <version>1.2</version>
     </parent>
 
     <artifactId>ete-maven-plugin</artifactId>
@@ -32,13 +32,13 @@
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>meta-model-impl</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>ete-api-impl</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
@@ -51,12 +51,12 @@
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>meta-model-io</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>plain-text-io</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

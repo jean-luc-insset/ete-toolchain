@@ -4,7 +4,7 @@
     <parent>
         <groupId>fr.insset.jeanluc</groupId>
         <artifactId>generated-projects</artifactId>
-        <version>1.0</version>
+        <version>1.2</version>
     </parent>
     <artifactId>gel-impl</artifactId>
     <packaging>jar</packaging>
@@ -14,5 +14,9 @@
             <artifactId>gel-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gel-spec</artifactId>
+            <version>${project.version}</version>
+        </dependency>    </dependencies>
 </project>

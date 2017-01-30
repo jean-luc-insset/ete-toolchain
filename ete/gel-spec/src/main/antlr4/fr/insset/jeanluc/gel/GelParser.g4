@@ -64,8 +64,8 @@ andExpression :
 //============================================================================//
 
 
-// In this grammar, comparisons are not associative. One cannot write expressions
-// such that
+// In this grammar, comparisons are not associative. One cannot write
+// expressions such that
 //      a > b > c
 orderExpression :
     (
@@ -109,7 +109,6 @@ compareOperator :
 //============================================================================//
 //                  A R I T H M E T I C   O P E R A T I O N S                 //
 //============================================================================//
-
 
 
 addOrSubExpression :
@@ -220,5 +219,4 @@ dateLiteral          : DateLiteral;
 characterLiteral     : CharacterLiteral;
 stringLiteral        : StringLiteral;
 nullLiteral          : NullLiteral;
-
 

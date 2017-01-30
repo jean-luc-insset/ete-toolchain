@@ -1,11 +1,18 @@
-package ${current.package.name}.java;
+package ${current.package.name}.impl;
 
 
 import ${current.package.name}.api.${current.name};
 
-public class ${current.name}Impl implements ${current.name} {
+public class ${current.name}Impl #if (${current.superClass.size()} > 0) extends ${current.superClass.get(0)}Impl #end implements ${current.name} {
 
     public ${current.name}Impl() {
+    }
+
+    //========================================================================//
+
+
+    public String getSymbol() {
+        return "${current.getValueOf("symbol")}";
     }
 
 

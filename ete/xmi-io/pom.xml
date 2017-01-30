@@ -4,7 +4,7 @@
     <parent>
         <groupId>fr.insset.jeanluc</groupId>
         <artifactId>ete</artifactId>
-        <version>1.0</version>
+        <version>1.2</version>
     </parent>
     <artifactId>xmi-io</artifactId>
     <packaging>jar</packaging>
@@ -12,13 +12,13 @@
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>meta-model-io</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>ete-api</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>fr.insset.jeanluc</groupId>
             <artifactId>meta-model-impl</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>

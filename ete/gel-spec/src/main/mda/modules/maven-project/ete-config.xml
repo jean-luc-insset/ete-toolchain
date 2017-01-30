@@ -15,7 +15,7 @@
     <transformation-set output_base="${projectname}/">
         <velocity template="templates/${projectname}/java/${projectname}.vm"
                 items="${classes.stream().filter(c -&gt; c.getValueOf(&quot;symbol&quot;)!=null).toList()}"
-                target="src/main/java/${current.owningPackage.name.replace('.', '/')}/java/${current.name}${suffix}.java"/>
+                target="src/main/java/${current.owningPackage.name.replace('.', '/')}/${package}/${current.name}${suffix}.java"/>
         />
 <!--        <velocity template="templates/pomxml.vm"
                   target="pom.xml"/>-->

@@ -1,0 +1,20 @@
+package fr.insset.jeanluc.ete.gel.impl.factory;
+
+
+import fr.insset.jeanluc.util.factory.FactoryRegistry;
+
+
+public class GelFactory {
+
+    public static void registerFactories() {
+        FactoryRegistry registry = FactoryRegistry.getRegistry();
+#foreach($aClass in ${current.classes})
+    #if($aClass.getValueOf("symbol"))
+        registry.registerDefaultFactory("${aClass.getValueOf("symbol")}", ${aClass.package.name}.impl.${aClass.name}Impl.class);        
+    #end
+#end
+    }
+
+}
+
+

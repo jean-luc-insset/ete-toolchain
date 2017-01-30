@@ -2,7 +2,7 @@ package fr.insset.jeanluc.gel.api;
 
 
 
-public interface GreaterThan {
+public interface LessThan  {
 
 
 

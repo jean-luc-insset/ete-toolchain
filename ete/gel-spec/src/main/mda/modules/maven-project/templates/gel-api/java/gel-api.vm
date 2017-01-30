@@ -2,7 +2,7 @@ package ${current.package.name}.api;
 
 
 
-public interface $current.name {
+public interface $current.name #if (${current.superClass.size} > 0) extends ${current.superClass.get(0)} #end {
 
 
 
