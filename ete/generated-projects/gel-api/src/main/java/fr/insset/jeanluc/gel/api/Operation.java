@@ -2,14 +2,19 @@ package fr.insset.jeanluc.gel.api;
 
 
 
-public interface Operation  {
+public interface Operation  extends GelExpression  {
+
+
+
+
+
 
 
 
     //========================================================================//
 
 
-
+    
 
 
 }

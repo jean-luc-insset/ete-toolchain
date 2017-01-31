@@ -156,10 +156,6 @@ public class ELEvaluator {
                 return result;
             }
             builder.append(inExpression.substring(previousEnd, start));
-//            System.out.println("I found the text " + group
-//                    + " in the text " + inExpression
-//                    + " starting at index " + matcher.start()
-//                    + " and ending at index " + matcher.end());
             builder.append(result.toString());
             previousEnd = end;
         }

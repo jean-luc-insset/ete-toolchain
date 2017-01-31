@@ -2,7 +2,15 @@ package fr.insset.jeanluc.gel.api;
 
 
 
-public interface Not  {
+public interface Not  extends UnaryOperation  {
+
+
+
+
+    public default String getSymbol() {
+        return "not";
+    }
+
 
 
 

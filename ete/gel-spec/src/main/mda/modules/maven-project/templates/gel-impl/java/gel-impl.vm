@@ -1,25 +1,28 @@
 package ${current.package.name}.impl;
 
 
-import ${current.package.name}.api.${current.name};
+import ${current.package.name}.api.*;
 
 public class ${current.name}Impl #if (${current.superClass.size()} > 0) extends ${current.superClass.get(0)}Impl #end implements ${current.name} {
 
     public ${current.name}Impl() {
     }
 
+
     //========================================================================//
 
-
-    public String getSymbol() {
-        return "${current.getValueOf("symbol")}";
+#foreach ($tagValue in ${current.getTagValues().keySet()})
+    public String get${tagValue.name.substring(0,1).toUpperCase()}${tagValue.name.substring(1)}() {
+        return "${current.getValueOf($tagValue.name)}";
     }
+#end
+
 
 
     //========================================================================//
 
 
-#foreach ($aProperty in $current.properties)
+#foreach ($aProperty in $current.ownedAttribute)
     #if($aProperty.name && $aProperty.type.name)
     public ${aProperty.type.name} get${aProperty.name}() {
         return ${aProperty.name};
@@ -35,7 +38,17 @@ public class ${current.name}Impl #if (${current.superClass.size()} > 0) extends 
     //========================================================================//
 
 
-#foreach ($aProperty in $current.properties)
+#foreach ($aMethod in $current.ownedOperation)
+    public ${aMethod.type} ${aMethod.name}(#foreach($aParam in ${aMethod.parameters})${aParam.type} ${aParam.name} #end) {
+        throw new RuntimeException("Not yet implemented");
+    }
+#end
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.ownedAttribute)
     #if($aProperty.name && $aProperty.type.name)
     private ${aProperty.type.name} ${aProperty.name};
     #end

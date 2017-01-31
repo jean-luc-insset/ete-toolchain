@@ -90,12 +90,13 @@ public abstract class GenericTemplate extends ForEachAction {
      * @return the result of the evaluation of the "template" parameter
      */
     protected   String  getTemplateUrl() {
+        Logger logger = Logger.getGlobal();
         String  result = (String) getParameter(TEMPLATE);
-        System.out.println("Template path : " + TEMPLATE);
+        logger.log(Level.FINER, "Template path : " + TEMPLATE);
         ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
         String evaluate = (String)elEvaluator.evaluate(result);
         String  baseUrl = getBaseUrl();
-        System.out.println("BASE_URL : " + baseUrl);
+        logger.log(Level.FINER, "BASE_URL : " + baseUrl);
         return baseUrl + evaluate;
     }
 
@@ -125,7 +126,8 @@ public abstract class GenericTemplate extends ForEachAction {
      */
     protected   String  getTargetUrl() {
         String targetBase = getTargetBase();
-        System.out.println("TargetBase : " + targetBase);
+        Logger  logger = Logger.getGlobal();
+        logger.log(Level.FINER, "TargetBase : {0}", targetBase);
         if (targetBase == null) {
             targetBase = "./";
         }
@@ -133,7 +135,7 @@ public abstract class GenericTemplate extends ForEachAction {
             targetBase += '/';
         }
         String target = (String) getParameter(TARGET);
-        System.out.println("Target : " + target);
+        logger.log(Level.FINER, "Target : {0}", target);
         return targetBase + getParameter(TARGET);
     }
 
@@ -146,16 +148,16 @@ public abstract class GenericTemplate extends ForEachAction {
 
     protected   Writer     openTargetUrl(String inTarget, EteModel inModel, NamedElement inContext, String inEncoding) throws IOException {
         Map<String, Object> localParameters = getAllParameters();
-        System.out.println("Parameters : ");
+        Logger  logger = Logger.getGlobal();
+        logger.log(Level.FINE, "Parameters : ");
         for (String key : localParameters.keySet()) {
-            System.out.println("    " + key + " : " + localParameters.get(key));
+            logger.log(Level.FINE, "{0} : {1}", new Object[]{key, localParameters.get(key)});
         }
         Object localVar = getLocalParameter("var");
         if (localVar != null) {
             localParameters.put((String)localVar, inContext);
         }
-        Logger logger = Logger.getGlobal();
-        logger.log(Level.FINE, "passage de current : " + inContext.getName());
+        logger.log(Level.FINE, "current : " + inContext.getName());
         localParameters.put("current", inContext);
         localParameters.put("model", inModel);
         ELEvaluator evaluator = new ELEvaluator(inModel, localParameters);
@@ -164,8 +166,10 @@ public abstract class GenericTemplate extends ForEachAction {
         if (slashIndex >= 0) {
             String  dirPath = evaluateString.substring(0, slashIndex);
             File dirs = new File(dirPath);
-            logger.log(Level.INFO, "Creation of " + dirs.getAbsolutePath());
-            dirs.mkdirs();
+            if (! dirs.exists()) {
+                logger.log(Level.INFO, "Creation of " + dirs.getAbsolutePath());
+                dirs.mkdirs();
+            }
         }
         logger.log(Level.INFO, "Generated file : " + evaluateString);
         return new OutputStreamWriter(new FileOutputStream(evaluateString), inEncoding);

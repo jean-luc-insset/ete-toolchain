@@ -3,17 +3,14 @@ package fr.insset.jeanluc.gel.impl;
 
 import fr.insset.jeanluc.gel.api.*;
 
-public class OrImpl  extends BooleanOperationImpl  implements Or {
+public class NumberOperationImpl  extends BinaryOperationImpl  implements NumberOperation {
 
-    public OrImpl() {
+    public NumberOperationImpl() {
     }
 
 
     //========================================================================//
 
-    public String getSymbol() {
-        return "or";
-    }
 
 
 

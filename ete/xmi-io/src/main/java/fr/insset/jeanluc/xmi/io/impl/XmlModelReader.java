@@ -110,14 +110,15 @@ public class XmlModelReader implements ModelReader {
     public void readGeneralizations(Object inDocument, EteModel inoutModel) throws EteException {
         try {
             NodeList elements = getElements("//generalization", (Document)inDocument);
+            Logger  logger = Logger.getGlobal();
             for (int i=0 ; i<elements.getLength() ; i++) {
                 Element next        = (Element) elements.item(i);
                 String idSubClass   = ((Element)next.getParentNode()).getAttribute("name");
                 String idSuperClass = next.getAttribute("general");
-                System.out.println("Ids : [" + idSubClass + "]   [" + idSuperClass + "]");
+                logger.log(Level.FINER,"Ids : [" + idSubClass + "]   [" + idSuperClass + "]");
                 MofType subClass   = (MofType) inoutModel.getElementByName(idSubClass);
                 MofType superClass = (MofType) inoutModel.getElementById(idSuperClass);
-                System.out.println("SubClass : " + subClass + " superClass : " + superClass);
+                logger.log(Level.FINER,"SubClass : " + subClass + " superClass : " + superClass);
                 if (subClass != null && superClass != null) {
                     Logger.getGlobal().log(Level.INFO, "Adding inheritance {0} -> {1}", new Object[]{subClass, superClass});
                     subClass.addSuperType(superClass);

@@ -2,7 +2,12 @@ package fr.insset.jeanluc.gel.api;
 
 
 
-public interface UnaryOperation  {
+public interface UnaryOperation  extends Operation  {
+
+
+
+
+
 
 
 

@@ -2,7 +2,12 @@ package fr.insset.jeanluc.gel.api;
 
 
 
-public interface BinaryOperation  {
+public interface BinaryOperation  extends Operation  {
+
+
+
+
+
 
 
 

@@ -2,7 +2,15 @@ package fr.insset.jeanluc.gel.api;
 
 
 
-public interface Different  {
+public interface Different  extends BooleanOperation  {
+
+
+
+
+    public default String getSymbol() {
+        return "<>";
+    }
+
 
 
 
