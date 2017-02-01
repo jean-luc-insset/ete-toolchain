@@ -3,6 +3,7 @@ package fr.insset.jeanluc.ete.api.impl;
 import fr.insset.jeanluc.ete.api.impl.util.InitStandardActions;
 import fr.insset.jeanluc.ete.api.ActionReader;
 import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
 import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
 import fr.insset.jeanluc.util.factory.AbstractFactory;
@@ -55,6 +56,7 @@ public class ProcessorAction extends ModuleCallAction implements Runnable {
 
         EteModel     model = (EteModel) FactoryRegistry.newInstance(EteModel.MODEL);
         addParameter(EteModel.MODEL, model);
+        PrimitiveDataTypes.init(model);
 
         // TODO : register other services than XML for configuration files
         ServiceRegistry services = ServiceRegistryImpl.getRegistry();

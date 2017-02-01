@@ -115,9 +115,11 @@ public class XmlModelReaderTest {
 
         // 3- Check result
 
-        // 3-a check the number of classes
+        // 3-a check the number of classes and some meta-properties
         Collection<MofClass> classes = result.getClasses();
         assertEquals(9, classes.size());
+        MofClass    createurQuestionClass = (MofClass)result.getElementByName("CreateurQuestion");
+        assertTrue(createurQuestionClass.isAbstract());
 
         // 3-b check the number of properties of each class
         Map<String, Integer>    properties = new HashMap<>();
@@ -162,7 +164,6 @@ public class XmlModelReaderTest {
         Collection<Postcondition> postconditions = calculeNote.getPostconditions();
         assertEquals(1, postconditions.size());
         // 3-d-2 CreateurQuestion::nouvelleReponse
-        MofClass createurQuestionClass = (MofClass) result.getElementByName("CreateurQuestion");
         Operation ownedOperation = createurQuestionClass.getOwnedOperation("nouvelleReponse");
         MofType type = ownedOperation.getType();
         MofClass reponseClass = (MofClass)result.getElementByName("Reponse");
@@ -189,7 +190,6 @@ public class XmlModelReaderTest {
         Object valueOf = reponseClass.getValueOf("dataSource");
         System.out.println("ValueOf datasource = " + valueOf);
         assertEquals("jdbc:sample", valueOf);
-        
 
     }       // testReadComplexModel
 

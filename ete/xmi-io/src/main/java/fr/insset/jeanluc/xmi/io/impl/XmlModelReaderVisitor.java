@@ -117,7 +117,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             MofPackage parentPackage = (MofPackage) parentElement;
             parentPackage.addPackagedElement(packageable);
             packageable.setOwningPackage(parentPackage);
-            logger.log(Level.FINE, "the item {0} is put in package {1}", new Object[]{packageable, parentPackage});
+            logger.log(Level.FINER, "the item {0} is put in package {1}", new Object[]{packageable, parentPackage});
         }
         else {
             logger.log(Level.WARNING, "the item " + packageable + " is not put in any package");
@@ -128,6 +128,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
         Element elt = (Element) inParam[2];
         String isAbstract = elt.getAttribute("isAbstract");
         if ("true".equals(isAbstract)) {
+            logger.log(Level.FINER, "The class " + inElement.getName() + " is abstract");
             inElement.setAbstract(true);
         }
 
@@ -146,14 +147,19 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
      * @throws XPathExpressionException 
      */
     public Object   visitProperty(Property inProperty, Object... inParam) throws EteException, XPathExpressionException {
+        Logger  logger = Logger.getGlobal();
+        logger.log(Level.FINE, "visiting " + inProperty.getName() + " property");
         MofClass    parentClass = (MofClass) inParam[0];
         if (parentClass != null) {
             parentClass.addOwnedAttribute((Property) inProperty);
+            logger.log(Level.FINEST, inProperty.getName() + " added to " + parentClass.getName());
         }
         if (inProperty.getType() == null) {
             inProperty.setType(readType((Element)inParam[2], (EteModel)inParam[1]));
         }
-        readMultiplicity(inProperty, (Element)inParam[2], (EteModel)inParam[1]);
+        logger.log(Level.INFO, "Type of " + inProperty.getName() + " is " + inProperty.getType());
+
+//        readMultiplicity(inProperty, (Element)inParam[2], (EteModel)inParam[1]);
         return inProperty;
     }
 
@@ -400,8 +406,10 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
     protected MofType  readType(Element inElement, EteModel inModel) throws EteException {
         MofType     result;
         String attribute = inElement.getAttribute("type");
+        Logger logger = Logger.getGlobal();
         if (attribute != null && ! "".equals(attribute)) {
             result = (MofType)inModel.getElementById(attribute);
+            logger.log(Level.INFO, "In readType, attribute = " + result);
         }
         else {
             try {
@@ -409,6 +417,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
                 int index = typeAsString.lastIndexOf("::");
                 typeAsString = typeAsString.substring(index+2);
                 result = (MofType)inModel.getElementByName(typeAsString);
+                logger.log(Level.INFO, "In readType, typeAsString = " + typeAsString + " -> " + result);
             } catch (XPathExpressionException ex) {
                 Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
                 throw new EteException(ex);
@@ -421,8 +430,10 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
                 try {
                     // TODO : check properties of the association to derive the
                     // true nature of the collection
+                    logger.log(Level.INFO, "The type is a collection of " + result + "s");
                     MofCollection sequence = (MofCollection) FactoryRegistry.newInstance(MOF_SEQUENCE);
                     sequence.setBaseType(result);
+                    logger.log(Level.INFO, "After wrapping : " + sequence.getName() + " (" + sequence.getClass() + ")");
                     result = sequence;
                 } catch (InstantiationException ex) {
                     throw new EteException(ex);
@@ -436,12 +447,14 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
 
     protected void   readMultiplicity(MultiplicityElement inoutElement, Element inXmlElement, EteModel inModel) throws EteException, XPathExpressionException {
         String upperAsString = xPath.evaluate(UPPER_PATH, inXmlElement);
+        Logger logger = Logger.getGlobal();
         if (UNBOUND.equals(upperAsString)) {
             try {
                 // TODO
                 UnlimitedNatural unbound = (UnlimitedNatural) FactoryRegistry.newInstance(UNLIMITED_NATURAL);
                 unbound.setValue(UNBOUND);
                 inoutElement.setUpper(unbound);
+                logger.log(Level.INFO, "Unlimited upper bound");
             } catch (InstantiationException ex) {
                 Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);
             }

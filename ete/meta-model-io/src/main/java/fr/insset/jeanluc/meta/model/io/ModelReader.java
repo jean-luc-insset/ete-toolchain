@@ -36,15 +36,6 @@ public interface ModelReader {
 
 
     public default EteModel readModel(String inUrl, EteModel inParent) throws EteException {
-        if (inParent == null) {
-            try {
-                inParent  = (EteModel) FactoryRegistry.newInstance(MODEL);
-                PrimitiveDataTypes.init(inParent);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(ModelReader.class.getName()).log(Level.SEVERE, null, ex);
-                throw new EteException(ex);
-            }
-        }
         try {
             if (! inUrl.contains(":/")) {
                 inUrl = "file://" + new File(inUrl).getAbsolutePath();
@@ -81,6 +72,19 @@ public interface ModelReader {
 
 
     public default EteModel readModel(Object inDocument, EteModel inParent) throws EteException {
+        if (inParent == null) {
+            try {
+                inParent  = (EteModel) FactoryRegistry.newInstance(MODEL);
+                PrimitiveDataTypes.init(inParent);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(ModelReader.class.getName()).log(Level.SEVERE, null, ex);
+                throw new EteException(ex);
+            }
+        }
+        else {
+            System.out.println("NO PARENT MODEL");
+            new Exception().printStackTrace();
+        }
         try {
             FactoryRegistry registry = FactoryRegistry.getRegistry();
             AbstractFactory factory = registry.getFactory(MODEL);

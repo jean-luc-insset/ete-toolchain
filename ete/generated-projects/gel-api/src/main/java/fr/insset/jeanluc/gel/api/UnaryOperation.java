@@ -1,8 +1,11 @@
 package fr.insset.jeanluc.gel.api;
 
 
+import java.util.List;
+import java.util.Set;
 
-public interface UnaryOperation  extends Operation  {
+
+public interface UnaryOperation  extends GelExpression  {
 
 
 

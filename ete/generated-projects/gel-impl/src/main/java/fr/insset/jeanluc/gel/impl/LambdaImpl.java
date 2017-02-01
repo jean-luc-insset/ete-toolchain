@@ -6,10 +6,10 @@ import java.util.List;
 
 
 
-public class LessThanImpl  extends BooleanOperationImpl  implements LessThan {
+public class LambdaImpl  extends BinaryOperationImpl  implements Lambda {
 
 
-    public LessThanImpl() {
+    public LambdaImpl() {
     }
 
 
@@ -17,7 +17,7 @@ public class LessThanImpl  extends BooleanOperationImpl  implements LessThan {
 
 
     public String getSymbol() {
-        return "<";
+        return "|";
     }
 
 
@@ -28,7 +28,30 @@ public class LessThanImpl  extends BooleanOperationImpl  implements LessThan {
 
 
 
+    
+    public List<VariableDeclaration> getVariables() {
+        return variables;
+    }
 
+    public void setVariables(List<VariableDeclaration> inValue) {
+        variables = inValue;
+    }
+
+        public void addVariables(VariableDeclaration inValue) {
+        variables.add(inValue);
+    }
+    
+        
+    public GelExpression getBody() {
+        return body;
+    }
+
+    public void setBody(GelExpression inValue) {
+        body = inValue;
+    }
+
+    
+    
 
     //========================================================================//
     //                           O P E R A T I O N S                          //
@@ -42,6 +65,8 @@ public class LessThanImpl  extends BooleanOperationImpl  implements LessThan {
     //========================================================================//
 
 
+    private List<VariableDeclaration> variables;
+    private GelExpression body;
 
 
 }

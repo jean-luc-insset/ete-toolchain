@@ -54,12 +54,27 @@ orExpression :
 
 andExpression :
     (
-    orderExpression
+    notOrNotNotExpression
     AND
     )*
+    notOrNotNotExpression
+;
+
+
+notOrNotNotExpression:
+    notExpression
+    |
+    notNotExpression
+;
+
+notExpression :
+    NOT
     orderExpression
 ;
 
+notNotExpression :
+    orderExpression
+;
 
 //============================================================================//
 
@@ -69,20 +84,39 @@ andExpression :
 //      a > b > c
 orderExpression :
     (
-        compareExpression
-        orderOperator
+        greaterThanExpression
+        |
+        greaterOrEqualExpression
+        |
+        lessThanExpression
+        |
+        lessOrEqualExpression
     )?
     compareExpression
 ;
 
 
-orderOperator :
+
+greaterThanExpression :
+    compareExpression
     GT
-    |
+;
+
+
+greaterOrEqualExpression :
+    compareExpression
     GE
-    |
+;
+
+
+lessThanExpression :
+    compareExpression
     LT
-    |
+;
+
+
+lessOrEqualExpression :
+    compareExpression
     LE
 ;
 
@@ -92,16 +126,21 @@ orderOperator :
 //      a = b = c
 compareExpression :
     (
-        addOrSubExpression
-        compareOperator
+        equalExpression
+        |
+        differentExpression
     )?
     addOrSubExpression
 ;
 
 
-compareOperator :
+equalExpression :
+    addOrSubExpression
     EQUAL
-    |
+;
+
+differentExpression :
+    addOrSubExpression
     NOTEQUAL
 ;
 
@@ -113,36 +152,49 @@ compareOperator :
 
 addOrSubExpression :
     (
-        multOrDivExpression
-        addOrSubOperator
+        addExpression
+        |
+        minusExpression
     )*
     multOrDivExpression
 ;
 
-
-
-addOrSubOperator :
+addExpression :
+    multOrDivExpression
     ADD
-    |
+;
+
+minusExpression :
+    multOrDivExpression
     SUB
 ;
 
 
 multOrDivExpression :
     (
-        navExpression
-        mulOperator
+        multExpression
+        |
+        divExpression
+        |
+        modExpression
     )*
     
     navExpression
 ;
 
 
-mulOperator :
+multExpression :
+    navExpression
     MUL
-    |
+;
+
+divExpression :
+    navExpression
     DIV
-    |
+;
+
+modExpression:
+    navExpression
     MOD
 ;
 
@@ -155,15 +207,22 @@ mulOperator :
 
 navExpression :
     (
-    stepExpression
-    navOperator
+    dotExpression
+    |
+    arrowExpression
     )*
     stepExpression
 ;
 
 
-navOperator :
-    DOT | ARROW
+dotExpression :
+    stepExpression
+    DOT
+;
+
+arrowExpression :
+    stepExpression
+    ARROW
 ;
 
 
@@ -175,12 +234,82 @@ stepExpression :
 ;
 
 
+//----------------------------------------------------------------------------//
+
 filterExpression :
     LBRACK
-    gelExpression
+    lambdaExpression
     RBRACK
 ;
 
+
+lambdaExpression :
+    (
+        variableDeclarationExpression
+        (
+            COMMA
+            variableDeclarationExpression
+        )*
+        PIPE
+    )?
+    gelExpression
+;
+
+
+
+variableDeclarationExpression :
+    Identifier
+    (
+        COLON
+        typeExpression
+    )?
+;
+
+
+typeExpression :
+    atomicTypeExpression
+    |
+    sequenceTypeExpression
+    |
+    bagTypeExpression
+    |
+    setTypeExpression
+    |
+    orderedSetTypeExpression
+;
+
+
+atomicTypeExpression :
+    Identifier
+;
+
+sequenceTypeExpression :
+    SEQUENCE
+    LPAREN
+    typeExpression
+    RPAREN
+;
+
+bagTypeExpression :
+    BAG
+    LPAREN
+    typeExpression
+    RPAREN
+;
+
+setTypeExpression :
+    SET
+    LPAREN
+    typeExpression
+    RPAREN
+;
+
+orderedSetTypeExpression :
+    ORDERED SET
+    LPAREN
+    typeExpression
+    RPAREN
+;
 
 //============================================================================//
 //                               L I T E R A L S                              //
@@ -188,9 +317,17 @@ filterExpression :
 
 
 atomicExpression :
+    oppExpression
+    |
     identifier
     |
-    literal;
+    literal
+;
+
+oppExpression :
+    SUB
+    atomicExpression
+;
 
 literal :
     integerLiteral

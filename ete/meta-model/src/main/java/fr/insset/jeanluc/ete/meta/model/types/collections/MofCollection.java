@@ -16,5 +16,17 @@ public interface MofCollection extends MofType {
     public  boolean     isOrdered();
     public  boolean     isDistinct();
 
+    /**
+     * @return the java-style name, e.g. List&lt;String&gt;
+     */
+    @Override
+    public default String getName() {
+        return "List<" + getBaseType().getName() + ">";
+    }
+
+    @Override
+    public default boolean         isCollection() {
+        return true;
+    }
 }
 

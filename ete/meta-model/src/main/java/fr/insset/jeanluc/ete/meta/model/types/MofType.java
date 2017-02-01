@@ -16,4 +16,7 @@ public interface MofType extends PackageableElement {
     public void                     setSuperTypes(Collection<MofType> inSuperTypes);
     public void                     addSuperType(MofType inSuperType);
 
+    public default boolean         isCollection() {
+        return false;
+    }
 }

@@ -37,6 +37,7 @@ public class MofClassImpl extends MofTypeImpl implements MofClass {
 
     @Override
     public List<Property> getOwnedAttribute() {
+        System.out.println("Getting access to ownedAttribute ; " + ownedAttribute.toString() + " element(s)");
         return ownedAttribute;
     }
 

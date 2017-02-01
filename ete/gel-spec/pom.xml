@@ -25,6 +25,12 @@
             <artifactId>antlr4-runtime</artifactId>
             <version>4.5.3</version>
         </dependency>
+        <dependency>
+            <groupId>fr.insset.jeanluc</groupId>
+            <artifactId>meta-model</artifactId>
+            <version>1.2</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -41,7 +47,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+<!--            <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <version>4.5.3</version>
@@ -58,7 +64,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>fr.insset.jeanluc</groupId>

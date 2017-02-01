@@ -32,4 +32,9 @@ public class MofSequenceImpl extends MofCollectionImpl implements MofSequence {
         return true;
     }
 
+    @Override
+    public String getName() {
+        return "List<" + getBaseType().getName() + ">";
+    }
+
 }

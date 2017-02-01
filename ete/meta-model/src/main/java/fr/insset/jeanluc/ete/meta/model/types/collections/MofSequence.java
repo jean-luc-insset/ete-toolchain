@@ -23,4 +23,11 @@ public interface MofSequence extends MofCollection {
         return true;
     }
 
+    /**
+     * @return the java-style name, e.g. List&lt;String&gt;
+     */
+    @Override
+    public default String getName() {
+        return "List<" + getBaseType().getName() + ">";
+    }
 }
