@@ -1,0 +1,78 @@
+package ${current.package.name}.impl;
+
+
+import ${current.package.name}.api.*;
+import java.util.List;
+
+
+
+public class ${current.name}Impl #if (${current.superClass.size()} > 0) extends ${current.superClass.get(0)}Impl #end implements ${current.name} {
+
+
+    public ${current.name}Impl() {
+    }
+
+
+    //========================================================================//
+
+
+#foreach ($tagValue in ${current.getTagValues().keySet()})
+    public String get${tagValue.name.substring(0,1).toUpperCase()}${tagValue.name.substring(1)}() {
+        return "${current.getValueOf($tagValue.name)}";
+    }
+#end
+
+
+
+    //========================================================================//
+    //                A C C E S S O R S   and   M U T A T O R S               //
+    //========================================================================//
+
+
+
+#foreach ($aProperty in $current.ownedAttribute)
+    #if($aProperty.name && $aProperty.type.name)
+
+    public ${aProperty.type.name} get${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}() {
+        return ${aProperty.name};
+    }
+
+    public void set${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}(${aProperty.type.name} inValue) {
+        ${aProperty.name} = inValue;
+    }
+
+    #if($aProperty.type.collection)
+    public void add${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}(${aProperty.type.baseType.name} inValue) {
+        ${aProperty.name}.add(inValue);
+    }
+    #end
+
+    #end
+#end
+
+
+    //========================================================================//
+    //                           O P E R A T I O N S                          //
+    //========================================================================//
+
+
+#foreach ($aMethod in ${current.ownedOperation})
+    public ${aMethod.type} ${aMethod.name}(#foreach($aParam in ${aMethod.parameters})${aParam.type} ${aParam.name} #end) {
+        throw new RuntimeException("Not yet implemented");
+    }
+#end
+
+
+    //========================================================================//
+    //                   I N S T A N C E   V A R I A B L E S                  //
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.ownedAttribute)
+    private ${aProperty.type.name} ${aProperty.name};
+#end
+
+
+}
+
+

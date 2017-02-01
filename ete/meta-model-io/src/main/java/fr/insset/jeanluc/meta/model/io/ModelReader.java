@@ -81,10 +81,6 @@ public interface ModelReader {
                 throw new EteException(ex);
             }
         }
-        else {
-            System.out.println("NO PARENT MODEL");
-            new Exception().printStackTrace();
-        }
         try {
             FactoryRegistry registry = FactoryRegistry.getRegistry();
             AbstractFactory factory = registry.getFactory(MODEL);

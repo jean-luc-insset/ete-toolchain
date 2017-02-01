@@ -34,6 +34,11 @@
         <velocity template="modules/maven-project/templates/gel-impl/java/gel-factory.vm"
                 target="gel-impl/src/main/java/fr/insset/jeanluc/ete/gel/impl/factory/GelFactory.java"/>
         <module src="modules/maven-project/ete-config.xml" projectname="gel-impl" package="impl" suffix="Impl"/>
+        <velocity template="modules/maven-project/templates/gel-impl/java/text.vm"
+                target="gel-impl/src/test/java/fr/insset/jeanluc/ete/gel/impl/test/GelTest.java"/>
+        <velocity template="modules/maven-project/templates/gel-impl/java/evaluator.vm"
+                items="${classes}"
+                target="gel-impl/src/test/java/fr/insset/jeanluc/ete/gel/impl/test/${current.name}Evaluator.java/>
 
     </transformation-set>
 
