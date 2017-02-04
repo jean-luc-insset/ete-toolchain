@@ -22,7 +22,4 @@ public interface Xor  extends BooleanOperation  {
 
 
 
-
 }
-
-

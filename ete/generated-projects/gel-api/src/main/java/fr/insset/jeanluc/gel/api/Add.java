@@ -22,7 +22,4 @@ public interface Add  extends NumberOperation  {
 
 
 
-
 }
-
-

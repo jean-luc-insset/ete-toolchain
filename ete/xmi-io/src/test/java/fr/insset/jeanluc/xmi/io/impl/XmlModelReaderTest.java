@@ -8,6 +8,7 @@ import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
 import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
 import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.FLOAT_TYPE;
 import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.STRING_TYPE;
+import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.TYPE_SUFFIX;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
@@ -160,7 +161,7 @@ public class XmlModelReaderTest {
         assertEquals(1, ownedOperations.size());
         Operation calculeNote = ownedOperations.get(0);
         MofType calculeNoteType = calculeNote.getType();
-        PackageableElement floatType = result.getElementByName(FLOAT_TYPE);
+        PackageableElement floatType = result.getElementByName(FLOAT_TYPE + TYPE_SUFFIX);
         assertNotNull(floatType);
         assertEquals(floatType, calculeNoteType);
         Collection<Postcondition> postconditions = calculeNote.getPostconditions();

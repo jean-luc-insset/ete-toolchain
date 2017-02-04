@@ -22,7 +22,4 @@ public interface Different  extends BooleanOperation  {
 
 
 
-
 }
-
-

@@ -19,7 +19,4 @@ public interface NumberOperation  extends BinaryOperation  {
 
 
 
-
 }
-
-

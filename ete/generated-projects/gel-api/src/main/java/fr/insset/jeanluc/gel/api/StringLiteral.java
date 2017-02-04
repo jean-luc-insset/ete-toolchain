@@ -22,7 +22,4 @@ public interface StringLiteral  extends Literal  {
 
 
 
-
 }
-
-

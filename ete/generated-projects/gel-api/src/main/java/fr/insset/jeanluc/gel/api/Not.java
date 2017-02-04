@@ -22,7 +22,4 @@ public interface Not  extends UnaryOperation  {
 
 
 
-
 }
-
-

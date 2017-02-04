@@ -27,7 +27,4 @@ public interface Lambda  extends BinaryOperation  {
     public void setBody(GelExpression inValue);
 
 
-
 }
-
-

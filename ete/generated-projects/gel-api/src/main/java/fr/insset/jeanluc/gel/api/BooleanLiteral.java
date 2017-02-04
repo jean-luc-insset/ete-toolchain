@@ -22,7 +22,4 @@ public interface BooleanLiteral  extends Literal  {
 
 
 
-
 }
-
-

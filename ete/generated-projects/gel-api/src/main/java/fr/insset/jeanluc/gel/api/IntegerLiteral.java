@@ -22,7 +22,4 @@ public interface IntegerLiteral  extends Literal  {
 
 
 
-
 }
-
-

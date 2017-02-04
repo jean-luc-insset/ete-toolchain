@@ -19,7 +19,4 @@ public interface BinaryOperation  extends Operation  {
 
 
 
-
 }
-
-

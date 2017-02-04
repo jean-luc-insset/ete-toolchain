@@ -19,7 +19,4 @@ public interface Literal  extends GelExpression  {
 
 
 
-
 }
-
-

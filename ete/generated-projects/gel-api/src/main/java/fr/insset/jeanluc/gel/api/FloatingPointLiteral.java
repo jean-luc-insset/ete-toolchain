@@ -22,7 +22,4 @@ public interface FloatingPointLiteral  extends Literal  {
 
 
 
-
 }
-
-

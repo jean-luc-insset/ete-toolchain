@@ -22,7 +22,4 @@ public interface Operation  extends GelExpression  {
     public void addOperand(GelExpression inValue);
 
 
-
 }
-
-

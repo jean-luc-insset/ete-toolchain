@@ -22,7 +22,4 @@ public interface Opp  extends UnaryOperation  {
 
 
 
-
 }
-
-

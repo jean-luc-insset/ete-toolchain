@@ -21,7 +21,4 @@ public interface VariableDeclaration  {
     public void setIdentifier(String inValue);
 
 
-
 }
-
-

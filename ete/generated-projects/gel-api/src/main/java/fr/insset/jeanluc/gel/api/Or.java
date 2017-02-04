@@ -22,7 +22,4 @@ public interface Or  extends BooleanOperation  {
 
 
 
-
 }
-
-

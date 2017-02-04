@@ -22,7 +22,7 @@ public class GelEvaluator extends DynamicVisitorSupport {
     }
 
 
-    public Object visitOperation(Operation inExpression, MofPackage inContext) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public Object visitOperation(Operation inExpression, Object... inContext) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         // 1- Collect the values of the operands
         System.out.println("Visiting " + inExpression);
         List<Object>    operandValues = new LinkedList<>();
@@ -42,7 +42,7 @@ public class GelEvaluator extends DynamicVisitorSupport {
         return null;
     }
 
-    public Object visitLiteral(Literal inLiteral, MofPackage inContexte) {
+    public Object visitLiteral(Literal inLiteral, Object... inContext) {
         System.out.println("Visiting " + inLiteral);
         return null;
     }

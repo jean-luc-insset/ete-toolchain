@@ -19,12 +19,13 @@ import java.util.logging.Logger;
  */
 public abstract class PrimitiveDataTypes {
 
+    public final    static String   TYPE_SUFFIX     = "";
 
-    public final    static String   STRING_TYPE     = "StringType";
-    public final    static String   BOOLEAN_TYPE    = "booleanType";
-    public final    static String   INT_TYPE        = "intType";
-    public final    static String   DATE_TYPE       = "dateType";
-    public final    static String   FLOAT_TYPE      = "floatType";
+    public final    static String   STRING_TYPE     = "String";
+    public final    static String   BOOLEAN_TYPE    = "boolean";
+    public final    static String   INT_TYPE        = "int";
+    public final    static String   DATE_TYPE       = "date";
+    public final    static String   FLOAT_TYPE      = "float";
 
     /**
      * MUST be called after initializing factories.
@@ -41,9 +42,14 @@ public abstract class PrimitiveDataTypes {
     protected static void init(EteModel inoutModel, String inName) throws InstantiationException {
         PackageableElement newInstance =  (PackageableElement) FactoryRegistry.newInstance(MOF_TYPE);
         newInstance.setType(typeType);
-        newInstance.setName(inName);
+        // The name is used by the model to register the instance. To prevent
+        // any collision with another "integer" or "String" object, we add
+        // a suffix to the name.
+        newInstance.setName(inName + TYPE_SUFFIX);
         inoutModel.addElement(newInstance);
         inoutModel.addPackagedElement(newInstance);
+        // But we set the name back to its true value after registering.
+        newInstance.setName(inName);
     }
 
 

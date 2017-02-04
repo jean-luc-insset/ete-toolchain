@@ -22,7 +22,4 @@ public interface DateLiteral  extends Literal  {
 
 
 
-
 }
-
-

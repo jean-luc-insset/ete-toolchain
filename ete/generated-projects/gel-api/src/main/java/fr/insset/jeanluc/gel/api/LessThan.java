@@ -22,7 +22,4 @@ public interface LessThan  extends BooleanOperation  {
 
 
 
-
 }
-
-

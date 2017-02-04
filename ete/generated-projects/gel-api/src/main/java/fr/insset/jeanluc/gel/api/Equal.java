@@ -22,7 +22,4 @@ public interface Equal  extends BooleanOperation  {
 
 
 
-
 }
-
-

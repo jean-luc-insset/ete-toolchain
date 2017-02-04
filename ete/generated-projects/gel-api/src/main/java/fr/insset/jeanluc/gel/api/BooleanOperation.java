@@ -19,7 +19,4 @@ public interface BooleanOperation  extends BinaryOperation  {
 
 
 
-
 }
-
-

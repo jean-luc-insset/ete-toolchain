@@ -8,6 +8,7 @@ import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
 import fr.insset.jeanluc.ete.meta.model.constraint.Precondition;
 import fr.insset.jeanluc.ete.meta.model.core.NamedElement;
+import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.TYPE_SUFFIX;
 import fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural;
 import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNBOUND;
 import static fr.insset.jeanluc.ete.meta.model.datatype.UnlimitedNatural.UNLIMITED_NATURAL;
@@ -416,7 +417,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
                 String typeAsString = xPath.evaluate(TYPE_PATH, inElement);
                 int index = typeAsString.lastIndexOf("::");
                 typeAsString = typeAsString.substring(index+2);
-                result = (MofType)inModel.getElementByName(typeAsString + "Type");
+                result = (MofType)inModel.getElementByName(typeAsString + TYPE_SUFFIX);
                 logger.log(Level.INFO, "In readType, typeAsString = " + typeAsString + " -> " + result);
             } catch (XPathExpressionException ex) {
                 Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);

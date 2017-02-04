@@ -22,7 +22,4 @@ public interface Minus  extends NumberOperation  {
 
 
 
-
 }
-
-

@@ -22,7 +22,4 @@ public interface Div  extends NumberOperation  {
 
 
 
-
 }
-
-
