@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public interface UnaryOperation  extends Operation  {
+public interface Literal  extends GelExpression  {
 
 
 

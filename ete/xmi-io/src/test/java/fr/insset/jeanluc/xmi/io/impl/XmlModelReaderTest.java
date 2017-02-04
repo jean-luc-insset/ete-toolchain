@@ -6,6 +6,8 @@ import fr.insset.jeanluc.ete.meta.model.constraint.Invariant;
 import fr.insset.jeanluc.ete.meta.model.constraint.Postcondition;
 import fr.insset.jeanluc.ete.meta.model.core.impl.Factories;
 import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
+import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.FLOAT_TYPE;
+import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.STRING_TYPE;
 import fr.insset.jeanluc.ete.meta.model.emof.Association;
 import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
 import fr.insset.jeanluc.ete.meta.model.emof.Operation;
@@ -158,7 +160,7 @@ public class XmlModelReaderTest {
         assertEquals(1, ownedOperations.size());
         Operation calculeNote = ownedOperations.get(0);
         MofType calculeNoteType = calculeNote.getType();
-        PackageableElement floatType = result.getElementByName("float");
+        PackageableElement floatType = result.getElementByName(FLOAT_TYPE);
         assertNotNull(floatType);
         assertEquals(floatType, calculeNoteType);
         Collection<Postcondition> postconditions = calculeNote.getPostconditions();
@@ -176,7 +178,7 @@ public class XmlModelReaderTest {
                 MofClass questionClass = (MofClass) result.getElementByName("Question");
                 assertEquals(questionClass, aParameter.getType());
             } else if ("inLibelle".equals(parameterName)) {
-                MofType  stringType = (MofType) result.getElementByName("String");
+                MofType  stringType = (MofType) result.getElementByName(STRING_TYPE);
                 assertEquals(stringType, aParameter.getType());
             } else {
                 fail("Unknown parameter : " + parameterName + " in " + ownedOperation.getName());

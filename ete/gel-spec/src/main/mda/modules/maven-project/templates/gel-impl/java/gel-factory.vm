@@ -1,18 +1,40 @@
 package fr.insset.jeanluc.ete.gel.impl.factory;
 
 
+
+import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel;
+import static fr.insset.jeanluc.ete.meta.model.mofpackage.EteModel.MODEL;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.impl.EteModelImpl;
+import static fr.insset.jeanluc.ete.meta.model.types.MofType.MOF_TYPE;
+import fr.insset.jeanluc.ete.meta.model.types.impl.MofTypeImpl;
+import fr.insset.jeanluc.gel.impl.*;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
+
 
 
 public class GelFactory {
 
     public static void registerFactories() {
         FactoryRegistry registry = FactoryRegistry.getRegistry();
+        registry.registerDefaultFactory(MOF_TYPE, MofTypeImpl.class);
 #foreach($aClass in ${current.classes})
     #if($aClass.getValueOf("symbol"))
         registry.registerDefaultFactory("${aClass.getValueOf("symbol")}", ${aClass.package.name}.impl.${aClass.name}Impl.class);        
     #end
+    #if ($aClass.getValueOf("literalType"))
+        registry.registerDefaultFactory("${aClass.getValueOf("literalType")}", ${aClass.name}Impl.class);                
+    #end
 #end
+    }
+
+    public static EteModel      newModel() throws InstantiationException {
+        FactoryRegistry registry = FactoryRegistry.getRegistry();
+        registry.registerDefaultFactory(MOF_TYPE, MofTypeImpl.class);
+        registry.registerDefaultFactory(MODEL, EteModelImpl.class);
+        EteModel result = (EteModel) FactoryRegistry.newInstance(MODEL);
+        PrimitiveDataTypes.init(result);
+        return result;
     }
 
 }

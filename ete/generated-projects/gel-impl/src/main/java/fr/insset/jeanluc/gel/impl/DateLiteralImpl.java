@@ -6,16 +6,19 @@ import java.util.List;
 
 
 
-public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperation {
+public class DateLiteralImpl  extends LiteralImpl  implements DateLiteral {
 
 
-    public BinaryOperationImpl() {
+    public DateLiteralImpl() {
     }
 
 
     //========================================================================//
 
 
+    public String getLiteralType() {
+        return "Date";
+    }
 
 
 

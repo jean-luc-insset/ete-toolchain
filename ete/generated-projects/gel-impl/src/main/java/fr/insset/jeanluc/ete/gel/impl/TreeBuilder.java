@@ -1,10 +1,14 @@
 package fr.insset.jeanluc.ete.gel.impl;
 
 
-import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.gel.GelParser;
 import fr.insset.jeanluc.gel.GelParserBaseVisitor;
 import fr.insset.jeanluc.gel.api.GelExpression;
+import fr.insset.jeanluc.gel.api.Literal;
+import fr.insset.jeanluc.gel.api.Operation;
+import fr.insset.jeanluc.gel.impl.*;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,23 +16,130 @@ import org.antlr.v4.runtime.ParserRuleContext;
 
 
 
-
 public class TreeBuilder extends GelParserBaseVisitor<GelExpression> {
 
 
-    protected GelExpression buildBinaryExpression(ParserRuleContext ctx) throws EteException {
-        int     childCount = ctx.getChildCount();
+    public TreeBuilder(MofPackage inModel) {
+        model = inModel;
+        FactoryRegistry registry = FactoryRegistry.getRegistry();
+               registry.registerDefaultFactory("String", StringLiteralImpl.class);
+                registry.registerDefaultFactory("Double", FloatingPointLiteralImpl.class);
+              registry.registerDefaultFactory("Integer", IntegerLiteralImpl.class);
+          registry.registerDefaultFactory("Date", DateLiteralImpl.class);
+                      registry.registerDefaultFactory("Boolean", BooleanLiteralImpl.class);
+                         }
+
+
+    //========================================================================//
+
+
+        @Override
+public GelExpression visitOrExpression(GelParser.OrExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitAndExpression(GelParser.AndExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+            @Override
+public GelExpression visitMinusExpression(GelParser.MinusExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+            @Override
+public GelExpression visitEqualExpression(GelParser.EqualExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+            @Override
+public GelExpression visitNotExpression(GelParser.NotExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+                        @Override
+public GelExpression visitGreaterThanExpression(GelParser.GreaterThanExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitLambdaExpression(GelParser.LambdaExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitXorExpression(GelParser.XorExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitDifferentExpression(GelParser.DifferentExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+                @Override
+public GelExpression visitLessOrEqualExpression(GelParser.LessOrEqualExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitOppExpression(GelParser.OppExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+            @Override
+public GelExpression visitMultExpression(GelParser.MultExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitLessThanExpression(GelParser.LessThanExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitAddExpression(GelParser.AddExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+                @Override
+public GelExpression visitDivExpression(GelParser.DivExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitGreaterOrEqualExpression(GelParser.GreaterOrEqualExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+    
+
+    //========================================================================//
+
+
+                    @Override
+    public GelExpression visitStringLiteral(GelParser.StringLiteralContext ctx) {
+        return buildLiteral(ctx, "String");
+    }
+                        @Override
+    public GelExpression visitFloatingPointLiteral(GelParser.FloatingPointLiteralContext ctx) {
+        return buildLiteral(ctx, "Double");
+    }
+                    @Override
+    public GelExpression visitIntegerLiteral(GelParser.IntegerLiteralContext ctx) {
+        return buildLiteral(ctx, "Integer");
+    }
+            @Override
+    public GelExpression visitDateLiteral(GelParser.DateLiteralContext ctx) {
+        return buildLiteral(ctx, "Date");
+    }
+                                    @Override
+    public GelExpression visitBooleanLiteral(GelParser.BooleanLiteralContext ctx) {
+        return buildLiteral(ctx, "Boolean");
+    }
+                                            
+
+    //========================================================================//
+
+
+    protected GelExpression buildBinaryExpression(ParserRuleContext ctx) {
+        int         childCount = ctx.getChildCount();
         GelExpression   result = ctx.getChild(0).accept(this);
         // run through the operands
         for (int i=2 ; i<childCount ; i+=2) {
             GelExpression   child   = ctx.getChild(i).accept(this);
             String          operator = ctx.getChild(i-1).getText();
-            GelExpression   exp;
+            Operation       exp;
             try {
-                exp = (GelExpression)FactoryRegistry.newInstance(operator);
+                exp = (Operation)FactoryRegistry.newInstance(operator);
             } catch (InstantiationException ex) {
                 Logger.getLogger(TreeBuilder.class.getName()).log(Level.SEVERE, null, ex);
-                throw new EteException(ex);
+                throw new RuntimeException(ex);
             }
             exp.addOperand(result);
             exp.addOperand(child);
@@ -39,61 +150,22 @@ public class TreeBuilder extends GelParserBaseVisitor<GelExpression> {
     }
 
 
+    protected   GelExpression   buildLiteral(ParserRuleContext ctx, String inMofTypeName) {
+        PackageableElement type = model.getElementByName(inMofTypeName);
+        try {
+            Object newInstance = FactoryRegistry.newInstance(inMofTypeName);
+            Literal result = (Literal)newInstance;
+            return result;
+        } catch (InstantiationException ex) {
+            Logger.getLogger(TreeBuilder.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException(ex);
+        }
+    }
+
+
     //========================================================================//
 
-
-    public GelExpression visitOppExpressionCS(GelParser.OppExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitAndExpressionCS(GelParser.AndExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitXorExpressionCS(GelParser.XorExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-                public GelExpression visitEqualExpressionCS(GelParser.EqualExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-                public GelExpression visitDifferentExpressionCS(GelParser.DifferentExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitGreaterOrEqualExpressionCS(GelParser.GreaterOrEqualExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitVariableDeclarationExpressionCS(GelParser.VariableDeclarationExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-                        public GelExpression visitOrExpressionCS(GelParser.OrExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitLessOrEqualExpressionCS(GelParser.LessOrEqualExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitNotExpressionCS(GelParser.NotExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitDivExpressionCS(GelParser.DivExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitAddExpressionCS(GelParser.AddExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitMinusExpressionCS(GelParser.MinusExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitGreaterThanExpressionCS(GelParser.GreaterThanExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-                public GelExpression visitLambdaExpressionCS(GelParser.LambdaExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitMultExpressionCS(GelParser.MultExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-        public GelExpression visitLessThanExpressionCS(GelParser.LessThanExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-    
+    private     MofPackage      model;
 
 }
 

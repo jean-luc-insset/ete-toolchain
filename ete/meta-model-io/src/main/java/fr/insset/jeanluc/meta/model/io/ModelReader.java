@@ -97,6 +97,17 @@ public interface ModelReader {
     }
 
 
+    /**
+     * Reads information in a document (a plain text file, an XMI file...)
+     * and adds them to the model.<br>
+     * For example an instance reads a meta-model, a second one reads the
+     * model and a third one reads constraints.
+     * 
+     * @param inDocument can be anything. The only provided implementation of
+     *      ModelReader is XMLModelReader which accepts an XML document
+     * @param inoutModel the model which will be populated.
+     * @throws EteException 
+     */
     public default void doReadModel(Object inDocument, EteModel inoutModel) throws EteException {
         beforeReading(inDocument, inoutModel);
         readPackages(inDocument, inoutModel);
@@ -110,6 +121,8 @@ public interface ModelReader {
         readProfiles(inDocument, inoutModel);
         readStereotypes(inDocument, inoutModel);
         applyStereotypes(inDocument, inoutModel);
+        readTagValuesDefinitions(inDocument, inoutModel);
+        readTagValues(inDocument, inoutModel);
         afterReading(inDocument, inoutModel);
     }
 
@@ -118,21 +131,46 @@ public interface ModelReader {
     }
 
 
-    public  Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException;
-    public  void                     readGeneralizations(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readSpecifications(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readProfiles(Object inDocument, EteModel inoutModel) throws EteException;
-    public  Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException;
-    public  void                     applyStereotypes(Object inDocument, EteModel inoutModel) throws EteException;
-
+    public  default Collection<NamedElement> readPackages(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readClasses(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readAssociations(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readProperties(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readOperations(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default void                     readGeneralizations(Object inDocument, EteModel inoutModel) throws EteException {
+    }
+    public  default Collection<NamedElement> readInvariants(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readSpecifications(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readProfiles(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default Collection<NamedElement> readStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
+        return null;
+    }
+    public  default void                     applyStereotypes(Object inDocument, EteModel inoutModel) throws EteException {
+    }
+    public  default Collection<NamedElement> readTagValuesDefinitions(Object inDocument, EteModel inoutModel) {
+        return null;
+    }
+    public  default void                     readTagValues(Object inDocument, EteModel inoutModel) {
+    }
 
     public default void afterReading(Object inDocument, EteModel inoutModel) throws EteException {
     }
+
 
 
 

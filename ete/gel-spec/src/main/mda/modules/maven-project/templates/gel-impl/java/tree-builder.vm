@@ -8,10 +8,14 @@
 package fr.insset.jeanluc.ete.gel.impl;
 
 
-import fr.insset.jeanluc.ete.api.EteException;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.PackageableElement;
 import fr.insset.jeanluc.gel.GelParser;
 import fr.insset.jeanluc.gel.GelParserBaseVisitor;
 import fr.insset.jeanluc.gel.api.GelExpression;
+import fr.insset.jeanluc.gel.api.Literal;
+import fr.insset.jeanluc.gel.api.Operation;
+import fr.insset.jeanluc.gel.impl.*;
 import fr.insset.jeanluc.util.factory.FactoryRegistry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,23 +23,60 @@ import org.antlr.v4.runtime.ParserRuleContext;
 
 
 
-
 public class TreeBuilder extends GelParserBaseVisitor<GelExpression> {
 
 
-    protected GelExpression buildBinaryExpression(ParserRuleContext ctx) throws EteException {
-        int     childCount = ctx.getChildCount();
+    public TreeBuilder(MofPackage inModel) {
+        model = inModel;
+        FactoryRegistry registry = FactoryRegistry.getRegistry();
+#foreach($aClass in $current.classes) #if (${aClass.getValueOf("literalType")})
+        registry.registerDefaultFactory("${aClass.getValueOf("literalType")}", ${aClass.name}Impl.class);
+#end #end
+    }
+
+
+    //========================================================================//
+
+
+#foreach ($aClass in $current.classes)
+    #if (${aClass.getValueOf("symbol")})
+@Override
+public GelExpression visit${aClass.name}Expression(GelParser.${aClass.name}ExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+    #end
+#end
+
+
+    //========================================================================//
+
+
+#foreach ($aClass in $current.classes)
+    #if (${aClass.getValueOf("literalType")})
+    @Override
+    public GelExpression visit${aClass.name}(GelParser.${aClass.name}Context ctx) {
+        return buildLiteral(ctx, "${aClass.getValueOf("literalType")}");
+    }
+    #end
+#end
+
+
+    //========================================================================//
+
+
+    protected GelExpression buildBinaryExpression(ParserRuleContext ctx) {
+        int         childCount = ctx.getChildCount();
         GelExpression   result = ctx.getChild(0).accept(this);
         // run through the operands
         for (int i=2 ; i<childCount ; i+=2) {
             GelExpression   child   = ctx.getChild(i).accept(this);
             String          operator = ctx.getChild(i-1).getText();
-            GelExpression   exp;
+            Operation       exp;
             try {
-                exp = (GelExpression)FactoryRegistry.newInstance(operator);
+                exp = (Operation)FactoryRegistry.newInstance(operator);
             } catch (InstantiationException ex) {
                 Logger.getLogger(TreeBuilder.class.getName()).log(Level.SEVERE, null, ex);
-                throw new EteException(ex);
+                throw new RuntimeException(ex);
             }
             exp.addOperand(result);
             exp.addOperand(child);
@@ -46,18 +87,22 @@ public class TreeBuilder extends GelParserBaseVisitor<GelExpression> {
     }
 
 
+    protected   GelExpression   buildLiteral(ParserRuleContext ctx, String inMofTypeName) {
+        PackageableElement type = model.getElementByName(inMofTypeName);
+        try {
+            Object newInstance = FactoryRegistry.newInstance(inMofTypeName);
+            Literal result = (Literal)newInstance;
+            return result;
+        } catch (InstantiationException ex) {
+            Logger.getLogger(TreeBuilder.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException(ex);
+        }
+    }
+
+
     //========================================================================//
 
-
-#foreach ($aClass in $current.classes)
-    #if (${aClass.abstract})
-    #else
-public GelExpression visit${aClass.name}ExpressionCS(GelParser.${aClass.name}ExpressionContext ctx) throws EteException {
-        return buildBinaryExpression(ctx);
-    }
-    #end
-#end
-
+    private     MofPackage      model;
 
 }
 

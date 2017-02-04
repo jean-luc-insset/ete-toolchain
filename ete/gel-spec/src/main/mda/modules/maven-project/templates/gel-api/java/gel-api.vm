@@ -34,7 +34,3 @@ public interface $current.name #if (${current.superClass.size()} > 0) extends ${
     public ${aMethod.type} ${aMethod.name}(#foreach($aParam in ${aMethod.parameters})${aParam.type} ${aParam.name} #end);
 #end
 
-
-}
-
-

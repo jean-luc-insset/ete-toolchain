@@ -6,16 +6,19 @@ import java.util.List;
 
 
 
-public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperation {
+public class BooleanLiteralImpl  extends LiteralImpl  implements BooleanLiteral {
 
 
-    public BinaryOperationImpl() {
+    public BooleanLiteralImpl() {
     }
 
 
     //========================================================================//
 
 
+    public String getLiteralType() {
+        return "Boolean";
+    }
 
 
 

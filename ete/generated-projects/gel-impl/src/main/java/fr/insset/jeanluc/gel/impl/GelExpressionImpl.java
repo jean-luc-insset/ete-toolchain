@@ -25,20 +25,7 @@ public class GelExpressionImpl  implements GelExpression {
 
 
 
-    
-    public List<GelExpression> getOperand() {
-        return operand;
-    }
 
-    public void setOperand(List<GelExpression> inValue) {
-        operand = inValue;
-    }
-
-        public void addOperand(GelExpression inValue) {
-        operand.add(inValue);
-    }
-    
-    
 
     //========================================================================//
     //                           O P E R A T I O N S                          //
@@ -52,7 +39,6 @@ public class GelExpressionImpl  implements GelExpression {
     //========================================================================//
 
 
-    private List<GelExpression> operand;
 
 
 }

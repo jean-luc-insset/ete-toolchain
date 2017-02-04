@@ -4,28 +4,17 @@
 <mda>
 
     <!--
-        A project is a set of pipelines, each pipeline is made of "steps".
-        Each step receives a model and returns a model.
-        Some steps accept null as the entry model, for example, steps reading
-        a model.
-        Some steps return the model they receive but produce some board effects,
-        for example "dump" steps, "template" steps or "register" steps.
+        This module receives the ${projectname} parameter.
       -->
 
     <transformation-set output_base="${projectname}/">
         <velocity template="templates/${projectname}/java/${projectname}.vm"
                 items="${classes}"
                 target="src/main/java/${current.owningPackage.name.replace('.', '/')}/${package}/${current.name}${suffix}.java"/>
-        />
         <velocity template="templates/gel-impl/java/tree-builder.vm"
                 target="src/main/java/fr/insset/jeanluc/ete/gel/impl/TreeBuilder.java"/>
-        />
-<!--        <velocity template="templates/${projectname}/java/${projectname}.vm"
-                items="${classes.stream().filter(c -&gt; c.getValueOf(&quot;symbol&quot;)!=null).toList()}"
-                target="src/main/java/${current.owningPackage.name.replace('.', '/')}/${package}/${current.name}${suffix}.java"/>
-        />-->
-<!--        <velocity template="templates/pomxml.vm"
-                  target="pom.xml"/>-->
+        <velocity template="templates/gel-impl/java/parser-wrapper.vm"
+                target="src/main/java/fr/insset/jeanluc/ete/gel/impl/GelParserFactory.java"/>
     </transformation-set>
 
 </mda>

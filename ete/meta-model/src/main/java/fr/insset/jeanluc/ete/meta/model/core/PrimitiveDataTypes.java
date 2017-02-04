@@ -20,17 +20,21 @@ import java.util.logging.Logger;
 public abstract class PrimitiveDataTypes {
 
 
+    public final    static String   STRING_TYPE     = "StringType";
+    public final    static String   BOOLEAN_TYPE    = "booleanType";
+    public final    static String   INT_TYPE        = "intType";
+    public final    static String   DATE_TYPE       = "dateType";
+    public final    static String   FLOAT_TYPE      = "floatType";
 
     /**
      * MUST be called after initializing factories.
      */
     public static void init(EteModel inoutModel) throws InstantiationException {
-        System.out.println("INITIALIZATION OF PRIMITIVE TYPES");
-        init(inoutModel, "String");
-        init(inoutModel, "boolean");
-        init(inoutModel, "int");
-        init(inoutModel, "date");
-        init(inoutModel, "float");
+        init(inoutModel, STRING_TYPE);
+        init(inoutModel, BOOLEAN_TYPE);
+        init(inoutModel, INT_TYPE);
+        init(inoutModel, DATE_TYPE);
+        init(inoutModel, FLOAT_TYPE);
     }
 
 

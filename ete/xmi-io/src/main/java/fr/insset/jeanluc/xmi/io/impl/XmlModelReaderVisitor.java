@@ -416,7 +416,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
                 String typeAsString = xPath.evaluate(TYPE_PATH, inElement);
                 int index = typeAsString.lastIndexOf("::");
                 typeAsString = typeAsString.substring(index+2);
-                result = (MofType)inModel.getElementByName(typeAsString);
+                result = (MofType)inModel.getElementByName(typeAsString + "Type");
                 logger.log(Level.INFO, "In readType, typeAsString = " + typeAsString + " -> " + result);
             } catch (XPathExpressionException ex) {
                 Logger.getLogger(XmlModelReaderVisitor.class.getName()).log(Level.SEVERE, null, ex);

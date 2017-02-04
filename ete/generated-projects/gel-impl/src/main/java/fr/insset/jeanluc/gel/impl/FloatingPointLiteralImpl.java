@@ -6,16 +6,19 @@ import java.util.List;
 
 
 
-public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperation {
+public class FloatingPointLiteralImpl  extends LiteralImpl  implements FloatingPointLiteral {
 
 
-    public BinaryOperationImpl() {
+    public FloatingPointLiteralImpl() {
     }
 
 
     //========================================================================//
 
 
+    public String getLiteralType() {
+        return "Double";
+    }
 
 
 

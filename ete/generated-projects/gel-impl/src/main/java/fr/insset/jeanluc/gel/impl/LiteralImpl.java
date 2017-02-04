@@ -6,10 +6,10 @@ import java.util.List;
 
 
 
-public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperation {
+public class LiteralImpl  extends GelExpressionImpl  implements Literal {
 
 
-    public BinaryOperationImpl() {
+    public LiteralImpl() {
     }
 
 

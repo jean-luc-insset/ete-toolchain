@@ -17,9 +17,6 @@ public interface GelExpression  {
     //========================================================================//
 
 
-    public List<GelExpression> getOperand();
-    public void setOperand(List<GelExpression> inValue);
-    public void addOperand(GelExpression inValue);
 
 
 

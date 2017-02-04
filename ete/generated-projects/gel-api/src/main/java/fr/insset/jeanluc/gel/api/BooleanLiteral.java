@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Set;
 
 
-public interface UnaryOperation  extends Operation  {
+public interface BooleanLiteral  extends Literal  {
 
 
 
 
+    public default String getLiteralType() {
+        return "Boolean";
+    }
 
 
 

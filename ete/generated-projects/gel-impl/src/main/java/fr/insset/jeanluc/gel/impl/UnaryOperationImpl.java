@@ -6,7 +6,7 @@ import java.util.List;
 
 
 
-public class UnaryOperationImpl  extends GelExpressionImpl  implements UnaryOperation {
+public class UnaryOperationImpl  extends OperationImpl  implements UnaryOperation {
 
 
     public UnaryOperationImpl() {

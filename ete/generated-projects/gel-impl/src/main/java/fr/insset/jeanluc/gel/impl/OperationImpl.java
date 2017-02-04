@@ -6,10 +6,10 @@ import java.util.List;
 
 
 
-public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperation {
+public class OperationImpl  extends GelExpressionImpl  implements Operation {
 
 
-    public BinaryOperationImpl() {
+    public OperationImpl() {
     }
 
 
@@ -25,7 +25,20 @@ public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperat
 
 
 
+    
+    public List<GelExpression> getOperand() {
+        return operand;
+    }
 
+    public void setOperand(List<GelExpression> inValue) {
+        operand = inValue;
+    }
+
+        public void addOperand(GelExpression inValue) {
+        operand.add(inValue);
+    }
+    
+    
 
     //========================================================================//
     //                           O P E R A T I O N S                          //
@@ -39,6 +52,7 @@ public class BinaryOperationImpl  extends OperationImpl  implements BinaryOperat
     //========================================================================//
 
 
+    private List<GelExpression> operand;
 
 
 }
