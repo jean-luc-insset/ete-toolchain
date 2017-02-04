@@ -1,0 +1,36 @@
+/*
+    Generated with ${template}
+    This template uses Java dialect and utilities.
+ */
+package ${current.package.name}.${packagename};
+
+
+import javax.annotation.Generated;
+
+
+/**
+ * This interface is generated in the project ${project}
+ */
+@Generated("ete")
+public interface ${_d.i2uc($current.name)}WithDialect {
+
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $current.properties)
+    #if($aProperty.name && $aProperty.type.name)
+    public ${aProperty.type.name} get${_d.i2uc($aProperty.name)}();
+    public void set${aProperty.name}(${_d.i2uc($aProperty.type.name)} inValue);
+    #end
+#end
+
+#foreach ($aMethod in $current.operations)
+    public ${aMethod.type} ${aMethod.name}(#foreach($aParam in ${aMethod.parameters})${aParam.type} ${aParam.name} #end);
+#end
+
+
+}
+
+

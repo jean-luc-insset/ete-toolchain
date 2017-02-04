@@ -31,6 +31,10 @@ import org.junit.Test;
  */
 public class VelocityActionTest {
     
+
+    private     VelocityAction  instance;
+    private     EteModel        model;
+
     public VelocityActionTest() {
     }
     
@@ -43,7 +47,24 @@ public class VelocityActionTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws InstantiationException {
+        Factories.init();
+        // Registers default actions
+        InitStandardActions.init();
+        instance = new VelocityAction();
+        model = (EteModel) FactoryRegistry.newInstance(MODEL);
+        MofClass aClass = (MofClass) FactoryRegistry.newInstance(MOF_CLASS);
+        MofPackage aPackage = (MofPackage) FactoryRegistry.newInstance(MOF_PACKAGE);
+        aPackage.setName("mypackage");
+        aPackage.addPackagedElement(aClass);
+        aClass.setOwningPackage(aPackage);
+        aClass.setName("MyClass");
+        model.addElement(aClass);
+        instance.addParameter(BASE_DIR, "src/test/mda/");
+        instance.addParameter("packagename", "velocity");
+        instance.addParameter(MODEL, model);
+        instance.addParameter(ITEMS, "${classes}");
+        instance.addParameter(OUTPUT_BASE, "target/test-generated/");
     }
     
     @After
@@ -57,29 +78,41 @@ public class VelocityActionTest {
     public void testVelocity() throws InstantiationException, EteException {
         System.out.println("Velocity");
         // Registers default factories
-        Factories.init();
-        // Registers default actions
-        InitStandardActions.init();
-        VelocityAction instance = new VelocityAction();
-        EteModel model = (EteModel) FactoryRegistry.newInstance(MODEL);
-        MofClass aClass = (MofClass) FactoryRegistry.newInstance(MOF_CLASS);
-        MofPackage aPackage = (MofPackage) FactoryRegistry.newInstance(MOF_PACKAGE);
-        aPackage.setName("mypackage");
-        aPackage.addPackagedElement(aClass);
-        aClass.setOwningPackage(aPackage);
-        aClass.setName("MyClass");
-        model.addElement(aClass);
-        instance.addParameter(BASE_DIR, "src/test/mda/");
-        instance.addParameter("packagename", "velocity");
-        instance.addParameter(MODEL, model);
-        instance.addParameter(ITEMS, "${classes}");
+
         instance.addParameter(TEMPLATE, "templates/umlclass2interface.vm");
-        instance.addParameter(OUTPUT_BASE, "target/test-generated/");
         instance.addParameter(TARGET, "ete/${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}.java");
         instance.addParameter("project", "Project name");
         instance.process((MofPackage) model);
         File result = new File("target/test-generated/ete/mypackage/velocity/MyClass.java");
         Assert.assertTrue(result.exists());
     }
+
+    @Test
+    public void testDialect() throws EteException {
+        System.out.println("Velocity Dialect");
+        instance.addParameter(TEMPLATE, "templates/umlclass2interface_with_dialect.vm");
+        instance.addParameter(TARGET, "ete/${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}WithDialect.java");
+        instance.addParameter("project", "Project name");
+        instance.addParameter("dialect", "fr.insset.jeanluc.el.dialect.Java");
+        instance.process((MofPackage) model);
+        File result = new File("target/test-generated/ete/mypackage/velocity/MyClassWithDialect.java");
+        // TODO : make stronger assertions (on the content)
+        Assert.assertTrue(result.exists());
+    }
+
     
+    @Test
+    public void testImplicitDialect() throws EteException {
+        System.out.println("Velocity Implicit Dialect");
+        instance.addParameter(TEMPLATE, "templates/umlclass2interface_with_dialect.vm");
+        instance.addParameter(TARGET, "ete/${current.owningPackage.name.replace('.', '/')}/${packagename}/${current.name}WithDialect.java");
+        instance.addParameter("project", "Project name");
+        instance.process((MofPackage) model);
+        File result = new File("target/test-generated/ete/mypackage/velocity/MyClassWithDialect.java");
+        // TODO : make stronger assertions (on the content)
+        Assert.assertTrue(result.exists());
+    }
+
+
+
 }

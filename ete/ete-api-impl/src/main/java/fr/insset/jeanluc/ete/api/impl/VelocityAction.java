@@ -55,6 +55,20 @@ public class VelocityAction extends GenericTemplate {
         context.put("model", model);
         context.put("classes",model.getClasses());
         context.put("packages", model.getPackages());
+        String dialectName = (String)getParameter("dialect");
+        
+        if (dialectName == null) {
+            dialectName = "fr.insset.jeanluc.el.dialect.Java";
+        }
+        try {
+            Class<?> dialectClass = Class.forName(dialectName);
+            Object dialect = dialectClass.newInstance();
+            context.put("_d", dialect);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VelocityAction.class.getName()).log(Level.SEVERE, "Unable to load dialect " + dialectName, ex);
+        } catch (InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(VelocityAction.class.getName()).log(Level.SEVERE, "Unable to instanciate dialect " + dialectName, ex);
+        }
         for (Map.Entry<String,Object> entry : getParameters().entrySet()) {
             logger.log(Level.FINE, "Passing parameter " + entry.getKey() + " = " + entry.getValue());
             context.put(entry.getKey(), entry.getValue());
