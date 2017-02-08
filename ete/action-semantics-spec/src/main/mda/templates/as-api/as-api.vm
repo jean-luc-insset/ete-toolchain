@@ -1,0 +1,45 @@
+package ${aClass.package.name}.api;
+
+
+import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
+import fr.insset.jeanluc.ete.meta.model.types.MofType;
+import fr.insset.jeanluc.gel.api.GelExpression;
+import fr.insset.jeanluc.gel.impl.GelExpressionImpl;
+import java.util.List;
+import java.util.Set;
+
+
+public interface $aClass.name #if (${aClass.superClass.size()} > 0) extends ${aClass.superClass.get(0)} #end {
+
+
+
+#foreach ($tagValue in ${aClass.getTagValues().keySet()})
+    public default String get${tagValue.name.substring(0,1).toUpperCase()}${tagValue.name.substring(1)}() {
+        return "${aClass.getValueOf($tagValue.name)}";
+    }
+#end
+
+
+    //========================================================================//
+
+
+#foreach ($aProperty in $aClass.ownedAttribute)
+    public ${aProperty.type.name} get${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}();
+    public void set${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}(${aProperty.type.name} inValue);
+#if ($aProperty.type.collection)
+    public void add${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}(${aProperty.type.baseType.name} inValue);
+    public void remove${aProperty.name.substring(0,1).toUpperCase()}${aProperty.name.substring(1)}(${aProperty.type.baseType.name} inValue);
+#end
+#end
+
+
+    //========================================================================//
+
+
+#foreach ($aMethod in $aClass.ownedOperation)
+    public ${aMethod.type} ${aMethod.name}(#foreach($aParam in ${aMethod.parameters})${aParam.type} ${aParam.name} #end);
+#end
+
+
+
+}

@@ -9,9 +9,8 @@ import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.TYPE_SUFF
  *
  * @author jldeleage
  */
-public class Java extends Dialect {
+public class Java implements Dialect {
 
-    @Override
     public String moft2lt(String inString) {
         switch (inString) {
             case STRING_TYPE + TYPE_SUFFIX:
@@ -21,7 +20,7 @@ public class Java extends Dialect {
             case FLOAT_TYPE + TYPE_SUFFIX:
                 return "double";
         }
-        return super.moft2lt(inString);
+        return inString;
     }
 
 

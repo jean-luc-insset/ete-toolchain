@@ -6,7 +6,7 @@ package fr.insset.jeanluc.el.dialect;
  *
  * @author jldeleage
  */
-public class Dialect {
+public interface Dialect {
 
 
     /**
@@ -15,7 +15,7 @@ public class Dialect {
      * @param inString
      * @return 
      */
-    public String    i2uc(String inString) {
+    public default String    i2uc(String inString) {
         if (inString == null) {
             return null;
         }
@@ -25,7 +25,7 @@ public class Dialect {
         return inString.substring(0, 1).toUpperCase() + inString.substring(1);
     }
 
-    public String    i2lc(String inString) {
+    public default String    i2lc(String inString) {
         if (inString == null) {
             return null;
         }
@@ -42,7 +42,7 @@ public class Dialect {
      * @param inString : MofType name
      * @return : type name in the local language
      */
-    public String moft2lt(String inString) {
+    public default String moft2lt(String inString) {
         return inString;
     }
 
@@ -52,7 +52,7 @@ public class Dialect {
      * @param inValue : the value to be converted
      * @return the converted value
      */
-    public Object mofv2lv(String inValue) {
+    public default Object mofv2lv(String inValue) {
         return inValue;
     }
 
@@ -65,7 +65,7 @@ public class Dialect {
      * @param inMofType
      * @return 
      */
-    public String converter(String inValue, String inMofType) {
+    public default String converter(String inValue, String inMofType) {
 //        return inValue
         throw new UnsupportedOperationException("Not supported yet.");
     }

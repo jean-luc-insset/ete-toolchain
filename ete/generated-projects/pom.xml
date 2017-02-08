@@ -11,6 +11,8 @@
     <modules>
         <module>gel-api</module>
         <module>gel-impl</module>
+        <module>action-semantics-impl</module>
+        <module>action-semantics-api</module>
     </modules>
     <dependencies>
         <dependency>

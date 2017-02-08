@@ -24,7 +24,9 @@
         <module>ete-maven-plugin</module>
         <module>gel-spec</module>
         <module>generated-projects</module>
-        <module>ete-action-semantic</module>
+        <module>action-semantics-spec</module>
+        <module>action-semantics-builder</module>
+        <module>action-semantics-java</module>
     </modules>
 
     <properties>

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>fr.insset.jeanluc</groupId>
         <artifactId>ete</artifactId>
         <version>1.2</version>
     </parent>
-    <artifactId>ete-action-semantic</artifactId>
-
+    <artifactId>ete-action-semantics</artifactId>
     <packaging>jar</packaging>
+
 
     <build>
         <plugins>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <version>4.5.3</version>
                 <configuration>
                     <visitor>true</visitor>
                     <listener>true</listener>
-                    <libDirectory>${basedir}/src/main/antlr4/fr/insset/jeanluc/gel</libDirectory>
+                    <libDirectory>${basedir}/../../src/main/antlr4/fr/insset/jeanluc/gel</libDirectory>
                     <sourceDirectory>../../src/main/antlr4</sourceDirectory>
                 </configuration>
                 <executions>
@@ -31,14 +30,38 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>-->
+
+            <plugin>
+                <groupId>fr.insset.jeanluc</groupId>
+                <artifactId>ete-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>ete</id>
+                        <goals>
+                            <goal>ete</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+
             </plugin>
         </plugins>
+
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.antlr</groupId>
-            <artifactId>antlr4</artifactId>
-            <version>4.5.1-1</version>
+            <groupId>fr.insset.jeanluc</groupId>
+            <artifactId>meta-model</artifactId>
+            <version>1.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.insset.jeanluc</groupId>
+            <artifactId>gel-api</artifactId>
+            <version>1.2</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 </project>

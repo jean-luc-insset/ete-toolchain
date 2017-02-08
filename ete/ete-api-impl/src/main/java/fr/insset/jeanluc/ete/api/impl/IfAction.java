@@ -19,7 +19,7 @@ public class IfAction extends ActionSupport {
 
     @Override
     public boolean shouldIProcess(MofPackage inModel) {
-        ELEvaluator evaluateur = new ELEvaluator(inModel, getParameters());
+        ELEvaluator evaluateur = new ELEvaluator(inModel, getAllParameters());
         String test = (String) getParameter("test");
         return (Boolean)evaluateur.evaluate(test);
     }       // process

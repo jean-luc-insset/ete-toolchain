@@ -22,27 +22,47 @@ public class TreeBuilder extends GelParserBaseVisitor<GelExpression> {
     public TreeBuilder(MofPackage inModel) {
         model = inModel;
         FactoryRegistry registry = FactoryRegistry.getRegistry();
-               registry.registerDefaultFactory("String", StringLiteralImpl.class);
-                registry.registerDefaultFactory("Double", FloatingPointLiteralImpl.class);
-              registry.registerDefaultFactory("Integer", IntegerLiteralImpl.class);
-          registry.registerDefaultFactory("Date", DateLiteralImpl.class);
-                      registry.registerDefaultFactory("Boolean", BooleanLiteralImpl.class);
-                         }
+                     registry.registerDefaultFactory("Integer", IntegerLiteralImpl.class);
+            registry.registerDefaultFactory("Double", FloatingPointLiteralImpl.class);
+                    registry.registerDefaultFactory("Boolean", BooleanLiteralImpl.class);
+                        registry.registerDefaultFactory("Date", DateLiteralImpl.class);
+          registry.registerDefaultFactory("String", StringLiteralImpl.class);
+               }
 
 
     //========================================================================//
 
 
         @Override
+public GelExpression visitGreaterThanExpression(GelParser.GreaterThanExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
 public GelExpression visitOrExpression(GelParser.OrExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
         @Override
-public GelExpression visitAndExpression(GelParser.AndExpressionContext ctx) {
+public GelExpression visitNotExpression(GelParser.NotExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
             @Override
-public GelExpression visitMinusExpression(GelParser.MinusExpressionContext ctx) {
+public GelExpression visitOppExpression(GelParser.OppExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+                    @Override
+public GelExpression visitLessThanExpression(GelParser.LessThanExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+            @Override
+public GelExpression visitLambdaExpression(GelParser.LambdaExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+        @Override
+public GelExpression visitMultExpression(GelParser.MultExpressionContext ctx) {
+        return buildBinaryExpression(ctx);
+    }
+                @Override
+public GelExpression visitAndExpression(GelParser.AndExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
             @Override
@@ -50,79 +70,59 @@ public GelExpression visitEqualExpression(GelParser.EqualExpressionContext ctx) 
         return buildBinaryExpression(ctx);
     }
             @Override
-public GelExpression visitNotExpression(GelParser.NotExpressionContext ctx) {
-        return buildBinaryExpression(ctx);
-    }
-                        @Override
-public GelExpression visitGreaterThanExpression(GelParser.GreaterThanExpressionContext ctx) {
+public GelExpression visitGreaterOrEqualExpression(GelParser.GreaterOrEqualExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
         @Override
-public GelExpression visitLambdaExpression(GelParser.LambdaExpressionContext ctx) {
+public GelExpression visitMinusExpression(GelParser.MinusExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
         @Override
 public GelExpression visitXorExpression(GelParser.XorExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
-        @Override
-public GelExpression visitDifferentExpression(GelParser.DifferentExpressionContext ctx) {
+                @Override
+public GelExpression visitAddExpression(GelParser.AddExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
-                @Override
+        @Override
 public GelExpression visitLessOrEqualExpression(GelParser.LessOrEqualExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
         @Override
-public GelExpression visitOppExpression(GelParser.OppExpressionContext ctx) {
-        return buildBinaryExpression(ctx);
-    }
-            @Override
-public GelExpression visitMultExpression(GelParser.MultExpressionContext ctx) {
+public GelExpression visitDifferentExpression(GelParser.DifferentExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
         @Override
-public GelExpression visitLessThanExpression(GelParser.LessThanExpressionContext ctx) {
-        return buildBinaryExpression(ctx);
-    }
-        @Override
-public GelExpression visitAddExpression(GelParser.AddExpressionContext ctx) {
-        return buildBinaryExpression(ctx);
-    }
-                @Override
 public GelExpression visitDivExpression(GelParser.DivExpressionContext ctx) {
         return buildBinaryExpression(ctx);
     }
-        @Override
-public GelExpression visitGreaterOrEqualExpression(GelParser.GreaterOrEqualExpressionContext ctx) {
-        return buildBinaryExpression(ctx);
-    }
-    
+        
 
     //========================================================================//
 
 
-                    @Override
-    public GelExpression visitStringLiteral(GelParser.StringLiteralContext ctx) {
-        return buildLiteral(ctx, "String");
-    }
-                        @Override
-    public GelExpression visitFloatingPointLiteral(GelParser.FloatingPointLiteralContext ctx) {
-        return buildLiteral(ctx, "Double");
-    }
-                    @Override
+                                @Override
     public GelExpression visitIntegerLiteral(GelParser.IntegerLiteralContext ctx) {
         return buildLiteral(ctx, "Integer");
     }
-            @Override
-    public GelExpression visitDateLiteral(GelParser.DateLiteralContext ctx) {
-        return buildLiteral(ctx, "Date");
+                @Override
+    public GelExpression visitFloatingPointLiteral(GelParser.FloatingPointLiteralContext ctx) {
+        return buildLiteral(ctx, "Double");
     }
-                                    @Override
+                                @Override
     public GelExpression visitBooleanLiteral(GelParser.BooleanLiteralContext ctx) {
         return buildLiteral(ctx, "Boolean");
     }
-                                            
+                                        @Override
+    public GelExpression visitDateLiteral(GelParser.DateLiteralContext ctx) {
+        return buildLiteral(ctx, "Date");
+    }
+            @Override
+    public GelExpression visitStringLiteral(GelParser.StringLiteralContext ctx) {
+        return buildLiteral(ctx, "String");
+    }
+                        
 
     //========================================================================//
 

@@ -55,6 +55,7 @@
                     <visitor>true</visitor>
                     <listener>true</listener>
                     <libDirectory>${basedir}/src/main/antlr4/fr/insset/jeanluc/gel</libDirectory>
+                    <sourceDirectory>../../../src/main/antlr4</sourceDirectory>
                 </configuration>
                 <executions>
                     <execution>

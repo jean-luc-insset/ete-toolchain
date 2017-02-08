@@ -7,6 +7,7 @@ import static fr.insset.jeanluc.ete.api.ActionSupport.ACTION_READER;
 import fr.insset.jeanluc.ete.api.impl.DumpAction;
 import static fr.insset.jeanluc.ete.api.impl.DumpAction.DUMP_ACTION;
 import fr.insset.jeanluc.ete.api.impl.ForEachAction;
+import static fr.insset.jeanluc.ete.api.impl.ForEachAction.FOREACH_ACTION;
 import static fr.insset.jeanluc.ete.api.impl.ForEachAction.FOR_EACH_ACTION;
 import fr.insset.jeanluc.ete.api.impl.IfAction;
 import static fr.insset.jeanluc.ete.api.impl.IfAction.IF_ACTION;
@@ -44,6 +45,7 @@ public class InitStandardActions {
     public static void init() {
         FactoryRegistry.register(DUMP_ACTION, DumpAction.class);
         FactoryRegistry.register(FOR_EACH_ACTION, ForEachAction.class);
+        FactoryRegistry.register(FOREACH_ACTION, ForEachAction.class);
         FactoryRegistry.register(IF_ACTION, IfAction.class);
         FactoryRegistry.register(MODEL_ACTION, ModelAction.class);
         FactoryRegistry.register(MODULE_CALL_ACTION, ModuleCallAction.class);

@@ -24,6 +24,7 @@ public class ForEachAction extends ActionSupport {
 
 
     public  final static String     FOR_EACH_ACTION = "for-each-action";
+    public  final static String     FOREACH_ACTION  = "foreach-action";
 
 
     @Override
@@ -34,11 +35,13 @@ public class ForEachAction extends ActionSupport {
             varName = "current";
             addParameter("var", varName);
         }
+        Logger global = Logger.getGlobal();
         initLoop();
         for (NamedElement obj : items) {
             // We don't need to read the attributes again
             // the parameter "varName" is local and its value is updated
             // at each iteration
+            global.log(Level.INFO, "Adding " + varName + " parameter with value " + obj);
             addParameter(varName, obj);
             initIteration(obj);
             inModel = performAnIteration(inModel, obj);

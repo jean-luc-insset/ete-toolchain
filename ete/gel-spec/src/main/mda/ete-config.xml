@@ -36,10 +36,10 @@
         <module src="modules/maven-project/ete-config.xml" projectname="gel-impl" package="impl" suffix="Impl"/>
 
         <!-- Implementation tests -->
-        <velocity template="modules/maven-project/templates/gel-impl/java/test/test.vm"
+<!--        <velocity template="modules/maven-project/templates/gel-impl/java/test/test.vm"
                 target="gel-impl/src/test/java/fr/insset/jeanluc/ete/gel/impl/GelTest.java"/>
         <velocity template="modules/maven-project/templates/gel-impl/java/test/evaluator.vm"
-                target="gel-impl/src/test/java/fr/insset/jeanluc/gel/impl/GelEvaluator.java"/>
+                target="gel-impl/src/test/java/fr/insset/jeanluc/gel/impl/GelEvaluator.java"/>-->
 
     </transformation-set>
 

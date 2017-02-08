@@ -314,7 +314,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             }
             
             Logger globalLogger = Logger.getGlobal();
-            globalLogger.log(Level.FINE, "Visiting " + inStereotype.getName());
+            globalLogger.log(Level.INFO, "Visiting " + inStereotype.getName());
             // add the sterotype to the profile
             MofPackage  profile = (MofPackage)inParam[0];
             profile.addPackagedElement(inStereotype);
@@ -350,7 +350,7 @@ public class XmlModelReaderVisitor extends DynamicVisitorSupport {
             String tagName = parentName + ":" + stereotypeName;
             
             // 3-b : get all the tags with that name
-            globalLogger.log(Level.FINER, "Looking for " + tagName);
+            globalLogger.log(Level.INFO, "Looking for " + tagName);
             EteModel    model       = (EteModel) inParam[1];
             Element     domElement  = (Element) inParam[2];
             path        = "//*[name()='" + tagName + "']";

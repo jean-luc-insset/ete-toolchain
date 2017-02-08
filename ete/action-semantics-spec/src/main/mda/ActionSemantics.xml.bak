@@ -1,0 +1,1146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20131001' xmlns:xmi='http://www.omg.org/spec/XMI/20131001' xmlns:Validation_Profile='http://www.magicdraw.com/schemas/Validation_Profile.xmi' xmlns:MagicDraw_Profile='http://www.omg.org/spec/UML/20131001/MagicDrawProfile' xmlns:StandardProfile='http://www.omg.org/spec/UML/20131001/StandardProfile' xmlns:DSL_Customization='http://www.magicdraw.com/schemas/DSL_Customization.xmi' xmlns:meta='http://www.magicdraw.com/schemas/meta.xmi'>
+	<xmi:Documentation>
+		<xmi:exporter>MagicDraw UML</xmi:exporter>
+		<xmi:exporterVersion>18.2</xmi:exporterVersion>
+	</xmi:Documentation>
+	<uml:Model xmi:type='uml:Model' xmi:id='eee_1045467100313_135436_1' name='Data'>
+		<ownedComment xmi:type='uml:Comment' xmi:id='_18_1beta_8c90288_1415101994820_370998_4336' body='Author:jldeleage.&#10;Created:05/02/17 05:32.&#10;Title:.&#10;Comment:.&#10;'>
+			<annotatedElement xmi:idref='eee_1045467100313_135436_1'/>
+		</ownedComment>
+		<packagedElement xmi:type='uml:Model' xmi:id='_18_2_1243039e_1486269191388_103430_4195' name='as'>
+			<packagedElement xmi:type='uml:Package' xmi:id='_18_2_1243039e_1486269198606_702909_4196' name='fr.insset.jeanluc.ete.as'>
+				<xmi:Extension extender='MagicDraw UML 18.2'>
+					<modelExtension>
+						<ownedDiagram xmi:type='uml:Diagram' xmi:id='_18_2_1243039e_1486269214328_330589_4197' name='Sans Titre1' visibility='public' ownerOfDiagram='_18_2_1243039e_1486269198606_702909_4196'>
+							<xmi:Extension extender='MagicDraw UML 18.2'>
+								<diagramRepresentation>
+									<diagram:DiagramRepresentationObject ID='_18_2_1243039e_1486269214361_861930_4218' diagramStyleID='_18_2_1243039e_1486362356795_959016_4336' initialFrameSizeSet='true' requiredFeature=';UML_Standard_Profile.mdzip^UML_FEATURE' type='Class Diagram' umlType='Class Diagram' xmi:id='_QSGfoOtcEeaZ7b9WsiEdpg' xmi:version='2.0' xmlns:binary='http://www.nomagic.com/ns/cameo/client/binary/1.0' xmlns:diagram='http://www.nomagic.com/ns/magicdraw/core/diagram/1.0' xmlns:xmi='http://www.omg.org/XMI' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+										<diagramContents contentHash='65b15a10-dec8-41c5-a96b-c509ccefa879' exporterName='MagicDraw UML' exporterVersion='18.2' xmi:id='_QSGfoetcEeaZ7b9WsiEdpg'>
+											<binaryObject streamContentID='BINARY-cb245fb8-bec4-41d6-8ec2-c45f8db4aab7' xmi:id='_QSGfoutcEeaZ7b9WsiEdpg' xsi:type='binary:StreamIdentityBinaryObject'/>
+											<usedObjects href='#_18_2_1243039e_1486269261464_23224_4270'/>
+											<usedObjects href='#_18_2_1243039e_1486303469618_641850_4336'/>
+											<usedObjects href='#_18_2_1243039e_1486332912267_177928_4375'/>
+											<usedObjects href='#_18_2_1243039e_1486362379851_900251_4372'/>
+											<usedObjects href='#_18_2_1243039e_1486362379851_893379_4373'/>
+											<usedObjects href='#_18_2_1243039e_1486353815709_481700_4437'/>
+											<usedObjects href='#_18_2_1243039e_1486303489168_64407_4346'/>
+											<usedObjects href='#_18_2_1243039e_1486353815709_283847_4436'/>
+											<usedObjects href='#_18_2_1243039e_1486269231398_70142_4243'/>
+											<usedObjects href='#_18_2_1243039e_1486303489167_192406_4345'/>
+											<usedObjects href='#_18_2_1243039e_1486332687342_670748_4340'/>
+											<usedObjects href='#_18_2_1243039e_1486269372928_68745_4382'/>
+											<usedObjects href='#_18_2_1243039e_1486303611231_207898_4425'/>
+											<usedObjects href='#_18_2_1243039e_1486303461656_454745_4333'/>
+											<usedObjects href='#_18_2_1243039e_1486304065939_631195_4555'/>
+											<usedObjects href='#_18_2_1243039e_1486362379851_420435_4371'/>
+											<usedObjects href='#_18_2_1243039e_1486353815709_77400_4435'/>
+											<usedObjects href='#_18_2_1243039e_1486304049538_425160_4501'/>
+											<usedObjects href='#_18_2_1243039e_1486304058806_9066_4528'/>
+											<usedObjects href='#_18_2_1243039e_1486269590728_817593_4449'/>
+											<usedObjects href='#_18_2_1243039e_1486269580807_946778_4432'/>
+											<usedObjects href='#_18_2_1243039e_1486302808057_720077_4529'/>
+											<usedObjects href='#_18_2_1243039e_1486302808057_232303_4528'/>
+											<usedObjects href='#_18_2_1243039e_1486269327146_426768_4351'/>
+											<usedObjects href='#_18_2_1243039e_1486269214328_330589_4197'/>
+											<usedObjects href='#_18_2_1243039e_1486269623356_49325_4477'/>
+											<usedObjects href='#_18_2_1243039e_1486303678768_255869_4479'/>
+											<usedObjects href='#_18_2_1243039e_1486353903887_944520_4474'/>
+											<usedObjects href='#_18_2_1243039e_1486269300104_641711_4324'/>
+											<usedObjects href='#_18_2_1243039e_1486303611231_708288_4426'/>
+											<usedObjects href='#_18_2_1243039e_1486332978784_168300_4408'/>
+											<usedObjects href='#_18_2_1243039e_1486269198606_702909_4196'/>
+											<usedObjects href='#_18_2_1243039e_1486269361418_965157_4379'/>
+											<usedObjects href='#_18_2_1243039e_1486303526205_379960_4372'/>
+											<usedObjects href='#_18_2_1243039e_1486269580807_609944_4433'/>
+											<usedObjects href='#_18_2_1243039e_1486303489167_60018_4344'/>
+											<usedObjects href='#_18_2_1243039e_1486332667247_313307_4336'/>
+											<usedObjects href='#_18_2_1243039e_1486332978784_233503_4406'/>
+											<usedObjects href='#_18_2_1243039e_1486303678768_445825_4477'/>
+											<usedObjects href='#_18_2_1243039e_1486302808056_11156_4527'/>
+											<usedObjects href='#_18_2_1243039e_1486332978784_201223_4407'/>
+											<usedObjects href='#_18_2_1243039e_1486353903887_95128_4476'/>
+											<usedObjects href='#_18_2_1243039e_1486366362778_584813_4397'/>
+											<usedObjects href='#_18_2_1243039e_1486303526205_566937_4373'/>
+											<usedObjects href='#_18_2_1243039e_1486303678768_337133_4478'/>
+											<usedObjects href='#_18_2_1243039e_1486303580549_613864_4398'/>
+											<usedObjects href='#_18_2_1243039e_1486353903887_97107_4475'/>
+											<usedObjects href='#_18_2_1243039e_1486303611231_763050_4427'/>
+											<usedObjects href='#_18_2_1243039e_1486303526205_436106_4371'/>
+											<usedObjects href='#_18_2_1243039e_1486332656161_155356_4333'/>
+											<usedObjects href='#_18_2_1243039e_1486303580549_816171_4400'/>
+											<usedObjects href='#_18_2_1243039e_1486269508174_513391_4393'/>
+											<usedObjects href='#_18_2_1243039e_1486269580807_471977_4431'/>
+											<usedObjects href='#_18_2_1243039e_1486269275649_938961_4297'/>
+											<usedObjects href='#_18_2_1243039e_1486362363594_663097_4341'/>
+											<usedObjects href='#_18_2_1243039e_1486303580549_446112_4399'/>
+											<usedElements>_18_2_1243039e_1486269261464_23224_4270</usedElements>
+											<usedElements>_18_2_1243039e_1486303489167_60018_4344</usedElements>
+											<usedElements>_18_2_1243039e_1486304049538_425160_4501</usedElements>
+											<usedElements>_18_2_1243039e_1486332667247_313307_4336</usedElements>
+											<usedElements>_18_2_1243039e_1486269231398_70142_4243</usedElements>
+											<usedElements>_18_2_1243039e_1486269300104_641711_4324</usedElements>
+											<usedElements>_18_2_1243039e_1486353815709_77400_4435</usedElements>
+											<usedElements>_18_2_1243039e_1486304058806_9066_4528</usedElements>
+											<usedElements>_18_2_1243039e_1486303526205_436106_4371</usedElements>
+											<usedElements>_18_2_1243039e_1486302808056_11156_4527</usedElements>
+											<usedElements>_18_2_1243039e_1486303489167_192406_4345</usedElements>
+											<usedElements>_18_2_1243039e_1486332978784_168300_4408</usedElements>
+											<usedElements>_18_2_1243039e_1486303580549_816171_4400</usedElements>
+											<usedElements>_18_2_1243039e_1486304065939_631195_4555</usedElements>
+											<usedElements>_18_2_1243039e_1486269361418_965157_4379</usedElements>
+											<usedElements>_18_2_1243039e_1486269275649_938961_4297</usedElements>
+											<usedElements>_18_2_1243039e_1486362363594_663097_4341</usedElements>
+											<usedElements>_18_2_1243039e_1486269198606_702909_4196</usedElements>
+											<usedElements>_18_2_1243039e_1486303469618_641850_4336</usedElements>
+											<usedElements>_18_2_1243039e_1486353903887_97107_4475</usedElements>
+											<usedElements>_18_2_1243039e_1486362379851_420435_4371</usedElements>
+											<usedElements>_18_2_1243039e_1486269327146_426768_4351</usedElements>
+											<usedElements>_18_2_1243039e_1486303678768_445825_4477</usedElements>
+											<usedElements>_18_2_1243039e_1486269623356_49325_4477</usedElements>
+											<usedElements>_18_2_1243039e_1486332978784_201223_4407</usedElements>
+											<usedElements>_18_2_1243039e_1486303678768_255869_4479</usedElements>
+											<usedElements>_18_2_1243039e_1486303580549_446112_4399</usedElements>
+											<usedElements>_18_2_1243039e_1486353815709_481700_4437</usedElements>
+											<usedElements>_18_2_1243039e_1486269580807_609944_4433</usedElements>
+											<usedElements>_18_2_1243039e_1486362379851_893379_4373</usedElements>
+											<usedElements>_18_2_1243039e_1486362379851_900251_4372</usedElements>
+											<usedElements>_18_2_1243039e_1486269214328_330589_4197</usedElements>
+											<usedElements>_18_2_1243039e_1486366362778_584813_4397</usedElements>
+											<usedElements>_18_2_1243039e_1486303580549_613864_4398</usedElements>
+											<usedElements>_18_2_1243039e_1486353903887_95128_4476</usedElements>
+											<usedElements>_18_2_1243039e_1486303526205_566937_4373</usedElements>
+											<usedElements>_18_2_1243039e_1486269580807_946778_4432</usedElements>
+											<usedElements>_18_2_1243039e_1486303526205_379960_4372</usedElements>
+											<usedElements>_18_2_1243039e_1486303461656_454745_4333</usedElements>
+											<usedElements>_18_2_1243039e_1486303489168_64407_4346</usedElements>
+											<usedElements>_18_2_1243039e_1486303611231_708288_4426</usedElements>
+											<usedElements>_18_2_1243039e_1486269508174_513391_4393</usedElements>
+											<usedElements>_18_2_1243039e_1486332912267_177928_4375</usedElements>
+											<usedElements>_18_2_1243039e_1486303611231_763050_4427</usedElements>
+											<usedElements>_18_2_1243039e_1486303678768_337133_4478</usedElements>
+											<usedElements>_18_2_1243039e_1486332687342_670748_4340</usedElements>
+											<usedElements>_18_2_1243039e_1486269590728_817593_4449</usedElements>
+											<usedElements>_18_2_1243039e_1486353815709_283847_4436</usedElements>
+											<usedElements>_18_2_1243039e_1486302808057_232303_4528</usedElements>
+											<usedElements>_18_2_1243039e_1486332978784_233503_4406</usedElements>
+											<usedElements>_18_2_1243039e_1486302808057_720077_4529</usedElements>
+											<usedElements>_18_2_1243039e_1486353903887_944520_4474</usedElements>
+											<usedElements>_18_2_1243039e_1486269580807_471977_4431</usedElements>
+											<usedElements>_18_2_1243039e_1486269372928_68745_4382</usedElements>
+											<usedElements>_18_2_1243039e_1486303611231_207898_4425</usedElements>
+											<usedElements>_18_2_1243039e_1486332656161_155356_4333</usedElements>
+										</diagramContents>
+									</diagram:DiagramRepresentationObject>
+								</diagramRepresentation>
+							</xmi:Extension>
+						</ownedDiagram>
+					</modelExtension>
+				</xmi:Extension>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269231398_70142_4243' name='Statement'/>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269261464_23224_4270' name='Assignment'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486269361418_965157_4379' general='_18_2_1243039e_1486269231398_70142_4243'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486269580807_946778_4432' name='value' visibility='private' type='_18_2_1243039e_1486269508174_513391_4393' association='_18_2_1243039e_1486269580807_471977_4431'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486302808057_232303_4528' name='variable' visibility='private' type='_18_2_1243039e_1486269275649_938961_4297' association='_18_2_1243039e_1486302808056_11156_4527'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269300104_641711_4324' name='Conditional'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486303469618_641850_4336' general='_18_2_1243039e_1486269231398_70142_4243'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303489167_192406_4345' name='condition' visibility='private' type='_18_2_1243039e_1486269508174_513391_4393' association='_18_2_1243039e_1486303489167_60018_4344'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303526205_379960_4372' name='thenPart' visibility='private' type='_18_2_1243039e_1486269231398_70142_4243' association='_18_2_1243039e_1486303526205_436106_4371'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303611231_708288_4426' name='elsePart' visibility='private' type='_18_2_1243039e_1486269231398_70142_4243' association='_18_2_1243039e_1486303611231_207898_4425'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269327146_426768_4351' name='Loop'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486303461656_454745_4333' general='_18_2_1243039e_1486269231398_70142_4243'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303580549_446112_4399' name='body' visibility='private' type='_18_2_1243039e_1486269231398_70142_4243' association='_18_2_1243039e_1486303580549_613864_4398'>
+						<lowerValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486353871472_252467_4464'/>
+						<upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486353871472_184368_4465' value='*'/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303678768_337133_4478' name='condition' visibility='private' type='_18_2_1243039e_1486269508174_513391_4393' association='_18_2_1243039e_1486303678768_445825_4477'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486269580807_471977_4431'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486269580807_946778_4432'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486269580807_609944_4433'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486269580807_609944_4433' visibility='private' type='_18_2_1243039e_1486269261464_23224_4270' association='_18_2_1243039e_1486269580807_471977_4431'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269590728_817593_4449' name='Instanciation'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486269623356_49325_4477' general='_18_2_1243039e_1486366362778_584813_4397'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486362379851_900251_4372' name='mofClass' visibility='private' type='_18_2_1243039e_1486362363594_663097_4341' association='_18_2_1243039e_1486362379851_420435_4371'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486302808056_11156_4527'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486302808057_232303_4528'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486302808057_720077_4529'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486302808057_720077_4529' visibility='private' type='_18_2_1243039e_1486269261464_23224_4270' association='_18_2_1243039e_1486302808056_11156_4527'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269275649_938961_4297' name='VariableDeclaration'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486269372928_68745_4382' general='_18_2_1243039e_1486269231398_70142_4243'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486332978784_201223_4407' name='type' visibility='private' type='_18_2_1243039e_1486332912267_177928_4375' association='_18_2_1243039e_1486332978784_233503_4406'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486332995862_196308_4429' name='identifier' visibility='private'>
+						<type href='http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String'>
+							<xmi:Extension extender='MagicDraw UML 18.2'>
+								<referenceExtension referentPath='UML Standard Profile::UML2 Metamodel::PrimitiveTypes::String' referentType='PrimitiveType'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486303489167_60018_4344'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303489167_192406_4345'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303489168_64407_4346'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303489168_64407_4346' visibility='private' type='_18_2_1243039e_1486269300104_641711_4324' association='_18_2_1243039e_1486303489167_60018_4344'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486303526205_436106_4371'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303526205_379960_4372'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303526205_566937_4373'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303526205_566937_4373' visibility='private' type='_18_2_1243039e_1486269300104_641711_4324' association='_18_2_1243039e_1486303526205_436106_4371'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486303580549_613864_4398'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303580549_446112_4399'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303580549_816171_4400'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303580549_816171_4400' visibility='private' type='_18_2_1243039e_1486269327146_426768_4351' association='_18_2_1243039e_1486303580549_613864_4398'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486303611231_207898_4425'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303611231_708288_4426'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303611231_763050_4427'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303611231_763050_4427' visibility='private' type='_18_2_1243039e_1486269300104_641711_4324' association='_18_2_1243039e_1486303611231_207898_4425'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486303678768_445825_4477'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303678768_337133_4478'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486303678768_255869_4479'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486303678768_255869_4479' visibility='private' type='_18_2_1243039e_1486269327146_426768_4351' association='_18_2_1243039e_1486303678768_445825_4477'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486304049538_425160_4501' name='ForLoop'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486332656161_155356_4333' general='_18_2_1243039e_1486269327146_426768_4351'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486353815709_283847_4436' name='initialization' visibility='private' type='_18_2_1243039e_1486269231398_70142_4243' association='_18_2_1243039e_1486353815709_77400_4435'>
+						<lowerValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486353863262_245050_4458'/>
+						<upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486353863263_434497_4459' value='*'/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486353903887_97107_4475' name='incrementation' visibility='private' type='_18_2_1243039e_1486269231398_70142_4243' association='_18_2_1243039e_1486353903887_944520_4474'>
+						<lowerValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486353909818_631667_4491'/>
+						<upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486353909819_688649_4492' value='*'/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486304058806_9066_4528' name='WhileDoLoop'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486332667247_313307_4336' general='_18_2_1243039e_1486269327146_426768_4351'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486304065939_631195_4555' name='DoWhileLoop'>
+					<generalization xmi:type='uml:Generalization' xmi:id='_18_2_1243039e_1486332687342_670748_4340' general='_18_2_1243039e_1486269327146_426768_4351'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486332978784_233503_4406'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486332978784_201223_4407'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486332978784_168300_4408'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486332978784_168300_4408' visibility='private' type='_18_2_1243039e_1486269275649_938961_4297' association='_18_2_1243039e_1486332978784_233503_4406'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486353815709_77400_4435'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486353815709_283847_4436'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486353815709_481700_4437'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486353815709_481700_4437' visibility='private' type='_18_2_1243039e_1486304049538_425160_4501' association='_18_2_1243039e_1486353815709_77400_4435'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486353903887_944520_4474'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486353903887_97107_4475'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486353903887_95128_4476'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486353903887_95128_4476' visibility='private' type='_18_2_1243039e_1486304049538_425160_4501' association='_18_2_1243039e_1486353903887_944520_4474'/>
+				</packagedElement>
+				<packagedElement xmi:type='uml:Association' xmi:id='_18_2_1243039e_1486362379851_420435_4371'>
+					<memberEnd xmi:idref='_18_2_1243039e_1486362379851_900251_4372'/>
+					<memberEnd xmi:idref='_18_2_1243039e_1486362379851_893379_4373'/>
+					<ownedEnd xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486362379851_893379_4373' visibility='private' type='_18_2_1243039e_1486269590728_817593_4449' association='_18_2_1243039e_1486362379851_420435_4371'/>
+				</packagedElement>
+			</packagedElement>
+			<packagedElement xmi:type='uml:Package' xmi:id='_18_2_1243039e_1486277295287_492601_4484' name='fr.insset.jeanluc.gel.impl'>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486366362778_584813_4397' name='GelExpressionImpl'/>
+			</packagedElement>
+			<packagedElement xmi:type='uml:Package' xmi:id='_18_2_1243039e_1486332797363_909225_4373' name='fr.insset.jeanluc.ete.meta.model.types.MofType'>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486332912267_177928_4375' name='MofType'/>
+			</packagedElement>
+			<packagedElement xmi:type='uml:Package' xmi:id='_18_2_1243039e_1486362517237_483408_4393' name='fr.insset.jeanluc.ete.meta.model.emof'>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486362363594_663097_4341' name='MofClass'/>
+			</packagedElement>
+			<packagedElement xmi:type='uml:Package' xmi:id='_18_2_1243039e_1486366539617_878450_4429' name='fr.insset.jeanluc.gel.api'>
+				<packagedElement xmi:type='uml:Class' xmi:id='_18_2_1243039e_1486269508174_513391_4393' name='GelExpression'/>
+			</packagedElement>
+		</packagedElement>
+		<packagedElement xmi:type='uml:Package' xmi:id='_18_2_1243039e_1486302445285_47269_4495' name='meta'>
+			<packagedElement xmi:type='uml:Stereotype' xmi:id='_18_2_1243039e_1486269553672_249757_4420' name='ignore'>
+				<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486269553675_161391_4422' name='base_Element' visibility='private' association='_18_2_1243039e_1486269553675_21897_4421'>
+					<type href='http://www.omg.org/spec/UML/20131001/UML.xmi#Element'>
+						<xmi:Extension extender='MagicDraw UML 18.2'>
+							<referenceExtension referentPath='UML Standard Profile::UML2 Metamodel::Element' referentType='Class'/>
+						</xmi:Extension>
+					</type>
+				</ownedAttribute>
+				<ownedAttribute xmi:type='uml:Property' xmi:id='_18_2_1243039e_1486277388218_160284_4489' name='reason' visibility='private'>
+					<type href='http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String'>
+						<xmi:Extension extender='MagicDraw UML 18.2'>
+							<referenceExtension referentPath='UML Standard Profile::UML2 Metamodel::PrimitiveTypes::String' referentType='PrimitiveType'/>
+						</xmi:Extension>
+					</type>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type='uml:Extension' xmi:id='_18_2_1243039e_1486269553675_21897_4421'>
+				<memberEnd xmi:idref='_18_2_1243039e_1486269553675_161391_4422'/>
+				<memberEnd xmi:idref='_18_2_1243039e_1486269553675_890069_4423'/>
+				<navigableOwnedEnd xmi:idref='_18_2_1243039e_1486269553675_890069_4423'/>
+				<ownedEnd xmi:type='uml:ExtensionEnd' xmi:id='_18_2_1243039e_1486269553675_890069_4423' name='extension_sans nom1' visibility='private' aggregation='composite' type='_18_2_1243039e_1486269553672_249757_4420' association='_18_2_1243039e_1486269553675_21897_4421'>
+					<lowerValue xmi:type='uml:LiteralInteger' xmi:id='_18_2_1243039e_1486269553676_106417_4424'/>
+					<xmi:Extension extender='MagicDraw UML 18.2'>
+						<modelExtension>
+							<upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:id='_18_2_1243039e_1486269553676_78535_4425' value='1'/>
+						</modelExtension>
+					</xmi:Extension>
+				</ownedEnd>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<stereotypesHREFS>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeHREF='local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#_9_0_be00301_1108044380615_150487_0'/>
+			<tag name='MagicDraw_Profile:DiagramInfo:base_Element' tagID='_10_0EAPbeta_be00301_1123081772098_411862_275' tagURI='local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#_10_0EAPbeta_be00301_1123081772098_411862_275'/>
+			<tag name='MagicDraw_Profile:DiagramInfo:Creation_date' tagID='_be00301_1073306188629_537791_2' tagURI='local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#_be00301_1073306188629_537791_2'/>
+			<tag name='MagicDraw_Profile:DiagramInfo:Author' tagID='_be00301_1077726770128_871366_1' tagURI='local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#_be00301_1077726770128_871366_1'/>
+			<tag name='MagicDraw_Profile:DiagramInfo:Modification_date' tagID='_be00301_1073394345322_922552_1' tagURI='local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#_be00301_1073394345322_922552_1'/>
+			<tag name='MagicDraw_Profile:DiagramInfo:Last_modified_by' tagID='_16_8beta_8ca0285_1257244649124_794756_344' tagURI='local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#_16_8beta_8ca0285_1257244649124_794756_344'/>
+			<stereotype name='meta:ignore' stereotypeHREF='local:/PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model#_18_2_1243039e_1486269553672_249757_4420'/>
+			<tag name='meta:ignore:reason' tagID='_18_2_1243039e_1486277388218_160284_4489' tagURI='local:/PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model#_18_2_1243039e_1486277388218_160284_4489'/>
+		</stereotypesHREFS>
+	</xmi:Extension>
+	<MagicDraw_Profile:DiagramInfo xmi:id='_18_2_1243039e_1486269214349_605300_4209' base_Diagram='_18_2_1243039e_1486269214328_330589_4197' Creation_date='05/02/17 05:33' Modification_date='06/02/17 08:35' Author='jldeleage' Last_modified_by='jldeleage'/>
+	<meta:ignore xmi:id='_18_2_1243039e_1486366403857_980524_4427' base_Element='_18_2_1243039e_1486366362778_584813_4397'/>
+	<meta:ignore xmi:id='_18_2_1243039e_1486332963987_341422_4401' base_Element='_18_2_1243039e_1486332912267_177928_4375'/>
+	<meta:ignore xmi:id='_18_2_1243039e_1486362432578_629990_4392' base_Element='_18_2_1243039e_1486362363594_663097_4341'/>
+	<meta:ignore xmi:id='_18_2_1243039e_1486269565919_820656_4426' base_Element='_18_2_1243039e_1486269508174_513391_4393' reason=''/>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='proxy.local__PROJECT$h877558e9224f114d50dea1f39a1c119_resource_com$dnomagic$dci$dmetamodel$dproject$dsnapshot' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<project:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:project="http://www.nomagic.com/ns/cameo/client/project/1.0" xmi:id="_VWTUgU_TEeCNOP_jel_PNg" description="" id="PROJECT-877558e9224f114d50dea1f39a1c119">
+  <ownedSections xmi:id="_VWY0EU_TEeCNOP_jel_PNg" name="model" featuredBy="_VWY0EE_TEeCNOP_jel_PNg"/>
+  <ownedSections xmi:id="_VabmkU_TEeCNOP_jel_PNg" name="commonprojectoptions" shared="true" featuredBy="_VabmkE_TEeCNOP_jel_PNg"/>
+  <ownedSections xmi:id="_VacNoU_TEeCNOP_jel_PNg" name="personalprojectoptions" shared="true" belongsTo="_VacNok_TEeCNOP_jel_PNg" featuredBy="_VabmkE_TEeCNOP_jel_PNg"/>
+  <ownedSections xmi:id="_VbQF8E_TEeCNOP_jel_PNg" name="shared_model" shared="true" featuredBy="_VWY0EE_TEeCNOP_jel_PNg">
+    <sharePoints xmi:id="_VbhywE_TEeCNOP_jel_PNg" ID="magicdraw_uml_standard_profile_v_0001">
+      <object href="PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#magicdraw_uml_standard_profile_v_0001"/>
+      <options xmi:id="_Bnb0gH02EeCAfIowCLYtPA" key="preferredPath" value=""/>
+    </sharePoints>
+  </ownedSections>
+  <ownedSections xmi:id="_VfpdwU_TEeCNOP_jel_PNg" name="commoncodeengineering" featuredBy="_VfpdwE_TEeCNOP_jel_PNg"/>
+  <userParts xmi:id="_VacNok_TEeCNOP_jel_PNg" user="_kpyFAVxdEeC_ZNJv4YLpoQ" sections="_VacNoU_TEeCNOP_jel_PNg"/>
+  <features xmi:id="_VWY0EE_TEeCNOP_jel_PNg" name="UML Model" namespace="com.nomagic.magicdraw.uml_model" version="17.0" sections="_VWY0EU_TEeCNOP_jel_PNg _VbQF8E_TEeCNOP_jel_PNg" internalVersion="1"/>
+  <features xmi:id="_VabmkE_TEeCNOP_jel_PNg" name="Project Options" namespace="com.nomagic.magicdraw.core.project.options" version="1.0" sections="_VabmkU_TEeCNOP_jel_PNg _VacNoU_TEeCNOP_jel_PNg" internalVersion="1"/>
+  <features xmi:id="_Vfo2sE_TEeCNOP_jel_PNg" name="Language Properties" namespace="com.nomagic.magicdraw.ce.languageproperties" version="1.0" internalVersion="1"/>
+  <features xmi:id="_VfpdwE_TEeCNOP_jel_PNg" name="Code Engineering" namespace="com.nomagic.magicdraw.ce" version="1.0" sections="_VfpdwU_TEeCNOP_jel_PNg" internalVersion="1"/>
+  <properties xmi:id="_Vbhywk_TEeCNOP_jel_PNg" key="standardProfile" value="true"/>
+  <properties xmi:id="_VbiZ0E_TEeCNOP_jel_PNg" key="internalVersion" value="18.2"/>
+  <properties xmi:id="_srSgUFnLEeCNG86yLj6xYg" key="MODULES_DIRS" value="&lt;install.root>\templates&lt;>&lt;install.root>\profiles&lt;>&lt;project.dir>\&lt;>&lt;install.root>\modelLibraries&lt;>\&lt;install.root>\profiles"/>
+  <properties xmi:id="_94jvAH01EeCAfIowCLYtPA" key="exporterDescription" value="ac ed 0 5 73 72 0 2e 63 6f 6d 2e 6e 6f 6d 61 67 69 63 2e 70 65 72 73 69 73 74 65 6e 63 65 2e 58 6d 69 45 78 70 6f 72 74 65 72 44 65 73 63 72 69 70 74 69 6f 6e f5 3e fd c8 e7 3c 3b d7 2 0 5 4c 0 5 6d 4e 61 6d 65 74 0 12 4c 6a 61 76 61 2f 6c 61 6e 67 2f 53 74 72 69 6e 67 3b 4c 0 12 6d 52 65 71 75 69 72 65 64 50 6c 75 67 69 6e 4d 61 70 74 0 f 4c 6a 61 76 61 2f 75 74 69 6c 2f 4d 61 70 3b 4c 0 12 6d 52 65 71 75 69 72 65 64 52 65 73 6f 75 72 63 65 73 74 0 10 4c 6a 61 76 61 2f 75 74 69 6c 2f 4c 69 73 74 3b 4c 0 10 6d 55 4d 4c 4e 61 6d 65 73 70 61 63 65 55 52 49 71 0 7e 0 1 4c 0 8 6d 56 65 72 73 69 6f 6e 71 0 7e 0 1 78 70 74 0 d 4d 61 67 69 63 44 72 61 77 20 55 4d 4c 73 72 0 11 6a 61 76 61 2e 75 74 69 6c 2e 48 61 73 68 4d 61 70 5 7 da c1 c3 16 60 d1 3 0 2 46 0 a 6c 6f 61 64 46 61 63 74 6f 72 49 0 9 74 68 72 65 73 68 6f 6c 64 78 70 3f 40 0 0 0 0 0 0 77 8 0 0 0 10 0 0 0 0 78 73 72 0 13 6a 61 76 61 2e 75 74 69 6c 2e 41 72 72 61 79 4c 69 73 74 78 81 d2 1d 99 c7 61 9d 3 0 1 49 0 4 73 69 7a 65 78 70 0 0 0 0 77 4 0 0 0 0 78 70 74 0 4 31 38 2e 32 "/>
+  <properties xmi:id="_DnjcsMQEEeCVy5mnlxX55w" key="fileVersion" value="479"/>
+  <properties xmi:id="_Doc0kMQEEeCVy5mnlxX55w" key="MODEL_ROOT_HREF" value="local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.model#eee_1045467100313_135436_1"/>
+  <properties xmi:id="_BwA7QADBEeK92_v4nw3vUw" key="CI_VERSION" value="V1702_SP1"/>
+  <properties xmi:id="_z_AY0MGpEeS9Iojkvg0NZg" key="fileFormatVersion" value="18.1 beta.esi"/>
+  <projectUsers xmi:id="_kpyFAVxdEeC_ZNJv4YLpoQ" userId="default"/>
+</project:Project>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='com.nomagic.magicdraw.ce.dmn.commondmncodeengineering' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MDFoundation="http://www.nomagic.com/magicdraw/foundation" xmlns:md.ce.ddl.rt.options="http://www.nomagic.com/magicdraw/ce/ddl/rt/options/1" xmlns:md.ce.xmlschema.rt.options="http://www.nomagic.com/magicdraw/ce/xmlschema/rt/options/1">
+  <MDFoundation:MDExtension xmi:id="_wJ4KUC7WEeWw4qK_gIzAnA">
+    <contents xsi:type="md.ce.ddl.rt.options:DDLLanguageOptions" xmi:id="_wJ6mkC7WEeWw4qK_gIzAnA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR">
+      <userDefinedAttributeCreationRule xmi:id="_wJ6mkS7WEeWw4qK_gIzAnA" default="ASSOCIATION">
+        <rules xmi:id="_wJ6mki7WEeWw4qK_gIzAnA" creationType="ATTRIBUTE" pattern="*" classType="DataType"/>
+      </userDefinedAttributeCreationRule>
+    </contents>
+  </MDFoundation:MDExtension>
+  <MDFoundation:MDExtension xmi:id="_wKJ3IC7WEeWw4qK_gIzAnA">
+    <contents xsi:type="md.ce.xmlschema.rt.options:XMLSchemaLanguageOptions" xmi:id="_wKJ3IS7WEeWw4qK_gIzAnA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR">
+      <userDefinedAttributeCreationRule xmi:id="_wKJ3Ii7WEeWw4qK_gIzAnA" default="ASSOCIATION"/>
+    </contents>
+  </MDFoundation:MDExtension>
+</xmi:XMI>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='com.nomagic.ci.persistence.local.proxy.privatedependencylist' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<snapshot:PrivateDependenciesContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:snapshot="http://www.nomagic.com/ns/cameo/client/snapshot/1.0" xmi:id="_XfkCsAJHEeKcqJgnVU4y2Q">
+  <referencedResources xmi:id="_D7k2sOw_EeaCr66bvi5ZsA" originalResourceURI="local:/PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model">
+    <referencedObjects>eee_1045467100313_135436_1</referencedObjects>
+  </referencedResources>
+  <referencedResources xmi:id="_D7k2sew_EeaCr66bvi5ZsA" originalResourceURI="local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel">
+    <referencedObjects>_9_0_62a020a_1105704884807_371561_7741</referencedObjects>
+    <referencedObjects>_9_0_be00301_1108044380615_150487_0</referencedObjects>
+    <referencedObjects>magicdraw_uml_standard_profile_v_0001</referencedObjects>
+    <referencedObjects>_9_0_2_91a0295_1110274713995_297054_0</referencedObjects>
+    <referencedObjects>_be00301_1073306188629_537791_2</referencedObjects>
+    <referencedObjects>_16_8beta_8ca0285_1257244649124_794756_344</referencedObjects>
+    <referencedObjects>_be00301_1073394345322_922552_1</referencedObjects>
+    <referencedObjects>_be00301_1077726770128_871366_1</referencedObjects>
+  </referencedResources>
+</snapshot:PrivateDependenciesContainer>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='com.nomagic.ci.proxy.snapshot.descriptor.descriptors' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<snapshot:SnapshotInfoContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:snapshot="http://www.nomagic.com/ns/cameo/client/snapshot/1.0" xmi:id="_w_oCgJnOEeG5IL63JP9cFw">
+  <snaphotDescriptors xmi:id="_xwW74JnOEeG5IL63JP9cFw" originalResourceURI="local:/PROJECT-5d6756d4ab7fcc1b9be2b6b7ce3f4f23?resource=com.nomagic.magicdraw.uml_umodel.model"/>
+  <snaphotDescriptors xmi:id="_xwW74ZnOEeG5IL63JP9cFw" originalResourceURI="local:/PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel">
+    <sharePointObjects>magicdraw_uml_standard_profile_v_0001</sharePointObjects>
+  </snaphotDescriptors>
+  <snaphotDescriptors xmi:id="_GWMQIOtcEeaZ7b9WsiEdpg" originalResourceURI="local:/PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model"/>
+</snapshot:SnapshotInfoContainer>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='BINARY-cb245fb8-bec4-41d6-8ec2-c45f8db4aab7' type='XML' header='&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;'>
+
+<mdOwnedViews>
+	<mdElement elementClass='DiagramFrame' xmi:id='_18_2_1243039e_1486269214363_730286_4219'>
+		<elementID xmi:idref='_18_2_1243039e_1486269214328_330589_4197'/>
+		<geometry>5, 5, 1389, 710</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+	<mdElement elementClass='Package' xmi:id='_18_2_1243039e_1486269221554_104561_4230'>
+		<elementID xmi:idref='_18_2_1243039e_1486269198606_702909_4196'/>
+		<geometry>350, 70, 875, 455</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269231451_167251_4244'>
+				<elementID xmi:idref='_18_2_1243039e_1486269231398_70142_4243'/>
+				<geometry>665, 175, 80, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269261469_790463_4271'>
+				<elementID xmi:idref='_18_2_1243039e_1486269261464_23224_4270'/>
+				<geometry>427, 357, 80, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269275657_224694_4298'>
+				<elementID xmi:idref='_18_2_1243039e_1486269275649_938961_4297'/>
+				<geometry>637, 350, 117, 54</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269300112_671378_4325'>
+				<elementID xmi:idref='_18_2_1243039e_1486269300104_641711_4324'/>
+				<geometry>462, 175, 80, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269327150_726619_4352'>
+				<elementID xmi:idref='_18_2_1243039e_1486269327146_426768_4351'/>
+				<geometry>980, 175, 80, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486269358653_833886_4378'>
+				<elementID xmi:idref='_18_2_1243039e_1486269361418_965157_4379'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269261469_790463_4271'/>
+				<geometry>467, 263; 467, 357; </geometry>
+				<treeID xmi:idref='_18_2_1243039e_1486269372933_735268_4383'/>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486269370345_581258_4381'>
+				<elementID xmi:idref='_18_2_1243039e_1486269372928_68745_4382'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269275657_224694_4298'/>
+				<geometry>695, 263; 695, 350; </geometry>
+				<treeID xmi:idref='_18_2_1243039e_1486269372933_735268_4383'/>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Tree' xmi:id='_18_2_1243039e_1486269372933_735268_4383'>
+				<geometry>467, 263, 228, 0</geometry>
+				<baseShape xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<verticalBarX xmi:value='18'/>
+				<verticalBarY xmi:value='199'/>
+				<horizontalBarLeft xmi:value='467'/>
+				<horizontalBarRight xmi:value='695'/>
+				<horizontalBarY xmi:value='263'/>
+				<implicitlySetY xmi:value='true'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486269577527_734829_4430'>
+				<elementID xmi:idref='_18_2_1243039e_1486269580807_471977_4431'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269508179_478358_4394'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269261469_790463_4271'/>
+				<geometry>269, 368; 427, 368; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486269580816_799989_4434'>
+						<elementID xmi:idref='_18_2_1243039e_1486269580807_946778_4432'/>
+						<geometry>269, 363, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486276388919_96143_4478'>
+								<elementID xmi:idref='_18_2_1243039e_1486269580807_946778_4432'/>
+								<geometry>272, 351, 35, 14</geometry>
+								<mdOwnedViews/>
+								<text>-value</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486276388919_96143_4478'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486269580816_982437_4437'>
+						<elementID xmi:idref='_18_2_1243039e_1486269580807_609944_4433'/>
+						<geometry>417, 363, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486269580816_799989_4434'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486269580816_982437_4437'/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486303458967_286015_4332'>
+				<elementID xmi:idref='_18_2_1243039e_1486303461656_454745_4333'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<geometry>745, 179; 980, 179; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486303466897_559950_4335'>
+				<elementID xmi:idref='_18_2_1243039e_1486303469618_641850_4336'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269300112_671378_4325'/>
+				<geometry>665, 186; 542, 186; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486303485124_22077_4343'>
+				<elementID xmi:idref='_18_2_1243039e_1486303489167_60018_4344'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269508179_478358_4394'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269300112_671378_4325'/>
+				<geometry>161, 350; 161, 186; 462, 186; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303489217_515675_4347'>
+						<elementID xmi:idref='_18_2_1243039e_1486303489167_192406_4345'/>
+						<geometry>156, 340, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486303495612_64885_4361'>
+								<elementID xmi:idref='_18_2_1243039e_1486303489167_192406_4345'/>
+								<geometry>100, 333, 58, 14</geometry>
+								<mdOwnedViews/>
+								<text>-condition</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486303495612_64885_4361'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303489217_152447_4350'>
+						<elementID xmi:idref='_18_2_1243039e_1486303489168_64407_4346'/>
+						<geometry>452, 181, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486303489217_515675_4347'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486303489217_152447_4350'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486303518300_793280_4370'>
+				<elementID xmi:idref='_18_2_1243039e_1486303526205_436106_4371'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269300112_671378_4325'/>
+				<geometry>718, 175; 718, 112; 480, 112; 480, 175; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303526207_81064_4374'>
+						<elementID xmi:idref='_18_2_1243039e_1486303526205_379960_4372'/>
+						<geometry>713, 165, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486303553202_989805_4388'>
+								<elementID xmi:idref='_18_2_1243039e_1486303526205_379960_4372'/>
+								<geometry>672, 154, 52, 14</geometry>
+								<mdOwnedViews/>
+								<text>-thenPart</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486303553202_989805_4388'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303526207_220689_4377'>
+						<elementID xmi:idref='_18_2_1243039e_1486303526205_566937_4373'/>
+						<geometry>475, 165, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486303526207_81064_4374'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486303526207_220689_4377'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486303576538_937272_4397'>
+				<elementID xmi:idref='_18_2_1243039e_1486303580549_613864_4398'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<geometry>742, 175; 742, 144; 987, 144; 987, 175; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303580552_368343_4401'>
+						<elementID xmi:idref='_18_2_1243039e_1486303580549_446112_4399'/>
+						<geometry>737, 165, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486303591524_81565_4415'>
+								<elementID xmi:idref='_18_2_1243039e_1486303580549_446112_4399'/>
+								<geometry>756, 154, 34, 14</geometry>
+								<mdOwnedViews/>
+								<text>-body</text>
+							</mdElement>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486353871481_22468_4466'>
+								<geometry>745, 158, 24, 14</geometry>
+								<mdOwnedViews/>
+								<text>*</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486303591524_81565_4415'/>
+						<roleMultiplicityID xmi:idref='_18_2_1243039e_1486353871481_22468_4466'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303580552_269374_4404'>
+						<elementID xmi:idref='_18_2_1243039e_1486303580549_816171_4400'/>
+						<geometry>982, 165, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486303580552_368343_4401'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486303580552_269374_4404'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486303608435_815809_4424'>
+				<elementID xmi:idref='_18_2_1243039e_1486303611231_207898_4425'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269300112_671378_4325'/>
+				<geometry>669, 175; 669, 140; 511, 140; 511, 175; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303611233_956333_4428'>
+						<elementID xmi:idref='_18_2_1243039e_1486303611231_708288_4426'/>
+						<geometry>664, 165, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486303628304_856905_4442'>
+								<elementID xmi:idref='_18_2_1243039e_1486303611231_708288_4426'/>
+								<geometry>617, 158, 49, 14</geometry>
+								<mdOwnedViews/>
+								<text>-elsePart</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486303628304_856905_4442'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303611233_506093_4431'>
+						<elementID xmi:idref='_18_2_1243039e_1486303611231_763050_4427'/>
+						<geometry>506, 165, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486303611233_956333_4428'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486303611233_506093_4431'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486303676285_743576_4476'>
+				<elementID xmi:idref='_18_2_1243039e_1486303678768_445825_4477'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486303670858_334198_4448'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<geometry>1288, 186; 1060, 186; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303678818_588203_4480'>
+						<elementID xmi:idref='_18_2_1243039e_1486303678768_337133_4478'/>
+						<geometry>1278, 181, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486303689559_424510_4494'>
+								<elementID xmi:idref='_18_2_1243039e_1486303678768_337133_4478'/>
+								<geometry>1227, 169, 58, 14</geometry>
+								<mdOwnedViews/>
+								<text>-condition</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486303689559_424510_4494'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486303678818_926954_4483'>
+						<elementID xmi:idref='_18_2_1243039e_1486303678768_255869_4479'/>
+						<geometry>1060, 181, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486303678818_588203_4480'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486303678818_926954_4483'/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486304049540_599721_4502'>
+				<elementID xmi:idref='_18_2_1243039e_1486304049538_425160_4501'/>
+				<geometry>882, 294, 80, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486304058822_70385_4529'>
+				<elementID xmi:idref='_18_2_1243039e_1486304058806_9066_4528'/>
+				<geometry>1092, 294, 81, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486304065940_24198_4556'>
+				<elementID xmi:idref='_18_2_1243039e_1486304065939_631195_4555'/>
+				<geometry>987, 294, 81, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486332651056_463505_4332'>
+				<elementID xmi:idref='_18_2_1243039e_1486332656161_155356_4333'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486304049540_599721_4502'/>
+				<geometry>922, 249; 922, 294; </geometry>
+				<treeID xmi:idref='_18_2_1243039e_1486332667255_576500_4337'/>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486332663795_634462_4335'>
+				<elementID xmi:idref='_18_2_1243039e_1486332667247_313307_4336'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486304058822_70385_4529'/>
+				<geometry>1132, 249; 1132, 294; </geometry>
+				<treeID xmi:idref='_18_2_1243039e_1486332667255_576500_4337'/>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Tree' xmi:id='_18_2_1243039e_1486332667255_576500_4337'>
+				<geometry>922, 249, 210, 0</geometry>
+				<baseShape xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<verticalBarX xmi:value='40'/>
+				<verticalBarY xmi:value='199'/>
+				<horizontalBarLeft xmi:value='922'/>
+				<horizontalBarRight xmi:value='1132'/>
+				<horizontalBarY xmi:value='249'/>
+				<implicitlySetY xmi:value='true'/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486332682586_707891_4339'>
+				<elementID xmi:idref='_18_2_1243039e_1486332687342_670748_4340'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269327150_726619_4352'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486304065940_24198_4556'/>
+				<geometry>1027, 249; 1027, 294; </geometry>
+				<treeID xmi:idref='_18_2_1243039e_1486332667255_576500_4337'/>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486302803641_446873_4526'>
+				<elementID xmi:idref='_18_2_1243039e_1486302808056_11156_4527'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269275657_224694_4298'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269261469_790463_4271'/>
+				<geometry>637, 368; 507, 368; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486302808113_188248_4530'>
+						<elementID xmi:idref='_18_2_1243039e_1486302808057_232303_4528'/>
+						<geometry>627, 363, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486302827016_711017_4544'>
+								<elementID xmi:idref='_18_2_1243039e_1486302808057_232303_4528'/>
+								<geometry>585, 351, 49, 14</geometry>
+								<mdOwnedViews/>
+								<text>-variable</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486302827016_711017_4544'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486302808113_814518_4533'>
+						<elementID xmi:idref='_18_2_1243039e_1486302808057_720077_4529'/>
+						<geometry>507, 363, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486302808113_188248_4530'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486302808113_814518_4533'/>
+			</mdElement>
+			<mdElement elementClass='Generalization' xmi:id='_18_2_1243039e_1486269611730_783539_4476'>
+				<elementID xmi:idref='_18_2_1243039e_1486269623356_49325_4477'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486366362781_612952_4398'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269590734_662341_4450'/>
+				<geometry>203, 466; 392, 466; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='false'/>
+			</mdElement>
+			<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269590734_662341_4450'>
+				<elementID xmi:idref='_18_2_1243039e_1486269590728_817593_4449'/>
+				<geometry>392, 455, 80, 24</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486332975536_45625_4405'>
+				<elementID xmi:idref='_18_2_1243039e_1486332978784_233503_4406'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486332912271_610831_4376'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269275657_224694_4298'/>
+				<geometry>707, 588; 707, 404; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486332978791_563994_4409'>
+						<elementID xmi:idref='_18_2_1243039e_1486332978784_201223_4407'/>
+						<geometry>702, 578, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486332983774_659783_4423'>
+								<elementID xmi:idref='_18_2_1243039e_1486332978784_201223_4407'/>
+								<geometry>674, 571, 30, 14</geometry>
+								<mdOwnedViews/>
+								<text>-type</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486332983774_659783_4423'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486332978791_330316_4412'>
+						<elementID xmi:idref='_18_2_1243039e_1486332978784_168300_4408'/>
+						<geometry>702, 404, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486332978791_563994_4409'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486332978791_330316_4412'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486353812348_338004_4434'>
+				<elementID xmi:idref='_18_2_1243039e_1486353815709_77400_4435'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486304049540_599721_4502'/>
+				<geometry>745, 196; 893, 196; 893, 294; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486353815713_349820_4438'>
+						<elementID xmi:idref='_18_2_1243039e_1486353815709_283847_4436'/>
+						<geometry>745, 191, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486353835991_538441_4452'>
+								<elementID xmi:idref='_18_2_1243039e_1486353815709_283847_4436'/>
+								<geometry>748, 179, 72, 14</geometry>
+								<mdOwnedViews/>
+								<text>-initialization</text>
+							</mdElement>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486353863272_315310_4460'>
+								<geometry>748, 199, 24, 14</geometry>
+								<mdOwnedViews/>
+								<text>*</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486353835991_538441_4452'/>
+						<roleMultiplicityID xmi:idref='_18_2_1243039e_1486353863272_315310_4460'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486353815713_677750_4441'>
+						<elementID xmi:idref='_18_2_1243039e_1486353815709_481700_4437'/>
+						<geometry>888, 284, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486353815713_349820_4438'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486353815713_677750_4441'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486353900664_793725_4473'>
+				<elementID xmi:idref='_18_2_1243039e_1486353903887_944520_4474'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486269231451_167251_4244'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486304049540_599721_4502'/>
+				<geometry>721, 199; 721, 305; 882, 305; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486353903892_881434_4477'>
+						<elementID xmi:idref='_18_2_1243039e_1486353903887_97107_4475'/>
+						<geometry>716, 199, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486353909827_561851_4493'>
+								<geometry>724, 202, 24, 14</geometry>
+								<mdOwnedViews/>
+								<text>*</text>
+							</mdElement>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486353913542_718592_4497'>
+								<elementID xmi:idref='_18_2_1243039e_1486353903887_97107_4475'/>
+								<geometry>728, 217, 88, 14</geometry>
+								<mdOwnedViews/>
+								<text>-incrementation</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486353913542_718592_4497'/>
+						<roleMultiplicityID xmi:idref='_18_2_1243039e_1486353909827_561851_4493'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486353903893_701268_4480'>
+						<elementID xmi:idref='_18_2_1243039e_1486353903887_95128_4476'/>
+						<geometry>872, 300, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486353903892_881434_4477'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486353903893_701268_4480'/>
+			</mdElement>
+			<mdElement elementClass='Association' xmi:id='_18_2_1243039e_1486362377771_116769_4370'>
+				<elementID xmi:idref='_18_2_1243039e_1486362379851_420435_4371'/>
+				<linkFirstEndID xmi:idref='_18_2_1243039e_1486362363601_429106_4342'/>
+				<linkSecondEndID xmi:idref='_18_2_1243039e_1486269590734_662341_4450'/>
+				<geometry>438, 581; 438, 479; </geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<nameVisible xmi:value='true'/>
+				<mdOwnedViews>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486362379855_288584_4374'>
+						<elementID xmi:idref='_18_2_1243039e_1486362379851_900251_4372'/>
+						<geometry>433, 571, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews>
+							<mdElement elementClass='TextBox' xmi:id='_18_2_1243039e_1486362384541_984492_4388'>
+								<elementID xmi:idref='_18_2_1243039e_1486362379851_900251_4372'/>
+								<geometry>378, 564, 57, 14</geometry>
+								<mdOwnedViews/>
+								<text>-mofClass</text>
+							</mdElement>
+						</mdOwnedViews>
+						<roleNameID xmi:idref='_18_2_1243039e_1486362384541_984492_4388'/>
+					</mdElement>
+					<mdElement elementClass='Role' xmi:id='_18_2_1243039e_1486362379856_354592_4377'>
+						<elementID xmi:idref='_18_2_1243039e_1486362379851_893379_4373'/>
+						<geometry>433, 479, 10, 10</geometry>
+						<compartment compartmentID='TAGGED_VALUES'/>
+						<mdOwnedViews/>
+					</mdElement>
+				</mdOwnedViews>
+				<associationFirstEndID xmi:idref='_18_2_1243039e_1486362379855_288584_4374'/>
+				<associationSecondEndID xmi:idref='_18_2_1243039e_1486362379856_354592_4377'/>
+			</mdElement>
+		</mdOwnedViews>
+	</mdElement>
+	<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486269508179_478358_4394'>
+		<elementID xmi:idref='_18_2_1243039e_1486269508174_513391_4393'/>
+		<geometry>42, 350, 227, 53</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+	<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486303670858_334198_4448'>
+		<elementID xmi:idref='_18_2_1243039e_1486269508174_513391_4393'/>
+		<geometry>1288, 154, 86, 53</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+	<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486332912271_610831_4376'>
+		<elementID xmi:idref='_18_2_1243039e_1486332912267_177928_4375'/>
+		<geometry>665, 588, 80, 37</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+	<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486362363601_429106_4342'>
+		<elementID xmi:idref='_18_2_1243039e_1486362363594_663097_4341'/>
+		<geometry>399, 581, 80, 37</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+	<mdElement elementClass='Class' xmi:id='_18_2_1243039e_1486366362781_612952_4398'>
+		<elementID xmi:idref='_18_2_1243039e_1486366362778_584813_4397'/>
+		<geometry>91, 455, 112, 37</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+</mdOwnedViews></filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='com.nomagic.ci.metamodel.project' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;'>
+<project:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:project="http://www.nomagic.com/ns/cameo/client/project/1.0" xmi:id="_GLT9QFYDEeCyhsLctII43A" description="" id="PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5">
+  <ownedSections xmi:id="_GOUN8FYDEeCyhsLctII43A" name="model" featuredBy="_GOS_0FYDEeCyhsLctII43A"/>
+  <ownedSections xmi:id="_HB1VkFYDEeCyhsLctII43A" name="commonprojectoptions" shared="true" featuredBy="_HB0ugFYDEeCyhsLctII43A"/>
+  <ownedSections xmi:id="_HB4_8FYDEeCyhsLctII43A" name="personalprojectoptions" shared="true" belongsTo="_HB4_8VYDEeCyhsLctII43A" featuredBy="_HB0ugFYDEeCyhsLctII43A"/>
+  <ownedSections xmi:id="_1OlPIJjZEeCrL4EC3xSIEw" name="commoncodeengineering" featuredBy="_1ObeIZjZEeCrL4EC3xSIEw"/>
+  <ownedSections xmi:id="_wJ28MC7WEeWw4qK_gIzAnA" name="commondmncodeengineering" featuredBy="_LJ0VMCyrEeWgTNKhS4OHAA"/>
+  <userParts xmi:id="_HB4_8VYDEeCyhsLctII43A" user="_zRtSwZjZEeCrL4EC3xSIEw" sections="_HB4_8FYDEeCyhsLctII43A"/>
+  <projectUsages xmi:id="_GPTscFYDEeCyhsLctII43A" usedProjectURI="file:/Applications/MagicDraw_18_02_/profiles/UML_Standard_Profile.mdzip" readonly="true" alternateLocation="file:/home/donce/md17/git-17-copy/md/core/profiles/UML_Standard_Profile.mdzip" preferredProjectRepositoryType="" loadedAutomatically="true" withPrivateDependencies="true">
+    <usedProject href="PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.ci.metamodel.project#_VWTUgU_TEeCNOP_jel_PNg"/>
+    <mountPoints xmi:id="_HBun4FYDEeCyhsLctII43A" sharePointID="magicdraw_uml_standard_profile_v_0001" containmentFeatureID="61" featureName="UML Model" containmentIndex="-1" containmentFeatureName="packagedElement">
+      <mountedPoint href="PROJECT-877558e9224f114d50dea1f39a1c119?resource=com.nomagic.magicdraw.uml_umodel.shared_umodel#magicdraw_uml_standard_profile_v_0001"/>
+      <mountedOn href="PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model#eee_1045467100313_135436_1"/>
+      <options xmi:id="_D7G8oOw_EeaCr66bvi5ZsA" key="preferredPath" value="::"/>
+    </mountPoints>
+    <properties xmi:id="_HBzgYFYDEeCyhsLctII43A" key="usedVersion" value="18.2"/>
+    <properties xmi:id="_I2i0cFYDEeCyhsLctII43A" key="LOCAL_PROJECT_ID" value="PROJECT-877558e9224f114d50dea1f39a1c119"/>
+  </projectUsages>
+  <features xmi:id="_GOS_0FYDEeCyhsLctII43A" name="UML Model" namespace="com.nomagic.magicdraw.uml_model" version="17.0" sections="_GOUN8FYDEeCyhsLctII43A" internalVersion="1"/>
+  <features xmi:id="_HB0ugFYDEeCyhsLctII43A" name="Project Options" namespace="com.nomagic.magicdraw.core.project.options" version="1.0" sections="_HB1VkFYDEeCyhsLctII43A _HB4_8FYDEeCyhsLctII43A" internalVersion="1"/>
+  <features xmi:id="_1ObeIJjZEeCrL4EC3xSIEw" name="Language Properties" namespace="com.nomagic.magicdraw.ce.languageproperties" version="1.0" internalVersion="1"/>
+  <features xmi:id="_1ObeIZjZEeCrL4EC3xSIEw" name="Code Engineering" namespace="com.nomagic.magicdraw.ce" version="1.0" sections="_1OlPIJjZEeCrL4EC3xSIEw" internalVersion="1"/>
+  <features xmi:id="_LJ0VMCyrEeWgTNKhS4OHAA" name="DMN Code Engineering" namespace="com.nomagic.magicdraw.ce.dmn" version="1.0" sections="_wJ28MC7WEeWw4qK_gIzAnA" internalVersion="1"/>
+  <properties xmi:id="_GPLwoFYDEeCyhsLctII43A" key="standardProfile" value="false"/>
+  <properties xmi:id="_GPLwoVYDEeCyhsLctII43A" key="internalVersion" value="18.2"/>
+  <properties xmi:id="_I3t5IFYDEeCyhsLctII43A" key="MODULES_DIRS" value="&lt;project.dir>&lt;>&lt;install.root>/profiles&lt;>&lt;install.root>/modelLibraries"/>
+  <properties xmi:id="_4iLt4JjZEeCrL4EC3xSIEw" key="fileVersion" value="83"/>
+  <properties xmi:id="_4ieo0JjZEeCrL4EC3xSIEw" key="exporterDescription" value="ac ed 0 5 73 72 0 2e 63 6f 6d 2e 6e 6f 6d 61 67 69 63 2e 70 65 72 73 69 73 74 65 6e 63 65 2e 58 6d 69 45 78 70 6f 72 74 65 72 44 65 73 63 72 69 70 74 69 6f 6e f5 3e fd c8 e7 3c 3b d7 2 0 5 4c 0 5 6d 4e 61 6d 65 74 0 12 4c 6a 61 76 61 2f 6c 61 6e 67 2f 53 74 72 69 6e 67 3b 4c 0 12 6d 52 65 71 75 69 72 65 64 50 6c 75 67 69 6e 4d 61 70 74 0 f 4c 6a 61 76 61 2f 75 74 69 6c 2f 4d 61 70 3b 4c 0 12 6d 52 65 71 75 69 72 65 64 52 65 73 6f 75 72 63 65 73 74 0 10 4c 6a 61 76 61 2f 75 74 69 6c 2f 4c 69 73 74 3b 4c 0 10 6d 55 4d 4c 4e 61 6d 65 73 70 61 63 65 55 52 49 71 0 7e 0 1 4c 0 8 6d 56 65 72 73 69 6f 6e 71 0 7e 0 1 78 70 74 0 d 4d 61 67 69 63 44 72 61 77 20 55 4d 4c 73 72 0 11 6a 61 76 61 2e 75 74 69 6c 2e 48 61 73 68 4d 61 70 5 7 da c1 c3 16 60 d1 3 0 2 46 0 a 6c 6f 61 64 46 61 63 74 6f 72 49 0 9 74 68 72 65 73 68 6f 6c 64 78 70 3f 40 0 0 0 0 0 0 77 8 0 0 0 10 0 0 0 0 78 73 72 0 13 6a 61 76 61 2e 75 74 69 6c 2e 41 72 72 61 79 4c 69 73 74 78 81 d2 1d 99 c7 61 9d 3 0 1 49 0 4 73 69 7a 65 78 70 0 0 0 0 77 4 0 0 0 0 78 70 74 0 4 31 38 2e 32 "/>
+  <properties xmi:id="_4ieo0ZjZEeCrL4EC3xSIEw" key="MODEL_ROOT_HREF" value="local:/PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model#eee_1045467100313_135436_1"/>
+  <properties xmi:id="_Xf1vgAJHEeKcqJgnVU4y2Q" key="CI_VERSION" value="V1702_SP1"/>
+  <properties xmi:id="_WHDv8NnXEeSt1dUa3K1eOA" key="fileFormatVersion" value="18.1 beta.esi"/>
+  <projectUsers xmi:id="_zRtSwZjZEeCrL4EC3xSIEw" userId="default"/>
+</project:Project>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='proxy.local__PROJECT$h4e4000b3$hb061$h46c5$hbaa4$h5485893f3bb5_resource_com$dnomagic$dmagicdraw$duml_umodel$dmodel$dsnapshot' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.nomagic.com/magicdraw/UML/2.5" xmi:id="eee_1045467100313_135436_1" ID="eee_1045467100313_135436_1" name="Data" visibility="public"/>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='com.nomagic.magicdraw.ce.commoncodeengineering' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:md.ce.corbaidl.rt.options="http://www.nomagic.com/magicdraw/ce/corbaidl/rt/options/1" xmlns:md.ce.cppAnsi.rt.options="http://www.nomagic.com/magicdraw/ce/cppAnsi/rt/options/1" xmlns:md.ce.csh.code.documentation="http://www.nomagic.com/magicdraw/ce/csh/code/documentation/1" xmlns:md.ce.csh.rt.options="http://www.nomagic.com/magicdraw/ce/csh/rt/options/1" xmlns:md.ce.java.code.documentation="http://www.nomagic.com/magicdraw/ce/java/code/documentation/1" xmlns:md.ce.java.rt.options="http://www.nomagic.com/magicdraw/ce/java/rt/options/1" xmlns:md.ce.msil.rt.options="http://www.nomagic.com/magicdraw/ce/msil/rt/options/1" xmlns:md.ce.rt.options="http://www.nomagic.com/magicdraw/ce/rt/options/1">
+  <md.ce.rt.options:Options xmi:id="_1OlPIZjZEeCrL4EC3xSIEw" tempDirectory="Active Directory" defaultWorkingDirectory="&lt;install.root>" spaces="8" defaultLanguage="Java" visualizationOption="1" codeGenerationReverseOption="2">
+    <defaultWorkingPackage href="PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5?resource=com.nomagic.magicdraw.uml_umodel.model#eee_1045467100313_135436_1"/>
+  </md.ce.rt.options:Options>
+  <md.ce.java.rt.options:JavaLanguageOptions xmi:id="_6-fYUOlYEeKM1O5DqVzPvA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR" classpath="lib/xalan.jar;C:\Program Files\Java\jre1.8.0_45\lib\resources.jar;C:\Program Files\Java\jre1.8.0_45\lib\rt.jar;C:\Program Files\Java\jre1.8.0_45\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_45\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_45\lib\jce.jar;C:\Program Files\Java\jre1.8.0_45\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_45\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_45\classes" javaSource="8.0">
+    <documentationTagProcessors xsi:type="md.ce.java.code.documentation:JavaDocumentationProcessor" xmi:id="_6-fYUelYEeKM1O5DqVzPvA" ID="JAVA_DOC_PROCESSOR">
+      <documentationTagManagers xmi:id="_6-fYUulYEeKM1O5DqVzPvA" ID="CLASSIFIER">
+        <documentationTags xmi:id="_6-fYU-lYEeKM1O5DqVzPvA" name="DESCRIPTION" valueEditable="false"/>
+        <documentationTags xmi:id="_6-fYVOlYEeKM1O5DqVzPvA" name="@param &lt;>" valueEditable="false"/>
+      </documentationTagManagers>
+      <documentationTagManagers xmi:id="_6-fYVelYEeKM1O5DqVzPvA" ID="OPERATION">
+        <documentationTags xmi:id="_6-fYVulYEeKM1O5DqVzPvA" name="DESCRIPTION" valueEditable="false"/>
+        <documentationTags xmi:id="_6-fYV-lYEeKM1O5DqVzPvA" name="@param" valueEditable="false"/>
+        <documentationTags xmi:id="_6-fYWOlYEeKM1O5DqVzPvA" name="@param &lt;>" valueEditable="false"/>
+        <documentationTags xmi:id="_6-fYWelYEeKM1O5DqVzPvA" name="@return" valueEditable="false"/>
+        <documentationTags xmi:id="_6-fYWulYEeKM1O5DqVzPvA" name="@throws" valueEditable="false"/>
+      </documentationTagManagers>
+      <documentationTagManagers xmi:id="_6-fYW-lYEeKM1O5DqVzPvA" ID="ATTRIBUTE">
+        <documentationTags xmi:id="_6-fYXOlYEeKM1O5DqVzPvA" name="DESCRIPTION" valueEditable="false"/>
+      </documentationTagManagers>
+    </documentationTagProcessors>
+    <userDefinedAttributeCreationRule xmi:id="_6-fYXelYEeKM1O5DqVzPvA">
+      <rules xmi:id="_6-fYXulYEeKM1O5DqVzPvA" pattern="*" classType="DataType"/>
+    </userDefinedAttributeCreationRule>
+  </md.ce.java.rt.options:JavaLanguageOptions>
+  <md.ce.cppAnsi.rt.options:CppLanguageOptions xmi:id="_6-y6UOlYEeKM1O5DqVzPvA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR" macros="//This file contains a list of explicit macros to be expanded before reverse engineering&#xA;#define ODBCXX_EXPORT&#xA;#define __EXPORT&#xA;&#xA;//Type Casting of MFC Class Objects&#xA;#define DYNAMIC_DOWNCAST( class, pointer )&#xA;#define STATIC_DOWNCAST( class_name, pobject )&#xA;&#xA;//Run-Time Object Model Services&#xA;#define DECLARE_DYNAMIC( class_name )&#xA;#define DECLARE_DYNCREATE( class_name )&#xA;#define DECLARE_SERIAL( class_name )&#xA;#define IMPLEMENT_DYNAMIC( class_name, base_class_name )&#xA;#define IMPLEMENT_DYNCREATE( class_name, base_class_name )&#xA;#define IMPLEMENT_SERIAL( class_name, base_class_name, wSchema )&#xA;#define RUNTIME_CLASS( class_name )&#xA;#define DECLARE_OLECREATE( class_name )&#xA;#define IMPLEMENT_OLECREATE( class_name, external_name, l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8 )&#xA;&#xA;//Diagnostic Services&#xA;#define ASSERT( booleanExpression )&#xA;#define ASSERT_KINDOF( classname, pobject )&#xA;#define ASSERT_VALID( pObject )&#xA;#define TRACE( exp )&#xA;#define TRACE0( exp )&#xA;#define TRACE1( exp, param1 )&#xA;#define TRACE2( exp, param1, param2 )&#xA;#define TRACE3( exp, param1, param2, param3 )&#xA;#define VERIFY( booleanExpression )&#xA;&#xA;//Exception processing&#xA;#define TRY&#xA;#define CATCH( exception_class, exception_object_pointer_name )&#xA;#define CATCH_ALL( exception_object_pointer_name )&#xA;#define AND_CATCH( exception_class, exception_object_pointer_name )&#xA;#define AND_CATCH_ALL( exception_object_pointer_name )&#xA;#define END_CATCH&#xA;#define END_CATCH_ALL&#xA;#define THROW( exception_object_pointer )&#xA;#define THROW_LAST( )&#xA;&#xA;//Message Map Macros&#xA;#define DECLARE_MESSAGE_MAP( )&#xA;#define BEGIN_MESSAGE_MAP( theClass, baseClass )&#xA;#define END_MESSAGE_MAP( )&#xA;#define ON_COMMAND( id, memberFxn )&#xA;#define ON_CONTROL( wNotifyCode, id, memberFxn )&#xA;#define ON_MESSAGE( message, memberFxn )&#xA;#define ON_OLECMD( pguid, olecmdid, id )&#xA;#define ON_REGISTERED_MESSAGE( nMessageVariable, memberFxn )&#xA;#define ON_REGISTERED_THREAD_MESSAGE( nMessageVariable, memberFxn )&#xA;#define ON_THREAD_MESSAGE( message, memberFxn )&#xA;#define ON_UPDATE_COMMAND_UI( id, memberFxn )&#xA;#define ON_COMMAND_RANGE( id1, id2, memberFxn )&#xA;#define ON_UPDATE_COMMAND_UI_RANGE( id1, id2, memberFxn )&#xA;#define ON_CONTROL_RANGE( wNotifyCode, id1, id2, memberFxn )&#xA;#define ON_WM_CREATE( )&#xA;#define ON_WM_DESTROY( )&#xA;#define ON_NOTIFY( wNotifyCode, id, memberFxn )&#xA;#define ON_WM_TIMER( )&#xA;#define ON_WM_SYSCOMMAND( )&#xA;#define ON_BN_CLICKED( id, memberFxn )&#xA;#define ON_WM_PAINT( )&#xA;#define ON_WM_QUERYDRAGICON( )&#xA;#define ON_WM_SIZE( )&#xA;&#xA;//Application information and management&#xA;BOOL AFXAPI AfxWinInit( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow )&#xA;&#xA;//Database Macros and Globals&#xA;#define AFX_ODBC_CALL( SQLFunc )&#xA;#define AFX_SQL_ASYNC( prs, SQLFunc )&#xA;#define AFX_SQL_SYNC( SQLFunc )&#xA;&#xA;//Internet Server API (ISAPI) Parse Maps&#xA;#define BEGIN_PARSE_MAP( theClass, baseClass )&#xA;#define ON_PARSE_COMMAND( FnName, mapClass, Args )&#xA;#define ON_PARSE_COMMAND_PARAMS( Params )&#xA;#define DEFAULT_PARSE_COMMAND( FnName, mapClass )&#xA;#define END_PARSE_MAP( theClass )&#xA;&#xA;//Internet Server API (ISAPI) Diagnostic Macros&#xA;#define ISAPIASSERT( booleanExpression )&#xA;#define ISAPITRACE( exp )&#xA;#define ISAPITRACE0( exp )&#xA;#define ISAPITRACE1( exp, param1 )&#xA;#define ISAPITRACE2( exp, param1, param2 )&#xA;#define ISAPITRACE3( exp, param1, param2, param3 )&#xA;#define ISAPIVERIFY( booleanExpression )&#xA;&#xA;&#xA;// OLE Dispatch Maps&#xA;#define DECLARE_DISPATCH_MAP( )&#xA;#define BEGIN_DISPATCH_MAP( theClass, baseClass )&#xA;#define END_DISPATCH_MAP( )&#xA;#define DISP_FUNCTION( theClass, pszName, pfnMember, vtRetVal, vtsParams )&#xA;#define DISP_PROPERTY( theClass, pszName, memberName, vtPropType )&#xA;#define DISP_PROPERTY_EX( theClass, pszName, memberGet, memberSet, vtPropType )&#xA;#define DISP_PROPERTY_NOTIFY( theClass, szExternalName, memberName, pfnAfterSet, vtPropType )&#xA;#define DISP_PROPERTY_NOTIFY( theClass, pszExternalName, pfnGet, pfnSet, vtPropType, vtsParams )&#xA;#define DISP_DEFVALUE( theClass, pszName )&#xA;&#xA;// OLE Type Library Access&#xA;#define DECLARE_OLETYPELIB( class_name )&#xA;#define IMPLEMENT_OLETYPELIB( class_name, tlid, wVerMajor, wVerMinor )&#xA;&#xA;// OLE Property Pages&#xA;#define BEGIN_PROPPAGEIDS( class_name, count )&#xA;#define END_PROPPAGEIDS( class_name )&#xA;#define PROPPAGEID( clsid )&#xA;&#xA;// OLE Event Maps&#xA;#define DECLARE_EVENT_MAP( )&#xA;#define BEGIN_EVENT_MAP( theClass, baseClass )&#xA;#define END_EVENT_MAP( )&#xA;#define EVENT_CUSTOM( pszName, pfnFire, vtsParams )&#xA;#define EVENT_CUSTOM_ID( pszName, dispid, pfnFire, vtsParams )&#xA;#define ON_OLEVERB( idsVerbName, memberFxn )&#xA;#define ON_STDOLEVERB( iVerb, memberFxn )&#xA;&#xA;// OLE Event Sink Maps&#xA;#define BEGIN_EVENTSINK_MAP( theClass, baseClass )&#xA;#define DECLARE_EVENTSINK_MAP( )&#xA;#define END_EVENTSINK_MAP( )&#xA;#define ON_EVENT( theClass, id, dispid, pfnHandler, vtsParams )&#xA;#define ON_EVENT_RANGE( theClass, idFirst, idLast, dispid, pfnHandler, vtsParams )&#xA;#define ON_EVENT_REFLECT( theClass, dispid, pfnHandler, vtsParams )&#xA;#define ON_PROPNOTIFY( theClass, id, dispid, pfnRequest, pfnChanged )&#xA;#define ON_PROPNOTIFY_RANGE( theClass, idFirst, idLast, dispid, pfnRequest, pfnChanged )&#xA;#define ON_PROPNOTIFY_REFLECT( theClass, dispid, pfnRequest, pfnChanged )&#xA;&#xA;// OLE Connection Maps&#xA;#define BEGIN_CONNECTION_PART( theClass, localClass )&#xA;#define END_CONNECTION_PART( localClass )&#xA;#define CONNECTION_IID( iid )&#xA;#define DECLARE_CONNECTION_MAP( )&#xA;#define BEGIN_CONNECTION_MAP( theClass, theBase )&#xA;#define END_CONNECTION_MAP( )&#xA;#define CONNECTION_PART( theClass, iid, localClass )&#xA;&#xA;// OLE Registering OLE Controls&#xA;BOOL AFXAPI AfxOleRegisterPropertyPageClass( HINSTANCE hInstance, REFCLSID clsid, UINT idTypeName, int nRegFlags )&#xA;&#xA;// OLE Class Factories and Licensing&#xA;#define DECLARE_OLECREATE_EX( class_name )&#xA;#define IMPLEMENT_OLECREATE_EX( class_name, external_name, l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8 )&#xA;#define BEGIN_OLEFACTORY( class_name )&#xA;#define END_OLEFACTORY( class_name )&#xA;&#xA;//ATL&#xA;#define DECLARE_AGGREGATABLE( x )&#xA;#define DECLARE_CLASSFACTORY( )&#xA;#define DECLARE_CLASSFACTORY_EX( cf )&#xA;#define DECLARE_CLASSFACTORY2( lic )&#xA;#define DECLARE_CLASSFACTORY_AUTO_THREAD( )&#xA;#define DECLARE_CLASSFACTORY_SINGLETON( obj )&#xA;#define DECLARE_GET_CONTROLLING_UNKNOWN( )&#xA;#define DECLARE_NOT_AGGREGATABLE( x )&#xA;#define DECLARE_ONLY_AGGREGATABLE( x )&#xA;#define DECLARE_POLY_AGGREGATABLE( x )&#xA;#define DECLARE_PROTECT_FINAL_CONSTRUCT( )&#xA;#define BEGIN_CATEGORY_MAP( theClass )&#xA;#define END_CATEGORY_MAP( )&#xA;#define IMPLEMENTED_CATEGORY( catID )&#xA;#define REQUIRED_CATEGORY( catID )&#xA;#define BEGIN_COM_MAP( x )&#xA;#define COM_INTERFACE_ENTRY( x )&#xA;#define COM_INTERFACE_ENTRY_IID( iid, x )&#xA;#define COM_INTERFACE_ENTRY2( x, x2 )&#xA;#define COM_INTERFACE_ENTRY2_IID( iid, x, x2 )&#xA;#define COM_INTERFACE_ENTRY_FUNC( iid, dw, func )&#xA;#define COM_INTERFACE_ENTRY_FUNC_BLIND( dw, func )&#xA;#define COM_INTERFACE_ENTRY_TEAR_OFF( iid, x )&#xA;#define COM_INTERFACE_ENTRY_CACHED_TEAR_OFF( iid, x, punk )&#xA;#define COM_INTERFACE_ENTRY_AGGREGATE( iid, punk )&#xA;#define COM_INTERFACE_ENTRY_AGGREGATE_BLIND( punk )&#xA;#define COM_INTERFACE_ENTRY_AUTOAGGREGATE( iid, punk, clsid )&#xA;#define COM_INTERFACE_ENTRY_AUTOAGGREGATE_BLIND( punk, clsid )&#xA;#define COM_INTERFACE_ENTRY_CHAIN( classname )&#xA;#define COM_INTERFACE_ENTRY_BREAK( x )&#xA;#define COM_INTERFACE_ENTRY_NOINTERFACE( x )&#xA;#define END_COM_MAP( )&#xA;&#xA;#define BEGIN_SINK_MAP( _class )&#xA;#define END_SINK_MAP( )&#xA;#define SINK_ENTRY( id, dispid, fn )&#xA;#define SINK_ENTRY_EX( id, iid, dispid, fn )&#xA;#define SINK_ENTRY_INFO( id, iid, dispid, fn, info)&#xA;#define BEGIN_CONNECTION_POINT_MAP( x )&#xA;#define CONNECTION_POINT_ENTRY( iid )&#xA;#define END_CONNECTION_POINT_MAP( )&#xA;#define BEGIN_EXTENSION_SNAPIN_NODEINFO_MAP( classname )&#xA;#define BEGIN_SNAPINTOOLBARID_MAP( _class )&#xA;#define END_EXTENSION_SNAPIN_NODEINFO_MAP( )&#xA;#define END_SNAPINTOOLBARID_MAP( _class )&#xA;#define EXTENSION_SNAPIN_DATACLASS( dataClass )&#xA;#define EXTENSION_SNAPIN_NODEINFO_ENTRY( dataClass )&#xA;#define SNAPINMENUID( id )&#xA;#define SNAPINTOOLBARID_ENTRY( id )&#xA;#define ATLTRACE( exp )&#xA;#define ATLTRACENOTIMPL( funcname )&#xA;#define ATLTRACE2( DWORD category, UINT level, LPCSTR lpszFormat, ... )&#xA;#define BEGIN_MSG_MAP( theClass )&#xA;#define MESSAGE_HANDLER( msg, func )&#xA;#define MESSAGE_RANGE_HANDLER( msgFirst, msgLast, func )&#xA;#define COMMAND_HANDLER( id, code, func )&#xA;#define COMMAND_ID_HANDLER( id, func )&#xA;#define COMMAND_RANGE_HANDLER( idFirst, idLast, func )&#xA;#define NOTIFY_HANDLER( id, cd, func )&#xA;#define NOTIFY_ID_HANDLER( id, func )&#xA;#define NOTIFY_CODE_HANDLER( cd, func )&#xA;#define NOTIFY_RANGE_HANDLER( idFirst, idLast, func )&#xA;#define CHAIN_MSG_MAP( theChainClass )&#xA;#define CHAIN_MSG_MAP_MEMBER( theChainMember )&#xA;#define CHAIN_MSG_MAP_ALT( theChainClass, msgMapID )&#xA;#define CHAIN_MSG_MAP_ALT_MEMBER( theChainMember, msgMapID )&#xA;#define CHAIN_MSG_MAP_DYNAMIC( dynaChainID )&#xA;#define END_MSG_MAP( )&#xA;#define ALT_MSG_MAP( msgMapID )&#xA;#define DECLARE_EMPTY_MSG_MAP( )&#xA;#define COMMAND_CODE_HANDLER( code, func )&#xA;#define REFLECT_NOTIFICATIONS( )&#xA;#define DEFAULT_REFLECTION_HANDLER( )&#xA;#define BEGIN_OBJECT_MAP( x )&#xA;#define OBJECT_ENTRY( clsid, class )&#xA;#define OBJECT_ENTRY_NON_CREATEABLE( class )&#xA;#define END_OBJECT_MAP( )&#xA;#define DECLARE_OBJECT_DESCRIPTION( x )&#xA;#define BEGIN_PROP_MAP( theClass )&#xA;#define PROP_DATA_ENTRY( szDesc, member, vt )&#xA;#define PROP_ENTRY( szDesc, dispid, clsid )&#xA;#define PROP_ENTRY_EX( szDesc, dispid, clsid, iidDispatch )&#xA;#define PROP_PAGE( clsid )&#xA;#define END_PROPERTY_MAP( )&#xA;#define DECLARE_NO_REGISTRY( )&#xA;#define DECLARE_REGISTRY( class, pid, vpid, nid, flags )&#xA;#define DECLARE_REGISTRY_RESOURCE( x )&#xA;#define DECLARE_REGISTRY_RESOURCEID( x )&#xA;#define BEGIN_SERVICE_MAP( theClass )&#xA;#define END_SERVICE_MAP( )&#xA;#define SERVICE_ENTRY( SID )&#xA;#define SERVICE_ENTRY_CHAIN( punk )&#xA;#define IMPLEMENT_BOOL_STOCKPROP( fname, pname, dispid )&#xA;#define IMPLEMENT_BSTR_STOCKPROP( fname, pname, dispid )&#xA;#define IMPLEMENT_STOCKPROP( type, fname, pname, dispid )&#xA;#define A2BSTR(lpa)&#xA;#define OLE2A(lpa)&#xA;#define T2A(lpa)&#xA;#define W2A(lpa)&#xA;#define A2COLE(lpa)&#xA;#define OLE2BSTR(lpa)&#xA;#define T2BSTR(lpa)&#xA;#define W2BSTR(lpa)&#xA;#define A2CT(lpa)&#xA;#define OLE2CA(lpa)&#xA;#define T2CA(lpa)&#xA;#define W2CA(lpa)&#xA;#define A2CW(lpa)&#xA;#define OLE2CT(lpa)&#xA;#define T2COLE(lpa)&#xA;#define W2COLE(lpa)&#xA;#define A2OLE(lpa)&#xA;#define OLE2CW(lpa)&#xA;#define T2CW(lpa)&#xA;#define W2CT(lpa)&#xA;#define A2T(lpa)&#xA;#define OLE2T(lpa)&#xA;#define T2OLE(lpa)&#xA;#define W2OLE(lpa)&#xA;#define A2W(lpa)&#xA;#define OLE2W(lpa)&#xA;#define T2W(lpa)&#xA;#define W2T(lpa)&#xA;#define DEVMODEA2W(lpa)&#xA;#define TEXTMETRICA2W(lpa)&#xA;#define DEVMODEOLE2T(lpa)&#xA;#define TEXTMETRICOLE2T(lpa)&#xA;#define DEVMODET2OLE(lpa)&#xA;#define TEXTMETRICT2OLE(lpa)&#xA;#define DEVMODEW2A(lpa)&#xA;#define TEXTMETRICW2A(lpa)&#xA;#define DECLARE_WND_CLASS( WndClassName )&#xA;#define DECLARE_WND_SUPERCLASS( WndClassName, OrigWndClassName )&#xA;#define DECLARE_WND_CLASS_EX( WndClassName, style, bkgnd )&#xA;&#xA;// OLE DB&#xA;#define BEGIN_ACCESSOR( num, bAuto )&#xA;#define BEGIN_ACCESSOR_MAP( x, num )&#xA;#define END_ACCESSOR( )&#xA;#define END_ACCESSOR_MAP( )&#xA;#define BEGIN_COLUMN_MAP( x )&#xA;#define BOOKMARK_ENTRY( variable )&#xA;#define COLUMN_ENTRY( nOrdinal, data )&#xA;#define COLUMN_ENTRY_TYPE ( nOrdinal, wType, data )&#xA;#define COLUMN_ENTRY_TYPE_SIZE( nOrdinal, wType, nLength, data )&#xA;#define BLOB _ENTRY( nOrdinal, IID, flags, data )&#xA;#define COLUMN_ENTRY_EX( nOrdinal, wType, nLength, nPrecision, nScale, data, length, status )&#xA;#define COLUMN_ENTRY_LENGTH( nOrdinal, data, length )&#xA;#define COLUMN_ENTRY_LENGTH_STATUS( nOrdinal, data, length, status )&#xA;#define COLUMN_ENTRY_PS( nOrdinal, nPrecision, nScale, data ) &#xA;#define COLUMN_ENTRY_PS_LENGTH( nOrdinal, nPrecision, nScale, data, length )&#xA;#define COLUMN_ENTRY_PS_STATUS( nOrdinal, nPrecision, nScale, data, status )&#xA;#define COLUMN_ENTRY_PS_LENGTH_STATUS( nOrdinal, nPrecision, nScale, data, length, status )&#xA;#define COLUMN_ENTRY_STATUS( nOrdinal, data, status )&#xA;#define END_COLUMN_MAP( )&#xA;#define DEFINE_COMMAND( x, szCommand )&#xA;#define BEGIN_PARAM_MAP( x )&#xA;#define END_PARAM_MAP( )&#xA;#define SET_PARAM_TYPE( type )&#xA;#define BEGIN_PROPERTY_SET( pguid )&#xA;#define BEGIN_PROPERTY_SET(pguid, flags)&#xA;#define BEGIN_PROPSET_MAP( Class )&#xA;#define CHAIN_PROPERTY_SET( ChainClass )&#xA;#define END_PROPERTY_SET( guid )&#xA;#define END_PROPSET_MAP( )&#xA;#define PROPERTY_INFO_ENTRY( dwPropID )&#xA;#define PROPERTY_INFO_ENTRY( dwPropID, vt, dwFlags, value, options)&#xA;#define PROPERTY_INFO_ENTRY( dwPropID, value )&#xA;#define BEGIN_PROVIDER_COLUMN_MAP( theClass ) &#xA;#define END_PROVIDER_COLUMN_MAP( )&#xA;#define PROVIDER_COLUMN_ENTRY_GN ( name, ordinal, flags, colSize, dbtype, precision, scale, guid )&#xA;#define PROVIDER_COLUMN_ENTRY_FIXED( name, ordinal, dbtype, member )&#xA;#define PROVIDER_COLUMN_ENTRY_LENGTH( name, ordinal, size, member )&#xA;#define PROVIDER_COLUMN_ENTRY_STR( name, ordinal, member )&#xA;#define PROVIDER_COLUMN_ENTRY_WSTR( name, ordinal, member )&#xA;&#xA;// PARSE&#xA;#define BEGIN_PARSE_MAP( theClass, baseClass )&#xA;#define ON_PARSE_COMMAND( FnName, mapClass, Args )&#xA;#define ON_PARSE_COMMAND_PARAMS( Params )&#xA;#define DEFAULT_PARSE_COMMAND( FnName, mapClass )&#xA;#define END_PARSE_MAP( theClass )&#xA;#define END_PROPERTY_SET( guid )&#xA;#define BEGIN_PROPSET_MAP( Class )&#xA;#define PROPERTY_INFO_ENTRY( dwPropID )&#xA;#define END_PROPSET_MAP( )&#xA;&#xA;#define MAKELPARAM(low, high)&#xA;#define MAKELRESULT(low, high)&#xA;#define MAKELP(sel, off) &#xA;#define SELECTOROF(lp) &#xA;#define OFFSETOF(lp) &#xA;#define FIELDOFFSET(type, field)&#xA;#define afx_msg&#xA;#define ACE_ALLOC_HOOK_DECLARE&#xA;&#xA;// xerces&#xA;#define XERCES_CPP_NAMESPACE_BEGIN namespace xerces {&#xA;#define XERCES_CPP_NAMESPACE_END }&#xA;#define XERCES_CPP_NAMESPACE_USE using namespace XERCES_CPP_NAMESPACE;&#xA;#define XERCES_CPP_NAMESPACE_QUALIFIER XERCES_CPP_NAMESPACE::&#xA;#define CDOM_EXPORT&#xA;#define ATL_NO_VTABLE&#xA;#define PLATFORM_IMPORT&#xA;#define PARSERS_EXPORT&#xA;&#xA;// QT&#xA;#define Q_AUTOTEST_EXPORT&#xA;#define Q_CLASSINFO(name, value)&#xA;#define Q_COMPAT_EXPORT&#xA;#define Q_CORE_EXPORT&#xA;#define Q_CORE_EXPORT_INLINE inline&#xA;#define Q_D(Class)&#xA;#define Q_DECL_IMPORT&#xA;#define Q_DECLARE_ASSOCIATIVE_ITERATOR(map)&#xA;#define Q_DECLARE_BUILTIN_METATYPE(TYPE, NAME)&#xA;#define Q_DECLARE_EXTENSION_INTERFACE(IFace, IId)&#xA;#define Q_DECLARE_FLAGS(Flags, enum)&#xA;#define Q_DECLARE_INTERFACE(IFace, IId)&#xA;#define Q_DECLARE_METATYPE(txt)&#xA;#define Q_DECLARE_MUTABLE_SEQUENTIAL_ITERATOR(c)&#xA;#define Q_DECLARE_MUTABLE_ASSOCIATIVE_ITERATOR(c)&#xA;#define Q_DECLARE_OPERATORS_FOR_FLAGS(Flags)&#xA;#define Q_DECLARE_PRIVATE(Class)&#xA;#define Q_DECLARE_PUBLIC(Class)&#xA;#define Q_DECLARE_SEQUENTIAL_ITERATOR(name)&#xA;#define Q_DECLARE_SHARED(name)&#xA;#define Q_DECLARE_TYPEINFO(TYPE, FLAGS)&#xA;#define Q_DECL_DEPRECATED&#xA;#define Q_DISABLE_COPY(Class)&#xA;#define Q_DUMMY_COMPARISON_OPERATOR(c)&#xA;#define Q_ENUMS(x)&#xA;#define Q_FLAGS(x)&#xA;#define Q_GADGET&#xA;#define Q_GUI_EXPORT&#xA;#define Q_GUI_EXPORT_INLINE inline&#xA;#define Q_INLINE_TEMPLATE&#xA;#define Q_INTERFACES(x)&#xA;#define Q_NETWORK_EXPORT&#xA;#define Q_NOREPLY&#xA;#define Q_OBJECT&#xA;#define Q_OPENGL_EXPORT&#xA;#define Q_OUTOFLINE_TEMPLATE inline&#xA;#define Q_OVERRIDE(text)&#xA;#define Q_PRIVATE_SLOT(d, signature)&#xA;#define Q_PROPERTY(text)&#xA;#define Q_Q(Class)&#xA;#define Q_REQUIRED_RESULT&#xA;#define Q_SCRIPTABLE&#xA;#define Q_SIGNALS protected&#xA;#define Q_SLOTS&#xA;#define Q_SQL_EXPORT&#xA;#define Q_SVG_EXPORT&#xA;#define Q_TESTLIB_EXPORT&#xA;#define Q_TYPENAME typename&#xA;#define Q_XML_EXPORT&#xA;&#xA;#define QDBUS_EXPORT&#xA;#define QDESIGNER_COMPONENTS_EXPORT&#xA;#define QDESIGNER_EXTENSION_EXPORT&#xA;#define QDESIGNER_SDK_EXPORT&#xA;#define QDESIGNER_SHARED_EXPORT&#xA;#define QDESIGNER_UILIB_EXPORT&#xA;#define QDESIGNER_WIDGET_EXPORT&#xA;#define QDOC_PROPERTY(text)&#xA;&#xA;#define QT_ASCII_CAST_WARN&#xA;#define QT_ASCII_CAST_WARN_CONSTRUCTOR&#xA;#define QT_ASSISTANT_CLIENT_EXPORT&#xA;#define QT_BEGIN_HEADER&#xA;#define QT_DEPRECATED&#xA;#define QT_DEPRECATED_VARIABLE&#xA;#define QT_DEPRECATED_CONSTRUCTOR&#xA;#define QT_END_HEADER&#xA;#define QT_FASTCALL&#xA;#define QT_FT_BEGIN_HEADER&#xA;#define QT_FT_END_HEADER&#xA;#define QT_MOC_COMPAT&#xA;#define QT_MODULE(name)&#xA;#define QT_STATIC_CONST static const&#xA;#define QT_STATIC_CONST_IMPL const&#xA;#define QT_TR_NOOP(x)&#xA;#define QT_TRANSLATE_NOOP(scope, x)&#xA;&#xA;#define slots&#xA;#define signals protected&#xA;&#xA;&#xA;// Microsoft extension&#xA;#define CALLBACK&#xA;#define LRESULT void&#xA;#define _ENTRY(p1, p2, p3, p4) p1&#xA;&#xA;#define CFX_EXPORT&#xA;&#xA;// GCC&#xA;#define __extension__&#xA;&#xA;// Symbian macro&#xA;#define _L(string) TPtrC((const TText*) string)&#xA;#define _LIT(name,s) const static TListC&lt;sizeof(s)> name = {sizeof(s) -1,s}&#xA;#define _LIT8(name,s) const static TListC&lt;sizeof(s)> name = {sizeof(s) -1,s}&#xA;&#xA;#define IMPORT_C /*__declspec(dllimport)*/&#xA;#define EXPORT_C /*__declspec(dllexport)*/&#xA;&#xA;#define NONSHARABLE_CLASS(x) class x&#xA;#define NONSHARABLE_STRUCT(x) struct x&#xA;&#xA;#define GLREF_D extern&#xA;#define GLDEF_D&#xA;#define LOCAL_D static&#xA;#define GLREF_C extern&#xA;#define GLDEF_C&#xA;#define LOCAL_C static&#xA;">
+    <userDefinedAttributeCreationRule xmi:id="_6-y6UelYEeKM1O5DqVzPvA">
+      <rules xmi:id="_6-y6UulYEeKM1O5DqVzPvA" pattern="*" classType="DataType"/>
+    </userDefinedAttributeCreationRule>
+  </md.ce.cppAnsi.rt.options:CppLanguageOptions>
+  <md.ce.csh.rt.options:CshLanguageOptions xmi:id="_6-y6U-lYEeKM1O5DqVzPvA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR">
+    <documentationTagProcessors xsi:type="md.ce.csh.code.documentation:CshDocumentationProcessor" xmi:id="_6-y6VOlYEeKM1O5DqVzPvA" ID="CSH_XML_PROCESSOR">
+      <documentationTagManagers xmi:id="_6-y6VelYEeKM1O5DqVzPvA" ID="CLASSIFIER">
+        <documentationTags xmi:id="_6-y6VulYEeKM1O5DqVzPvA" name="summary" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6V-lYEeKM1O5DqVzPvA" name="remarks" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6WOlYEeKM1O5DqVzPvA" name="permission" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6WelYEeKM1O5DqVzPvA" name="example" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6WulYEeKM1O5DqVzPvA" name="seealso" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6W-lYEeKM1O5DqVzPvA" name="include" valueEditable="false"/>
+      </documentationTagManagers>
+      <documentationTagManagers xmi:id="_6-y6XOlYEeKM1O5DqVzPvA" ID="OPERATION">
+        <documentationTags xmi:id="_6-y6XelYEeKM1O5DqVzPvA" name="summary" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6XulYEeKM1O5DqVzPvA" name="value" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6X-lYEeKM1O5DqVzPvA" name="param" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6YOlYEeKM1O5DqVzPvA" name="returns" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6YelYEeKM1O5DqVzPvA" name="exception" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6YulYEeKM1O5DqVzPvA" name="permission" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6Y-lYEeKM1O5DqVzPvA" name="example" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6ZOlYEeKM1O5DqVzPvA" name="seealso" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6ZelYEeKM1O5DqVzPvA" name="include" valueEditable="false"/>
+      </documentationTagManagers>
+      <documentationTagManagers xmi:id="_6-y6ZulYEeKM1O5DqVzPvA" ID="ATTRIBUTE">
+        <documentationTags xmi:id="_6-y6Z-lYEeKM1O5DqVzPvA" name="summary" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6aOlYEeKM1O5DqVzPvA" name="permission" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6aelYEeKM1O5DqVzPvA" name="example" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6aulYEeKM1O5DqVzPvA" name="seealso" valueEditable="false"/>
+        <documentationTags xmi:id="_6-y6a-lYEeKM1O5DqVzPvA" name="include" valueEditable="false"/>
+      </documentationTagManagers>
+    </documentationTagProcessors>
+    <userDefinedAttributeCreationRule xmi:id="_6-y6bOlYEeKM1O5DqVzPvA">
+      <rules xmi:id="_6-y6belYEeKM1O5DqVzPvA" pattern="*" classType="DataType"/>
+    </userDefinedAttributeCreationRule>
+  </md.ce.csh.rt.options:CshLanguageOptions>
+  <md.ce.msil.rt.options:MsilLanguageOptions xmi:id="_6-y6bulYEeKM1O5DqVzPvA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR">
+    <userDefinedAttributeCreationRule xmi:id="_6-y6b-lYEeKM1O5DqVzPvA">
+      <rules xmi:id="_6-y6cOlYEeKM1O5DqVzPvA" pattern="*" classType="DataType"/>
+    </userDefinedAttributeCreationRule>
+  </md.ce.msil.rt.options:MsilLanguageOptions>
+  <md.ce.corbaidl.rt.options:CORBAIDLLanguageOptions xmi:id="_6-y6celYEeKM1O5DqVzPvA" commentStyle="0" header="@(#) $FILE_NAME" documentationProcessorID="STANDARD_PROCESSOR">
+    <userDefinedAttributeCreationRule xmi:id="_6-y6culYEeKM1O5DqVzPvA">
+      <rules xmi:id="_6-y6c-lYEeKM1O5DqVzPvA" pattern="*" classType="DataType"/>
+    </userDefinedAttributeCreationRule>
+  </md.ce.corbaidl.rt.options:CORBAIDLLanguageOptions>
+</xmi:XMI>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='proxy.local__PROJECT$h877558e9224f114d50dea1f39a1c119_resource_com$dnomagic$dmagicdraw$duml_umodel$dshared_umodel$dsnapshot' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<uml:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.nomagic.com/magicdraw/UML/2.5" xmi:id="magicdraw_uml_standard_profile_v_0001" ID="magicdraw_uml_standard_profile_v_0001" name="UML Standard Profile">
+  <appliedStereotypeInstance xmi:id="_12_1_8f90291_1174411598625_504587_98" ID="_12_1_8f90291_1174411598625_504587_98" classifier="_12_1_8f90291_1173963323875_662612_98"/>
+  <packagedElement xsi:type="uml:Profile" xmi:id="_be00301_1073394351331_445580_2" ID="_be00301_1073394351331_445580_2" name="MagicDraw Profile">
+    <packagedElement xsi:type="uml:Stereotype" xmi:id="_12_1_8f90291_1173963323875_662612_98" ID="_12_1_8f90291_1173963323875_662612_98" name="auxiliaryResource" _extensionEndOfType="_12_1_8f90291_1173963939937_399630_100">
+      <generalization xmi:id="_15_0_8f90291_1196866634537_680603_98" ID="_15_0_8f90291_1196866634537_680603_98" general="_9_0_be00301_1108044721245_236588_411"/>
+      <ownedAttribute xmi:id="_12_1_8f90291_1173963939937_52316_99" ID="_12_1_8f90291_1173963939937_52316_99" name="base_Package" visibility="private" type="_9_0_62a020a_1105704885298_713292_7913"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Extension" xmi:id="_10_0EAPbeta_be00301_1123081772098_323897_274" ID="_10_0EAPbeta_be00301_1123081772098_323897_274" memberEnd="_10_0EAPbeta_be00301_1123081772108_624594_276 _10_0EAPbeta_be00301_1123081772098_411862_275">
+      <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_10_0EAPbeta_be00301_1123081772108_624594_276" ID="_10_0EAPbeta_be00301_1123081772108_624594_276" name="extension_InvisibleStereotype" visibility="private" type="_9_0_be00301_1108044721245_236588_411" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Extension" xmi:id="_12_1_8f90291_1173963939937_323574_98" ID="_12_1_8f90291_1173963939937_323574_98" memberEnd="_12_1_8f90291_1173963939937_399630_100 _12_1_8f90291_1173963939937_52316_99">
+      <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_12_1_8f90291_1173963939937_399630_100" ID="_12_1_8f90291_1173963939937_399630_100" name="extension_auxiliaryResource" visibility="private" type="_12_1_8f90291_1173963323875_662612_98" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Stereotype" xmi:id="_9_0_be00301_1108044721245_236588_411" ID="_9_0_be00301_1108044721245_236588_411" name="InvisibleStereotype" _extensionEndOfType="_10_0EAPbeta_be00301_1123081772108_624594_276">
+      <ownedAttribute xmi:id="_10_0EAPbeta_be00301_1123081772098_411862_275" ID="_10_0EAPbeta_be00301_1123081772098_411862_275" name="base_Element" visibility="private" type="_9_0_62a020a_1105704884807_371561_7741"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Stereotype" xmi:id="_9_0_be00301_1108044380615_150487_0" ID="_9_0_be00301_1108044380615_150487_0" name="DiagramInfo" _extensionEndOfType="_10_0EAPbeta_be00301_1123081772498_435993_357">
+      <generalization xmi:id="_9_0_be00301_1108044989070_469307_436" ID="_9_0_be00301_1108044989070_469307_436" general="_9_0_be00301_1108044721245_236588_411"/>
+      <ownedAttribute xmi:id="_be00301_1073306188629_537791_2" ID="_be00301_1073306188629_537791_2" name="Creation date" visibility="private" type="_be00301_1073305590699_364818_1"/>
+      <ownedAttribute xmi:id="_be00301_1077726770128_871366_1" ID="_be00301_1077726770128_871366_1" name="Author" visibility="private" type="_9_0_2_91a0295_1110274713995_297054_0"/>
+      <ownedAttribute xmi:id="_be00301_1073394345322_922552_1" ID="_be00301_1073394345322_922552_1" name="Modification date" visibility="private" type="_be00301_1073305590699_364818_1"/>
+      <ownedAttribute xmi:id="_10_0EAPbeta_be00301_1123081772498_901864_356" ID="_10_0EAPbeta_be00301_1123081772498_901864_356" name="base_Diagram" visibility="private" type="_9_0_62a020a_1106296071977_61607_0"/>
+      <ownedAttribute xmi:id="_16_8beta_8ca0285_1257244649124_794756_344" ID="_16_8beta_8ca0285_1257244649124_794756_344" name="Last modified by" visibility="private" type="_9_0_2_91a0295_1110274713995_297054_0"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Package" xmi:id="_9_0_2_be00301_1111670217596_336168_627" ID="_9_0_2_be00301_1111670217596_336168_627" name="datatypes">
+      <packagedElement xsi:type="uml:DataType" xmi:id="_be00301_1073305590699_364818_1" ID="_be00301_1073305590699_364818_1" name="date"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Extension" xmi:id="_10_0EAPbeta_be00301_1123081772498_531863_355" ID="_10_0EAPbeta_be00301_1123081772498_531863_355" memberEnd="_10_0EAPbeta_be00301_1123081772498_435993_357 _10_0EAPbeta_be00301_1123081772498_901864_356">
+      <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_10_0EAPbeta_be00301_1123081772498_435993_357" ID="_10_0EAPbeta_be00301_1123081772498_435993_357" name="extension_DiagramInfo" visibility="private" type="_9_0_be00301_1108044380615_150487_0" aggregation="composite"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Model" xmi:id="_9_0_be00301_1108053761194_467635_11463" ID="_9_0_be00301_1108053761194_467635_11463" name="UML2 Metamodel">
+    <appliedStereotypeInstance xmi:id="_10_0EAPbeta_be00301_1123081771126_233373_95" ID="_10_0EAPbeta_be00301_1123081771126_233373_95" classifier="magicdraw_1046861421236_601240_36"/>
+    <packagedElement xsi:type="uml:Class" xmi:id="_9_0_62a020a_1105704885298_713292_7913" ID="_9_0_62a020a_1105704885298_713292_7913" name="Package"/>
+    <packagedElement xsi:type="uml:Class" xmi:id="_9_0_62a020a_1105704884807_371561_7741" ID="_9_0_62a020a_1105704884807_371561_7741" name="Element"/>
+    <packagedElement xsi:type="uml:Class" xmi:id="_9_0_62a020a_1105704920340_825592_9329" ID="_9_0_62a020a_1105704920340_825592_9329" name="Model"/>
+    <packagedElement xsi:type="uml:Package" xmi:id="_12_0EAPbeta_be00301_1157529392394_202602_1" ID="_12_0EAPbeta_be00301_1157529392394_202602_1" name="PrimitiveTypes">
+      <packagedElement xsi:type="uml:PrimitiveType" xmi:id="_9_0_2_91a0295_1110274713995_297054_0" ID="_9_0_2_91a0295_1110274713995_297054_0" name="String"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Class" xmi:id="_9_0_62a020a_1106296071977_61607_0" ID="_9_0_62a020a_1106296071977_61607_0" name="Diagram"/>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Profile" xmi:id="_9_0_be00301_1108050582343_527400_10847" ID="_9_0_be00301_1108050582343_527400_10847" name="StandardProfile">
+    <packagedElement xsi:type="uml:Stereotype" xmi:id="magicdraw_1046861421236_601240_36" ID="magicdraw_1046861421236_601240_36" name="Metamodel" _extensionEndOfType="_10_0EAPbeta_be00301_1123081771136_580423_99">
+      <ownedAttribute xmi:id="_10_0EAPbeta_be00301_1123081771136_271406_98" ID="_10_0EAPbeta_be00301_1123081771136_271406_98" name="base_Model" visibility="private" type="_9_0_62a020a_1105704920340_825592_9329"/>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Extension" xmi:id="_10_0EAPbeta_be00301_1123081771136_824883_97" ID="_10_0EAPbeta_be00301_1123081771136_824883_97" memberEnd="_10_0EAPbeta_be00301_1123081771136_580423_99 _10_0EAPbeta_be00301_1123081771136_271406_98">
+      <ownedEnd xsi:type="uml:ExtensionEnd" xmi:id="_10_0EAPbeta_be00301_1123081771136_580423_99" ID="_10_0EAPbeta_be00301_1123081771136_580423_99" name="extension_metamodel" visibility="private" type="magicdraw_1046861421236_601240_36" aggregation="composite"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Package>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='Binaries.properties' type='BINARY'>H4sIAAAAAAAAAFPmUvbNz1NwS01SMDBTMLCwMja3MjBXcHYNUTAyMDTnSs7P1cvLz01Mz0zWA5MpRYnleqW5OfG5+SmpOXpg0tbJ088xKFI3OcnIxDQtyUI3KTXZRNfEMMVM1yI12Ug3GShqkZJkkpiYZM4FABIAg0tyAAAA</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='PROJECT-4e4000b3-b061-46c5-baa4-5485893f3bb5' type='BINARY'>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='personal-Binaries.properties' type='BINARY'>H4sIAAAAAAAAAFPmUvbNz1NwS01SMDBTMLCwMja3MjBXcHYNUTAyMDTnAgCsnMuHIAAAAA==</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='com.nomagic.magicdraw.core.project.options.commonprojectoptions' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<project.options:CommonProjectOptions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:project.options="http://www.nomagic.com/ns/magicdraw/core/project/options/1.0" xmi:id="_HB4Y4FYDEeCyhsLctII43A" optionsString="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" modelElementStyleString="UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAAAAAA7ZZLj9owFIXX8CvYZdU8CSSVYcSAkagCQSRTaVaWm9yhlpxH7YTCv28SmKZ0hFTNIHWTTSwr5557j/XJCXo4JnxwACFZlk4UQ9WVAaRRFrN0P1GewuUnR3mY9vtoK7IcRHH6yiQrMjGLIsirddrvoSTGHBJIiwGc1zmnUk6UgCU5h6A4cVAqXQ+lNIFpED57mKz9BfYI9vAab0KywMvZkxcGSGsktTaGF1ryYnBM2OcD5SVMlBfKJSha8/pWz9cx1zSlexBN30vjZZlGRZXyEb7TA8tE26yH8uuy1WJKDIeYxIlc3XQcYgytseVaI8OxhjYxdN1wDDIc2jbS3pY2jrcG9B+/4HlIvFUQku3O3+Jd+Hyesp2i8uA03ZeVX+t/MW5VC5CRYHkd6Y+C6iyD+W61DVf+pi2+1p59onqgTX0EUZaoaZbQPYvU5hkL+lO91DKQalCIiofXs0VaW9pk1X6HvUv2b1l8+ufctfj/Z/57+w48/Zz+KGHWIPp+NO2xaxlmjeaoQ7ND855ofvzedM2Rabs1nOMOzg7Oe8KJj7kAKT90d1q6bY2bz7rT4dnh+QbPqx3Sbv0R/wJQSwcIv6+AIrsBAABTCwAAUEsBAhQAFAAICAgAAAAhAL+vgCK7AQAAUwsAAAAAAAAAAAAAAAAAAAAAAAAAAFBLBQYAAAAAAQABAC4AAADpAQAAAAA=" symbolStylesString="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"/>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='personal-com.nomagic.magicdraw.core.project.options.personalprojectoptions' type='XML' header='&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;'>
+<project.options:UserProjectOptions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:project.options="http://www.nomagic.com/ns/magicdraw/core/project/options/1.0" xmi:id="_HB5nAFYDEeCyhsLctII43A" optionsString="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" diagramViewStyleString="UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAAAAAAvZZdb6JAFIav9Vd4x5WFGUYcNmhjlW5MttWI++GNZBZOdZKBIYBW++tLwarYtdXY7dUEznnPec8zwwTrehWI2hLihMuwpaArTalB6Emfh7OW8nN8W6fKdbtatYaxjCBO1794wlMZdzwPomxtVytW4NsCAgjTGhRrV7AkaSkODyIBTroWoGR5FStkAbSd8eSH7fb6ne+jzp07HA2G9mjctx1LzcMveT48sIVIa6uAf1sysYCW8sBEAoqah4/1e7V4x0I2gzjvuWnqIupiF2Gia7oJLiLUwIaJEdEN5FIDmbrmEozozkTFisrl+r0jVYiGsUZcik3TaLhENzVLfavNSx5zfr8I/kL86r8wvjOQqZ+kDG6ZlwHf1d4U3eX1IPFiHqXZTpYkbs92uqP+cNwf3O/k5eyiUg57H/vLeVA3wXQdlWJ4GxHyccTC2YGSaAiblBhEx4Sipl0nja1izmfzNxI9k2CKdWIYOm1gSg1bpxuJpW7ZvY/yRkoBLHyHpc/ZLGbBIIIQ/JNxllQXEE3jBXz+TNk+8yWcPEyR/sVTfHjIN4gdL5ZCDGV2z2Qe/py7QwfyC4bU9g7/v454HV8h0iRUNwi1za/BMbkMx+QCHA3jv/LoziX34GMev3noy8cbuQj95FwY+9ozSbQttViLd17utnQdTjGZIkTQtNk0tpyyhrAqQUKf//UHbMUD/nTGbbZVnErhwG35sfRkqcd+FZ4BUEsHCLsXEwEiAgAAbAgAAFBLAQIUABQACAgIAAAAIQC7FxMBIgIAAGwIAAAAAAAAAAAAAAAAAAAAAAAAAABQSwUGAAAAAAEAAQAuAAAAUAIAAAAA"/>
+</filePart>
+	</xmi:Extension>
+	<xmi:Extension extender='MagicDraw UML 18.2'>
+		<filePart name='Records.properties' type='BINARY'>H4sIAAAAAAAAAL1Uy27bMBC86ysERFcSelCWHECHxkiAFugDQS49CXysLQYSKZB0W/99aVtOUsdKrDbNhVguZ7lLzmAuFrrrqZNMttJtQlDObIKLz1qFN8DCeBbG5WVWXMZFuLi+C9M4KYIejNWKtojrDivd0ZXkeLcKQ39irg3g3uh74A7r3kmtLD7UDPkhXb3dVcHIDYBFp/xFXaeVj7gWAGolFYCRalX9VdUfvbjEHTjaeUh7mLV6DRB8u/366XpxhwiQOI5Zhlg8SxCZ8RwxSgnKSZmX82yZMZZXU8DHs/mGvzbYKtrbRjsswHIje6fNk9Aez3tWUbBHtZrTtq6HGaOmLIo8L2GepmSZJETksQCaLLM5TXiSzGsDVq8Nh9r3jMTQNBJcRuLhmyIx/FMkDkNU79rtUeNXUlEjwW7/xCedD6uXDsd1uFfT2QI8CX/Grp9EWgfKF+y+ZqCuN/IHdSCgByX86ab1qGcsTyl+W7YfXhqJddfW64EH21AD4nH7X7if1nuMz1POtKfsyOL+sT44JcDzdbd94d55duvINEeo4Orjlw+33xFnKcmXrEQMOEEkETNUAk8R99lSMEIpK6oJ2BENHWwtara+5vfe2HzsnS1qnlrbRELPE9H7NA9+A54/li5nBwAA</filePart>
+	</xmi:Extension>
+</xmi:XMI>

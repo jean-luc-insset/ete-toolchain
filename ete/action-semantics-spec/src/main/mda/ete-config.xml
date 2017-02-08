@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mda>
+
+    <!--
+        A project is a set of pipelines, each pipeline is made of "steps".
+        Each step receives a model and returns a model.
+        Some steps accept null as the entry model, for example, steps reading
+        a model.
+        Some steps return the model they receive but produce some board effects,
+        for example "dump" steps, "template" steps or "register" steps.
+      -->
+
+    <transformation-set output_base="../../generated-projects/">
+        <!-- reads a model -->
+        <model  url="ActionSemantics.xml"/>
+        <!--<model model="models/Simple.xml"/>-->
+
+        <!-- outputs the model in a readable form -->
+        <dump file="target/dump.xml"/>
+
+        <!-- API generation -->
+        <transformation-set projectname="action-semantics-api" package="api"
+                suffix=""
+                output_base="action-semantics-api">
+            <velocity items="${classes.stream().filter(c ->c.hasStereotype(&quot;ignore&quot;) == false).toList()}"
+                    var="aClass"
+                    template="templates/as-api/as-api.vm"
+                    package="api"
+                    target="src/main/java/${aClass.owningPackage.name.replace('.', '/')}/api/${aClass.name}.java"/>
+        </transformation-set>
+
+        <!-- Implementation -->
+        <transformation-set projectname="action-semantics-impl" package="impl"
+                suffix="Impl"
+                output_base="action-semantics-impl">
+            <velocity template="templates/as-impl/as-impl.vm"
+                    var="aClass"
+                    items="${classes.stream().filter(c ->  c.hasStereotype(&quot;ignore&quot;) == false).toList()}"
+                    package="impl"
+                    target="src/main/java/${aClass.owningPackage.name.replace('.', '/')}/impl/${aClass.name}Impl.java"/>
+        </transformation-set>
+
+    </transformation-set>
+
+</mda>
+
+
+

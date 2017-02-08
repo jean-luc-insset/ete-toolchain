@@ -93,7 +93,7 @@ public abstract class GenericTemplate extends ForEachAction {
         Logger logger = Logger.getGlobal();
         String  result = (String) getParameter(TEMPLATE);
         logger.log(Level.FINER, "Template path : " + TEMPLATE);
-        ELEvaluator elEvaluator = new ELEvaluator(getModel(), getParameters());
+        ELEvaluator elEvaluator = new ELEvaluator(getModel(), getAllParameters());
         String evaluate = (String)elEvaluator.evaluate(result);
         String  baseUrl = getBaseUrl();
         logger.log(Level.FINER, "BASE_URL : " + baseUrl);
