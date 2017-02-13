@@ -1,5 +1,8 @@
 package fr.insset.jeanluc.el.dialect;
 
+import fr.insset.jeanluc.ete.meta.model.emof.MofClass;
+import fr.insset.jeanluc.ete.meta.model.mofpackage.MofPackage;
+
 
 
 /**
@@ -70,5 +73,28 @@ public interface Dialect {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+
+    public default boolean isEntity(MofClass inClass) {
+        if (inClass.hasStereotype("Entity")) {
+            return true;
+        }
+        MofPackage owningPackage = inClass.getOwningPackage();
+        if (owningPackage != null) {
+            return isEntityPackage(owningPackage);
+        }
+        return false;
+    }
+
+
+    public default boolean isEntityPackage(MofPackage inPackage) {
+        MofPackage current = inPackage;
+        while (current != null) {
+            if (current.hasStereotype("entitypackage")) {
+                return true;
+            }
+            current = current.getOwningPackage();
+        }
+        return false;
+    }
 
 }
