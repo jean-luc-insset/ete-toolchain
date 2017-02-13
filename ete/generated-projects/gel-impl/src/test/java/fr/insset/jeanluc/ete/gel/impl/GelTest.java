@@ -1,8 +1,6 @@
 package fr.insset.jeanluc.ete.gel.impl;
 
 
-
-
 import fr.insset.jeanluc.ete.api.EteException;
 import fr.insset.jeanluc.ete.gel.impl.factory.GelFactory;
 import fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes;
@@ -21,9 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-
-
 
 
 

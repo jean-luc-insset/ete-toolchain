@@ -1,5 +1,6 @@
 package fr.insset.jeanluc.action.semantics.dialect;
 
+import fr.insset.jeanluc.el.dialect.Java;
 import fr.insset.jeanluc.ete.as.api.Assignment;
 import fr.insset.jeanluc.ete.as.api.Conditional;
 import fr.insset.jeanluc.ete.as.api.Instanciation;
@@ -11,6 +12,8 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 
 /**
+ * This Java Dialect is able to translate GEL abstract trees to different
+ * flavours of Java (JPA selecting code, checking code)
  *
  * @author jldeleage
  */
@@ -87,6 +90,42 @@ public class JavaASGenerator extends DynamicVisitorSupport {
         output.print(";\n");
         return inVariableDeclaration;
     }
+
+    //========================================================================//
+
+
+    public String moft2lt(String inString) {
+        return basic_dialect.moft2lt(inString);
+    }
+
+    public String i2uc(String inString) {
+        return basic_dialect.i2uc(inString);
+    }
+
+    public String i2lc(String inString) {
+        return basic_dialect.i2lc(inString);
+    }
+
+    public Object mofv2lv(String inValue) {
+        return basic_dialect.mofv2lv(inValue);
+    }
+
+    public String converter(String inValue, String inMofType) {
+        return basic_dialect.converter(inValue, inMofType);
+    }
+
+
+//    public String toString() {
+//        return "Java Generator";
+//    }
+
+
+
+    //========================================================================//
+
+
+    private     Java        basic_dialect = new Java();
+
 
 }       // JavaASGenerator
 

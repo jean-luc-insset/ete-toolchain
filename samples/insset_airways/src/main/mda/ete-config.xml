@@ -31,6 +31,26 @@
                         template="templates/java/class2entity.vm"
                         target="${aClass.owningPackage.name.replace('.', '/')}/model/${aClass.name}.java"/>
 
+            <!-- JPA -->
+            <velocity   template="templates/java/abstract_jpa.vm"
+                        target="fr/insset/jeanluc/airways/jpa/AbstractJpa.java"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/java/class2jpa.vm"
+                        target="${aClass.owningPackage.name.replace('.', '/')}/jpa/${aClass.name}Jpa.java"/>
+
+            <!-- JSF -->
+            <velocity   template="templates/java/jsf_util.vm"
+                        target="fr/insset/jeanluc/airways/jsf/utils/JsfUtil.java"/>
+            <velocity   template="templates/java/pagination_helper.vm"
+                        target="fr/insset/jeanluc/airways/jsf/utils/PaginationHelper.java"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/java/class2jsf.vm"
+                        target="${aClass.owningPackage.name.replace('.', '/')}/jsf/${aClass.name}Controller.java"/>
+
         </transformation-set>
 
     </transformation-set>

@@ -3,16 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.insset.jeanluc</groupId>
-        <artifactId>ete</artifactId>
+        <artifactId>ete-toolchain</artifactId>
         <version>1.2</version>
     </parent>
-    <artifactId>action-semantics-builder</artifactId>
-    <packaging>jar</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>action-semantics-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+    <artifactId>samples</artifactId>
+    <packaging>pom</packaging>
+  <modules>
+    <module>insset_airways</module>
+  </modules>
 </project>

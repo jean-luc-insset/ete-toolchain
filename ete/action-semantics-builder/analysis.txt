@@ -1,0 +1,44 @@
+A partir du modèle 
+
+
+Vol <------------- commandant -> Pilote
+    <----------------- second ->
+inv equipage :  commandant <> second
+
+
+on doit pouvoir générer les méthodes (dans des classes éventuellement
+différentes, cela n'a pas d'importance et est du ressort du "template"
+utilisé)
+
+
+public boolean checkEquipage(Vol inContext) {
+    Pilote  commandant = inContext.getCommandant();
+    if (commandant == null) {
+        return true;
+    }
+    Pilote  second     = inContext.getSecond();
+    id (second == null) {
+        return true;
+    }
+    return commandant <> second;
+}
+
+
+public List<Vol> getInvalidVolForEquipage() {
+    
+}
+
+public List<Pilote> getSecond(Vol inContext) {
+
+}
+
+
+public void addSecondForEquipage(Vol inContext, Predicate inoutPredicate) {
+
+}
+
+
+public void addCommandantForEquipage(Vol inContext) {
+    ....
+}
+

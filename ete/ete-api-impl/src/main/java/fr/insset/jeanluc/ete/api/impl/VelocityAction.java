@@ -56,7 +56,11 @@ public class VelocityAction extends GenericTemplate {
         context.put("classes",model.getClasses());
         context.put("packages", model.getPackages());
         String dialectName = (String)getParameter("dialect");
-        
+
+        for (Map.Entry<String,Object> entry : getParameters().entrySet()) {
+            logger.log(Level.FINE, "Passing parameter " + entry.getKey() + " = " + entry.getValue());
+            context.put(entry.getKey(), entry.getValue());
+        }
         if (dialectName == null) {
             dialectName = "fr.insset.jeanluc.el.dialect.Java";
         }
@@ -64,14 +68,13 @@ public class VelocityAction extends GenericTemplate {
             Class<?> dialectClass = Class.forName(dialectName);
             Object dialect = dialectClass.newInstance();
             context.put("_d", dialect);
+            context.put("dialect", dialect);
+            Logger.getGlobal().log(Level.INFO, "Adding dialect " + dialect);
+            Logger.getGlobal().log(Level.INFO, "Added dialect " + context.get("dialect"));
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VelocityAction.class.getName()).log(Level.SEVERE, "Unable to load dialect " + dialectName, ex);
         } catch (InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(VelocityAction.class.getName()).log(Level.SEVERE, "Unable to instanciate dialect " + dialectName, ex);
-        }
-        for (Map.Entry<String,Object> entry : getParameters().entrySet()) {
-            logger.log(Level.FINE, "Passing parameter " + entry.getKey() + " = " + entry.getValue());
-            context.put(entry.getKey(), entry.getValue());
         }
 
     }
@@ -98,6 +101,13 @@ public class VelocityAction extends GenericTemplate {
     @Override
     protected void applyTemplate(String inTemplateUrl, String inTemplateEncoding, Writer inoutOutput) {
         try {
+            Object[] keys = context.getKeys();
+            Logger global = Logger.getGlobal();
+            global.log(Level.INFO, "----------------------------------------");
+            for (Object aKey : keys) {
+                global.log(Level.INFO, aKey + " -> " + context.get(aKey.toString()));
+            }
+            global.log(Level.INFO, "----------------------------------------");
             ve.mergeTemplate(inTemplateUrl, context, inoutOutput);
         } catch (ParseErrorException | MethodInvocationException ex) {
             Logger.getLogger(VelocityAction.class.getName()).log(Level.SEVERE, null, ex);

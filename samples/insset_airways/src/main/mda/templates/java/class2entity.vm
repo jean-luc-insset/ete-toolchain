@@ -1,17 +1,7 @@
 package ${aClass.package.name}.model;
 
 
-##// $dialect
-##// indexOf = $dialect.indexOf("a")
-##// $dialect.class.methods
-##// $dialect.class.methods[0]
-##// $dialect.class.methods[0].name
-###foreach($aMethod in $dialect.class.methods)
-##// $aMethod
-##// $aMethod.name
-###end
-##// $dialect.class
-##// $dialect.getClass().getName()
+
 
 
 import java.io.Serializable;

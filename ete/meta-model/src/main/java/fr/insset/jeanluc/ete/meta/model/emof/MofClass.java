@@ -55,5 +55,10 @@ public interface MofClass extends Classifier {
     public  boolean                         isAbstract();
     public  void                            setAbstract(boolean inAbstract);
 
+    @Override
+    public default  boolean                 isPrimitive() {
+        return false;
+    }
+
 
 }

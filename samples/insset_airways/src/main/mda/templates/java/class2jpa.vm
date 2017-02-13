@@ -1,0 +1,41 @@
+package ${aClass.package.name}.jpa;
+
+
+import fr.insset.jeanluc.airways.jpa.AbstractJpa;
+import ${aClass.package.name}.model.${aClass.name};
+import java.io.Serializable;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
+
+
+
+/**
+ *
+ * @author jldeleage
+ */
+@Stateless
+public class ${aClass.name}Jpa extends AbstractJpa<${aClass.name}> {
+
+    @PersistenceContext(unitName = "fr.insset.jeanluc_compagnie_aerienne_war_1.2PU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public ${aClass.name}Jpa() {
+        super(${aClass.name}.class);
+    }
+
+
+}
