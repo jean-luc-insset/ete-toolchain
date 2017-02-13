@@ -10,9 +10,9 @@ import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.TYPE_SUFF
  *
  * @author jldeleage
  */
-public class Java implements Dialect {
+public interface Java extends Dialect {
 
-    public String moft2lt(String inString) {
+    public default String moft2lt(String inString) {
         switch (inString) {
             case STRING_TYPE + TYPE_SUFFIX:
                 return "String";

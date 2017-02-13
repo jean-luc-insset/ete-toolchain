@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @author jldeleage
  */
-public class JavaASGenerator extends DynamicVisitorSupport {
+public class JavaASGenerator extends DynamicVisitorSupport implements Java {
 
     public  final   static  String      INDENTATION = "    ";
 
@@ -91,28 +91,7 @@ public class JavaASGenerator extends DynamicVisitorSupport {
         return inVariableDeclaration;
     }
 
-    //========================================================================//
 
-
-    public String moft2lt(String inString) {
-        return basic_dialect.moft2lt(inString);
-    }
-
-    public String i2uc(String inString) {
-        return basic_dialect.i2uc(inString);
-    }
-
-    public String i2lc(String inString) {
-        return basic_dialect.i2lc(inString);
-    }
-
-    public Object mofv2lv(String inValue) {
-        return basic_dialect.mofv2lv(inValue);
-    }
-
-    public String converter(String inValue, String inMofType) {
-        return basic_dialect.converter(inValue, inMofType);
-    }
 
 
 //    public String toString() {
@@ -123,8 +102,6 @@ public class JavaASGenerator extends DynamicVisitorSupport {
 
     //========================================================================//
 
-
-    private     Java        basic_dialect = new Java();
 
 
 }       // JavaASGenerator
