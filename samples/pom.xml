@@ -8,7 +8,5 @@
     </parent>
     <artifactId>samples</artifactId>
     <packaging>pom</packaging>
-  <modules>
-    <module>insset_airways</module>
-  </modules>
+  <modules></modules>
 </project>

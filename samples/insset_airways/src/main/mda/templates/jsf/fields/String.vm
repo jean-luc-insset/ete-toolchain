@@ -21,7 +21,7 @@
                     <h:outputLabel value="#{bundle.CreatePiloteLabel_prenom}" for="prenom" />
                     <h:inputText id="prenom" value="#{piloteController.selected.prenom}" title="#{bundle.CreatePiloteTitle_prenom}" />
                     <h:outputLabel value="#{bundle.CreatePiloteLabel_nom}" for="nom" />
-<!--                    <h:inputText id="nom" value="#{piloteController.selected.nom}" title="#{bundle.CreatePiloteTitle_nom}" /> -->
+                    <h:inputText id="nom" value="#{piloteController.selected.nom}" title="#{bundle.CreatePiloteTitle_nom}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{piloteController.create}" value="#{bundle.CreatePiloteSaveLink}" />
