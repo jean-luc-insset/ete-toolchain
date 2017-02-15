@@ -10,7 +10,7 @@ import static fr.insset.jeanluc.ete.meta.model.core.PrimitiveDataTypes.TYPE_SUFF
  *
  * @author jldeleage
  */
-public interface Java extends Dialect {
+public interface JavaDialect extends Dialect {
 
     public default String moft2lt(String inString) {
         switch (inString) {

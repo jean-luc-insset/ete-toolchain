@@ -1,6 +1,5 @@
 package fr.insset.jeanluc.action.semantics.dialect;
 
-import fr.insset.jeanluc.el.dialect.Java;
 import fr.insset.jeanluc.ete.as.api.Assignment;
 import fr.insset.jeanluc.ete.as.api.Conditional;
 import fr.insset.jeanluc.ete.as.api.Instanciation;
@@ -10,6 +9,7 @@ import fr.insset.jeanluc.ete.as.api.WhileDoLoop;
 import fr.insset.jeanluc.util.visit.DynamicVisitorSupport;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import fr.insset.jeanluc.el.dialect.JavaDialect;
 
 /**
  * This Java Dialect is able to translate GEL abstract trees to different
@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @author jldeleage
  */
-public class JavaASGenerator extends DynamicVisitorSupport implements Java {
+public class JavaASGenerator extends DynamicVisitorSupport implements JavaDialect {
 
     public  final   static  String      INDENTATION = "    ";
 

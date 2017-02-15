@@ -2,7 +2,7 @@ package ${aClass.package.name}.jpa;
 
 
 import fr.insset.jeanluc.airways.jpa.AbstractJpa;
-import ${aClass.package.name}.model.${aClass.name};
+import ${aClass.package.name}.model.*;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -37,5 +37,19 @@ public class ${aClass.name}Jpa extends AbstractJpa<${aClass.name}> {
         super(${aClass.name}.class);
     }
 
+#foreach ($aProperty in $aClass.ownedAttribute)
+#if ($dialect.isEntity($aProperty.type))
+    public List<$aProperty.type> findAll${dialect.i2uc($aProperty.name)}For($aClass.name item) {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(${aProperty.type.name}.class));
+        // we must now add all constraints to the request
+        // now we can build the query
+        TypedQuery query = getEntityManager().createQuery(cq);
+        // we must set the parameters
+        // finally we can fetch the data and return the result
+        return query.getResultList();
+    }
+#end
+#end
 
 }

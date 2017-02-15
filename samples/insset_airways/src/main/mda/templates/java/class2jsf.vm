@@ -2,7 +2,6 @@ package ${aClass.package.name}.jsf;
 
 
 
-
 import ${aClass.package.name}.jpa.${aClass.name}Jpa;
 import ${aClass.package.name}.model.*;
 import fr.insset.jeanluc.airways.jsf.util.JsfUtil;
@@ -26,7 +25,7 @@ import javax.faces.model.SelectItem;
  *
  * @author jldeleage
  */
-@Named(value = "newJSFManagedBean1")
+@Named(value = "${dialect.i2lc($aClass.name)}Controller")
 @SessionScoped
 public class ${aClass.name}Controller implements Serializable {
 
@@ -202,9 +201,11 @@ public class ${aClass.name}Controller implements Serializable {
     }
 
 #foreach ($aProperty in $aClass.ownedAttribute)
+#if ($dialect.isEntity($aProperty.type))
     public SelectItem[] get${dialect.i2uc($aProperty.name)}AvailableSelectOne() {
-        return JsfUtil.getSelectItems((ejbFacade.findAll${dialect.i2uc($aProperty.name)}For(getSelected())));
+        return JsfUtil.getSelectItems(ejbFacade.findAll${dialect.i2uc($aProperty.name)}For(getSelected()), true);
     }
+#end
 #end
 
 

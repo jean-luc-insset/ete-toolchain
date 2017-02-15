@@ -50,7 +50,42 @@
                         dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
                         template="templates/java/class2jsf.vm"
                         target="${aClass.owningPackage.name.replace('.', '/')}/jsf/${aClass.name}Controller.java"/>
+        </transformation-set>
 
+            <!-- JSF pages -->
+        <transformation-set name="sources"
+                output_base="generated-web/ete">
+            <velocity   template="templates/jsf/web_inf.vm"
+                        target="WEB-INF/web.xml"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/jsf/class2create.vm"
+                        target="admin/${aClass.name}/Create.xhtml"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/jsf/class2edit.vm"
+                        target="admin/${aClass.name}/Edit.xhtml"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/jsf/class2list.vm"
+                        target="admin/${aClass.name}/List.xhtml"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/jsf/class2view.vm"
+                        target="admin/${aClass.name}/View.xhtml"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="templates/jsf/class2form.vm"
+                        target="resources/ete/${aClass.name}_form.xhtml"/>
+            <velocity   template="templates/jsf/template.vm"
+                        target="template.xhtml"/>
+            <velocity   template="templates/jsf/index.vm"
+                        target="index.xhtml"/>
         </transformation-set>
 
     </transformation-set>

@@ -62,7 +62,7 @@ public class VelocityAction extends GenericTemplate {
             context.put(entry.getKey(), entry.getValue());
         }
         if (dialectName == null) {
-            dialectName = "fr.insset.jeanluc.el.dialect.Java";
+            dialectName = "fr.insset.jeanluc.el.dialect.BasicJavaDialect";
         }
         try {
             Class<?> dialectClass = Class.forName(dialectName);
