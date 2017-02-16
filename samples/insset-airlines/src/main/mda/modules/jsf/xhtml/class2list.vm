@@ -32,7 +32,11 @@
                             <f:facet name="header">
                                 ${aProperty.name}
                             </f:facet>
-                            #{item.${aProperty.name}}
+                            <h:outputText value="#{item.${aProperty.name}}">
+#if ($aProperty.type.name == "date")
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+#end
+                            </h:outputText>
                         </h:column>
 #end
                         <h:column>

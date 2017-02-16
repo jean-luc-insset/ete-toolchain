@@ -23,6 +23,9 @@
         <!-- This module calls jpa module which in turn calls java module -->
         <module src="modules/jsf/ete-config.xml"/>
 
+        <!-- This module sets the encoding of glassfish -->
+        <module src="modules/glassfish/ete-config.xml"/>
+
     </transformation-set>
 
 </mda>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mda>
+
+
+    <transformation-set name="sources"
+                output_base="generated-web/ete">
+
+        <!-- Glassfish encoding setting -->
+        <velocity template="glassfish.vm"
+                  target="WEB-INF/glassfish-web.xml"/>
+
+    </transformation-set>
+
+</mda>
+
+
+
