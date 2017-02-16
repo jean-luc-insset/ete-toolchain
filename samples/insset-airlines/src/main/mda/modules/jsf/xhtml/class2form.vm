@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="acteur"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        Hello ${cc.attrs.acteur}
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+#foreach ($aProperty in $aClass.ownedAttribute)
+                    <h:outputLabel value="#{bundle.Create${aClass.name}Label_${aProperty.name}}" for="${aProperty.name}" />
+#if ($aProperty.type.name == "String")
+    #parse("xhtml/input_fields/String.vm")
+#elseif ($aProperty.type.name == "date")
+                    <h:inputText id="${aProperty.name}" value="#{${dialect.i2lc($aClass.name)}Controller.selected.${aProperty.name}}" title="#{bundle.Create${aClass.name}Title_${aProperty.name}}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+#elseif ($aProperty.type.name == "int")
+                    <h:inputText id="${aProperty.name}" value="#{${dialect.i2lc($aClass.name)}Controller.selected.${aProperty.name}}" title="#{bundle.Create${aClass.name}Title_${aProperty.name}}" />
+#elseif ($aProperty.type.collection)
+                    <h:selectManyMenu id="${aProperty.name}" value="#{${dialect.i2lc($aClass.name)}Controller.selected.${aProperty.name}}" title="#{bundle.Create${aClass.name}Title_${aProperty.name}}" >
+                        <f:selectItems value="#{${dialect.i2lc($aProperty.type.baseType.name)}Controller.itemsAvailableSelectMany}"/>
+                    </h:selectManyMenu>
+#else
+                    <h:selectOneMenu id="${aProperty.name}" value="#{${dialect.i2lc($aClass.name)}Controller.selected.${aProperty.name}}" title="#{bundle.Create${aClass.name}Title_${aProperty.name}}" >
+                        <f:selectItems value="#{${dialect.i2lc($aProperty.type.name)}Controller.itemsAvailableSelectOne}"/>
+#if ($aProperty.type.name == "date")
+        
+#end
+                    </h:selectOneMenu>
+#end
+#end
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{${dialect.i2lc($aClass.name)}Controller.create}" value="#{bundle.Create${aClass.name}SaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{${dialect.i2lc($aClass.name)}Controller.prepareList}" value="#{bundle.Create${aClass.name}ShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.Create${aClass.name}IndexLink}"/>
+            </h:form>
+    </cc:implementation>
+
+</html>

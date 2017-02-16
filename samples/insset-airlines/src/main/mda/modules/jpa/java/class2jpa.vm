@@ -25,7 +25,7 @@ import javax.persistence.criteria.Root;
 @Stateless
 public class ${aClass.name}Jpa extends AbstractJpa<${aClass.name}> {
 
-    @PersistenceContext(unitName = "fr.insset.jeanluc_compagnie_aerienne_war_1.2PU")
+    @PersistenceContext(unitName = "fr.insset.jeanluc.ete_1.2PU")
     private EntityManager em;
 
     @Override

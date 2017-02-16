@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  This module generates all JPA stuff. It first calls the plain Java module to
+  generate POJOs, then generate the DAOs and the persistence unit.
+  -->
+
+<mda>
+
+    <transformation-set>
+
+        <!-- Entities -->
+        <module src="../java/ete-config.xml"/>
+
+        <transformation-set
+                    output_base="generated-sources/ete">
+            <!-- JPA -->
+            <velocity   template="java/abstract_jpa.vm"
+                        target="fr/insset/jeanluc/airways/jpa/AbstractJpa.java"/>
+            <velocity items="${classes}"
+                        var="aClass"
+                        dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                        template="java/class2jpa.vm"
+                        target="${aClass.owningPackage.name.replace('.', '/')}/jpa/${aClass.name}Jpa.java"/>
+        </transformation-set>
+
+        <velocity   template="pu.vm"
+                        target="generated-resources/ete/META-INF/persistence.xml"/>
+    </transformation-set>
+
+</mda>
+
+
+

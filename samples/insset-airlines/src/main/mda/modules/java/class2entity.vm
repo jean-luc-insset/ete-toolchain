@@ -100,6 +100,16 @@ public class ${aClass.name} implements Serializable {
     }
 #end
 
+
+    @Override
+    public String toString() {
+#if ($aClass.ownedAttribute.size() > 0)
+        return "" + ${aClass.ownedAttribute.get(0)};
+#else
+        return super.toString();
+#end
+    }
+
     //========================================================================//
 
 #foreach ($aProperty in $aClass.ownedAttribute)
@@ -110,11 +120,14 @@ public class ${aClass.name} implements Serializable {
     #if ($dialect.isEntity($aProperty.type.baseType))
     @OneToMany 
     #end
+    #elseif ($aProperty.type.name == "date")
+    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
     #end
     $dialect.moft2lt($aProperty.type.name)      ${aProperty.name};
 #end
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

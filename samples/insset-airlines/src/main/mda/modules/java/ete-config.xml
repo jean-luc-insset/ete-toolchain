@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mda>
+
+    <!--
+        A project is a set of pipelines, each pipeline is made of "steps".
+        Each step receives a model and returns a model.
+        Some steps accept null as the entry model, for example, steps reading
+        a model.
+        Some steps return the model they receive but produce some board effects,
+        for example "dump" steps, "template" steps or "register" steps.
+      -->
+
+    <transformation-set name="sources"
+                output_base="generated-sources/ete">
+
+        <!-- Entities -->
+        <velocity items="${classes}"
+                    var="aClass"
+                    dialect="fr.insset.jeanluc.action.semantics.dialect.JavaASGenerator"
+                    template="class2entity.vm"
+                    target="${aClass.owningPackage.name.replace('.', '/')}/model/${aClass.name}.java"/>
+
+    </transformation-set>
+
+</mda>
+
+
+

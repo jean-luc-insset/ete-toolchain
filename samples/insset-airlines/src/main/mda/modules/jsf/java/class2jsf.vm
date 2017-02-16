@@ -25,8 +25,8 @@ import javax.faces.model.SelectItem;
  *
  * @author jldeleage
  */
-@Named(value = "${dialect.i2lc($aClass.name)}Controller")
-@SessionScoped
+// @Named(value = "${dialect.i2lc($aClass.name)}Controller")
+// @SessionScoped
 public class ${aClass.name}Controller implements Serializable {
 
 
@@ -222,7 +222,7 @@ public class ${aClass.name}Controller implements Serializable {
                 return null;
             }
             ${aClass.name}Controller controller = (${aClass.name}Controller) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "piloteController");
+                    getValue(facesContext.getELContext(), null, "${dialect.i2lc($aClass.name)}Controller");
             return controller.get${aClass.name}(getKey(value));
         }
 

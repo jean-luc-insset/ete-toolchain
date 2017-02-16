@@ -1,0 +1,1 @@
+<h:inputText id="${aProperty.name}" value="#{${dialect.i2lc($aClass.name)}Controller.selected.${aProperty.name}}" title="#{bundle.Create${aClass.name}Title_${aProperty.name}}" />

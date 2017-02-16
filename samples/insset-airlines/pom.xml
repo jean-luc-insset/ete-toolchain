@@ -9,12 +9,12 @@
     </parent>
 
     <groupId>fr.insset.jeanluc</groupId>
-    <artifactId>insset_airways</artifactId>
+    <artifactId>insset_airlines</artifactId>
     <version>1.2</version>
     <packaging>war</packaging>
 
-    <name>insset_airways</name>
-    <url>http://localhost:8080/insset-airways</url>
+    <name>insset_airlines</name>
+    <url>http://localhost:8080/insset-airlines</url>
 
 
     <properties>
@@ -155,14 +155,14 @@
 
         </plugins>
 
-<!--        <resources>
+        <resources>
             <resource>
                 <directory>src/main/web</directory>
             </resource>
             <resource>
                 <directory>target/generated-resources/ete</directory>
             </resource>
-        </resources>-->
+        </resources>
     </build>
 
 </project>

@@ -1,0 +1,40 @@
+PersistenceErrorOccured=A persistence error occurred.
+Previous=Previous
+Next=Next
+
+#foreach($aClass in $classes)
+${aClass.name}Created=${aClass.name} was successfully created.
+${aClass.name}Updated=${aClass.name} was successfully updated.
+${aClass.name}Deleted=${aClass.name} was successfully deleted.
+Create${aClass.name}Title=Create New ${aClass.name}
+Create${aClass.name}SaveLink=Save
+Create${aClass.name}ShowAllLink=Show All ${aClass.name} Items
+Create${aClass.name}IndexLink=Index
+Edit${aClass.name}Title=Edit ${aClass.name}
+Edit${aClass.name}SaveLink=Save
+Edit${aClass.name}ViewLink=View
+Edit${aClass.name}ShowAllLink=Show All ${aClass.name} Items
+Edit${aClass.name}IndexLink=Index
+View${aClass.name}Title=View
+View${aClass.name}DestroyLink=Destroy
+View${aClass.name}EditLink=Edit
+View${aClass.name}CreateLink=Create New ${aClass.name}
+View${aClass.name}ShowAllLink=Show All ${aClass.name} Items
+View${aClass.name}IndexLink=Index
+List${aClass.name}Empty=(No ${aClass.name} Items Found)
+List${aClass.name}DestroyLink=Destroy
+List${aClass.name}EditLink=Edit
+List${aClass.name}ViewLink=View
+List${aClass.name}CreateLink=Create New ${aClass.name}
+List${aClass.name}IndexLink=Index
+List${aClass.name}Title=List
+#foreach ($aProperty in $aClass.ownedAttribute)
+Create${aClass.name}Label_${dialect.i2lc($aProperty.name)}=${aProperty.name}:
+Create${aClass.name}Title_${dialect.i2lc($aProperty.name)}=${aProperty.name}
+Edit${aClass.name}Label_${dialect.i2lc($aProperty.name)}=${aProperty.name}:
+Edit${aClass.name}Title_${dialect.i2lc($aProperty.name)}=${aProperty.name}
+View${aClass.name}Label_${dialect.i2lc($aProperty.name)}=${aProperty.name}:
+View${aClass.name}Title_${dialect.i2lc($aProperty.name)}=${aProperty.name}
+List${aClass.name}Title_${dialect.i2lc($aProperty.name)}=${aProperty.name}
+#end
+#end

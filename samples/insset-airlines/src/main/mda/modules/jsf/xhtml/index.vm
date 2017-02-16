@@ -12,8 +12,13 @@
 
     <h:body>
         <h1>
-            Hello world
+            INSSET AIRLINES v. 1.0
         </h1>
+<h:form>
+#foreach ($aClass in $current.classes)
+    <h:link outcome="/admin/${aClass.name}/List" value="Show All ${aClass.name} Items"/><br/>
+#end
+</h:form>
     </h:body>
 
 </html>
