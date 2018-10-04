@@ -1,6 +1,6 @@
 # ete-toolchain
 
-A flexible MDA tool.
+A flexible MDE tool.
 
 
 WARNING : this project depends on the util project :
@@ -8,12 +8,15 @@ WARNING : this project depends on the util project :
 The util project must be cloned and built in order to build the ete-toolchain project.
 
 
+The tool has been architectured to be highly customizable.
+It is aims to generate high quality code leveraging OCL constraints.
 
-The tool is highly customizable. it is intented to use OCL constraints to generate better quality code.
 
-The project contains two sub projects : ete and samples.
+The project contains several sub projects :
+  - ete
+  - samples
 
-ete is the actual MDA tool, composed of several sub-projects.
+ete is the actual MDE tool, composed of several sub-projects.
 Main sub-projects are :
   - meta-model specifies the basic meta-model
   - meta-model-impl provides a default implementation of the meta-model
@@ -28,11 +31,6 @@ Some other sub-projects are partly or entirely generated.
 This is a new release which has been completely rewritten.
 - the architecture itself uses abstract factories everywhere
 - the factories are accessed through hierarchical registries
-- the custom xslt-based ete language has been dropped, Velocity is used instead.
-
-Currently, only one example is provides. It is a JSF example and the provided configuration files are suitable to run the project against Glassfish and its JavaDB database "sample".
-The database can be set in the file
-  samples/insset_airlines/src/main/mda/modules/jpa/pu.vm
-It is supposed to be a velocity template but actually, it is an usual JPA persistence.xml file
+- the custom xslt-based ete language has been dropped in favor of Velocity
 
 
